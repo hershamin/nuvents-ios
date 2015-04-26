@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */; };
+		BA5B90CC1AED81F3000B1BD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90CB1AED81F3000B1BD5 /* ViewController.swift */; };
+		BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */; };
+		BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90D01AED81F3000B1BD5 /* Images.xcassets */; };
+		BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */; };
+		BA5B90E01AED81F3000B1BD5 /* NuVents_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90DF1AED81F3000B1BD5 /* NuVents_iosTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA5B90DA1AED81F3000B1BD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA5B90BC1AED81F3000B1BD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA5B90C31AED81F3000B1BD5;
+			remoteInfo = "NuVents-ios";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BA5B90C41AED81F3000B1BD5 /* NuVents-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NuVents-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA5B90C81AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BA5B90CB1AED81F3000B1BD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA5B90CE1AED81F3000B1BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BA5B90D01AED81F3000B1BD5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BA5B90D31AED81F3000B1BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		BA5B90D91AED81F3000B1BD5 /* NuVents-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NuVents-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA5B90DE1AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA5B90DF1AED81F3000B1BD5 /* NuVents_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuVents_iosTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA5B90C11AED81F3000B1BD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA5B90D61AED81F3000B1BD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BA5B90BB1AED81F3000B1BD5 = {
+			isa = PBXGroup;
+			children = (
+				BA5B90C61AED81F3000B1BD5 /* NuVents-ios */,
+				BA5B90DC1AED81F3000B1BD5 /* NuVents-iosTests */,
+				BA5B90C51AED81F3000B1BD5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BA5B90C51AED81F3000B1BD5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA5B90C41AED81F3000B1BD5 /* NuVents-ios.app */,
+				BA5B90D91AED81F3000B1BD5 /* NuVents-iosTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA5B90C61AED81F3000B1BD5 /* NuVents-ios */ = {
+			isa = PBXGroup;
+			children = (
+				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
+				BA5B90CB1AED81F3000B1BD5 /* ViewController.swift */,
+				BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */,
+				BA5B90D01AED81F3000B1BD5 /* Images.xcassets */,
+				BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */,
+				BA5B90C71AED81F3000B1BD5 /* Supporting Files */,
+			);
+			path = "NuVents-ios";
+			sourceTree = "<group>";
+		};
+		BA5B90C71AED81F3000B1BD5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA5B90C81AED81F3000B1BD5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA5B90DC1AED81F3000B1BD5 /* NuVents-iosTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA5B90DF1AED81F3000B1BD5 /* NuVents_iosTests.swift */,
+				BA5B90DD1AED81F3000B1BD5 /* Supporting Files */,
+			);
+			path = "NuVents-iosTests";
+			sourceTree = "<group>";
+		};
+		BA5B90DD1AED81F3000B1BD5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BA5B90DE1AED81F3000B1BD5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA5B90C31AED81F3000B1BD5 /* NuVents-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA5B90E31AED81F3000B1BD5 /* Build configuration list for PBXNativeTarget "NuVents-ios" */;
+			buildPhases = (
+				BA5B90C01AED81F3000B1BD5 /* Sources */,
+				BA5B90C11AED81F3000B1BD5 /* Frameworks */,
+				BA5B90C21AED81F3000B1BD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NuVents-ios";
+			productName = "NuVents-ios";
+			productReference = BA5B90C41AED81F3000B1BD5 /* NuVents-ios.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA5B90D81AED81F3000B1BD5 /* NuVents-iosTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA5B90E61AED81F3000B1BD5 /* Build configuration list for PBXNativeTarget "NuVents-iosTests" */;
+			buildPhases = (
+				BA5B90D51AED81F3000B1BD5 /* Sources */,
+				BA5B90D61AED81F3000B1BD5 /* Frameworks */,
+				BA5B90D71AED81F3000B1BD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA5B90DB1AED81F3000B1BD5 /* PBXTargetDependency */,
+			);
+			name = "NuVents-iosTests";
+			productName = "NuVents-iosTests";
+			productReference = BA5B90D91AED81F3000B1BD5 /* NuVents-iosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA5B90BC1AED81F3000B1BD5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = NuVents;
+				TargetAttributes = {
+					BA5B90C31AED81F3000B1BD5 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					BA5B90D81AED81F3000B1BD5 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = BA5B90C31AED81F3000B1BD5;
+					};
+				};
+			};
+			buildConfigurationList = BA5B90BF1AED81F3000B1BD5 /* Build configuration list for PBXProject "NuVents-ios" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA5B90BB1AED81F3000B1BD5;
+			productRefGroup = BA5B90C51AED81F3000B1BD5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA5B90C31AED81F3000B1BD5 /* NuVents-ios */,
+				BA5B90D81AED81F3000B1BD5 /* NuVents-iosTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA5B90C21AED81F3000B1BD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
+				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
+				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA5B90D71AED81F3000B1BD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA5B90C01AED81F3000B1BD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA5B90CC1AED81F3000B1BD5 /* ViewController.swift in Sources */,
+				BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA5B90D51AED81F3000B1BD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA5B90E01AED81F3000B1BD5 /* NuVents_iosTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA5B90DB1AED81F3000B1BD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA5B90C31AED81F3000B1BD5 /* NuVents-ios */;
+			targetProxy = BA5B90DA1AED81F3000B1BD5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA5B90CE1AED81F3000B1BD5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA5B90D31AED81F3000B1BD5 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BA5B90E11AED81F3000B1BD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA5B90E21AED81F3000B1BD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA5B90E41AED81F3000B1BD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "NuVents-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BA5B90E51AED81F3000B1BD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "NuVents-ios/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BA5B90E71AED81F3000B1BD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NuVents-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NuVents-ios.app/NuVents-ios";
+			};
+			name = Debug;
+		};
+		BA5B90E81AED81F3000B1BD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NuVents-iosTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NuVents-ios.app/NuVents-ios";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA5B90BF1AED81F3000B1BD5 /* Build configuration list for PBXProject "NuVents-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA5B90E11AED81F3000B1BD5 /* Debug */,
+				BA5B90E21AED81F3000B1BD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA5B90E31AED81F3000B1BD5 /* Build configuration list for PBXNativeTarget "NuVents-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA5B90E41AED81F3000B1BD5 /* Debug */,
+				BA5B90E51AED81F3000B1BD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BA5B90E61AED81F3000B1BD5 /* Build configuration list for PBXNativeTarget "NuVents-iosTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA5B90E71AED81F3000B1BD5 /* Debug */,
+				BA5B90E81AED81F3000B1BD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BA5B90BC1AED81F3000B1BD5 /* Project object */;
+}
