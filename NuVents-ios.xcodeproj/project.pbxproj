@@ -13,6 +13,20 @@
 		BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90D01AED81F3000B1BD5 /* Images.xcassets */; };
 		BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */; };
 		BA5B90E01AED81F3000B1BD5 /* NuVents_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90DF1AED81F3000B1BD5 /* NuVents_iosTests.swift */; };
+		BA5B90EA1AED8439000B1BD5 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90E91AED8439000B1BD5 /* GoogleMaps.framework */; };
+		BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90EB1AED844B000B1BD5 /* GoogleMaps.bundle */; };
+		BA5B90EE1AED851A000B1BD5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90ED1AED851A000B1BD5 /* AVFoundation.framework */; };
+		BA5B90F01AED8520000B1BD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90EF1AED8520000B1BD5 /* CoreData.framework */; };
+		BA5B90F21AED8525000B1BD5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F11AED8525000B1BD5 /* CoreLocation.framework */; };
+		BA5B90F41AED852B000B1BD5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F31AED852B000B1BD5 /* CoreText.framework */; };
+		BA5B90F61AED8531000B1BD5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F51AED8531000B1BD5 /* GLKit.framework */; };
+		BA5B90F81AED8536000B1BD5 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F71AED8536000B1BD5 /* ImageIO.framework */; };
+		BA5B90FA1AED854E000B1BD5 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F91AED854E000B1BD5 /* libc++.dylib */; };
+		BA5B90FC1AED8559000B1BD5 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90FB1AED8559000B1BD5 /* libicucore.dylib */; };
+		BA5B90FE1AED855F000B1BD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90FD1AED855F000B1BD5 /* libz.dylib */; };
+		BA5B91001AED8567000B1BD5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90FF1AED8567000B1BD5 /* OpenGLES.framework */; };
+		BA5B91021AED856F000B1BD5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B91011AED856F000B1BD5 /* QuartzCore.framework */; };
+		BA5B91041AED8575000B1BD5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B91031AED8575000B1BD5 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +50,21 @@
 		BA5B90D91AED81F3000B1BD5 /* NuVents-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NuVents-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5B90DE1AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA5B90DF1AED81F3000B1BD5 /* NuVents_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuVents_iosTests.swift; sourceTree = "<group>"; };
+		BA5B90E91AED8439000B1BD5 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		BA5B90EB1AED844B000B1BD5 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		BA5B90ED1AED851A000B1BD5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BA5B90EF1AED8520000B1BD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		BA5B90F11AED8525000B1BD5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		BA5B90F31AED852B000B1BD5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		BA5B90F51AED8531000B1BD5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		BA5B90F71AED8536000B1BD5 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		BA5B90F91AED854E000B1BD5 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		BA5B90FB1AED8559000B1BD5 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		BA5B90FD1AED855F000B1BD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		BA5B90FF1AED8567000B1BD5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		BA5B91011AED856F000B1BD5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BA5B91031AED8575000B1BD5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BA5B91051AED8601000B1BD5 /* NuVents-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NuVents-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +72,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA5B91041AED8575000B1BD5 /* SystemConfiguration.framework in Frameworks */,
+				BA5B91021AED856F000B1BD5 /* QuartzCore.framework in Frameworks */,
+				BA5B91001AED8567000B1BD5 /* OpenGLES.framework in Frameworks */,
+				BA5B90FE1AED855F000B1BD5 /* libz.dylib in Frameworks */,
+				BA5B90FC1AED8559000B1BD5 /* libicucore.dylib in Frameworks */,
+				BA5B90FA1AED854E000B1BD5 /* libc++.dylib in Frameworks */,
+				BA5B90F81AED8536000B1BD5 /* ImageIO.framework in Frameworks */,
+				BA5B90F61AED8531000B1BD5 /* GLKit.framework in Frameworks */,
+				BA5B90F41AED852B000B1BD5 /* CoreText.framework in Frameworks */,
+				BA5B90F21AED8525000B1BD5 /* CoreLocation.framework in Frameworks */,
+				BA5B90F01AED8520000B1BD5 /* CoreData.framework in Frameworks */,
+				BA5B90EE1AED851A000B1BD5 /* AVFoundation.framework in Frameworks */,
+				BA5B90EA1AED8439000B1BD5 /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +101,20 @@
 		BA5B90BB1AED81F3000B1BD5 = {
 			isa = PBXGroup;
 			children = (
+				BA5B91031AED8575000B1BD5 /* SystemConfiguration.framework */,
+				BA5B91011AED856F000B1BD5 /* QuartzCore.framework */,
+				BA5B90FF1AED8567000B1BD5 /* OpenGLES.framework */,
+				BA5B90FD1AED855F000B1BD5 /* libz.dylib */,
+				BA5B90FB1AED8559000B1BD5 /* libicucore.dylib */,
+				BA5B90F91AED854E000B1BD5 /* libc++.dylib */,
+				BA5B90F71AED8536000B1BD5 /* ImageIO.framework */,
+				BA5B90F51AED8531000B1BD5 /* GLKit.framework */,
+				BA5B90F31AED852B000B1BD5 /* CoreText.framework */,
+				BA5B90F11AED8525000B1BD5 /* CoreLocation.framework */,
+				BA5B90EF1AED8520000B1BD5 /* CoreData.framework */,
+				BA5B90ED1AED851A000B1BD5 /* AVFoundation.framework */,
+				BA5B90EB1AED844B000B1BD5 /* GoogleMaps.bundle */,
+				BA5B90E91AED8439000B1BD5 /* GoogleMaps.framework */,
 				BA5B90C61AED81F3000B1BD5 /* NuVents-ios */,
 				BA5B90DC1AED81F3000B1BD5 /* NuVents-iosTests */,
 				BA5B90C51AED81F3000B1BD5 /* Products */,
@@ -83,6 +139,7 @@
 				BA5B90D01AED81F3000B1BD5 /* Images.xcassets */,
 				BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */,
 				BA5B90C71AED81F3000B1BD5 /* Supporting Files */,
+				BA5B91051AED8601000B1BD5 /* NuVents-ios-Bridging-Header.h */,
 			);
 			path = "NuVents-ios";
 			sourceTree = "<group>";
@@ -195,6 +252,7 @@
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
 				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
+				BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +350,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -328,6 +387,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -338,10 +398,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "NuVents-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NuVents-ios/NuVents-ios-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -349,10 +416,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "NuVents-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NuVents-ios/NuVents-ios-Bridging-Header.h";
 			};
 			name = Release;
 		};
