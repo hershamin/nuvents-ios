@@ -404,7 +404,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "NuVents-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NuVents-ios/NuVents-ios-Bridging-Header.h";
@@ -422,7 +422,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "NuVents-ios/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NuVents-ios/NuVents-ios-Bridging-Header.h";
@@ -482,6 +482,7 @@
 				BA5B90E51AED81F3000B1BD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA5B90E61AED81F3000B1BD5 /* Build configuration list for PBXNativeTarget "NuVents-iosTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +491,7 @@
 				BA5B90E81AED81F3000B1BD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
