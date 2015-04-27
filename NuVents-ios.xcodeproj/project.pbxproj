@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA2E187C1AEEA178008AA18A /* NuVentsBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2E187B1AEEA178008AA18A /* NuVentsBackend.swift */; };
 		BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */; };
 		BA5B90CC1AED81F3000B1BD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90CB1AED81F3000B1BD5 /* ViewController.swift */; };
 		BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA2E187B1AEEA178008AA18A /* NuVentsBackend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuVentsBackend.swift; sourceTree = "<group>"; };
 		BA5B90C41AED81F3000B1BD5 /* NuVents-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NuVents-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5B90C81AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */,
 				BA5B90C71AED81F3000B1BD5 /* Supporting Files */,
 				BA5B91051AED8601000B1BD5 /* NuVents-ios-Bridging-Header.h */,
+				BA2E187B1AEEA178008AA18A /* NuVentsBackend.swift */,
 			);
 			path = "NuVents-ios";
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				BA5B911E1AEDEB9E000B1BD5 /* SocketPacket.swift in Sources */,
 				BA5B911A1AEDEB9E000B1BD5 /* SocketEventHandler.swift in Sources */,
 				BA5B911D1AEDEB9E000B1BD5 /* SocketLogger.swift in Sources */,
+				BA2E187C1AEEA178008AA18A /* NuVentsBackend.swift in Sources */,
 				BA5B911B1AEDEB9E000B1BD5 /* SocketFixUTF8.swift in Sources */,
 				BA5B91201AEDEB9E000B1BD5 /* SocketTypes.swift in Sources */,
 				BA5B91171AEDEB9E000B1BD5 /* SocketAnyEvent.swift in Sources */,
