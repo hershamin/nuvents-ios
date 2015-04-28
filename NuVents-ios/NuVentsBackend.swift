@@ -9,11 +9,11 @@
 import UIKit
 
 // NuVents backend protocol
-@objc protocol NuVentsBackendDelegate {
+protocol NuVentsBackendDelegate {
     
     // MARK: Client Request
-    func nuventsServerDidReceiveNearbyEvent(event: NSDictionary)            // Got nearby event
-    func nuventsServerDidReceiveEventDetail(event: NSDictionary)            // Got event detail
+    func nuventsServerDidReceiveNearbyEvent(event: JSON)                    // Got nearby event
+    func nuventsServerDidReceiveEventDetail(event: JSON)                    // Got event detail
     
     // MARK: Connection Status
     func nuventsServerDidGetNewData(channel:NSString, data:AnyObject)       // Got new data from any WS event
@@ -66,9 +66,9 @@ class NuVentsBackend {
     func addSocketHandlingMethods() {
         //MARK: Nearby Event Received
         nSocket.on("event:nearby") {data, ack in
-            let dataTemp:NSData = NSKeyedArchiver.archivedDataWithRootObject(data!)
-            let dataDict:NSDictionary = NSKeyedUnarchiver.unarchiveObjectWithData(dataTemp)! as! NSDictionary
-            self.delegate.nuventsServerDidReceiveNearbyEvent(dataDict)
+            let jsonData = JSON(data: data?[0] as! NSData)
+            self.delegate.nuventsServerDidReceiveNearbyEvent(jsonData)
+            
         }
         
         //MARK: Nearby Event Error & Status
@@ -83,9 +83,8 @@ class NuVentsBackend {
         
         //MARK: Detail Event Received
         nSocket.on("event:detail") {data, ack in
-            let dataTemp:NSData = NSKeyedArchiver.archivedDataWithRootObject(data!)
-            let dataDict:NSDictionary = NSKeyedUnarchiver.unarchiveObjectWithData(dataTemp)! as! NSDictionary
-            self.delegate.nuventsServerDidReceiveEventDetail(dataDict)
+            let jsonData = JSON(data: data?[0] as! NSData)
+            self.delegate.nuventsServerDidReceiveEventDetail(jsonData)
         }
         
         //MARK: Detail Event Error & Status
