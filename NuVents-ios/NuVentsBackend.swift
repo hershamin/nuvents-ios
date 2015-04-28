@@ -35,9 +35,9 @@ class NuVentsBackend {
     var deviceID: NSString
     
     //MARK: initialization called
-    init(delegate: NuVentsBackendDelegate, server: NSString) {
+    init(delegate: NuVentsBackendDelegate, server: NSString, device: NSString) {
         self.delegate = delegate // Assign delegate
-        self.deviceID = UIDevice.currentDevice().identifierForVendor.UUIDString as NSString // Get device vendorID
+        self.deviceID = device // Get device vendorID
         // Socket connection handling
         nSocket = SocketIOClient(socketURL: server as String, opts:["log":false])
         addSocketHandlingMethods()
