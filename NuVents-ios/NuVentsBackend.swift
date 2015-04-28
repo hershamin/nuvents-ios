@@ -12,23 +12,19 @@ import UIKit
 @objc protocol NuVentsBackendDelegate {
     
     // MARK: Client Request
-    func nuventsServerDidReceiveNearbyEvent(event: NSDictionary)                // Got nearby event
-    func nuventsServerDidReceiveEventDetail(event: NSDictionary)                // Got event detail
-    
-    // MARK: Client Status
-    func nuventsServerDidRemoveEvent(event: NSDictionary)                       // Remove event from client
-    func nuventsServerDidAddEvent(event:NSDictionary)                           // Add event to client
+    func nuventsServerDidReceiveNearbyEvent(event: NSDictionary)            // Got nearby event
+    func nuventsServerDidReceiveEventDetail(event: NSDictionary)            // Got event detail
     
     // MARK: Connection Status
-    optional func nuventsServerDidGetNewData(channel:NSString, data:AnyObject)  // Got new data from any WS event
-    func nuventsServerDidConnect()                                              // Connected
-    func nuventsServerDidDisconnect()                                           // Disconnected
-    func nuventsServerDidReceiveError(error: NSString)                          // Error
-    optional func nuventsServerDidRespondToPing(response: NSString)             // Got ping response
+    func nuventsServerDidGetNewData(channel:NSString, data:AnyObject)       // Got new data from any WS event
+    func nuventsServerDidConnect()                                          // Connected
+    func nuventsServerDidDisconnect()                                       // Disconnected
+    func nuventsServerDidRespondToPing(response: NSString)                  // Got ping response
     
-    // MARK: Experimental
-    func nuventsServerDidAskStatus() -> NSDictionary                            // Server asking for status
-    func nuventsServerDidSendCommand() -> NSString                              // Server sending command
+    // MARK: Client Request Status & Other errors
+    func nuventsServerDidReceiveError(type: NSString, error: NSString)      // Error
+    func nuventsServerDidReceiveStatus(type: NSString, status: NSString)    // Status
+
 }
 
 // NuVents backend class
@@ -68,20 +64,45 @@ class NuVentsBackend {
     
     //MARK: socket handling methods
     func addSocketHandlingMethods() {
-        //TODO: Nearby Event Received
-        
-        //TODO: Nearby Event Error
-        
-        //TODO: Detail Event Received
-        
-        //TODO: Detail Event Error
-        
-        
-        nSocket.on("pong") {data, ack in // Server ping response
-            self.delegate.nuventsServerDidRespondToPing!("Ping response: \(data?[0])")
+        //MARK: Nearby Event Received
+        nSocket.on("event:nearby") {data, ack in
+            let dataTemp:NSData = NSKeyedArchiver.archivedDataWithRootObject(data!)
+            let dataDict:NSDictionary = NSKeyedUnarchiver.unarchiveObjectWithData(dataTemp)! as! NSDictionary
+            self.delegate.nuventsServerDidReceiveNearbyEvent(dataDict)
         }
         
-        // Connection Status
+        //MARK: Nearby Event Error & Status
+        nSocket.on("event:nearby:status") {data, ack in
+            let resp = "\(data?[0])"
+            if resp.rangeOfString("Error") != nil { // error status
+                self.delegate.nuventsServerDidReceiveError("Event Nearby", error: resp)
+            } else {
+                self.delegate.nuventsServerDidReceiveStatus("Event Nearby", status: resp)
+            }
+        }
+        
+        //MARK: Detail Event Received
+        nSocket.on("event:detail") {data, ack in
+            let dataTemp:NSData = NSKeyedArchiver.archivedDataWithRootObject(data!)
+            let dataDict:NSDictionary = NSKeyedUnarchiver.unarchiveObjectWithData(dataTemp)! as! NSDictionary
+            self.delegate.nuventsServerDidReceiveEventDetail(dataDict)
+        }
+        
+        //MARK: Detail Event Error & Status
+        nSocket.on("event:detail:status") {data, ack in
+            let resp = "\(data?[0])"
+            if resp.rangeOfString("Error") != nil { // error status
+                self.delegate.nuventsServerDidReceiveError("Event Detail", error: resp)
+            } else {
+                self.delegate.nuventsServerDidReceiveStatus("Event Detail", status: resp)
+            }
+        }
+        
+        nSocket.on("pong") {data, ack in // MARK: Server ping response
+            self.delegate.nuventsServerDidRespondToPing("\(data?[0])")
+        }
+        
+        // MARK: Connection Status
         nSocket.on("connect") {data, ack in
             self.delegate.nuventsServerDidConnect()
         }
@@ -89,8 +110,11 @@ class NuVentsBackend {
             self.delegate.nuventsServerDidDisconnect()
         }
         nSocket.on("error") {data, ack in
-            self.delegate.nuventsServerDidReceiveError("Error: \(data?[0])")
+            self.delegate.nuventsServerDidReceiveError("Connection", error: "\(data?[0])")
         }
+        
+        // MARK: On any socket event
+        nSocket.onAny {self.delegate.nuventsServerDidGetNewData("\($0.event)", data: "\($0.items)")}
         
     }
     
