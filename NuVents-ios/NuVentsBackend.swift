@@ -10,10 +10,25 @@ import UIKit
 
 // NuVents backend protocol
 @objc protocol NuVentsBackendDelegate {
-    //func didReceiveNearbyEvent(event: NSDictionary)
-    //func didReceiveEventDetail(event: NSDictionary)
-    optional func didGetNewData(channel:NSString, data:AnyObject)
-    optional func didGetStatus(status:NSString)
+    
+    // MARK: Client Request
+    func nuventsServerDidReceiveNearbyEvent(event: NSDictionary)                // Got nearby event
+    func nuventsServerDidReceiveEventDetail(event: NSDictionary)                // Got event detail
+    
+    // MARK: Client Status
+    func nuventsServerDidRemoveEvent(event: NSDictionary)                       // Remove event from client
+    func nuventsServerDidAddEvent(event:NSDictionary)                           // Add event to client
+    
+    // MARK: Connection Status
+    optional func nuventsServerDidGetNewData(channel:NSString, data:AnyObject)  // Got new data from any WS event
+    func nuventsServerDidConnect()                                              // Connected
+    func nuventsServerDidDisconnect()                                           // Disconnected
+    func nuventsServerDidReceiveError(error: NSString)                          // Error
+    optional func nuventsServerDidRespondToPing(response: NSString)             // Got ping response
+    
+    // MARK: Experimental
+    func nuventsServerDidAskStatus() -> NSDictionary                            // Server asking for status
+    func nuventsServerDidSendCommand() -> NSString                              // Server sending command
 }
 
 // NuVents backend class
@@ -33,19 +48,22 @@ class NuVentsBackend {
         nSocket.connect()
     }
     
-    //MARK: Get nearby events
+    // Get nearby events
     func getNearbyEvents(location: CLLocationCoordinate2D, radius: Float) {
-        //
+        self.nSocket.emit("event:nearby", ["lat":"\(location.latitude)",
+                                            "lng":"\(location.longitude)",
+                                            "rad":"\(radius)",
+                                            "did":self.deviceID as String])
     }
     
-    //MARK: Get event detail
+    // Get event detail
     func getEventDetail(eventID: NSString) {
-        //
+        self.nSocket.emit("event:detail", ["eid":eventID as String,
+                                            "did":self.deviceID as String])
     }
     
-    //MARK: Ping server for sanity check
-    func pingServer() {
-        self.nSocket.emit("ping", self.deviceID)
+    func pingServer() { // Ping server for sanity check
+        self.nSocket.emit("ping", self.deviceID as String)
     }
     
     //MARK: socket handling methods
@@ -58,18 +76,20 @@ class NuVentsBackend {
         
         //TODO: Detail Event Error
         
-        //TODO: Server Ping
         
-        //MARK: Connection Status
+        nSocket.on("pong") {data, ack in // Server ping response
+            self.delegate.nuventsServerDidRespondToPing!("Ping response: \(data?[0])")
+        }
+        
+        // Connection Status
         nSocket.on("connect") {data, ack in
-            self.delegate.didGetStatus!("Connected to NuVents backend")
+            self.delegate.nuventsServerDidConnect()
         }
         nSocket.on("disconnect") {data, ack in
-            self.delegate.didGetStatus!("Disconnected from NuVents backend")
+            self.delegate.nuventsServerDidDisconnect()
         }
         nSocket.on("error") {data, ack in
-            self.delegate.didGetStatus!("Error connecting")
-            println("Error: \(data?[0])")
+            self.delegate.nuventsServerDidReceiveError("Error: \(data?[0])")
         }
         
     }
