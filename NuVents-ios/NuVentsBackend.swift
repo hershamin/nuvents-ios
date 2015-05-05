@@ -66,7 +66,8 @@ class NuVentsBackend {
     func addSocketHandlingMethods() {
         //MARK: Nearby Event Received
         nSocket.on("event:nearby") {data, ack in
-            let jsonData = JSON("\(data?[0])")
+            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let jsonData = JSON(data: dataFromString!)
             self.delegate.nuventsServerDidReceiveNearbyEvent(jsonData)
             
         }
@@ -83,7 +84,8 @@ class NuVentsBackend {
         
         //MARK: Detail Event Received
         nSocket.on("event:detail") {data, ack in
-            let jsonData = JSON("\(data?[0])")
+            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let jsonData = JSON(data: dataFromString!)
             self.delegate.nuventsServerDidReceiveEventDetail(jsonData)
         }
         
