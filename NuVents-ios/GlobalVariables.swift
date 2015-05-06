@@ -10,8 +10,11 @@ import Foundation
 
 class GlobalVariables {
     
-    // These are the properties you can store in your singeton class
-    internal var server: String = "repo.nuvents.com:1026"
+    // Global constants
+    internal static let server: String = "repo.nuvents.com:1026"
+    
+    // Global variables
+    internal var eventMarkers = Array<GMSMarker>()
     
     // Here is how you would get to it without being a global collision of varables.
     //    , or in other words, it is globally accessible parameter that is specific to the
