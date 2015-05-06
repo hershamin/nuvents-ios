@@ -45,7 +45,13 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // Google Maps Camera Change Event
     func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
-        GMapCamera.cameraChanged(mapView, position: position)
+        var cameraProcess = GlobalVariables.sharedVars.cameraProc
+        if (!cameraProcess) { // Camera process free
+            cameraProcess = true
+            GMapCamera.cameraChanged(mapView, position: position) // Call clustering function
+            GlobalVariables.sharedVars.prevCam = position // Make current position previous position
+            cameraProcess = false
+        }
     }
     
     // MARK: NuVents backend delegate methods
