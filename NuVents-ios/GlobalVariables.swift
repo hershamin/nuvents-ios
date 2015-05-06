@@ -11,7 +11,7 @@ import Foundation
 class GlobalVariables {
     
     // Global constants
-    internal static let server: String = "repo.nuvents.com:1026"
+    internal let server: String = "repo.nuvents.com:1026"
     
     // Global variables
     internal var eventMarkers = Array<GMSMarker>()

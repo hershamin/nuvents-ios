@@ -28,7 +28,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         marker.snippet = "TX"
         marker.map = mapView
         
-        api = NuVentsBackend(delegate: self, server: "repo.nuvents.com:1026", device: "test")
+        api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: "test")
         
     }
 
@@ -45,7 +45,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // Google Maps Camera Change Event
     func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
-        println("Camera change")
+        GMapCamera.cameraChanged(mapView, position: position)
     }
     
     // MARK: NuVents backend delegate methods
