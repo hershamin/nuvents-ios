@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, NuVentsBackendDelegate {
+class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelegate {
     
     var api:NuVentsBackend?
 
@@ -19,6 +19,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate {
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
         var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         mapView.myLocationEnabled = true
+        mapView.delegate = self
         self.view = mapView
         
         var marker = GMSMarker()
@@ -36,6 +37,16 @@ class ViewController: UIViewController, NuVentsBackendDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // Google Maps Marker Click Event
+    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
+        println("MARKER CLICK: " + marker.title)
+        return true;
+    }
+    
+    // Google Maps Camera Change Event
+    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
+        println("Camera change")
+    }
     
     // MARK: NuVents backend delegate methods
     func nuventsServerDidConnect() {
