@@ -12,6 +12,10 @@ class GlobalVariables {
     
     // Global constants
     internal let server: String = "repo.nuvents.com:1026"
+    internal let zoomLevelMargin: Float = 0.5 // User must change camera by indicated zoom level to trigger clustering
+    internal let zoomLevelClusteringLimit: Float = 14.5 // Markers cannot resize if zoom level is above that
+    internal let nearbyEventsMargin: Float = 5 // Events must be within specified meters to be combined
+    internal let clusteringMultiplier: Float = 1 // Determines the clustering behaviour of markers
     
     // Global variables
     internal var eventMarkers = Array<GMSMarker>()

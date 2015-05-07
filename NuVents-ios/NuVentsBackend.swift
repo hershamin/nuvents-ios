@@ -44,6 +44,10 @@ class NuVentsBackend {
         nSocket.connect()
     }
     
+    class func getMarkerIcon(snippet: NSString!) -> UIImage {
+        println("MArker ICON: \(snippet)")
+    }
+    
     // Get nearby events
     func getNearbyEvents(location: CLLocationCoordinate2D, radius: Float) {
         self.nSocket.emit("event:nearby", ["lat":"\(location.latitude)",
