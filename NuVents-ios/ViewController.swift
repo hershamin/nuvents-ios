@@ -19,6 +19,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
         var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         mapView.myLocationEnabled = true
+        mapView.settings.rotateGestures = false
         mapView.delegate = self
         self.view = mapView
         
