@@ -44,6 +44,35 @@ class NuVentsBackend {
         nSocket.connect()
     }
     
+    // Sync resources with server
+    func syncResources() {
+        let deviceDict = ["did":self.deviceID as String,
+                            "dm":getDeviceHardware()]
+        nSocket.emitWithAck("device:initial", deviceDict)(timeout: 0){data in
+            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let jsonData = JSON(data: dataFromString!)
+            // TODO: Sync resources
+        }
+    }
+    
+    // Get device hardware type
+    func getDeviceHardware() -> String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        
+        let machine = systemInfo.machine
+        let mirror = reflect(machine)
+        var identifier = ""
+            
+        for i in 0..<mirror.count {
+            if let value = mirror[i].1.value as? Int8 where value != 0 {
+                identifier.append(UnicodeScalar(UInt8(value)))
+            }
+        }
+        return identifier
+    }
+    
+    // Get marker icon depending on category or cluster
     class func getMarkerIcon(snippet: NSString!) -> UIImage {
         println("MArker ICON: \(snippet)")
     }
@@ -110,6 +139,7 @@ class NuVentsBackend {
         // MARK: Connection Status
         nSocket.on("connect") {data, ack in
             self.delegate.nuventsServerDidConnect()
+            self.syncResources()
         }
         nSocket.on("disconnect") {data, ack in
             self.delegate.nuventsServerDidDisconnect()
