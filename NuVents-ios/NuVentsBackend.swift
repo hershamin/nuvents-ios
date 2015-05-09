@@ -76,8 +76,8 @@ class NuVentsBackend {
     // Get resource from internal file system
     class func getResourcePath(resource: NSString!, type: NSString!) -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        let resource = GlobalVariables.sharedVars.resources
-        let fileName = type as String + "/" + resource[type as String].stringValue.componentsSeparatedByString("/").last!
+        let resources = GlobalVariables.sharedVars.resources
+        let fileName = type as String + "/" + resources[type as String][resource as String].stringValue.componentsSeparatedByString("/").last!
         let filePath = documentsPath + "/resources/" + fileName
         return filePath
     }
