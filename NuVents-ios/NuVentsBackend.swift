@@ -76,7 +76,9 @@ class NuVentsBackend {
     
     // Function to download from web & save
     func downloadFile(filePath: String, url: String) {
-        // TODO: download file & save to specified path
+        let urlU = NSURL(string: url)
+        let urlData: NSData = NSData(contentsOfURL: urlU!)!
+        urlData.writeToFile(filePath, atomically: true)
     }
     
     // Get MD5SUM of data
