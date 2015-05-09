@@ -52,8 +52,31 @@ class NuVentsBackend {
             let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             let jsonData = JSON(data: dataFromString!)
             GlobalVariables.sharedVars.resources = jsonData["resource"]
-            // TODO: Sync resources
+            var fm = NSFileManager.defaultManager()
+            
+            // Get resources if not present on the internal file system or different
+            for (type : String, typeJson : JSON) in GlobalVariables.sharedVars.resources { // Resource types
+                for (resource: String, resJson: JSON) in typeJson { // Resources
+
+                    let path = NuVentsBackend.getResourcePath(resource, type: type)
+                    if (!fm.fileExistsAtPath(path)) { // File does not exist
+                        self.downloadFile(path, url: resJson.stringValue) // Download from provided url
+                    } else {
+                        let md5sumWeb = jsonData["md5sum"][type][resource].stringValue
+                        let md5sumInt = self.getMD5SUM(path)
+                        if (md5sumWeb != md5sumInt) { // MD5 sum does not match, redownload file
+                            self.downloadFile(path, url: resJson.stringValue) // Download from provided url
+                        }
+                    }
+                    
+                }
+            }
         }
+    }
+    
+    // Function to download from web & save
+    func downloadFile(filePath: String, url: String) {
+        // TODO: download file & save to specified path
     }
     
     // Get MD5SUM of data
