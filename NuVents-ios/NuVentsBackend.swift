@@ -57,7 +57,9 @@ class NuVentsBackend {
     }
     
     // Get MD5SUM of data
-    func getMD5SUM(inputData: NSData) -> String {
+    func getMD5SUM(filePath: String) -> String {
+        let inputData: NSData = NSData(contentsOfFile: filePath)!
+        
         let digestLength = Int(CC_MD5_DIGEST_LENGTH)
         let md5Buffer = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLength)
         
