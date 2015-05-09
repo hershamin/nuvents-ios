@@ -51,6 +51,7 @@ class NuVentsBackend {
         nSocket.emitWithAck("device:initial", deviceDict)(timeout: 0){data in
             let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             let jsonData = JSON(data: dataFromString!)
+            GlobalVariables.sharedVars.resources = jsonData;
             // TODO: Sync resources
         }
     }
@@ -72,9 +73,13 @@ class NuVentsBackend {
         return identifier
     }
     
-    // Get marker icon depending on category or cluster
-    class func getMarkerIcon(snippet: NSString!) -> UIImage {
-        println("MArker ICON: \(snippet)")
+    // Get resource from internal file system
+    class func getResourcePath(resource: NSString!, type: NSString!) -> String {
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let resource = GlobalVariables.sharedVars.resources
+        let fileName = type as String + "/" + resource[type as String].stringValue.componentsSeparatedByString("/").last!
+        let filePath = documentsPath + "/resources/" + fileName
+        return filePath
     }
     
     // Get nearby events
