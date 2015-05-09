@@ -4,3 +4,4 @@
 
 
 #import <GoogleMaps/GoogleMaps.h>
+#import <CommonCrypto/CommonDigest.h>

@@ -51,9 +51,23 @@ class NuVentsBackend {
         nSocket.emitWithAck("device:initial", deviceDict)(timeout: 0){data in
             let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             let jsonData = JSON(data: dataFromString!)
-            GlobalVariables.sharedVars.resources = jsonData;
+            GlobalVariables.sharedVars.resources = jsonData["resource"]
             // TODO: Sync resources
         }
+    }
+    
+    // Get MD5SUM of data
+    func getMD5SUM(inputData: NSData) -> String {
+        let digestLength = Int(CC_MD5_DIGEST_LENGTH)
+        let md5Buffer = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLength)
+        
+        CC_MD5(inputData.bytes, CC_LONG(inputData.length), md5Buffer)
+        var output = NSMutableString(capacity: Int(CC_MD5_DIGEST_LENGTH * 2))
+        for i in 0..<digestLength {
+            output.appendFormat("%02x", md5Buffer[i])
+        }
+        
+        return NSString(format: output) as String
     }
     
     // Get device hardware type
