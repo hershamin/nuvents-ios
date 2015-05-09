@@ -118,6 +118,16 @@ class NuVentsBackend {
     class func getResourcePath(resource: NSString!, type: NSString!) -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         let resources = GlobalVariables.sharedVars.resources
+        // Create directories if not present
+        var fm = NSFileManager.defaultManager()
+        var isDir: ObjCBool = true
+        let resDir = documentsPath.stringByAppendingPathComponent("resources").stringByAppendingPathComponent(type as String)
+        if !fm.fileExistsAtPath(resDir, isDirectory: &isDir) {
+            if isDir {
+                fm.createDirectoryAtPath(resDir, withIntermediateDirectories: true, attributes: nil, error: nil)
+            }
+        }
+        // Return filepath
         let fileName = type as String + "/" + resources[type as String][resource as String].stringValue.componentsSeparatedByString("/").last!
         let filePath = documentsPath + "/resources/" + fileName
         return filePath
