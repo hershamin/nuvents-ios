@@ -51,11 +51,10 @@ class NuVentsBackend {
         nSocket.emitWithAck("device:initial", deviceDict)(timeout: 0){data in
             let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             let jsonData = JSON(data: dataFromString!)
-            GlobalVariables.sharedVars.resources = jsonData["resource"]
             var fm = NSFileManager.defaultManager()
             
             // Get resources if not present on the internal file system or different
-            for (type : String, typeJson : JSON) in GlobalVariables.sharedVars.resources { // Resource types
+            for (type : String, typeJson : JSON) in jsonData["resource"] { // Resource types
                 for (resource: String, resJson: JSON) in typeJson { // Resources
 
                     let path = NuVentsBackend.getResourcePath(resource, type: type)
@@ -117,7 +116,6 @@ class NuVentsBackend {
     // Get resource from internal file system
     class func getResourcePath(resource: NSString!, type: NSString!) -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
-        let resources = GlobalVariables.sharedVars.resources
         // Create directories if not present
         var fm = NSFileManager.defaultManager()
         var isDir: ObjCBool = true
@@ -128,8 +126,7 @@ class NuVentsBackend {
             }
         }
         // Return filepath
-        let fileName = type as String + "/" + resources[type as String][resource as String].stringValue.componentsSeparatedByString("/").last!
-        let filePath = documentsPath + "/resources/" + fileName
+        let filePath = resDir.stringByAppendingPathComponent(resource as String)
         return filePath
     }
     
