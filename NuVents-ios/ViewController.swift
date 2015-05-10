@@ -105,8 +105,8 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         // Add to map & global variable
         var mapView = GlobalVariables.sharedVars.mapView
         marker.map = mapView
-        GMapCamera.clusterMarkers(mapView, position: mapView.camera, specialEID: marker.title)
         GlobalVariables.sharedVars.eventMarkers.append(marker)
+        GMapCamera.clusterMarkers(mapView, position: mapView.camera, specialEID: marker.title)
     }
     
     func nuventsServerDidReceiveEventDetail(event: JSON) {
