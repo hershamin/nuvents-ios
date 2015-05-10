@@ -23,6 +23,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         mapView.myLocationEnabled = true
         mapView.addObserver(self, forKeyPath: "myLocation", options: nil, context: nil)
+        mapView.settings.myLocationButton = false
         mapView.settings.rotateGestures = false
         mapView.delegate = self
         GlobalVariables.sharedVars.mapView = mapView
