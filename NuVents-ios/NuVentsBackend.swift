@@ -126,7 +126,11 @@ class NuVentsBackend {
             }
         }
         // Return filepath
-        let filePath = resDir.stringByAppendingPathComponent(resource as String)
+        var filePath = resDir.stringByAppendingPathComponent(resource as String)
+        // Check if marker icon exists, if not send a default one
+        if !fm.fileExistsAtPath(filePath) && type.isEqualToString("marker") {
+            filePath = resDir.stringByAppendingPathComponent("default")
+        }
         return filePath
     }
     
