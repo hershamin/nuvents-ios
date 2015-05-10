@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA1B733E1AFA82BE00A15B77 /* GMapCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B733D1AFA82BE00A15B77 /* GMapCamera.swift */; };
+		BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1B733F1AFFFADE00A15B77 /* location.gpx */; };
 		BA1EF5C21AF9AC63000775B7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1EF5C11AF9AC63000775B7 /* GlobalVariables.swift */; };
 		BA2E187C1AEEA178008AA18A /* NuVentsBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2E187B1AEEA178008AA18A /* NuVentsBackend.swift */; };
 		BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		BA1B733D1AFA82BE00A15B77 /* GMapCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapCamera.swift; sourceTree = "<group>"; };
+		BA1B733F1AFFFADE00A15B77 /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = location.gpx; sourceTree = "<group>"; };
 		BA1EF5C11AF9AC63000775B7 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		BA2E187B1AEEA178008AA18A /* NuVentsBackend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuVentsBackend.swift; sourceTree = "<group>"; };
 		BA5B90C41AED81F3000B1BD5 /* NuVents-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NuVents-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +137,7 @@
 		BA5B90BB1AED81F3000B1BD5 = {
 			isa = PBXGroup;
 			children = (
+				BA1B733F1AFFFADE00A15B77 /* location.gpx */,
 				BA5B91031AED8575000B1BD5 /* SystemConfiguration.framework */,
 				BA5B91011AED856F000B1BD5 /* QuartzCore.framework */,
 				BA5B90FF1AED8567000B1BD5 /* OpenGLES.framework */,
@@ -310,6 +313,7 @@
 			files = (
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
+				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
 				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
 				BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */,
 			);

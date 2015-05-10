@@ -11,31 +11,41 @@ import UIKit
 class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelegate {
     
     var api:NuVentsBackend?
+    var serverConnn:Bool = false
+    var initialLoc:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: "test")
         
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
         var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         mapView.myLocationEnabled = true
+        mapView.addObserver(self, forKeyPath: "myLocation", options: nil, context: nil)
         mapView.settings.rotateGestures = false
         mapView.delegate = self
         self.view = mapView
-        
-        var marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(30.2766, -97.734)
-        marker.title = "Austin"
-        marker.snippet = "TX"
-        marker.map = mapView
-        
-        api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: "test")
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Google Maps did get my location
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        if keyPath == "myLocation" && serverConnn && !initialLoc {
+            let location : CLLocation = object.myLocation; // Get location
+            object.moveCamera(GMSCameraUpdate.setTarget(location.coordinate))
+            let projection: GMSProjection = object.projection
+            let topLeftCorner = projection.coordinateForPoint(CGPointMake(0, 0))
+            let topLeftLoc = CLLocation(latitude: topLeftCorner.latitude, longitude: topLeftCorner.longitude)
+            let dist = topLeftLoc.distanceFromLocation(location) // Get radius
+            api?.getNearbyEvents(location.coordinate, radius: Float(dist)) // Search nearby events
+            initialLoc = true
+        }
     }
     
     // Google Maps Marker Click Event
@@ -59,8 +69,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     func nuventsServerDidConnect() {
         println("NuVents backend connected")
         api?.pingServer()
-        var loc = CLLocationCoordinate2D(latitude: 30.2766, longitude: -97.7324)
-        api?.getNearbyEvents(loc, radius: 500)
+        serverConnn = true
     }
     
     func nuventsServerDidDisconnect() {
