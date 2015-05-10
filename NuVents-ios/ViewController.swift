@@ -25,6 +25,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         mapView.addObserver(self, forKeyPath: "myLocation", options: nil, context: nil)
         mapView.settings.rotateGestures = false
         mapView.delegate = self
+        GlobalVariables.sharedVars.mapView = mapView
         self.view = mapView
         
     }
@@ -50,7 +51,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // Google Maps Marker Click Event
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        println("MARKER CLICK: " + marker.title)
+        println("MARKER: Title: " + marker.title + " Snip: " + marker.snippet)
         return true;
     }
     
@@ -93,10 +94,19 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     }
     
     func nuventsServerDidReceiveNearbyEvent(event: JSON) {
-        println("OBJ")
-        for (key: String, subJson: JSON) in event {
-            println("    \(key): \(subJson)")
-        }
+        // Build marker
+        var marker: GMSMarker = GMSMarker()
+        marker.title = event["eid"].stringValue
+        marker.snippet = event["title"].stringValue
+        let latitude = (event["latitude"].stringValue as NSString).doubleValue
+        let longitude = (event["longitude"].stringValue as NSString).doubleValue
+        marker.position = CLLocationCoordinate2DMake(latitude as CLLocationDegrees, longitude as CLLocationDegrees)
+        marker.icon = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker"))
+        // Add to map & global variable
+        var mapView = GlobalVariables.sharedVars.mapView
+        marker.map = mapView
+        GMapCamera.clusterMarkers(mapView, position: mapView.camera, specialEID: marker.title)
+        GlobalVariables.sharedVars.eventMarkers.append(marker)
     }
     
     func nuventsServerDidReceiveEventDetail(event: JSON) {
