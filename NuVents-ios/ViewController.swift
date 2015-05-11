@@ -44,7 +44,10 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // List view button pressed
     func listViewBtnPressed(sender: UIButton!) {
-        println("ListView")
+        let listView = ListView()
+        listView.events = GlobalVariables.sharedVars.eventJSON
+        listView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        self.presentViewController(listView, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
