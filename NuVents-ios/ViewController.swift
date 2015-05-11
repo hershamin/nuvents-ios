@@ -13,6 +13,8 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     var api:NuVentsBackend?
     var serverConnn:Bool = false
     var initialLoc:Bool = false
+    var myLocBtn:UIButton!
+    var listViewBtn:UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,21 +54,25 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         let config : JSON = GlobalVariables.sharedVars.config // get config
         
         // My Location button
-        let myLocBtn = UIButton()
+        if self.myLocBtn == nil {
+            self.myLocBtn = UIButton()
+            self.view.addSubview(myLocBtn)
+        }
         let myLocImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("myLocation", type: "icon"))
         myLocBtn.setImage(myLocImg, forState: .Normal)
         let bounds = UIScreen.mainScreen().bounds
         myLocBtn.frame = CGRectMake(CGFloat(config["myLocBtnX"].floatValue) * bounds.width, CGFloat(config["myLocBtnY"].floatValue) * bounds.height, myLocImg!.size.width, myLocImg!.size.height)
         myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
-        self.view.addSubview(myLocBtn)
         
         // List View button
-        let listViewBtn = UIButton()
+        if self.listViewBtn == nil {
+            self.listViewBtn = UIButton()
+            self.view.addSubview(listViewBtn)
+        }
         let listViewImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))
         listViewBtn.setImage(listViewImg, forState: .Normal)
         listViewBtn.frame = CGRectMake(CGFloat(config["listViewBtnX"].floatValue) * bounds.width, CGFloat(config["listViewBtnY"].floatValue) * bounds.height, listViewImg!.size.width, listViewImg!.size.height)
         listViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
-        self.view.addSubview(listViewBtn)
     }
     
     // Google Maps did get my location
@@ -85,7 +91,11 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // Google Maps Marker Click Event
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        println("MARKER: Title: " + marker.title + " Snip: " + marker.snippet)
+        let detailView = DetailView()
+        detailView.json = GlobalVariables.sharedVars.eventJSON[marker.title]!
+        detailView.marker = marker
+        detailView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        self.presentViewController(detailView, animated: true, completion: nil)
         return true;
     }
     
@@ -128,6 +138,8 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     }
     
     func nuventsServerDidReceiveNearbyEvent(event: JSON) {
+        // Add to global vars
+        GlobalVariables.sharedVars.eventJSON[event["eid"].stringValue] = event
         // Build marker
         var marker: GMSMarker = GMSMarker()
         marker.title = event["eid"].stringValue

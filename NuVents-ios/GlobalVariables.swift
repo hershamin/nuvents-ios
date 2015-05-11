@@ -19,6 +19,7 @@ class GlobalVariables {
     
     // Global variables
     internal var eventMarkers = Array<GMSMarker>()
+    internal var eventJSON = [String: JSON]()
     internal var prevCam = GMSCameraPosition.new()
     internal var mapView = GMSMapView.new()
     internal var cameraProc = false // true if camera process is busy
