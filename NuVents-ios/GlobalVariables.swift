@@ -22,6 +22,7 @@ class GlobalVariables {
     internal var prevCam = GMSCameraPosition.new()
     internal var mapView = GMSMapView.new()
     internal var cameraProc = false // true if camera process is busy
+    internal var config = JSON("") // Configuration from server
     
     // Here is how you would get to it without being a global collision of varables.
     //    , or in other words, it is globally accessible parameter that is specific to the

@@ -30,23 +30,6 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         GlobalVariables.sharedVars.mapView = mapView
         self.view = mapView
         
-        // My Location button
-        let myLocBtn = UIButton()
-        let myLocImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("myLocation", type: "icon"))
-        myLocBtn.setImage(myLocImg, forState: .Normal)
-        let bounds = UIScreen.mainScreen().bounds
-        myLocBtn.frame = CGRectMake(0.1*bounds.width, 0.85*bounds.height, myLocImg!.size.width, myLocImg!.size.height)
-        myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
-        self.view.addSubview(myLocBtn)
-        
-        // List View button
-        let listViewBtn = UIButton()
-        let listViewImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))
-        listViewBtn.setImage(listViewImg, forState: .Normal)
-        listViewBtn.frame = CGRectMake(0.65*bounds.width, 0.85*bounds.height, listViewImg!.size.width, listViewImg!.size.height)
-        listViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
-        self.view.addSubview(listViewBtn)
-        
     }
     
     // My location button pressed
@@ -62,6 +45,28 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // NuVents server resources sync complete
+    func nuventsServerDidSyncResources() {
+        let config : JSON = GlobalVariables.sharedVars.config // get config
+        
+        // My Location button
+        let myLocBtn = UIButton()
+        let myLocImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("myLocation", type: "icon"))
+        myLocBtn.setImage(myLocImg, forState: .Normal)
+        let bounds = UIScreen.mainScreen().bounds
+        myLocBtn.frame = CGRectMake(CGFloat(config["myLocBtnX"].floatValue) * bounds.width, CGFloat(config["myLocBtnY"].floatValue) * bounds.height, myLocImg!.size.width, myLocImg!.size.height)
+        myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
+        self.view.addSubview(myLocBtn)
+        
+        // List View button
+        let listViewBtn = UIButton()
+        let listViewImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))
+        listViewBtn.setImage(listViewImg, forState: .Normal)
+        listViewBtn.frame = CGRectMake(CGFloat(config["listViewBtnX"].floatValue) * bounds.width, CGFloat(config["listViewBtnY"].floatValue) * bounds.height, listViewImg!.size.width, listViewImg!.size.height)
+        listViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
+        self.view.addSubview(listViewBtn)
     }
     
     // Google Maps did get my location

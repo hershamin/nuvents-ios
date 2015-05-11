@@ -11,6 +11,9 @@ import UIKit
 // NuVents backend protocol
 protocol NuVentsBackendDelegate {
     
+    // MARK: Resources ready
+    func nuventsServerDidSyncResources()                                    // Resources are synced with device
+    
     // MARK: Client Request
     func nuventsServerDidReceiveNearbyEvent(event: JSON)                    // Got nearby event
     func nuventsServerDidReceiveEventDetail(event: JSON)                    // Got event detail
@@ -51,6 +54,7 @@ class NuVentsBackend {
         nSocket.emitWithAck("device:initial", deviceDict)(timeout: 0){data in
             let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             let jsonData = JSON(data: dataFromString!)
+            GlobalVariables.sharedVars.config = jsonData["config"]
             var fm = NSFileManager.defaultManager()
             
             // Get resources if not present on the internal file system or different
@@ -70,6 +74,7 @@ class NuVentsBackend {
                     
                 }
             }
+            self.delegate.nuventsServerDidSyncResources() // signal that resources are synced with the devce
         }
     }
     
