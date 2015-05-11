@@ -19,6 +19,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: "test")
         
+        // MapView
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
         var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         mapView.myLocationEnabled = true
@@ -29,6 +30,33 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         GlobalVariables.sharedVars.mapView = mapView
         self.view = mapView
         
+        // My Location button
+        let myLocBtn = UIButton()
+        let myLocImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("myLocation", type: "icon"))
+        myLocBtn.setImage(myLocImg, forState: .Normal)
+        let bounds = UIScreen.mainScreen().bounds
+        myLocBtn.frame = CGRectMake(0.1*bounds.width, 0.85*bounds.height, myLocImg!.size.width, myLocImg!.size.height)
+        myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
+        self.view.addSubview(myLocBtn)
+        
+        // List View button
+        let listViewBtn = UIButton()
+        let listViewImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))
+        listViewBtn.setImage(listViewImg, forState: .Normal)
+        listViewBtn.frame = CGRectMake(0.65*bounds.width, 0.85*bounds.height, listViewImg!.size.width, listViewImg!.size.height)
+        listViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
+        self.view.addSubview(listViewBtn)
+        
+    }
+    
+    // My location button pressed
+    func myLocBtnPressed(sender: UIButton!) {
+        println("MyLoc")
+    }
+    
+    // List view button pressed
+    func listViewBtnPressed(sender: UIButton!) {
+        println("ListView")
     }
 
     override func didReceiveMemoryWarning() {
