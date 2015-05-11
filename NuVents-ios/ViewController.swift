@@ -36,7 +36,10 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // My location button pressed
     func myLocBtnPressed(sender: UIButton!) {
-        println("MyLoc")
+        var mapView = GlobalVariables.sharedVars.mapView
+        let location = mapView.myLocation
+        let camera = GMSCameraPosition.cameraWithLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 15)
+        mapView.animateToCameraPosition(camera)
     }
     
     // List view button pressed
@@ -79,7 +82,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
         if keyPath == "myLocation" && serverConnn && !initialLoc {
             let location : CLLocation = object.myLocation; // Get location
-            object.moveCamera(GMSCameraUpdate.setTarget(location.coordinate))
+            object.moveCamera(GMSCameraUpdate.setTarget(location.coordinate, zoom:13))
             let projection: GMSProjection = object.projection
             let topLeftCorner = projection.coordinateForPoint(CGPointMake(0, 0))
             let topLeftLoc = CLLocation(latitude: topLeftCorner.latitude, longitude: topLeftCorner.longitude)
