@@ -97,11 +97,11 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // Google Maps Marker Click Event
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        let detailView = DetailView()
-        detailView.json = GlobalVariables.sharedVars.eventJSON[marker.title]!
-        detailView.marker = marker
-        detailView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-        self.presentViewController(detailView, animated: true, completion: nil)
+        api?.getEventDetail(marker.title, callback: { (jsonData: JSON) -> Void in
+            let detailView = DetailView()
+            detailView.json = jsonData
+            self.presentViewController(detailView, animated: true, completion: nil)
+        })
         return true;
     }
     

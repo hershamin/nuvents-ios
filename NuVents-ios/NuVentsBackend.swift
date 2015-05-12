@@ -48,34 +48,28 @@ class NuVentsBackend {
     }
     
     // Sync resources with server
-    func syncResources() {
-        let deviceDict = ["did":self.deviceID as String,
-                            "dm":getDeviceHardware()]
-        nSocket.emitWithAck("device:initial", deviceDict)(timeout: 0){data in
-            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            let jsonData = JSON(data: dataFromString!)
-            GlobalVariables.sharedVars.config = jsonData["config"]
-            var fm = NSFileManager.defaultManager()
+    func syncResources(jsonData: JSON) {
+        GlobalVariables.sharedVars.config = jsonData["config"]
+        var fm = NSFileManager.defaultManager()
             
-            // Get resources if not present on the internal file system or different
-            for (type : String, typeJson : JSON) in jsonData["resource"] { // Resource types
-                for (resource: String, resJson: JSON) in typeJson { // Resources
+        // Get resources if not present on the internal file system or different
+        for (type : String, typeJson : JSON) in jsonData["resource"] { // Resource types
+            for (resource: String, resJson: JSON) in typeJson { // Resources
 
-                    let path = NuVentsBackend.getResourcePath(resource, type: type)
-                    if (!fm.fileExistsAtPath(path)) { // File does not exist
+                let path = NuVentsBackend.getResourcePath(resource, type: type)
+                if (!fm.fileExistsAtPath(path)) { // File does not exist
+                    self.downloadFile(path, url: resJson.stringValue) // Download from provided url
+                } else {
+                    let md5sumWeb = jsonData["md5sum"][type][resource].stringValue
+                    let md5sumInt = self.getMD5SUM(path)
+                    if (md5sumWeb != md5sumInt) { // MD5 sum does not match, redownload file
                         self.downloadFile(path, url: resJson.stringValue) // Download from provided url
-                    } else {
-                        let md5sumWeb = jsonData["md5sum"][type][resource].stringValue
-                        let md5sumInt = self.getMD5SUM(path)
-                        if (md5sumWeb != md5sumInt) { // MD5 sum does not match, redownload file
-                            self.downloadFile(path, url: resJson.stringValue) // Download from provided url
-                        }
                     }
-                    
                 }
+                
             }
-            self.delegate.nuventsServerDidSyncResources() // signal that resources are synced with the devce
         }
+        self.delegate.nuventsServerDidSyncResources() // signal that resources are synced with the devce
     }
     
     // Function to download from web & save
@@ -148,9 +142,19 @@ class NuVentsBackend {
     }
     
     // Get event detail
-    func getEventDetail(eventID: NSString) {
-        self.nSocket.emit("event:detail", ["eid":eventID as String,
-                                            "did":self.deviceID as String])
+    func getEventDetail(eventID: NSString, callback:(JSON) -> Void) {
+        let eventDict = ["did":self.deviceID as String,
+                            "eid":eventID as String]
+        self.nSocket.emitWithAck("event:detail", eventDict)(timeout: 0){data in
+            let retStr = "\(data![0])"
+            if (retStr.rangeOfString("Error") == nil) {
+                let dataFromString = retStr.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+                let jsonData = JSON(data: dataFromString!)
+                callback(jsonData)
+            } else {
+                // TODO: Handle ERROR
+            }
+        }
     }
     
     func pingServer() { // Ping server for sanity check
@@ -177,20 +181,13 @@ class NuVentsBackend {
             }
         }
         
-        //MARK: Detail Event Received
-        nSocket.on("event:detail") {data, ack in
-            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            let jsonData = JSON(data: dataFromString!)
-            self.delegate.nuventsServerDidReceiveEventDetail(jsonData)
-        }
-        
-        //MARK: Detail Event Error & Status
-        nSocket.on("event:detail:status") {data, ack in
+        //MARK: Resources Status
+        nSocket.on("resources:status") {data, ack in
             let resp = "\(data?[0])"
             if resp.rangeOfString("Error") != nil { // error status
-                self.delegate.nuventsServerDidReceiveError("Event Detail", error: resp)
+                self.delegate.nuventsServerDidReceiveError("Resources", error: resp)
             } else {
-                self.delegate.nuventsServerDidReceiveStatus("Event Detail", status: resp)
+                self.delegate.nuventsServerDidReceiveStatus("Resources", status: resp)
             }
         }
         
@@ -198,10 +195,19 @@ class NuVentsBackend {
             self.delegate.nuventsServerDidRespondToPing("\(data?[0])")
         }
         
+        // MARK: Received resources from server
+        nSocket.on("resources") {data, ack in
+            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let jsonData = JSON(data: dataFromString!)
+            self.syncResources(jsonData)
+        }
+        
         // MARK: Connection Status
         nSocket.on("connect") {data, ack in
             self.delegate.nuventsServerDidConnect()
-            self.syncResources()
+            let deviceDict = ["did":self.deviceID as String,
+                "dm":self.getDeviceHardware()]
+            self.nSocket.emit("device:initial", deviceDict)
         }
         nSocket.on("disconnect") {data, ack in
             self.delegate.nuventsServerDidDisconnect()
