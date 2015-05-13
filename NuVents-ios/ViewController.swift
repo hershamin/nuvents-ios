@@ -98,6 +98,13 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     // Google Maps Marker Click Event
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         api?.getEventDetail(marker.title, callback: { (jsonData: JSON) -> Void in
+            // Merge event summary & detail
+            let summary:JSON = GlobalVariables.sharedVars.eventJSON[marker.title]!
+            var jsonData = jsonData
+            for (summ: String, subJson: JSON) in summary {
+                jsonData[summ] = subJson
+            }
+            // Present detail view
             let detailView = DetailView()
             detailView.json = jsonData
             self.presentViewController(detailView, animated: true, completion: nil)
