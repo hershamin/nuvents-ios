@@ -11,7 +11,6 @@ import Foundation
 class DetailView: UIViewController, UIWebViewDelegate {
     
     internal var json: JSON = JSON("") // Event variable to be passed
-    let size = UIScreen.mainScreen().bounds
     var webView: UIWebView!
     var panoView: GMSPanoramaView!
     
@@ -24,7 +23,6 @@ class DetailView: UIViewController, UIWebViewDelegate {
     
     // Load detail view
     func loadDetailView() {
-        webView.frame = CGRectMake(0, 0, size.width, size.height)
         var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp") // Base URL: resources dir
         baseURL = baseURL.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
         let fileURL = NuVentsBackend.getResourcePath("detailView", type: "html")
@@ -34,22 +32,13 @@ class DetailView: UIViewController, UIWebViewDelegate {
     
     // Load partial view
     func loadPartialView() {
-        // Add street view if not present
-        if (panoView == nil){
-            panoView = GMSPanoramaView(frame: CGRectMake(0, 0, size.width, size.height/2))
-            let lat = (json["latitude"].stringValue as NSString).doubleValue
-            let lng = (json["longitude"].stringValue as NSString).doubleValue
-            panoView.moveNearCoordinate(CLLocationCoordinate2DMake(lat, lng))
-            self.view.addSubview(panoView)
-        }
-        
         // Add webview
         if (webView == nil) {
             webView = UIWebView()
             webView.delegate = self
+            webView.frame = CGRectZero
             self.view.addSubview(webView)
         }
-        webView.frame = CGRectMake(0, size.height/2, size.width, size.height/2)
         var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp") // Base URL: resources dir
         baseURL = baseURL.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
         let fileURL = NuVentsBackend.getResourcePath("partialView", type: "html") // Partial view html
