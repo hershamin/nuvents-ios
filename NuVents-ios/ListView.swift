@@ -15,6 +15,12 @@ class ListView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after oadign the view, typically from a nib
+        
+        // Write events json to file /data
+        let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp")
+        let file = dir.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
+        "\(events)".writeToFile(file, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        
         println("\(events)")
     }
     

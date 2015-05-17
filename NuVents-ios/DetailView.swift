@@ -19,6 +19,11 @@ class DetailView: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
         
+        // Write event json to file /data
+        let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp")
+        let file = dir.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "") + "data"
+        "\(json)".writeToFile(file, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        
         loadPartialView()
     }
     
