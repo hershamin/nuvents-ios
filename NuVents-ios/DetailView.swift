@@ -13,6 +13,7 @@ class DetailView: UIViewController, UIWebViewDelegate {
     internal var json: JSON = JSON("") // Event variable to be passed
     var webView: UIWebView!
     var panoView: GMSPanoramaView!
+    let bounds = UIScreen.mainScreen().bounds
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +37,13 @@ class DetailView: UIViewController, UIWebViewDelegate {
         if (webView == nil) {
             webView = UIWebView()
             webView.delegate = self
-            webView.frame = CGRectZero
+            webView.frame = CGRectMake(0, 0, bounds.width, bounds.height)
             self.view.addSubview(webView)
         }
         var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp") // Base URL: resources dir
         baseURL = baseURL.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
         let fileURL = NuVentsBackend.getResourcePath("partialView", type: "html") // Partial view html
-        let htmlStr = NSString(contentsOfFile: fileURL, encoding: NSUTF8StringEncoding, error: nil) as! String
+        var htmlStr = NSString(contentsOfFile: fileURL, encoding: NSUTF8StringEncoding, error: nil) as! String
         webView.loadHTMLString(htmlStr, baseURL: NSURL(fileURLWithPath: baseURL))
     }
     
