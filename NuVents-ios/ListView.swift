@@ -18,7 +18,7 @@ class ListView: UIViewController {
         
         // Write events json to file /data
         let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp")
-        let file = dir.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
+        let file = dir.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "") + "data"
         "\(events)".writeToFile(file, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         
         println("\(events)")
