@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelegate {
+class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelegate, UIWebViewDelegate {
     
     var api:NuVentsBackend?
     var serverConnn:Bool = false
     var initialLoc:Bool = false
     var myLocBtn:UIButton!
     var listViewBtn:UIButton!
+    var mapViewBtn:UIButton!
+    let size = UIScreen.mainScreen().bounds
+    var webView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         
         // MapView
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
-        var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
+        var mapView = GMSMapView.mapWithFrame(CGRectMake(0, 0, size.width, size.height), camera: camera)
         mapView.myLocationEnabled = true
         mapView.addObserver(self, forKeyPath: "myLocation", options: nil, context: nil)
         mapView.settings.myLocationButton = false
@@ -44,10 +47,52 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // List view button pressed
     func listViewBtnPressed(sender: UIButton!) {
-        let listView = ListView()
-        listView.events = GlobalVariables.sharedVars.eventJSON
-        listView.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-        self.presentViewController(listView, animated: true, completion: nil)
+        if (webView == nil) {
+            webView = UIWebView()
+            webView.delegate = self
+            let mapFrame = GlobalVariables.sharedVars.mapView.frame
+            webView.frame = CGRectMake(mapFrame.origin.x, mapFrame.origin.y, mapFrame.width, mapFrame.height)
+            self.view.addSubview(webView)
+        } else {
+            let mapFrame = GlobalVariables.sharedVars.mapView.frame
+            webView.frame = CGRectMake(mapFrame.origin.x, mapFrame.origin.y, mapFrame.width, mapFrame.height)
+        }
+        
+        // Write events json to file /data
+        let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp")
+        let file = dir.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "") + "data"
+        let eventsJson = GlobalVariables.sharedVars.eventJSON
+        "\(eventsJson)".writeToFile(file, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        
+        var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp")
+        baseURL = baseURL.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
+        let fileURL = NuVentsBackend.getResourcePath("listView", type: "html")
+        let htmlStr = NSString(contentsOfFile: fileURL, encoding: NSUTF8StringEncoding, error: nil) as! String
+        webView.loadHTMLString(htmlStr, baseURL: NSURL(fileURLWithPath: fileURL))
+        
+        listViewBtn.hidden = true
+        mapViewBtn.hidden = false
+    }
+    
+    // Map view button pressed
+    func mapViewBtnPressed(sender: UIButton!) {
+        let mapView = GlobalVariables.sharedVars.mapView.frame
+        webView.frame = CGRectMake(0, size.height, mapView.width, mapView.height)
+        mapViewBtn.hidden = true
+        listViewBtn.hidden = false
+    }
+    
+    // Webview delegate methods
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        let reqStr = request.URL?.absoluteString
+        if reqStr!.rangeOfString("openDetailView://") != nil {
+            let eid = reqStr!.componentsSeparatedByString("//").last
+            openDetailView(eid!)
+            return false
+        } else {
+            return true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,6 +124,17 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         listViewBtn.setImage(listViewImg, forState: .Normal)
         listViewBtn.frame = CGRectMake(CGFloat(config["listViewBtnX"].floatValue) * bounds.width, CGFloat(config["listViewBtnY"].floatValue) * bounds.height, listViewImg!.size.width, listViewImg!.size.height)
         listViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
+        
+        // Map View button
+        if self.mapViewBtn == nil {
+            self.mapViewBtn = UIButton()
+            self.view.addSubview(mapViewBtn)
+            mapViewBtn.hidden = true
+        }
+        let mapViewImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon"))
+        mapViewBtn.setImage(mapViewImg, forState: .Normal)
+        mapViewBtn.frame = CGRectMake(CGFloat(config["mapViewBtnX"].floatValue) * bounds.width, CGFloat(config["mapViewBtnY"].floatValue) * bounds.height, mapViewImg!.size.width, mapViewImg!.size.height)
+        mapViewBtn.addTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
     }
     
     // Google Maps did get my location
@@ -97,18 +153,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // Google Maps Marker Click Event
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        api?.getEventDetail(marker.title, callback: { (jsonData: JSON) -> Void in
-            // Merge event summary & detail
-            let summary:JSON = GlobalVariables.sharedVars.eventJSON[marker.title]!
-            var jsonData = jsonData
-            for (summ: String, subJson: JSON) in summary {
-                jsonData[summ] = subJson
-            }
-            // Present detail view
-            let detailView = DetailView()
-            detailView.json = jsonData
-            self.presentViewController(detailView, animated: true, completion: nil)
-        })
+        openDetailView(marker.title)
         return true;
     }
     
@@ -121,6 +166,22 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
             GlobalVariables.sharedVars.prevCam = position // Make current position previous position
             cameraProcess = false
         }
+    }
+    
+    // Open Detail View
+    func openDetailView(eid: String) {
+        api?.getEventDetail(eid, callback: { (jsonData: JSON) -> Void in
+            // Merge event summary & detail
+            let summary:JSON = GlobalVariables.sharedVars.eventJSON[eid]!
+            var jsonData = jsonData
+            for (summ: String, subJson: JSON) in summary {
+                jsonData[summ] = subJson
+            }
+            // Present detail view
+            let detailView = DetailView()
+            detailView.json = jsonData
+            self.presentViewController(detailView, animated: true, completion: nil)
+        })
     }
     
     // MARK: NuVents backend delegate methods
