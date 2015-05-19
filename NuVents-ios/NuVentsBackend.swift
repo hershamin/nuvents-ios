@@ -16,7 +16,6 @@ protocol NuVentsBackendDelegate {
     
     // MARK: Client Request
     func nuventsServerDidReceiveNearbyEvent(event: JSON)                    // Got nearby event
-    func nuventsServerDidReceiveEventDetail(event: JSON)                    // Got event detail
     
     // MARK: Connection Status
     func nuventsServerDidGetNewData(channel:NSString, data:AnyObject)       // Got new data from any WS event
@@ -49,7 +48,6 @@ class NuVentsBackend {
     
     // Sync resources with server
     func syncResources(jsonData: JSON) {
-        GlobalVariables.sharedVars.config = jsonData["config"]
         var fm = NSFileManager.defaultManager()
             
         // Get resources if not present on the internal file system or different

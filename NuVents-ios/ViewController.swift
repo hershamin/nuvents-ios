@@ -13,11 +13,13 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     var api:NuVentsBackend?
     var serverConnn:Bool = false
     var initialLoc:Bool = false
-    var myLocBtn:UIButton!
-    var listViewBtn:UIButton!
-    var mapViewBtn:UIButton!
+    @IBOutlet var myLocBtn:UIButton!
+    @IBOutlet var mapListViewBtn:UIButton!
+    @IBOutlet var statusBarImg:UIImageView!
+    @IBOutlet var navBarImg:UIImageView!
+    @IBOutlet var mapView:GMSMapView!
+    @IBOutlet var webView:UIWebView!
     let size = UIScreen.mainScreen().bounds
-    var webView: UIWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +27,17 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: "test")
         
         // MapView
+        mapListViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
+        webView.hidden = true
+        mapView.hidden = false
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
-        var mapView = GMSMapView.mapWithFrame(CGRectMake(0, 0, size.width, size.height), camera: camera)
+        mapView.moveCamera(GMSCameraUpdate.setCamera(camera))
         mapView.myLocationEnabled = true
         mapView.addObserver(self, forKeyPath: "myLocation", options: nil, context: nil)
         mapView.settings.myLocationButton = false
         mapView.settings.rotateGestures = false
         mapView.delegate = self
         GlobalVariables.sharedVars.mapView = mapView
-        self.view = mapView
         
     }
     
@@ -47,16 +51,13 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // List view button pressed
     func listViewBtnPressed(sender: UIButton!) {
-        if (webView == nil) {
-            webView = UIWebView()
-            webView.delegate = self
-            let mapFrame = GlobalVariables.sharedVars.mapView.frame
-            webView.frame = CGRectMake(mapFrame.origin.x, mapFrame.origin.y, mapFrame.width, mapFrame.height)
-            self.view.addSubview(webView)
-        } else {
-            let mapFrame = GlobalVariables.sharedVars.mapView.frame
-            webView.frame = CGRectMake(mapFrame.origin.x, mapFrame.origin.y, mapFrame.width, mapFrame.height)
-        }
+        // UI Setup
+        webView.hidden = false
+        mapView.hidden = true
+        let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon"))
+        mapListViewBtn.setImage(mapListImg, forState: .Normal)
+        mapListViewBtn.removeTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
+        mapListViewBtn.addTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
         
         // Write events json to file /data
         let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp")
@@ -69,17 +70,17 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         let fileURL = NuVentsBackend.getResourcePath("listView", type: "html")
         let htmlStr = NSString(contentsOfFile: fileURL, encoding: NSUTF8StringEncoding, error: nil) as! String
         webView.loadHTMLString(htmlStr, baseURL: NSURL(fileURLWithPath: fileURL))
-        
-        listViewBtn.hidden = true
-        mapViewBtn.hidden = false
     }
     
     // Map view button pressed
     func mapViewBtnPressed(sender: UIButton!) {
-        let mapView = GlobalVariables.sharedVars.mapView.frame
-        webView.frame = CGRectMake(0, size.height, mapView.width, mapView.height)
-        mapViewBtn.hidden = true
-        listViewBtn.hidden = false
+        // UI Setup
+        webView.hidden = true
+        mapView.hidden = false
+        let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))
+        mapListViewBtn.setImage(mapListImg, forState: .Normal)
+        mapListViewBtn.removeTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
+        mapListViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
     }
     
     // Webview delegate methods
@@ -102,39 +103,28 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     
     // NuVents server resources sync complete
     func nuventsServerDidSyncResources() {
-        let config : JSON = GlobalVariables.sharedVars.config // get config
+        // Status Bar img
+        /*let statusBar = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("statusBar", type: "icon"))!
+        statusBarImg.image = statusBar
         
-        // My Location button
-        if self.myLocBtn == nil {
-            self.myLocBtn = UIButton()
-            self.view.addSubview(myLocBtn)
-        }
-        let myLocImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("myLocation", type: "icon"))
+        // Nav Bar img
+        let navBar = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("navBar", type: "icon"))
+        navBarImg.image = navBar*/
+        
+        // My Location btn
+        let myLocImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("myLocation", type: "icon"))!
+        myLocBtn.setTitle("", forState: .Normal)
         myLocBtn.setImage(myLocImg, forState: .Normal)
-        let bounds = UIScreen.mainScreen().bounds
-        myLocBtn.frame = CGRectMake(CGFloat(config["myLocBtnX"].floatValue) * bounds.width, CGFloat(config["myLocBtnY"].floatValue) * bounds.height, myLocImg!.size.width, myLocImg!.size.height)
-        myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
         
-        // List View button
-        if self.listViewBtn == nil {
-            self.listViewBtn = UIButton()
-            self.view.addSubview(listViewBtn)
+        // Map/List View btn
+        let mapListImg: UIImage
+        if mapListViewBtn.respondsToSelector("mapViewBtnPressed:") {
+            mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon"))!
+        } else {
+            mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))!
         }
-        let listViewImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))
-        listViewBtn.setImage(listViewImg, forState: .Normal)
-        listViewBtn.frame = CGRectMake(CGFloat(config["listViewBtnX"].floatValue) * bounds.width, CGFloat(config["listViewBtnY"].floatValue) * bounds.height, listViewImg!.size.width, listViewImg!.size.height)
-        listViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
-        
-        // Map View button
-        if self.mapViewBtn == nil {
-            self.mapViewBtn = UIButton()
-            self.view.addSubview(mapViewBtn)
-            mapViewBtn.hidden = true
-        }
-        let mapViewImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon"))
-        mapViewBtn.setImage(mapViewImg, forState: .Normal)
-        mapViewBtn.frame = CGRectMake(CGFloat(config["mapViewBtnX"].floatValue) * bounds.width, CGFloat(config["mapViewBtnY"].floatValue) * bounds.height, mapViewImg!.size.width, mapViewImg!.size.height)
-        mapViewBtn.addTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
+        mapListViewBtn.setTitle("", forState: .Normal)
+        mapListViewBtn.setImage(mapListImg, forState: .Normal)
     }
     
     // Google Maps did get my location
@@ -227,10 +217,6 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         marker.map = mapView
         GlobalVariables.sharedVars.eventMarkers.append(marker)
         GMapCamera.clusterMarkers(mapView, position: mapView.camera, specialEID: marker.title)
-    }
-    
-    func nuventsServerDidReceiveEventDetail(event: JSON) {
-        //
     }
 
 }

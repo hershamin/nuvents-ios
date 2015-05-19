@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NuVents_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,82 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MsX-JB-sry">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ixr-kY-vmZ"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cDT-44-BkJ">
+                                <rect key="frame" x="0.0" y="20" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="uZp-bQ-9jW"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNB-x7-hQV">
+                                <rect key="frame" x="505" y="35" width="77" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ou3-S2-sao"/>
+                                    <constraint firstAttribute="width" constant="77" id="vEv-5w-VL2"/>
+                                </constraints>
+                                <state key="normal" title="Map/List">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7A-A4-eDw">
+                                <rect key="frame" x="0.0" y="80" width="600" height="520"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4LB-YL-L4a" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="80" width="600" height="520"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t90-ys-ZI1">
+                                <rect key="frame" x="39" y="500" width="66" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="B8a-aH-8XP"/>
+                                    <constraint firstAttribute="width" constant="66" id="NO4-F0-dlD"/>
+                                </constraints>
+                                <state key="normal" title="My Loc">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dNB-x7-hQV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="3O4-hD-JcF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P7A-A4-eDw" secondAttribute="bottom" id="Awt-gk-pCu"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4LB-YL-L4a" secondAttribute="bottom" id="GB6-dC-Vgi"/>
+                            <constraint firstItem="4LB-YL-L4a" firstAttribute="top" secondItem="cDT-44-BkJ" secondAttribute="bottom" id="JmQ-uV-hQW"/>
+                            <constraint firstItem="t90-ys-ZI1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="23" id="Kd4-xJ-pHO"/>
+                            <constraint firstItem="cDT-44-BkJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="NTH-DG-yFN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cDT-44-BkJ" secondAttribute="trailing" constant="-16" id="OIp-dx-zbf"/>
+                            <constraint firstItem="4LB-YL-L4a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="OZT-6t-Jfe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dNB-x7-hQV" secondAttribute="trailing" constant="2" id="PBW-sP-okR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="t90-ys-ZI1" secondAttribute="bottom" constant="33" id="T04-ob-MXr"/>
+                            <constraint firstItem="cDT-44-BkJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="WZ1-DA-N82"/>
+                            <constraint firstItem="MsX-JB-sry" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="bGL-jv-UMp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P7A-A4-eDw" secondAttribute="trailing" constant="-16" id="eFX-0N-uCi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MsX-JB-sry" secondAttribute="trailing" constant="-16" id="fg1-XW-Ltk"/>
+                            <constraint firstItem="P7A-A4-eDw" firstAttribute="top" secondItem="cDT-44-BkJ" secondAttribute="bottom" id="fyc-w3-kdQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4LB-YL-L4a" secondAttribute="trailing" constant="-16" id="j1r-Ee-UvV"/>
+                            <constraint firstItem="MsX-JB-sry" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="kL1-mO-OFJ"/>
+                            <constraint firstItem="P7A-A4-eDw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="t6y-UM-FtL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapListViewBtn" destination="dNB-x7-hQV" id="wJl-w0-CHh"/>
+                        <outlet property="mapView" destination="4LB-YL-L4a" id="0CV-Ok-aAT"/>
+                        <outlet property="myLocBtn" destination="t90-ys-ZI1" id="MgT-Vg-Bq4"/>
+                        <outlet property="navBarImg" destination="cDT-44-BkJ" id="qPT-aj-Z0R"/>
+                        <outlet property="statusBarImg" destination="MsX-JB-sry" id="iaG-lE-wdd"/>
+                        <outlet property="webView" destination="P7A-A4-eDw" id="2Vb-sl-EKX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="430" y="289"/>
         </scene>
     </scenes>
 </document>
