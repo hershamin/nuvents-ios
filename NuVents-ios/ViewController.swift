@@ -104,12 +104,12 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     // NuVents server resources sync complete
     func nuventsServerDidSyncResources() {
         // Status Bar img
-        /*let statusBar = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("statusBar", type: "icon"))!
+        let statusBar = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("statusBar", type: "icon"))!
         statusBarImg.image = statusBar
         
         // Nav Bar img
         let navBar = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("navBar", type: "icon"))
-        navBarImg.image = navBar*/
+        navBarImg.image = navBar
         
         // My Location btn
         let myLocImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("myLocation", type: "icon"))!
