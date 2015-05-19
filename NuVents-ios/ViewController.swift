@@ -30,6 +30,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         mapListViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
         webView.hidden = true
         mapView.hidden = false
+        myLocBtn.hidden = false
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
         mapView.moveCamera(GMSCameraUpdate.setCamera(camera))
         mapView.myLocationEnabled = true
@@ -54,6 +55,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         // UI Setup
         webView.hidden = false
         mapView.hidden = true
+        myLocBtn.hidden = true
         let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon"))
         mapListViewBtn.setImage(mapListImg, forState: .Normal)
         mapListViewBtn.removeTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
@@ -77,6 +79,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         // UI Setup
         webView.hidden = true
         mapView.hidden = false
+        myLocBtn.hidden = false
         let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))
         mapListViewBtn.setImage(mapListImg, forState: .Normal)
         mapListViewBtn.removeTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
