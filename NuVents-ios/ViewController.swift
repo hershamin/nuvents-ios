@@ -26,11 +26,14 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         // Do any additional setup after loading the view, typically from a nib.
         api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: "test")
         
-        // MapView
+        // Init Vars
         mapListViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
+        myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
         webView.hidden = true
         mapView.hidden = false
         myLocBtn.hidden = false
+        
+        // MapView
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
         mapView.moveCamera(GMSCameraUpdate.setCamera(camera))
         mapView.myLocationEnabled = true
