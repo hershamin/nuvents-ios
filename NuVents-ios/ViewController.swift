@@ -34,6 +34,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         mapView.hidden = false
         myLocBtn.hidden = false
         searchField.addTarget(self, action: "searchFieldChanged:", forControlEvents: .EditingChanged)
+        searchField.backgroundColor = UIColor.clearColor()
         
         // MapView
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
