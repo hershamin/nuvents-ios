@@ -28,6 +28,11 @@ class GMapCamera {
         }
     }
     
+    // Search events
+    class func searchEventsByTitle(searchTerm: String!, webView: UIWebView!) {
+        println("Search: \(searchTerm)")
+    }
+    
     // Cluster markers
     class func clusterMarkers(mapView: GMSMapView!, position: GMSCameraPosition!, specialEID: String!) {
         let markers: Array = GlobalVariables.sharedVars.eventMarkers

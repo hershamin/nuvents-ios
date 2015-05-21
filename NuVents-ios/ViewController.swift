@@ -19,6 +19,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     @IBOutlet var navBarImg:UIImageView!
     @IBOutlet var mapView:GMSMapView!
     @IBOutlet var webView:UIWebView!
+    @IBOutlet var searchField:UITextField!
     let size = UIScreen.mainScreen().bounds
 
     override func viewDidLoad() {
@@ -32,6 +33,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         webView.hidden = true
         mapView.hidden = false
         myLocBtn.hidden = false
+        searchField.addTarget(self, action: "searchFieldChanged:", forControlEvents: .EditingChanged)
         
         // MapView
         var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
@@ -43,6 +45,21 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         mapView.delegate = self
         GlobalVariables.sharedVars.mapView = mapView
         
+    }
+    
+    // Dismiss text field on clicks anywhere other than keyboard
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        searchField.resignFirstResponder()
+    }
+    
+    // Search field changed value
+    func searchFieldChanged(sender: UITextField!) {
+        var searchProcess = GlobalVariables.sharedVars.searchProc
+        if (!searchProcess) { // Search process free
+            searchProcess = true
+            GMapCamera.searchEventsByTitle(sender.text, webView: webView)
+            searchProcess = false
+        }
     }
     
     // My location button pressed
