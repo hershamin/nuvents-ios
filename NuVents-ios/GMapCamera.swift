@@ -42,11 +42,11 @@ class GMapCamera {
             let event = events[marker.title]! // Get by EID
             let title = event["title"].stringValue.lowercaseString
             if (title.rangeOfString(searchText) != nil) { // Search term found in event title
-                marker.map = nil
-            } else {
                 if (marker.map == nil) {
                     marker.map = mapView
                 }
+            } else {
+                marker.map = nil
             }
         }
     }
