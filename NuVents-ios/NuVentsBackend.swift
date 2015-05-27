@@ -49,12 +49,11 @@ class NuVentsBackend {
     // Sync resources with server
     func syncResources(jsonData: JSON) {
         var fm = NSFileManager.defaultManager()
-            
         // Get resources if not present on the internal file system or different
         for (type : String, typeJson : JSON) in jsonData["resource"] { // Resource types
             for (resource: String, resJson: JSON) in typeJson { // Resources
 
-                let path = NuVentsBackend.getResourcePath(resource, type: type)
+                let path = NuVentsBackend.getResourcePath(resource, type: type, override: true)
                 if (!fm.fileExistsAtPath(path)) { // File does not exist
                     self.downloadFile(path, url: resJson.stringValue) // Download from provided url
                 } else {
@@ -111,7 +110,7 @@ class NuVentsBackend {
     }
     
     // Get resource from internal file system
-    class func getResourcePath(resource: NSString!, type: NSString!) -> String {
+    class func getResourcePath(resource: NSString!, type: NSString!, override: Bool) -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         // Create directories if not present
         var fm = NSFileManager.defaultManager()
@@ -125,9 +124,9 @@ class NuVentsBackend {
         // Return filepath
         var filePath = resDir.stringByAppendingPathComponent(resource as String)
         // Check if marker icon exists, if not send a default one
-        if !fm.fileExistsAtPath(filePath) && type.isEqualToString("marker") {
+        if !fm.fileExistsAtPath(filePath) && type.isEqualToString("marker") && !override {
             filePath = resDir.stringByAppendingPathComponent("default")
-        }
+        } // Only triggered if override is set to true
         return filePath
     }
     

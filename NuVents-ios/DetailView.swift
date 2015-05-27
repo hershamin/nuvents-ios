@@ -18,7 +18,7 @@ class DetailView: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib
         
         // Write event json to file /data
-        let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp")
+        let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
         let file = dir.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "") + "data"
         "\(json)".writeToFile(file, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         
@@ -26,9 +26,9 @@ class DetailView: UIViewController, UIWebViewDelegate {
         var webView = UIWebView()
         webView.delegate = self
         webView.frame = CGRectMake(0, 0, bounds.width, bounds.height)
-        var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp")
+        var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
         baseURL = baseURL.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
-        let fileURL = NuVentsBackend.getResourcePath("detailView", type: "html")
+        let fileURL = NuVentsBackend.getResourcePath("detailView", type: "html", override: false)
         let htmlStr = NSString(contentsOfFile: fileURL, encoding: NSUTF8StringEncoding, error: nil) as! String
         webView.loadHTMLString(htmlStr, baseURL: NSURL(fileURLWithPath: baseURL))
         self.view.addSubview(webView)

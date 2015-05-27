@@ -77,20 +77,20 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         webView.hidden = false
         mapView.hidden = true
         myLocBtn.hidden = true
-        let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon"))
+        let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon", override: false))
         mapListViewBtn.setImage(mapListImg, forState: .Normal)
         mapListViewBtn.removeTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
         mapListViewBtn.addTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
         
         // Write events json to file /data
-        let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp")
+        let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
         let file = dir.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "") + "data"
         let eventsJson = GlobalVariables.sharedVars.eventJSON
         "\(eventsJson)".writeToFile(file, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         
-        var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp")
+        var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
         baseURL = baseURL.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
-        let fileURL = NuVentsBackend.getResourcePath("listView", type: "html")
+        let fileURL = NuVentsBackend.getResourcePath("listView", type: "html", override: false)
         let htmlStr = NSString(contentsOfFile: fileURL, encoding: NSUTF8StringEncoding, error: nil) as! String
         webView.loadHTMLString(htmlStr, baseURL: NSURL(fileURLWithPath: fileURL))
     }
@@ -101,7 +101,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         webView.hidden = true
         mapView.hidden = false
         myLocBtn.hidden = false
-        let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))
+        let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon", override: false))
         mapListViewBtn.setImage(mapListImg, forState: .Normal)
         mapListViewBtn.removeTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
         mapListViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
@@ -128,24 +128,24 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     // NuVents server resources sync complete
     func nuventsServerDidSyncResources() {
         // Status Bar img
-        let statusBar = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("statusBar", type: "icon"))!
+        let statusBar = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("statusBar", type: "icon", override: false))!
         statusBarImg.image = statusBar
         
         // Nav Bar img
-        let navBar = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("navBar", type: "icon"))
+        let navBar = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("navBar", type: "icon", override: false))
         navBarImg.image = navBar
         
         // My Location btn
-        let myLocImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("myLocation", type: "icon"))!
+        let myLocImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("myLocation", type: "icon", override: false))!
         myLocBtn.setTitle("", forState: .Normal)
         myLocBtn.setImage(myLocImg, forState: .Normal)
         
         // Map/List View btn
         let mapListImg: UIImage
         if mapListViewBtn.respondsToSelector("mapViewBtnPressed:") {
-            mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon"))!
+            mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon", override: false))!
         } else {
-            mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon"))!
+            mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon", override: false))!
         }
         mapListViewBtn.setTitle("", forState: .Normal)
         mapListViewBtn.setImage(mapListImg, forState: .Normal)
@@ -235,7 +235,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         let latitude = (event["latitude"].stringValue as NSString).doubleValue
         let longitude = (event["longitude"].stringValue as NSString).doubleValue
         marker.position = CLLocationCoordinate2DMake(latitude as CLLocationDegrees, longitude as CLLocationDegrees)
-        marker.icon = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker"))
+        marker.icon = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))
         // Add to map & global variable
         var mapView = GlobalVariables.sharedVars.mapView
         marker.map = mapView
