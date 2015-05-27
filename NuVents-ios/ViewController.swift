@@ -231,7 +231,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         // Build marker
         var marker: GMSMarker = GMSMarker()
         marker.title = event["eid"].stringValue
-        marker.snippet = event["title"].stringValue
+        marker.snippet = event["marker"].stringValue
         let latitude = (event["latitude"].stringValue as NSString).doubleValue
         let longitude = (event["longitude"].stringValue as NSString).doubleValue
         marker.position = CLLocationCoordinate2DMake(latitude as CLLocationDegrees, longitude as CLLocationDegrees)
