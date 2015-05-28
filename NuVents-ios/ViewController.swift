@@ -82,12 +82,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         mapListViewBtn.removeTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
         mapListViewBtn.addTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
         
-        // Write events json to file /data
-        let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
-        let file = dir.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "") + "data"
-        let eventsJson = GlobalVariables.sharedVars.eventJSON
-        "\(eventsJson)".writeToFile(file, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        
+        // Load webview
         var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
         baseURL = baseURL.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
         let fileURL = NuVentsBackend.getResourcePath("listView", type: "html", override: false)
@@ -111,13 +106,17 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         let reqStr = request.URL?.absoluteString
-        if reqStr!.rangeOfString("openDetailView://") != nil {
+        if reqStr!.rangeOfString("opendetailview://") != nil {
             let eid = reqStr!.componentsSeparatedByString("//").last
             openDetailView(eid!)
             return false
         } else {
             return true
         }
+    }
+    func webViewDidFinishLoad(webView: UIWebView) {
+        let eventsJson = "\(GlobalVariables.sharedVars.eventJSON)" as String
+        webView.stringByEvaluatingJavaScriptFromString("setEvents(\(eventsJson))")
     }
 
     override func didReceiveMemoryWarning() {
