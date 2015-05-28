@@ -38,7 +38,7 @@ class DetailView: UIViewController, UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         let reqStr = request.URL?.absoluteString
-        if reqStr!.rangeOfString("closeDetailView://") != nil {
+        if reqStr!.rangeOfString("closedetailview://") != nil {
             self.dismissViewControllerAnimated(true, completion: nil)
             return false
         } else {
