@@ -17,11 +17,6 @@ class DetailView: UIViewController, UIWebViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
         
-        // Write event json to file /data
-        let dir = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
-        let file = dir.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "") + "data"
-        "\(json)".writeToFile(file, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        
         // Load webview
         var webView = UIWebView()
         webView.delegate = self
@@ -32,6 +27,11 @@ class DetailView: UIViewController, UIWebViewDelegate {
         let htmlStr = NSString(contentsOfFile: fileURL, encoding: NSUTF8StringEncoding, error: nil) as! String
         webView.loadHTMLString(htmlStr, baseURL: NSURL(fileURLWithPath: baseURL))
         self.view.addSubview(webView)
+    }
+    
+    // Webview finished loading
+    func webViewDidFinishLoad(webView: UIWebView) {
+        webView.stringByEvaluatingJavaScriptFromString("setEvent(\(json))") // Insert event data into webview
     }
     
     // Webview delegate methods
