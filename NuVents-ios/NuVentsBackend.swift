@@ -109,6 +109,21 @@ class NuVentsBackend {
         return identifier
     }
     
+    // Resize image based on width
+    class func resizeImage(origImage: UIImage, width: Float) -> UIImage {
+        let oldWidth = origImage.size.width
+        let scaleFactor = CGFloat(width) / oldWidth
+        
+        let newHeight = origImage.size.height * scaleFactor
+        let newWidth = oldWidth * scaleFactor
+        
+        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
+        origImage.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
     // Get resource from internal file system
     class func getResourcePath(resource: NSString!, type: NSString!, override: Bool) -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String

@@ -257,7 +257,8 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         let latitude = (event["latitude"].stringValue as NSString).doubleValue
         let longitude = (event["longitude"].stringValue as NSString).doubleValue
         marker.position = CLLocationCoordinate2DMake(latitude as CLLocationDegrees, longitude as CLLocationDegrees)
-        marker.icon = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))
+        let markerImg:UIImage = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))!
+        marker.icon = NuVentsBackend.resizeImage(markerImg, width: 32)
         // Add to map & global variable
         var mapView = GlobalVariables.sharedVars.mapView
         marker.map = mapView

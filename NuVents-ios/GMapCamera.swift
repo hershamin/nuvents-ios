@@ -113,17 +113,20 @@ class GMapCamera {
                         {
                             if k != randomIndex && specialEID == nil {
                                 let marker: GMSMarker = markers[tempIndices[k]]
-                                marker.icon = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("cluster", type: "marker", override: false))
+                                let markerImg:UIImage = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("cluster", type: "marker", override: false))!
+                                marker.icon = NuVentsBackend.resizeImage(markerImg, width: 5)
                                 marker.zIndex = 1
                             } else if specialEID != nil && markers[tempIndices[k]].title == specialEID {
                                 // marker to keep bigger
                                 let marker: GMSMarker = markers[tempIndices[k]]
-                                marker.icon = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))
+                                let markerImg:UIImage = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))!
+                                marker.icon = NuVentsBackend.resizeImage(markerImg, width: 32)
                                 marker.zIndex = 2
                             } else {
                                 // marker to keep bigger
                                 let marker: GMSMarker = markers[tempIndices[k]]
-                                marker.icon = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))
+                                let markerImg:UIImage = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))!
+                                marker.icon = NuVentsBackend.resizeImage(markerImg, width: 32)
                                 marker.zIndex = 2
                             }
                         }
@@ -137,7 +140,8 @@ class GMapCamera {
             //  Return all markers to original specs
             for marker: GMSMarker in markers
             {
-                marker.icon = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))
+                let markerImg:UIImage = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))!
+                marker.icon = NuVentsBackend.resizeImage(markerImg, width: 32)
             }
         }
     }
