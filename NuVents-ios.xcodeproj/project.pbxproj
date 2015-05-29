@@ -45,6 +45,7 @@
 		BA5B91201AEDEB9E000B1BD5 /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B91131AEDEB9E000B1BD5 /* SocketTypes.swift */; };
 		BA5B91211AEDEB9E000B1BD5 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B91141AEDEB9E000B1BD5 /* SwiftRegex.swift */; };
 		BA5B91221AEDEB9E000B1BD5 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B91151AEDEB9E000B1BD5 /* WebSocket.swift */; };
+		BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */; };
 		BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		BA5B91131AEDEB9E000B1BD5 /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
 		BA5B91141AEDEB9E000B1BD5 /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
 		BA5B91151AEDEB9E000B1BD5 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NuVents_SplashScreen.png; sourceTree = "<group>"; };
 		BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +179,7 @@
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
 				BA5B90CB1AED81F3000B1BD5 /* ViewController.swift */,
 				BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */,
+				BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */,
 				BA5B90D01AED81F3000B1BD5 /* Images.xcassets */,
 				BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */,
 				BA5B90C71AED81F3000B1BD5 /* Supporting Files */,
@@ -318,6 +321,7 @@
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
 				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
 				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
+				BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */,
 				BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
