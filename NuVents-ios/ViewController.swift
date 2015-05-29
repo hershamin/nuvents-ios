@@ -83,11 +83,26 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         mapListViewBtn.addTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
         
         // Load webview
-        var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
+        /*var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
         baseURL = baseURL.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
         let fileURL = NuVentsBackend.getResourcePath("listView", type: "html", override: false)
         let htmlStr = NSString(contentsOfFile: fileURL, encoding: NSUTF8StringEncoding, error: nil) as! String
-        webView.loadHTMLString(htmlStr, baseURL: NSURL(fileURLWithPath: fileURL))
+        webView.loadHTMLString(htmlStr, baseURL: NSURL(fileURLWithPath: fileURL))*/
+        let title:String = webView.stringByEvaluatingJavaScriptFromString("document.title")!
+        if (title.isEmpty) { // Load html from server
+            webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://storage.googleapis.com/nuvents-resources/listViewTest.html")!))
+        } else { // Already loaded, send new events
+            // Convert dict to json
+            let jsonDict = GlobalVariables.sharedVars.eventJSON
+            var eventsJson:JSON = ["":""]
+            for (key, val) in jsonDict {
+                eventsJson[key] = val
+            }
+            // Send to webview
+            webView.stringByEvaluatingJavaScriptFromString("setEvents(\(eventsJson))")
+            let searchText = searchField.text.lowercaseString
+            webView.stringByEvaluatingJavaScriptFromString("searchByTitle('\(searchText)')")
+        }
     }
     
     // Map view button pressed
@@ -115,8 +130,16 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         }
     }
     func webViewDidFinishLoad(webView: UIWebView) {
-        let eventsJson = "\(GlobalVariables.sharedVars.eventJSON)" as String
+        // Convert dict to json
+        let jsonDict = GlobalVariables.sharedVars.eventJSON
+        var eventsJson:JSON = ["":""]
+        for (key, val) in jsonDict {
+            eventsJson[key] = val
+        }
+        // Send to webview
         webView.stringByEvaluatingJavaScriptFromString("setEvents(\(eventsJson))")
+        let searchText = searchField.text.lowercaseString
+        webView.stringByEvaluatingJavaScriptFromString("searchByTitle('\(searchText)')")
     }
 
     override func didReceiveMemoryWarning() {
