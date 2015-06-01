@@ -46,6 +46,8 @@
 		BA5B91211AEDEB9E000B1BD5 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B91141AEDEB9E000B1BD5 /* SwiftRegex.swift */; };
 		BA5B91221AEDEB9E000B1BD5 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B91151AEDEB9E000B1BD5 /* WebSocket.swift */; };
 		BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */; };
+		BA90B6171B1D211D00C3E3D8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6151B1D211D00C3E3D8 /* Fabric.framework */; };
+		BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */; };
 		BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +106,8 @@
 		BA5B91141AEDEB9E000B1BD5 /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
 		BA5B91151AEDEB9E000B1BD5 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NuVents_SplashScreen.png; sourceTree = "<group>"; };
+		BA90B6151B1D211D00C3E3D8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,12 +117,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA5B91041AED8575000B1BD5 /* SystemConfiguration.framework in Frameworks */,
+				BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */,
 				BA5B91021AED856F000B1BD5 /* QuartzCore.framework in Frameworks */,
 				BA5B91001AED8567000B1BD5 /* OpenGLES.framework in Frameworks */,
 				BA5B90FE1AED855F000B1BD5 /* libz.dylib in Frameworks */,
 				BA5B90FC1AED8559000B1BD5 /* libicucore.dylib in Frameworks */,
 				BA5B90FA1AED854E000B1BD5 /* libc++.dylib in Frameworks */,
 				BA5B90F81AED8536000B1BD5 /* ImageIO.framework in Frameworks */,
+				BA90B6171B1D211D00C3E3D8 /* Fabric.framework in Frameworks */,
 				BA5B90F61AED8531000B1BD5 /* GLKit.framework in Frameworks */,
 				BA5B90F41AED852B000B1BD5 /* CoreText.framework in Frameworks */,
 				BA5B90F21AED8525000B1BD5 /* CoreLocation.framework in Frameworks */,
@@ -174,6 +180,8 @@
 		BA5B90C61AED81F3000B1BD5 /* NuVents-ios */ = {
 			isa = PBXGroup;
 			children = (
+				BA90B6151B1D211D00C3E3D8 /* Fabric.framework */,
+				BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */,
 				BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */,
 				BA5B91081AEDEB9E000B1BD5 /* SocketIOClientSwift */,
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
@@ -247,6 +255,7 @@
 				BA5B90C01AED81F3000B1BD5 /* Sources */,
 				BA5B90C11AED81F3000B1BD5 /* Frameworks */,
 				BA5B90C21AED81F3000B1BD5 /* Resources */,
+				BA90B6141B1D20BB00C3E3D8 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -334,6 +343,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BA90B6141B1D20BB00C3E3D8 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f8b574d5e29a6fdfd495347c75350a31d19e1a84 e8c46c780408d1325a1db7c78d47c8c64c381f159d4cdde44cc7cd181a8483de";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BA5B90C01AED81F3000B1BD5 /* Sources */ = {
@@ -490,6 +516,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/NuVents-ios",
 				);
 				INFOPLIST_FILE = "NuVents-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -509,6 +536,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/NuVents-ios",
 				);
 				INFOPLIST_FILE = "NuVents-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
