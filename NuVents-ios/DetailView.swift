@@ -29,6 +29,11 @@ class DetailView: UIViewController, UIWebViewDelegate {
         self.view.addSubview(webView)
     }
     
+    // Restrict to portrait only
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    }
+    
     // Webview finished loading
     func webViewDidFinishLoad(webView: UIWebView) {
         webView.stringByEvaluatingJavaScriptFromString("setEvent(\(json))") // Insert event data into webview

@@ -48,6 +48,11 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
         
     }
     
+    // Restrict to portrait only
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    }
+    
     // Dismiss text field on clicks anywhere other than keyboard
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         searchField.resignFirstResponder()
