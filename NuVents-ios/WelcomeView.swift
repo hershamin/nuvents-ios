@@ -8,17 +8,33 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebViewDelegate {
+class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebViewDelegate, CLLocationManagerDelegate {
     
     var api:NuVentsBackend?
-    var serverConnn:Bool = false
-    var initialLoc:Bool = false
+    var serverConn:Bool = false
+    var locationManager:CLLocationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: "test")
+        let deviceID:String = UIDevice.currentDevice().identifierForVendor.UUIDString
+        api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: deviceID)
         
+        // Set location manager
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    // Got device location
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        if (serverConn) { // Only use when connected to server
+            var latestLoc:CLLocation = locations[locations.count - 1] as! CLLocation
+            api?.getNearbyEvents(latestLoc.coordinate, radius: 100)
+            locationManager.stopUpdatingLocation()
+        }
     }
     
     // Restrict to portrait only
@@ -36,8 +52,8 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         //
     }
     
-    // Open Detail View
-    func openDetailView(eid: String) {
+    // Get event detail
+    func getEventDetail(eid: String, callback:(JSON) -> Void) {
         api?.getEventDetail(eid, callback: { (jsonData: JSON) -> Void in
             // Merge event summary & detail
             let summary:JSON = GlobalVariables.sharedVars.eventJSON[eid]!
@@ -45,10 +61,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
             for (summ: String, subJson: JSON) in summary {
                 jsonData[summ] = subJson
             }
-            // Present detail view
-            let detailView = DetailViewController()
-            detailView.json = jsonData
-            self.presentViewController(detailView, animated: true, completion: nil)
+            callback(jsonData)
         })
     }
     
@@ -56,7 +69,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     func nuventsServerDidConnect() {
         println("NuVents backend connected")
         api?.pingServer()
-        serverConnn = true
+        serverConn = true
     }
     
     func nuventsServerDidDisconnect() {
