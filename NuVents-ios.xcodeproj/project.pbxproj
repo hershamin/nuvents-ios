@@ -13,7 +13,7 @@
 		BA1EF5C21AF9AC63000775B7 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1EF5C11AF9AC63000775B7 /* GlobalVariables.swift */; };
 		BA2E187C1AEEA178008AA18A /* NuVentsBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2E187B1AEEA178008AA18A /* NuVentsBackend.swift */; };
 		BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */; };
-		BA5B90CC1AED81F3000B1BD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90CB1AED81F3000B1BD5 /* ViewController.swift */; };
+		BA5B90CC1AED81F3000B1BD5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */; };
 		BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */; };
 		BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90D01AED81F3000B1BD5 /* Images.xcassets */; };
 		BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */; };
@@ -48,6 +48,10 @@
 		BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */; };
 		BA90B6171B1D211D00C3E3D8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6151B1D211D00C3E3D8 /* Fabric.framework */; };
 		BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */; };
+		BA90B61A1B1EB27B00C3E3D8 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90B6191B1EB27B00C3E3D8 /* PickerView.swift */; };
+		BA90B61C1B1EB28D00C3E3D8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90B61B1B1EB28D00C3E3D8 /* MapView.swift */; };
+		BA90B61E1B1EB29A00C3E3D8 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90B61D1B1EB29A00C3E3D8 /* ListView.swift */; };
+		BA90B6201B1EB2AA00C3E3D8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90B61F1B1EB2AA00C3E3D8 /* CategoryView.swift */; };
 		BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,7 +74,7 @@
 		BA5B90C41AED81F3000B1BD5 /* NuVents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NuVents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5B90C81AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BA5B90CB1AED81F3000B1BD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		BA5B90CE1AED81F3000B1BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA5B90D01AED81F3000B1BD5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BA5B90D31AED81F3000B1BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -108,6 +112,10 @@
 		BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NuVents_SplashScreen.png; sourceTree = "<group>"; };
 		BA90B6151B1D211D00C3E3D8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		BA90B6191B1EB27B00C3E3D8 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		BA90B61B1B1EB28D00C3E3D8 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BA90B61D1B1EB29A00C3E3D8 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		BA90B61F1B1EB2AA00C3E3D8 /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,7 +193,7 @@
 				BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */,
 				BA5B91081AEDEB9E000B1BD5 /* SocketIOClientSwift */,
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
-				BA5B90CB1AED81F3000B1BD5 /* ViewController.swift */,
+				BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */,
 				BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */,
 				BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */,
 				BA5B90D01AED81F3000B1BD5 /* Images.xcassets */,
@@ -196,6 +204,10 @@
 				BA1EF5C11AF9AC63000775B7 /* GlobalVariables.swift */,
 				BA1B733D1AFA82BE00A15B77 /* GMapCamera.swift */,
 				BA1B73411B011B9F00A15B77 /* DetailView.swift */,
+				BA90B6191B1EB27B00C3E3D8 /* PickerView.swift */,
+				BA90B61B1B1EB28D00C3E3D8 /* MapView.swift */,
+				BA90B61D1B1EB29A00C3E3D8 /* ListView.swift */,
+				BA90B61F1B1EB2AA00C3E3D8 /* CategoryView.swift */,
 			);
 			path = "NuVents-ios";
 			sourceTree = "<group>";
@@ -369,14 +381,18 @@
 				BA5B911C1AEDEB9E000B1BD5 /* SocketIOClient.swift in Sources */,
 				BA5B91161AEDEB9E000B1BD5 /* SocketAckManager.swift in Sources */,
 				BA5B91191AEDEB9E000B1BD5 /* SocketEngineClient.swift in Sources */,
+				BA90B61C1B1EB28D00C3E3D8 /* MapView.swift in Sources */,
 				BA5B91211AEDEB9E000B1BD5 /* SwiftRegex.swift in Sources */,
 				BA5B91221AEDEB9E000B1BD5 /* WebSocket.swift in Sources */,
+				BA90B61A1B1EB27B00C3E3D8 /* PickerView.swift in Sources */,
+				BA90B61E1B1EB29A00C3E3D8 /* ListView.swift in Sources */,
 				BA5B91181AEDEB9E000B1BD5 /* SocketEngine.swift in Sources */,
-				BA5B90CC1AED81F3000B1BD5 /* ViewController.swift in Sources */,
+				BA5B90CC1AED81F3000B1BD5 /* WelcomeView.swift in Sources */,
 				BA5B911E1AEDEB9E000B1BD5 /* SocketPacket.swift in Sources */,
 				BA5B911A1AEDEB9E000B1BD5 /* SocketEventHandler.swift in Sources */,
 				BA5B911D1AEDEB9E000B1BD5 /* SocketLogger.swift in Sources */,
 				BA1B733E1AFA82BE00A15B77 /* GMapCamera.swift in Sources */,
+				BA90B6201B1EB2AA00C3E3D8 /* CategoryView.swift in Sources */,
 				BA2E187C1AEEA178008AA18A /* NuVentsBackend.swift in Sources */,
 				BA1B73421B011B9F00A15B77 /* DetailView.swift in Sources */,
 				BA5B911B1AEDEB9E000B1BD5 /* SocketFixUTF8.swift in Sources */,

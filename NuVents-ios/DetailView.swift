@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DetailView: UIViewController, UIWebViewDelegate {
+class DetailViewController: UIViewController, UIWebViewDelegate {
     
     internal var json: JSON = JSON("") // Event variable to be passed
     let bounds = UIScreen.mainScreen().bounds

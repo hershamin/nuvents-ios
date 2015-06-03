@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelegate, UIWebViewDelegate {
+class WelcomeViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelegate, UIWebViewDelegate {
     
     var api:NuVentsBackend?
     var serverConnn:Bool = false
@@ -219,7 +219,7 @@ class ViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelega
                 jsonData[summ] = subJson
             }
             // Present detail view
-            let detailView = DetailView()
+            let detailView = DetailViewController()
             detailView.json = jsonData
             self.presentViewController(detailView, animated: true, completion: nil)
         })
