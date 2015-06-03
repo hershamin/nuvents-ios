@@ -8,18 +8,15 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController, NuVentsBackendDelegate, GMSMapViewDelegate, UIWebViewDelegate {
+class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebViewDelegate {
     
     var api:NuVentsBackend?
     var serverConnn:Bool = false
     var initialLoc:Bool = false
-    @IBOutlet var myLocBtn:UIButton!
     @IBOutlet var mapListViewBtn:UIButton!
     @IBOutlet var statusBarImg:UIImageView!
     @IBOutlet var navBarImg:UIImageView!
-    @IBOutlet var mapView:GMSMapView!
     @IBOutlet var webView:UIWebView!
-    @IBOutlet var searchField:UITextField!
     let size = UIScreen.mainScreen().bounds
 
     override func viewDidLoad() {
@@ -29,43 +26,13 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, GMSMapVie
         
         // Init Vars
         mapListViewBtn.addTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
-        myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
         webView.hidden = true
-        mapView.hidden = false
-        myLocBtn.hidden = false
-        searchField.addTarget(self, action: "searchFieldChanged:", forControlEvents: .EditingChanged)
-        searchField.backgroundColor = UIColor.clearColor()
-        
-        // MapView
-        var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
-        mapView.moveCamera(GMSCameraUpdate.setCamera(camera))
-        mapView.myLocationEnabled = true
-        mapView.addObserver(self, forKeyPath: "myLocation", options: nil, context: nil)
-        mapView.settings.myLocationButton = false
-        mapView.settings.rotateGestures = false
-        mapView.delegate = self
-        GlobalVariables.sharedVars.mapView = mapView
         
     }
     
     // Restrict to portrait only
     override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.rawValue)
-    }
-    
-    // Dismiss text field on clicks anywhere other than keyboard
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        searchField.resignFirstResponder()
-    }
-    
-    // Search field changed value
-    func searchFieldChanged(sender: UITextField!) {
-        var searchProcess = GlobalVariables.sharedVars.searchProc
-        if (!searchProcess) { // Search process free
-            searchProcess = true
-            GMapCamera.searchEventsByTitle(sender.text, webView: webView)
-            searchProcess = false
-        }
     }
     
     // My location button pressed
@@ -80,8 +47,6 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, GMSMapVie
     func listViewBtnPressed(sender: UIButton!) {
         // UI Setup
         webView.hidden = false
-        mapView.hidden = true
-        myLocBtn.hidden = true
         let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("mapView", type: "icon", override: false))
         mapListViewBtn.setImage(mapListImg, forState: .Normal)
         mapListViewBtn.removeTarget(self, action: "listViewBtnPressed:", forControlEvents: .TouchUpInside)
@@ -114,8 +79,6 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, GMSMapVie
     func mapViewBtnPressed(sender: UIButton!) {
         // UI Setup
         webView.hidden = true
-        mapView.hidden = false
-        myLocBtn.hidden = false
         let mapListImg = UIImage(contentsOfFile: NuVentsBackend.getResourcePath("listView", type: "icon", override: false))
         mapListViewBtn.setImage(mapListImg, forState: .Normal)
         mapListViewBtn.removeTarget(self, action: "mapViewBtnPressed:", forControlEvents: .TouchUpInside)
@@ -189,23 +152,6 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, GMSMapVie
             let dist = topLeftLoc.distanceFromLocation(location) // Get radius
             api?.getNearbyEvents(location.coordinate, radius: Float(dist)) // Search nearby events
             initialLoc = true
-        }
-    }
-    
-    // Google Maps Marker Click Event
-    func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        openDetailView(marker.title)
-        return true;
-    }
-    
-    // Google Maps Camera Change Event
-    func mapView(mapView: GMSMapView!, didChangeCameraPosition position: GMSCameraPosition!) {
-        var cameraProcess = GlobalVariables.sharedVars.cameraProc
-        if (!cameraProcess) { // Camera process free
-            cameraProcess = true
-            GMapCamera.cameraChanged(mapView, position: position) // Call clustering function
-            GlobalVariables.sharedVars.prevCam = position // Make current position previous position
-            cameraProcess = false
         }
     }
     

@@ -164,10 +164,10 @@
             </objects>
             <point key="canvasLocation" x="2484" y="350"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="Fqa-vj-1qf">
             <objects>
-                <viewController id="spz-19-GYn" sceneMemberID="viewController">
+                <viewController id="spz-19-GYn" customClass="DetailViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j5D-OK-NxE"/>
                         <viewControllerLayoutGuide type="bottom" id="CaP-nb-KD5"/>
@@ -175,7 +175,40 @@
                     <view key="view" contentMode="scaleToFill" id="0vh-Aa-van">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="69G-BK-VvE">
+                                <rect key="frame" x="0.0" y="-10" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="SDB-5T-7F0"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a52-Ee-Uvw" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="50" width="600" height="550"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kY7-au-N4I">
+                                <rect key="frame" x="39" y="500" width="66" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="m2f-6H-S45"/>
+                                    <constraint firstAttribute="height" constant="67" id="qG1-Mz-Hse"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kY7-au-N4I" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leadingMargin" constant="23" id="Kfg-y6-a2h"/>
+                            <constraint firstItem="CaP-nb-KD5" firstAttribute="top" secondItem="a52-Ee-Uvw" secondAttribute="bottom" id="Rp0-04-Lsd"/>
+                            <constraint firstItem="a52-Ee-Uvw" firstAttribute="top" secondItem="69G-BK-VvE" secondAttribute="bottom" id="UTL-B3-31M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="69G-BK-VvE" secondAttribute="trailing" constant="-16" id="g4b-Zl-vWd"/>
+                            <constraint firstItem="69G-BK-VvE" firstAttribute="top" secondItem="0vh-Aa-van" secondAttribute="topMargin" constant="-10" id="pme-4z-yBh"/>
+                            <constraint firstItem="69G-BK-VvE" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leadingMargin" constant="-16" id="qVz-D7-4k8"/>
+                            <constraint firstItem="CaP-nb-KD5" firstAttribute="top" secondItem="kY7-au-N4I" secondAttribute="bottom" constant="33" id="sge-6R-5NZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="a52-Ee-Uvw" secondAttribute="trailing" constant="-16" id="wGR-ye-I3E"/>
+                            <constraint firstItem="a52-Ee-Uvw" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leadingMargin" constant="-16" id="xze-YK-vbj"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sdc-Vy-8H3" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -29,14 +29,12 @@ class GMapCamera {
     }
     
     // Search events
-    class func searchEventsByTitle(searchTerm: String!, webView: UIWebView!) {
+    class func searchEventsByTitle(searchTerm: String!) {
         var mapView = GlobalVariables.sharedVars.mapView
         var events = GlobalVariables.sharedVars.eventJSON
         var markers = GlobalVariables.sharedVars.eventMarkers
         var searchText = searchTerm.lowercaseString
         
-        // Call javascript function (webView)
-        webView.stringByEvaluatingJavaScriptFromString("searchByTitle('\(searchText)')")
         // Iterate and filter (mapView)
         for marker: GMSMarker in markers {
             let event = events[marker.title]! // Get by EID
