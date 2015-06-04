@@ -45,6 +45,10 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         let jsonDict = GlobalVariables.sharedVars.eventJSON
         // Send to webview
         webView.stringByEvaluatingJavaScriptFromString("setEventCount(\(jsonDict.count))")
+        // Get image url from resource
+        let imgURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("catViewBack", ofType: "png")!)
+        // Send to webview
+        webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\(imgURL))")
     }
     
     // Restrict to portrait only

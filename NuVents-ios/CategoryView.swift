@@ -39,10 +39,7 @@ class CategoryViewController: UIViewController, UIWebViewDelegate {
         }
     }
     func webViewDidFinishLoad(webView: UIWebView) {
-        // Get image url from resource
-        let imgURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("catViewBack", ofType: "png")!)
-        // Send to webview
-        webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\(imgURL))")
+        //
     }
     
     // Restrict to portrait only
