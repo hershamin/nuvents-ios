@@ -26,6 +26,7 @@ class GlobalVariables {
     internal var searchProc = false // true if search process is busy
     internal var tempJson:JSON = JSON("") // Temp event json to pass to detail view
     internal var category = "" // To set event category
+    internal var api:NuVentsBackend? // NuVents backend API
     
     // Here is how you would get to it without being a global collision of varables.
     //    , or in other words, it is globally accessible parameter that is specific to the

@@ -20,6 +20,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         // Do any additional setup after loading the view, typically from a nib.
         let deviceID:String = UIDevice.currentDevice().identifierForVendor.UUIDString
         api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: deviceID)
+        GlobalVariables.sharedVars.api = api
         
         // Picker button
         pickerButton.addTarget(self, action: "pickerButtonPressed:", forControlEvents: .TouchUpInside)
@@ -62,8 +63,8 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     }
     
     // Get event detail
-    func getEventDetail(eid: String, callback:(JSON) -> Void) {
-        api?.getEventDetail(eid, callback: { (jsonData: JSON) -> Void in
+    class func getEventDetail(eid: String, callback:(JSON) -> Void) {
+        GlobalVariables.sharedVars.api!.getEventDetail(eid, callback: { (jsonData: JSON) -> Void in
             // Merge event summary & detail
             let summary:JSON = GlobalVariables.sharedVars.eventJSON[eid]!
             var jsonData = jsonData

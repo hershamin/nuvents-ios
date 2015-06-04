@@ -35,7 +35,11 @@ class ListViewController: UIViewController, UIWebViewDelegate {
         let reqStr = request.URL?.absoluteString
         if reqStr!.rangeOfString("opendetailview://") != nil {
             let eid = reqStr!.componentsSeparatedByString("//").last
-            openDetailView(eid!)
+            // Get event detail and open detail view controller
+            WelcomeViewController.getEventDetail(eid!, callback: {(jsonData: JSON) -> Void in
+                GlobalVariables.sharedVars.tempJson = jsonData
+                self.performSegueWithIdentifier("showDetailView", sender: nil)
+            })
             return false
         } else {
             return true

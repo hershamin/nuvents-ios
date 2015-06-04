@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXp-4O-b86">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXp-4O-b86">
                                 <rect key="frame" x="281" y="390" width="120" height="30"/>
                                 <state key="normal" title="Show Picker">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -26,12 +26,6 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FXp-4O-b86" secondAttribute="bottom" constant="180" id="038-BT-Ou3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FXp-4O-b86" secondAttribute="trailing" constant="183" id="EUg-od-0Z1"/>
-                            <constraint firstItem="FXp-4O-b86" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="265" id="FIr-Db-VVA"/>
-                            <constraint firstItem="FXp-4O-b86" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="370" id="RNe-ZV-WhT"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="pickerButton" destination="FXp-4O-b86" id="AWb-YN-i5a"/>

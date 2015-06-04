@@ -86,7 +86,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     // Google Maps Marker Click Event
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
-        openDetailView(marker.title)
+        // Get event detail and open detail view controller
+        WelcomeViewController.getEventDetail(marker.title, callback: {(jsonData: JSON) -> Void in
+            GlobalVariables.sharedVars.tempJson = jsonData
+            self.performSegueWithIdentifier("showDetailView", sender: nil)
+        })
         return true;
     }
     
