@@ -49,8 +49,15 @@ class ListViewController: UIViewController, UIWebViewDelegate {
         // Convert dict to json
         let jsonDict = GlobalVariables.sharedVars.eventJSON
         var eventsJson:JSON = ["":""]
-        for (key, val) in jsonDict {
-            eventsJson[key] = val
+        for (key, event) in jsonDict {
+            let category:String = event["marker"].stringValue.lowercaseString
+            let reqCat:String = GlobalVariables.sharedVars.category
+            if (reqCat != "") {
+                if (category.rangeOfString(GlobalVariables.sharedVars.category) == nil) {
+                    continue // Not in requested category, continue
+                }
+            }
+            eventsJson[key] = event
         }
         // Send to webview
         webView.stringByEvaluatingJavaScriptFromString("setEvents(\(eventsJson))")

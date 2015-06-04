@@ -39,6 +39,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         GlobalVariables.sharedVars.eventMarkers.removeAll() // Clear markers global var
         // iterate through events to add to map
         for (key, event) in jsonDict {
+            // Check if in requested category
+            let category:String = event["marker"].stringValue.lowercaseString
+            let reqCat:String = GlobalVariables.sharedVars.category
+            if (reqCat != "") {
+                if (category.rangeOfString(GlobalVariables.sharedVars.category) == nil) {
+                    continue // Not in requested category, continue
+                }
+            }
             // Build marker
             var marker: GMSMarker = GMSMarker()
             marker.title = event["eid"].stringValue
