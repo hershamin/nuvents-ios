@@ -10,24 +10,15 @@ import Foundation
 
 class DetailViewController: UIViewController, UIWebViewDelegate {
     
-    internal var json: JSON = JSON("") // Event variable to be passed
-    let bounds = UIScreen.mainScreen().bounds
+    @IBOutlet var webView:UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
         
-        // Load webview
-        var webView = UIWebView()
-        webView.delegate = self
-        webView.frame = CGRectMake(0, 0, bounds.width, bounds.height)
-        /*var baseURL = NuVentsBackend.getResourcePath("tmp", type: "tmp", override: false)
-        baseURL = baseURL.stringByReplacingOccurrencesOfString("tmp/tmp", withString: "")
-        let fileURL = NuVentsBackend.getResourcePath("detailView", type: "html", override: false)
-        let htmlStr = NSString(contentsOfFile: fileURL, encoding: NSUTF8StringEncoding, error: nil) as! String
-        webView.loadHTMLString(htmlStr, baseURL: NSURL(fileURLWithPath: baseURL))*/
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://storage.googleapis.com/nuvents-resources/detailViewTest.html")!))
-        self.view.addSubview(webView)
+        // Init vars
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://storage.googleapis.com/nuvents-resources/detailView.html")!))
+        
     }
     
     // Restrict to portrait only
@@ -37,6 +28,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
     
     // Webview finished loading
     func webViewDidFinishLoad(webView: UIWebView) {
+        let json:JSON = GlobalVariables.sharedVars.tempJson
         webView.stringByEvaluatingJavaScriptFromString("setEvent(\(json))") // Insert event data into webview
     }
     

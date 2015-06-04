@@ -24,6 +24,7 @@ class GlobalVariables {
     internal var mapView = GMSMapView.new()
     internal var cameraProc = false // true if camera process is busy
     internal var searchProc = false // true if search process is busy
+    internal var tempJson:JSON = JSON("") // Temp event json to pass to detail view
     internal var category = "" // To set event category
     
     // Here is how you would get to it without being a global collision of varables.
