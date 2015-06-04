@@ -17,7 +17,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib
         
         // Init vars
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://storage.googleapis.com/nuvents-resources/detailView.html")!))
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: GlobalVariables.sharedVars.detailView)!))
         
     }
     

@@ -12,6 +12,10 @@ class GlobalVariables {
     
     // Global constants
     internal let server: String = "repo.nuvents.com:1026"
+    internal let pickerView     = "http://storage.googleapis.com/nuvents-resources/pickerView.html"
+    internal let categoryView   = "http://storage.googleapis.com/nuvents-resources/categoryView.html"
+    internal let listView       = "http://storage.googleapis.com/nuvents-resources/listView.html"
+    internal let detailView     = "http://storage.googleapis.com/nuvents-resources/detailView.html"
     internal let zoomLevelMargin: Float = 0.5 // User must change camera by indicated zoom level to trigger clustering
     internal let zoomLevelClusteringLimit: Float = 14.5 // Markers cannot resize if zoom level is above that
     internal let nearbyEventsMargin: Float = 5 // Events must be within specified meters to be combined

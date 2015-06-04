@@ -20,7 +20,7 @@ class ListViewController: UIViewController, UIWebViewDelegate {
         // Init
         searchField.addTarget(self, action: "searchFieldChanged:", forControlEvents: .EditingChanged)
         searchField.backgroundColor = UIColor.clearColor()
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://storage.googleapis.com/nuvents-resources/listView.html")!))
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: GlobalVariables.sharedVars.listView)!))
         
     }
     

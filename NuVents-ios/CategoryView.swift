@@ -17,7 +17,7 @@ class CategoryViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib
         
         // Init
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://storage.googleapis.com/nuvents-resources/categoryView.html")!))
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: GlobalVariables.sharedVars.categoryView)!))
     }
     
     // Webview delegate methods

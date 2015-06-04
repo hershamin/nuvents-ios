@@ -17,7 +17,7 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib
         
         // Init
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: "http://storage.googleapis.com/nuvents-resources/pickerView.html")!))
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: GlobalVariables.sharedVars.pickerView)!))
         
     }
     
