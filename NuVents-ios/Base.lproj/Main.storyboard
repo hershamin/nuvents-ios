@@ -17,8 +17,26 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXp-4O-b86">
+                                <rect key="frame" x="281" y="390" width="120" height="30"/>
+                                <state key="normal" title="Show Picker">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FXp-4O-b86" secondAttribute="bottom" constant="180" id="038-BT-Ou3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FXp-4O-b86" secondAttribute="trailing" constant="183" id="EUg-od-0Z1"/>
+                            <constraint firstItem="FXp-4O-b86" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="265" id="FIr-Db-VVA"/>
+                            <constraint firstItem="FXp-4O-b86" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="370" id="RNe-ZV-WhT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pickerButton" destination="FXp-4O-b86" id="AWb-YN-i5a"/>
+                        <segue destination="ykv-DJ-Und" kind="show" identifier="showPickerView" id="VfB-CU-Cnu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -35,8 +53,26 @@
                     <view key="view" contentMode="scaleToFill" id="qT6-i8-Hf7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YvB-0p-bTM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rbR-7C-vgE" firstAttribute="top" secondItem="YvB-0p-bTM" secondAttribute="bottom" id="A9n-Hl-aa7"/>
+                            <constraint firstItem="YvB-0p-bTM" firstAttribute="top" secondItem="qT6-i8-Hf7" secondAttribute="topMargin" id="Jkf-WH-j8n"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YvB-0p-bTM" secondAttribute="trailing" constant="-16" id="gYk-uV-T68"/>
+                            <constraint firstItem="YvB-0p-bTM" firstAttribute="leading" secondItem="qT6-i8-Hf7" secondAttribute="leadingMargin" constant="-16" id="pVQ-sC-djD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="YvB-0p-bTM" id="Yed-jb-X9h"/>
+                        <segue destination="Vc7-Xm-PbT" kind="show" identifier="showMapView" id="PMB-P7-RUV"/>
+                        <segue destination="whN-DI-xM0" kind="show" identifier="showCategoryView" id="Ken-Cr-RLV"/>
+                        <segue destination="SvK-dC-Xfv" kind="show" identifier="showListView" id="yOT-Nm-1C1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FaF-gT-UWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,6 +124,9 @@
                             <constraint firstItem="xa7-KT-klR" firstAttribute="top" secondItem="IrB-oB-rsZ" secondAttribute="bottom" id="tvO-J3-8Id"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="spz-19-GYn" kind="show" identifier="showDetailView" id="hfN-Z2-VKL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="06w-RB-akJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,6 +145,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="Vc7-Xm-PbT" kind="show" identifier="showMapView" id="fIZ-Wi-HV9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4J-13-14d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,10 +205,17 @@
                             <constraint firstItem="kCK-Ax-U0j" firstAttribute="top" secondItem="504-xh-Sie" secondAttribute="bottom" id="xyL-1n-zGl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="spz-19-GYn" kind="show" identifier="showDetailView" id="MhE-kw-39s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2o-Nm-5UH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2484" y="1190"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fIZ-Wi-HV9"/>
+        <segue reference="hfN-Z2-VKL"/>
+    </inferredMetricsTieBreakers>
 </document>

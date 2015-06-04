@@ -13,6 +13,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     var api:NuVentsBackend?
     var serverConn:Bool = false
     var locationManager:CLLocationManager = CLLocationManager()
+    @IBOutlet var pickerButton:UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,12 +21,20 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         let deviceID:String = UIDevice.currentDevice().identifierForVendor.UUIDString
         api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: deviceID)
         
+        // Picker button
+        pickerButton.addTarget(self, action: "pickerButtonPressed:", forControlEvents: .TouchUpInside)
+        
         // Set location manager
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+    }
+    
+    // Picker button pressed
+    func pickerButtonPressed(sender: UIButton!) {
+        self.performSegueWithIdentifier("showPickerView", sender: nil)
     }
     
     // Got device location
