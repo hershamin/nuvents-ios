@@ -43,6 +43,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         if (serverConn) { // Only use when connected to server
             var latestLoc:CLLocation = locations[locations.count - 1] as! CLLocation
             api?.getNearbyEvents(latestLoc.coordinate, radius: 5000) // Search within 5000 meters
+            GlobalVariables.sharedVars.currentLoc = latestLoc // Set current location
             locationManager.stopUpdatingLocation()
         }
     }

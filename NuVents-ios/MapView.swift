@@ -24,7 +24,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         searchField.backgroundColor = UIColor.clearColor()
         
         // MapView
-        var camera = GMSCameraPosition.cameraWithLatitude(30.3077609, longitude: -97.7534014, zoom: 9)
+        let currentLoc = GlobalVariables.sharedVars.currentLoc!
+        var camera = GMSCameraPosition.cameraWithLatitude(currentLoc.coordinate.latitude, longitude: currentLoc.coordinate.longitude, zoom: 13)
         mapView.moveCamera(GMSCameraUpdate.setCamera(camera))
         mapView.myLocationEnabled = true
         mapView.addObserver(self, forKeyPath: "myLocation", options: nil, context: nil)

@@ -29,6 +29,7 @@ class GlobalVariables {
     internal var cameraProc = false // true if camera process is busy
     internal var searchProc = false // true if search process is busy
     internal var tempJson:JSON = JSON("") // Temp event json to pass to detail view
+    internal var currentLoc:CLLocation? // Current location
     internal var category = "" // To set event category
     internal var api:NuVentsBackend? // NuVents backend API
     
