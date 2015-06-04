@@ -28,7 +28,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         var camera = GMSCameraPosition.cameraWithLatitude(currentLoc.coordinate.latitude, longitude: currentLoc.coordinate.longitude, zoom: 13)
         mapView.moveCamera(GMSCameraUpdate.setCamera(camera))
         mapView.myLocationEnabled = true
-        mapView.addObserver(self, forKeyPath: "myLocation", options: nil, context: nil)
         mapView.settings.myLocationButton = false
         mapView.settings.rotateGestures = false
         mapView.delegate = self
