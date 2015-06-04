@@ -21,6 +21,10 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         
     }
     
+    @IBAction func unwindSegueToPickerView(segue: UIStoryboardSegue) {
+        // Called when category, map, or list view is dismissed to get to picker view
+    }
+    
     // Webview delegate methods
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
