@@ -26,9 +26,11 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         
         let reqStr = request.URL?.absoluteString
         if reqStr!.rangeOfString("openmapview://") != nil {
+            GlobalVariables.sharedVars.category = "" // Set category in global
             self.performSegueWithIdentifier("showMapView", sender: nil)
             return false
         } else if reqStr!.rangeOfString("openlistview://") != nil {
+            GlobalVariables.sharedVars.category = "" // Set category in global
             self.performSegueWithIdentifier("showListView", sender: nil)
             return false
         } else if reqStr!.rangeOfString("opencategoryview://") != nil {

@@ -57,6 +57,9 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YvB-0p-bTM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ykv-DJ-Und" id="kl0-8t-5ls"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,6 +128,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="xa7-KT-klR" id="5Mj-ld-1iR"/>
+                        <outlet property="myLocBtn" destination="mq4-uR-DB8" id="5kT-zl-5ae"/>
                         <segue destination="spz-19-GYn" kind="show" identifier="showDetailView" id="hfN-Z2-VKL"/>
                     </connections>
                 </viewController>
@@ -143,10 +148,27 @@
                     <view key="view" contentMode="scaleToFill" id="g1W-kg-tW3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgQ-tj-78M">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="whN-DI-xM0" id="cf8-HN-hhd"/>
+                                </connections>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QgQ-tj-78M" firstAttribute="leading" secondItem="g1W-kg-tW3" secondAttribute="leadingMargin" constant="-16" id="Jep-6C-EsH"/>
+                            <constraint firstItem="QgQ-tj-78M" firstAttribute="top" secondItem="g1W-kg-tW3" secondAttribute="topMargin" id="OgL-t6-g7r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QgQ-tj-78M" secondAttribute="trailing" constant="-16" id="eBt-dc-Fbv"/>
+                            <constraint firstItem="gNP-rI-TDC" firstAttribute="top" secondItem="QgQ-tj-78M" secondAttribute="bottom" id="w16-sN-y8t"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="webView" destination="QgQ-tj-78M" id="yfB-d3-VDZ"/>
                         <segue destination="Vc7-Xm-PbT" kind="show" identifier="showMapView" id="fIZ-Wi-HV9"/>
+                        <segue destination="SvK-dC-Xfv" kind="show" identifier="showListView" id="B2b-Mz-NJT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4J-13-14d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,6 +214,9 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCK-Ax-U0j">
                                 <rect key="frame" x="0.0" y="55" width="600" height="545"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="SvK-dC-Xfv" id="oSk-Lg-ScY"/>
+                                </connections>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -206,6 +231,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="webView" destination="kCK-Ax-U0j" id="ube-Ls-xKa"/>
                         <segue destination="spz-19-GYn" kind="show" identifier="showDetailView" id="MhE-kw-39s"/>
                     </connections>
                 </viewController>
@@ -215,7 +241,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fIZ-Wi-HV9"/>
+        <segue reference="PMB-P7-RUV"/>
+        <segue reference="yOT-Nm-1C1"/>
         <segue reference="hfN-Z2-VKL"/>
     </inferredMetricsTieBreakers>
 </document>
