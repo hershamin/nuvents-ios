@@ -53,7 +53,7 @@ class ListViewController: UIViewController, UIWebViewDelegate {
             let category:String = event["marker"].stringValue.lowercaseString
             let reqCat:String = GlobalVariables.sharedVars.category
             if (reqCat != "") {
-                if (category.rangeOfString(GlobalVariables.sharedVars.category) == nil) {
+                if (category.rangeOfString(reqCat) == nil) {
                     continue // Not in requested category, continue
                 }
             }
