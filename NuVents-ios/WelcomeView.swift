@@ -42,7 +42,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if (serverConn) { // Only use when connected to server
             var latestLoc:CLLocation = locations[locations.count - 1] as! CLLocation
-            api?.getNearbyEvents(latestLoc.coordinate, radius: 100)
+            api?.getNearbyEvents(latestLoc.coordinate, radius: 5000) // Search within 5000 meters
             locationManager.stopUpdatingLocation()
         }
     }
