@@ -5,3 +5,4 @@
 
 #import <GoogleMaps/GoogleMaps.h>
 #import <CommonCrypto/CommonDigest.h>
+#import <INTULocationManager/INTULocationManager.h>"
