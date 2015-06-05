@@ -52,7 +52,7 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         // Get image url from resource
         let imgURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("catViewBack", ofType: "png")!)
         // Send to webview
-        webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\(imgURL))")
+        webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\"\(imgURL)\")")
     }
     
     // Restrict to portrait only
