@@ -28,7 +28,14 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         // Set location manager
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        // Location manager special setup for different iOS versions
+        switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
+        case .OrderedSame, .OrderedDescending: // iOS 8 & above
+            println("iOS >= 8.0")
+            locationManager.requestWhenInUseAuthorization()
+        case .OrderedAscending: // iOS below 8
+            println("iOS < 8.0")
+        }
         locationManager.startUpdatingLocation()
         
     }
