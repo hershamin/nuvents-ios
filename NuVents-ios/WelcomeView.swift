@@ -24,6 +24,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         
         // Picker button
         pickerButton.addTarget(self, action: "pickerButtonPressed:", forControlEvents: .TouchUpInside)
+        pickerButton.hidden = true
         
         // Set location manager
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -51,6 +52,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
             var latestLoc:CLLocation = locations[locations.count - 1] as! CLLocation
             api?.getNearbyEvents(latestLoc.coordinate, radius: 5000) // Search within 5000 meters
             GlobalVariables.sharedVars.currentLoc = latestLoc // Set current location
+            pickerButton.hidden = false
             locationManager.stopUpdatingLocation()
         }
     }
