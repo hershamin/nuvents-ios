@@ -50,7 +50,7 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         // Send to webview
         webView.stringByEvaluatingJavaScriptFromString("setEventCount(\(jsonDict.count))")
         // Get image url from resource
-        let imgURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("catViewBack", ofType: "png")!)
+        let imgURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("NuVents_SplashScreen", ofType: "png")!)
         // Send to webview
         webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\"\(imgURL)\")")
     }
