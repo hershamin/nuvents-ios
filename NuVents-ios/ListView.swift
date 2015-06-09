@@ -49,7 +49,7 @@ class ListViewController: UIViewController, UIWebViewDelegate {
         // Convert dict to json
         let jsonDict = GlobalVariables.sharedVars.eventJSON
         var eventsJson:JSON = ["":""]
-        for (key, event) in jsonDict {
+        for (key, var event) in jsonDict {
             let category:String = event["marker"].stringValue.lowercaseString
             let reqCat:String = GlobalVariables.sharedVars.category
             if (reqCat != "") {
@@ -57,6 +57,11 @@ class ListViewController: UIViewController, UIWebViewDelegate {
                     continue // Not in requested category, continue
                 }
             }
+            // Calculate distance between current location and event location
+            let eventLoc:CLLocation = CLLocation(latitude: event["latitude"].doubleValue, longitude: event["longitude"].doubleValue)
+            let currentLoc:CLLocation = GlobalVariables.sharedVars.currentLoc!
+            let dist = eventLoc.distanceFromLocation(currentLoc) // Distance in meters
+            event["distance"].string = dist.description
             eventsJson[key] = event
         }
         // Send to webview
