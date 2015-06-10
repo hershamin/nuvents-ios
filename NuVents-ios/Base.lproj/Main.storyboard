@@ -111,8 +111,12 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-kz-Nk1">
-                                <rect key="frame" x="45" y="285" width="73" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-kz-Nk1">
+                                <rect key="frame" x="270" y="520" width="73" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="F02-ph-Gy5"/>
+                                    <constraint firstAttribute="width" constant="73" id="J6v-rq-Fix"/>
+                                </constraints>
                                 <state key="normal" title="FB Home">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -133,8 +137,10 @@
                             <constraint firstAttribute="trailing" secondItem="IrB-oB-rsZ" secondAttribute="trailing" id="evj-Ou-5PI"/>
                             <constraint firstItem="IrB-oB-rsZ" firstAttribute="top" secondItem="wuh-E7-JSN" secondAttribute="top" constant="20" id="hoc-hj-Ltd"/>
                             <constraint firstItem="klj-q9-EN2" firstAttribute="top" secondItem="wuh-E7-JSN" secondAttribute="top" constant="35" id="qLe-UW-yFj"/>
+                            <constraint firstAttribute="centerX" secondItem="iRi-kz-Nk1" secondAttribute="centerX" id="qbk-FG-Kgz"/>
                             <constraint firstItem="mq4-uR-DB8" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" constant="39" id="uEt-PT-uNV"/>
                             <constraint firstAttribute="trailing" secondItem="klj-q9-EN2" secondAttribute="trailing" constant="50" id="v9q-GG-IQh"/>
+                            <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="iRi-kz-Nk1" secondAttribute="bottom" constant="50" id="z6B-xl-kCp"/>
                         </constraints>
                     </view>
                     <connections>
@@ -168,8 +174,12 @@
                                     <outlet property="delegate" destination="whN-DI-xM0" id="cf8-HN-hhd"/>
                                 </connections>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60P-nH-FOO">
-                                <rect key="frame" x="45" y="285" width="73" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60P-nH-FOO">
+                                <rect key="frame" x="270" y="520" width="73" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="FWU-yg-uOI"/>
+                                    <constraint firstAttribute="height" constant="30" id="UC5-VC-BBT"/>
+                                </constraints>
                                 <state key="normal" title="FB Home">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -182,8 +192,10 @@
                         <constraints>
                             <constraint firstItem="QgQ-tj-78M" firstAttribute="top" secondItem="g1W-kg-tW3" secondAttribute="top" constant="20" id="2ha-nI-33t"/>
                             <constraint firstItem="QgQ-tj-78M" firstAttribute="leading" secondItem="g1W-kg-tW3" secondAttribute="leading" id="3aS-hU-G9s"/>
+                            <constraint firstAttribute="centerX" secondItem="60P-nH-FOO" secondAttribute="centerX" id="Tgd-qS-p6u"/>
                             <constraint firstAttribute="trailing" secondItem="QgQ-tj-78M" secondAttribute="trailing" id="XCT-iY-kQn"/>
                             <constraint firstItem="gNP-rI-TDC" firstAttribute="top" secondItem="QgQ-tj-78M" secondAttribute="bottom" id="f1c-cv-Omk"/>
+                            <constraint firstItem="gNP-rI-TDC" firstAttribute="top" secondItem="60P-nH-FOO" secondAttribute="bottom" constant="50" id="mvh-oU-vse"/>
                         </constraints>
                     </view>
                     <connections>
@@ -263,8 +275,12 @@
                                     <outlet property="delegate" destination="SvK-dC-Xfv" id="oSk-Lg-ScY"/>
                                 </connections>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VET-Iy-zfN">
-                                <rect key="frame" x="45" y="285" width="73" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VET-Iy-zfN">
+                                <rect key="frame" x="270" y="520" width="73" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LK2-OQ-AO5"/>
+                                    <constraint firstAttribute="width" constant="73" id="uv9-oL-Q2C"/>
+                                </constraints>
                                 <state key="normal" title="FB Home">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -281,9 +297,11 @@
                             <constraint firstItem="Co2-hW-9jt" firstAttribute="top" secondItem="psG-YX-0Fv" secondAttribute="top" constant="35" id="No5-H9-Yri"/>
                             <constraint firstItem="Co2-hW-9jt" firstAttribute="leading" secondItem="psG-YX-0Fv" secondAttribute="leading" constant="50" id="SBR-wF-ftM"/>
                             <constraint firstItem="kCK-Ax-U0j" firstAttribute="top" secondItem="504-xh-Sie" secondAttribute="bottom" id="SCU-j5-TTE"/>
+                            <constraint firstItem="7S9-Mr-bYz" firstAttribute="top" secondItem="VET-Iy-zfN" secondAttribute="bottom" constant="50" id="alx-59-0VB"/>
                             <constraint firstItem="7S9-Mr-bYz" firstAttribute="top" secondItem="kCK-Ax-U0j" secondAttribute="bottom" id="coN-CL-4Lg"/>
                             <constraint firstItem="504-xh-Sie" firstAttribute="leading" secondItem="psG-YX-0Fv" secondAttribute="leading" id="g6P-WW-Kfg"/>
                             <constraint firstAttribute="trailing" secondItem="504-xh-Sie" secondAttribute="trailing" id="gOU-X1-637"/>
+                            <constraint firstAttribute="centerX" secondItem="VET-Iy-zfN" secondAttribute="centerX" id="i59-AT-L3q"/>
                             <constraint firstAttribute="trailing" secondItem="Co2-hW-9jt" secondAttribute="trailing" constant="50" id="qwx-ME-Qkg"/>
                         </constraints>
                     </view>
