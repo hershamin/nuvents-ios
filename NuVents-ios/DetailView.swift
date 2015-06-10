@@ -19,6 +19,16 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         // Init vars
         webView.loadRequest(NSURLRequest(URL: NSURL(string: GlobalVariables.sharedVars.detailView)!))
         
+        // Record hit on event website by issuing a http get request
+        let urlString = GlobalVariables.sharedVars.tempJson["website"].stringValue
+        let url = NSURL(string:urlString)!
+        let httpGetTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
+            (data, response, error) in
+            let resp = response as! NSHTTPURLResponse
+            println(resp.statusCode) // TODO: send status code with link to backend
+        }
+        httpGetTask.resume()
+        
     }
     
     // Restrict to portrait only
