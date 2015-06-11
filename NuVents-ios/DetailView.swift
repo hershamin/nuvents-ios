@@ -25,7 +25,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         let httpGetTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
             (data, response, error) in
             let resp = response as! NSHTTPURLResponse
-            println(resp.statusCode) // TODO: send status code with link to backend
+            WelcomeViewController.sendWebRespCode(urlString, statusCode: "\(resp.statusCode)")
         }
         httpGetTask.resume()
         
