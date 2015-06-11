@@ -17,14 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXp-4O-b86">
-                                <rect key="frame" x="71" y="404" width="120" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g6l-r3-yeo">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXp-4O-b86">
+                                <rect key="frame" x="450" y="550" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Ldu-b7-mdM"/>
+                                    <constraint firstAttribute="height" constant="30" id="xYX-Pt-Ozl"/>
+                                </constraints>
                                 <state key="normal" title="Show Picker">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FXp-4O-b86" secondAttribute="trailing" constant="30" id="2HT-BB-RGm"/>
+                            <constraint firstItem="g6l-r3-yeo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Jrg-ye-s31"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FXp-4O-b86" secondAttribute="bottom" constant="20" id="N1O-Ht-ugO"/>
+                            <constraint firstAttribute="trailing" secondItem="g6l-r3-yeo" secondAttribute="trailing" id="efs-Uw-2sx"/>
+                            <constraint firstItem="g6l-r3-yeo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sWL-C0-bic"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="g6l-r3-yeo" secondAttribute="bottom" id="wGw-QS-uc1"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="pickerButton" destination="FXp-4O-b86" id="AWb-YN-i5a"/>
@@ -33,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="430" y="289"/>
+            <point key="canvasLocation" x="430" y="292"/>
         </scene>
         <!--Picker View Controller-->
         <scene sceneID="b6B-Ub-F0u">
