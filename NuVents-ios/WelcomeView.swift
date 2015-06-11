@@ -72,6 +72,11 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         //
     }
     
+    // Send event website response code
+    class func sendWebRespCode(website: String, statusCode: String) {
+        GlobalVariables.sharedVars.api!.sendWebsiteCode(website, code: statusCode)
+    }
+    
     // Get event detail
     class func getEventDetail(eid: String, callback:(JSON) -> Void) {
         GlobalVariables.sharedVars.api!.getEventDetail(eid, callback: { (jsonData: JSON) -> Void in

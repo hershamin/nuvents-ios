@@ -153,6 +153,12 @@ class NuVentsBackend {
                                             "did":self.deviceID as String])
     }
     
+    // Send event website response code
+    func sendWebsiteCode(website: String, code: String) {
+        self.nSocket.emit("event:website", ["website":"\(website)",
+                                            "respCode":"\(code)"])
+    }
+    
     // Get event detail
     func getEventDetail(eventID: NSString, callback:(JSON) -> Void) {
         let eventDict = ["did":self.deviceID as String,
