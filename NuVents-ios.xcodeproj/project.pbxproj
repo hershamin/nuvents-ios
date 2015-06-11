@@ -188,6 +188,7 @@
 		BA5B90C61AED81F3000B1BD5 /* NuVents-ios */ = {
 			isa = PBXGroup;
 			children = (
+				BA8E59601B2A543700D6AB86 /* Graphics */,
 				BA90B6151B1D211D00C3E3D8 /* Fabric.framework */,
 				BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */,
 				BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */,
@@ -195,7 +196,6 @@
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
 				BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */,
 				BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */,
-				BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */,
 				BA5B90D01AED81F3000B1BD5 /* Images.xcassets */,
 				BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */,
 				BA5B90C71AED81F3000B1BD5 /* Supporting Files */,
@@ -255,6 +255,14 @@
 				BA5B91151AEDEB9E000B1BD5 /* WebSocket.swift */,
 			);
 			path = SocketIOClientSwift;
+			sourceTree = "<group>";
+		};
+		BA8E59601B2A543700D6AB86 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */,
+			);
+			name = Graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
