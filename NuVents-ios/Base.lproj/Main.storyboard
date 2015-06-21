@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Welcome View Controller-->
@@ -126,13 +126,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-kz-Nk1">
-                                <rect key="frame" x="270" y="520" width="73" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRi-kz-Nk1">
+                                <rect key="frame" x="272" y="520" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="F02-ph-Gy5"/>
-                                    <constraint firstAttribute="width" constant="73" id="J6v-rq-Fix"/>
+                                    <constraint firstAttribute="height" constant="55" id="QAm-u4-UJy"/>
+                                    <constraint firstAttribute="width" constant="55" id="t31-Jp-keb"/>
                                 </constraints>
-                                <state key="normal" title="FB Home">
+                                <state key="normal" image="homeBtn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -144,6 +144,7 @@
                         <constraints>
                             <constraint firstItem="klj-q9-EN2" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" constant="50" id="8SJ-FQ-aIK"/>
                             <constraint firstItem="IrB-oB-rsZ" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" id="DEU-aF-EEo"/>
+                            <constraint firstAttribute="centerX" secondItem="iRi-kz-Nk1" secondAttribute="centerX" id="E8R-qj-JhK"/>
                             <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="sKJ-tg-SW5" secondAttribute="bottom" id="Iyc-u2-Kw5"/>
                             <constraint firstAttribute="trailing" secondItem="sKJ-tg-SW5" secondAttribute="trailing" id="JAe-6u-IKO"/>
                             <constraint firstItem="sKJ-tg-SW5" firstAttribute="top" secondItem="IrB-oB-rsZ" secondAttribute="bottom" id="Lzo-Oq-odL"/>
@@ -152,10 +153,9 @@
                             <constraint firstAttribute="trailing" secondItem="IrB-oB-rsZ" secondAttribute="trailing" id="evj-Ou-5PI"/>
                             <constraint firstItem="IrB-oB-rsZ" firstAttribute="top" secondItem="wuh-E7-JSN" secondAttribute="top" constant="20" id="hoc-hj-Ltd"/>
                             <constraint firstItem="klj-q9-EN2" firstAttribute="top" secondItem="wuh-E7-JSN" secondAttribute="top" constant="35" id="qLe-UW-yFj"/>
-                            <constraint firstAttribute="centerX" secondItem="iRi-kz-Nk1" secondAttribute="centerX" id="qbk-FG-Kgz"/>
+                            <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="iRi-kz-Nk1" secondAttribute="bottom" constant="25" id="tRR-Qh-RQi"/>
                             <constraint firstItem="mq4-uR-DB8" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" constant="39" id="uEt-PT-uNV"/>
                             <constraint firstAttribute="trailing" secondItem="klj-q9-EN2" secondAttribute="trailing" constant="50" id="v9q-GG-IQh"/>
-                            <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="iRi-kz-Nk1" secondAttribute="bottom" constant="50" id="z6B-xl-kCp"/>
                         </constraints>
                     </view>
                     <connections>
@@ -189,13 +189,13 @@
                                     <outlet property="delegate" destination="whN-DI-xM0" id="cf8-HN-hhd"/>
                                 </connections>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60P-nH-FOO">
-                                <rect key="frame" x="270" y="520" width="73" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60P-nH-FOO">
+                                <rect key="frame" x="272" y="520" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="73" id="FWU-yg-uOI"/>
-                                    <constraint firstAttribute="height" constant="30" id="UC5-VC-BBT"/>
+                                    <constraint firstAttribute="height" constant="55" id="OaM-3r-2nX"/>
+                                    <constraint firstAttribute="width" constant="55" id="oV5-7j-F5L"/>
                                 </constraints>
-                                <state key="normal" title="FB Home">
+                                <state key="normal" image="homeBtn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -207,10 +207,10 @@
                         <constraints>
                             <constraint firstItem="QgQ-tj-78M" firstAttribute="top" secondItem="g1W-kg-tW3" secondAttribute="top" constant="20" id="2ha-nI-33t"/>
                             <constraint firstItem="QgQ-tj-78M" firstAttribute="leading" secondItem="g1W-kg-tW3" secondAttribute="leading" id="3aS-hU-G9s"/>
-                            <constraint firstAttribute="centerX" secondItem="60P-nH-FOO" secondAttribute="centerX" id="Tgd-qS-p6u"/>
                             <constraint firstAttribute="trailing" secondItem="QgQ-tj-78M" secondAttribute="trailing" id="XCT-iY-kQn"/>
+                            <constraint firstItem="gNP-rI-TDC" firstAttribute="top" secondItem="60P-nH-FOO" secondAttribute="bottom" constant="25" id="dbO-V3-5d7"/>
                             <constraint firstItem="gNP-rI-TDC" firstAttribute="top" secondItem="QgQ-tj-78M" secondAttribute="bottom" id="f1c-cv-Omk"/>
-                            <constraint firstItem="gNP-rI-TDC" firstAttribute="top" secondItem="60P-nH-FOO" secondAttribute="bottom" constant="50" id="mvh-oU-vse"/>
+                            <constraint firstAttribute="centerX" secondItem="60P-nH-FOO" secondAttribute="centerX" id="wxv-7v-tao"/>
                         </constraints>
                     </view>
                     <connections>
@@ -290,13 +290,13 @@
                                     <outlet property="delegate" destination="SvK-dC-Xfv" id="oSk-Lg-ScY"/>
                                 </connections>
                             </webView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VET-Iy-zfN">
-                                <rect key="frame" x="270" y="520" width="73" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VET-Iy-zfN">
+                                <rect key="frame" x="272" y="520" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="LK2-OQ-AO5"/>
-                                    <constraint firstAttribute="width" constant="73" id="uv9-oL-Q2C"/>
+                                    <constraint firstAttribute="height" constant="55" id="jUj-7W-Cl5"/>
+                                    <constraint firstAttribute="width" constant="55" id="w6z-0o-Ago"/>
                                 </constraints>
-                                <state key="normal" title="FB Home">
+                                <state key="normal" image="homeBtn.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -312,11 +312,11 @@
                             <constraint firstItem="Co2-hW-9jt" firstAttribute="top" secondItem="psG-YX-0Fv" secondAttribute="top" constant="35" id="No5-H9-Yri"/>
                             <constraint firstItem="Co2-hW-9jt" firstAttribute="leading" secondItem="psG-YX-0Fv" secondAttribute="leading" constant="50" id="SBR-wF-ftM"/>
                             <constraint firstItem="kCK-Ax-U0j" firstAttribute="top" secondItem="504-xh-Sie" secondAttribute="bottom" id="SCU-j5-TTE"/>
-                            <constraint firstItem="7S9-Mr-bYz" firstAttribute="top" secondItem="VET-Iy-zfN" secondAttribute="bottom" constant="50" id="alx-59-0VB"/>
+                            <constraint firstAttribute="centerX" secondItem="VET-Iy-zfN" secondAttribute="centerX" id="bt4-YB-DbN"/>
                             <constraint firstItem="7S9-Mr-bYz" firstAttribute="top" secondItem="kCK-Ax-U0j" secondAttribute="bottom" id="coN-CL-4Lg"/>
                             <constraint firstItem="504-xh-Sie" firstAttribute="leading" secondItem="psG-YX-0Fv" secondAttribute="leading" id="g6P-WW-Kfg"/>
                             <constraint firstAttribute="trailing" secondItem="504-xh-Sie" secondAttribute="trailing" id="gOU-X1-637"/>
-                            <constraint firstAttribute="centerX" secondItem="VET-Iy-zfN" secondAttribute="centerX" id="i59-AT-L3q"/>
+                            <constraint firstItem="7S9-Mr-bYz" firstAttribute="top" secondItem="VET-Iy-zfN" secondAttribute="bottom" constant="25" id="n66-iY-ZmQ"/>
                             <constraint firstAttribute="trailing" secondItem="Co2-hW-9jt" secondAttribute="trailing" constant="50" id="qwx-ME-Qkg"/>
                         </constraints>
                     </view>
@@ -332,6 +332,9 @@
             <point key="canvasLocation" x="2484" y="1190"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="homeBtn.png" width="300" height="300"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fIZ-Wi-HV9"/>
         <segue reference="B2b-Mz-NJT"/>

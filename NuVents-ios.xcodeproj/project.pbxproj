@@ -53,6 +53,8 @@
 		BA90B61E1B1EB29A00C3E3D8 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90B61D1B1EB29A00C3E3D8 /* ListView.swift */; };
 		BA90B6201B1EB2AA00C3E3D8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90B61F1B1EB2AA00C3E3D8 /* CategoryView.swift */; };
 		BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */; };
+		BADEE4841B377EBE00AF8231 /* myLoc.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4831B377EBE00AF8231 /* myLoc.png */; };
+		BADEE4861B377EC500AF8231 /* homeBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4851B377EC500AF8231 /* homeBtn.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +119,8 @@
 		BA90B61D1B1EB29A00C3E3D8 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		BA90B61F1B1EB2AA00C3E3D8 /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		BADEE4831B377EBE00AF8231 /* myLoc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myLoc.png; sourceTree = "<group>"; };
+		BADEE4851B377EC500AF8231 /* homeBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeBtn.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,8 @@
 		BA8E59601B2A543700D6AB86 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				BADEE4831B377EBE00AF8231 /* myLoc.png */,
+				BADEE4851B377EC500AF8231 /* homeBtn.png */,
 				BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */,
 			);
 			name = Graphics;
@@ -349,6 +355,8 @@
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
 				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
+				BADEE4861B377EC500AF8231 /* homeBtn.png in Resources */,
+				BADEE4841B377EBE00AF8231 /* myLoc.png in Resources */,
 				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
 				BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */,
 				BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */,
