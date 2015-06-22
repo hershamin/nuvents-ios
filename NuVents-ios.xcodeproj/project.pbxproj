@@ -56,6 +56,8 @@
 		BADEE4841B377EBE00AF8231 /* myLoc.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4831B377EBE00AF8231 /* myLoc.png */; };
 		BADEE4861B377EC500AF8231 /* homeBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4851B377EC500AF8231 /* homeBtn.png */; };
 		BADEE4881B37909500AF8231 /* navBar.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4871B37909500AF8231 /* navBar.png */; };
+		BADEE4901B38629E00AF8231 /* forwardBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE48F1B38629E00AF8231 /* forwardBtn.png */; };
+		BADEE4921B3862A700AF8231 /* welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4911B3862A700AF8231 /* welcome.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,8 @@
 		BADEE4831B377EBE00AF8231 /* myLoc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myLoc.png; sourceTree = "<group>"; };
 		BADEE4851B377EC500AF8231 /* homeBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeBtn.png; sourceTree = "<group>"; };
 		BADEE4871B37909500AF8231 /* navBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBar.png; sourceTree = "<group>"; };
+		BADEE48F1B38629E00AF8231 /* forwardBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forwardBtn.png; sourceTree = "<group>"; };
+		BADEE4911B3862A700AF8231 /* welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +270,8 @@
 		BA8E59601B2A543700D6AB86 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				BADEE48F1B38629E00AF8231 /* forwardBtn.png */,
+				BADEE4911B3862A700AF8231 /* welcome.png */,
 				BADEE4871B37909500AF8231 /* navBar.png */,
 				BADEE4831B377EBE00AF8231 /* myLoc.png */,
 				BADEE4851B377EC500AF8231 /* homeBtn.png */,
@@ -356,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
+				BADEE4921B3862A700AF8231 /* welcome.png in Resources */,
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
 				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
 				BADEE4861B377EC500AF8231 /* homeBtn.png in Resources */,
@@ -363,6 +370,7 @@
 				BADEE4841B377EBE00AF8231 /* myLoc.png in Resources */,
 				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
 				BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */,
+				BADEE4901B38629E00AF8231 /* forwardBtn.png in Resources */,
 				BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
