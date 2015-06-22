@@ -116,13 +116,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mq4-uR-DB8">
-                                <rect key="frame" x="39" y="505" width="66" height="67"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mq4-uR-DB8">
+                                <rect key="frame" x="20" y="524" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="67" id="MIc-D7-Yts"/>
-                                    <constraint firstAttribute="width" constant="66" id="cL4-Yp-fcb"/>
+                                    <constraint firstAttribute="width" constant="55" id="E3R-tf-O9V"/>
+                                    <constraint firstAttribute="height" constant="55" id="cFh-7q-tPE"/>
                                 </constraints>
-                                <state key="normal" title="My Loc">
+                                <state key="normal" image="myLoc.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -142,6 +142,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="mq4-uR-DB8" secondAttribute="bottom" constant="21" id="4YD-qA-Ywo"/>
                             <constraint firstItem="klj-q9-EN2" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" constant="50" id="8SJ-FQ-aIK"/>
                             <constraint firstItem="IrB-oB-rsZ" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" id="DEU-aF-EEo"/>
                             <constraint firstAttribute="centerX" secondItem="iRi-kz-Nk1" secondAttribute="centerX" id="E8R-qj-JhK"/>
@@ -149,12 +150,11 @@
                             <constraint firstAttribute="trailing" secondItem="sKJ-tg-SW5" secondAttribute="trailing" id="JAe-6u-IKO"/>
                             <constraint firstItem="sKJ-tg-SW5" firstAttribute="top" secondItem="IrB-oB-rsZ" secondAttribute="bottom" id="Lzo-Oq-odL"/>
                             <constraint firstItem="sKJ-tg-SW5" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" id="T4W-Zb-dU8"/>
-                            <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="mq4-uR-DB8" secondAttribute="bottom" constant="28" id="UOv-OZ-CJv"/>
+                            <constraint firstItem="mq4-uR-DB8" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" constant="20" id="XET-qn-DSY"/>
                             <constraint firstAttribute="trailing" secondItem="IrB-oB-rsZ" secondAttribute="trailing" id="evj-Ou-5PI"/>
                             <constraint firstItem="IrB-oB-rsZ" firstAttribute="top" secondItem="wuh-E7-JSN" secondAttribute="top" constant="20" id="hoc-hj-Ltd"/>
                             <constraint firstItem="klj-q9-EN2" firstAttribute="top" secondItem="wuh-E7-JSN" secondAttribute="top" constant="35" id="qLe-UW-yFj"/>
                             <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="iRi-kz-Nk1" secondAttribute="bottom" constant="25" id="tRR-Qh-RQi"/>
-                            <constraint firstItem="mq4-uR-DB8" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" constant="39" id="uEt-PT-uNV"/>
                             <constraint firstAttribute="trailing" secondItem="klj-q9-EN2" secondAttribute="trailing" constant="50" id="v9q-GG-IQh"/>
                         </constraints>
                     </view>
@@ -334,6 +334,7 @@
     </scenes>
     <resources>
         <image name="homeBtn.png" width="300" height="300"/>
+        <image name="myLoc.png" width="250" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fIZ-Wi-HV9"/>
