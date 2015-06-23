@@ -38,8 +38,13 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
     
     // Webview finished loading
     func webViewDidFinishLoad(webView: UIWebView) {
-        let json:JSON = GlobalVariables.sharedVars.tempJson
-        webView.stringByEvaluatingJavaScriptFromString("setEvent(\(json))") // Insert event data into webview
+        var event:JSON = GlobalVariables.sharedVars.tempJson
+        // Calculate distance between current location and event location
+        let eventLoc:CLLocation = CLLocation(latitude: event["latitude"].doubleValue, longitude: event["longitude"].doubleValue)
+        let currentLoc:CLLocation = GlobalVariables.sharedVars.currentLoc!
+        let dist = eventLoc.distanceFromLocation(currentLoc) // Distance in meters
+        event["distance"].string = dist.description
+        webView.stringByEvaluatingJavaScriptFromString("setEvent(\(event))") // Insert event data into webview
     }
     
     // Webview delegate methods
