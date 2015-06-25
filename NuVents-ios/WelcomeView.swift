@@ -120,6 +120,8 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     func nuventsServerDidReceiveNearbyEvent(event: JSON) {
         // Add to global vars
         GlobalVariables.sharedVars.eventJSON[event["eid"].stringValue] = event
+        // Update count in picker view
+        PickerViewController.updateEventCount()
     }
 
 }

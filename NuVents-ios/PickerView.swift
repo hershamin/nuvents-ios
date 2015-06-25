@@ -19,6 +19,7 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         // Init
         let filePath = NSBundle.mainBundle().pathForResource("pickerView", ofType: "html")
         webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
+        GlobalVariables.sharedVars.pickerWebView = webView
         
     }
     
@@ -54,6 +55,16 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         let imgURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("NuVents_SplashScreen", ofType: "png")!)!
         // Send to webview
         webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\"\(imgURL)\")")
+    }
+    
+    // Update event count
+    class func updateEventCount() {
+        // Convert dict to json
+        let jsonDict = GlobalVariables.sharedVars.eventJSON
+        let webView = GlobalVariables.sharedVars.pickerWebView
+        if (webView != nil) {
+            webView?.stringByEvaluatingJavaScriptFromString("setEventCount(\(jsonDict.count))")
+        }
     }
     
     // Restrict to portrait only
