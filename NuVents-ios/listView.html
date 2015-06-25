@@ -1,0 +1,67 @@
+<html ng-app="eventListApp">
+    <title>Event List</title>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+        <script>
+            window.setEvents = function(data) {
+                // Process data to friendlier json
+                try {
+                    data = JSON.parse(data)
+                } catch (e) {}
+                angular.element(document.querySelector("body")).scope().setEvents(data);
+            }
+            window.searchByTitle = function(text) {
+                angular.element(document.querySelector("body")).scope().searchByTitle(text);
+            }
+            var eventDetailApp = angular.module("eventListApp", []);
+            eventDetailApp.controller("eventListCtrl", function ($scope, $http) {
+                $scope.setEvents = function(data) {
+                    $scope.$apply(function() {
+                        $scope.events = []
+                        for (var i in data) {
+                            $scope.events.push(data[i]);
+                        }
+                    })
+                }
+                $scope.searchByTitle = function(text) {
+                    $scope.$apply(function() {
+                        $scope.search = {}
+                        $scope.search.title = text
+                    })
+                }
+                $scope.openEvent = function(eid) {
+                    window.location = "openDetailView://" + eid;
+                }
+                $scope.baseURL = "http://storage.googleapis.com/nuvents-resources/event-category-icons/"
+            })
+        </script>
+        <style>
+          html, body {
+            margin: 0;
+            body: 0;
+            background: #fcf8e2;
+          }
+          body button {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 45px;
+            background: #fcf8e2;
+            text-align: left;
+            color: #ef6764;
+          }
+        </style>  
+    </head>
+    <body ng-controller="eventListCtrl">
+      <div ng-repeat="event in events | filter:search">
+        <button ng-click="openEvent(event.eid)">
+          <div class="row">
+            <div class="col-xs-2 col-md-2"><img ng-src="{{baseURL}}{{event.marker}}.png" alt="{{event.marker}}" height="35px"></div>
+            <div class="col-xs-8 col-md-8">{{event.title}}</div>
+            <div class="col-xs-2 col-md-2">{{event.distance}} met.</div>
+          </div>
+        </button>
+      </div>
+    </body>
+</html>

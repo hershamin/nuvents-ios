@@ -17,7 +17,8 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib
         
         // Init vars
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: GlobalVariables.sharedVars.detailView)!))
+        let filePath = NSBundle.mainBundle().pathForResource("detailView", ofType: "html")
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
         
         // Record hit on event website by issuing a http get request
         let urlString = GlobalVariables.sharedVars.tempJson["website"].stringValue

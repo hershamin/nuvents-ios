@@ -20,7 +20,8 @@ class ListViewController: UIViewController, UIWebViewDelegate {
         // Init
         searchField.addTarget(self, action: "searchFieldChanged:", forControlEvents: .EditingChanged)
         searchField.backgroundColor = UIColor.clearColor()
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: GlobalVariables.sharedVars.listView)!))
+        let filePath = NSBundle.mainBundle().pathForResource("listView", ofType: "html")
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
         
     }
     

@@ -17,7 +17,8 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib
         
         // Init
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: GlobalVariables.sharedVars.pickerView)!))
+        let filePath = NSBundle.mainBundle().pathForResource("pickerView", ofType: "html")
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
         
     }
     

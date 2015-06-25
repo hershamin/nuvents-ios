@@ -1,0 +1,81 @@
+<html ng-app="eventDetailApp">
+    <title>Event Detail</title>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+        <script>
+            window.setEvent = function(data) {
+                try {
+                    data = JSON.parse(data)
+                } catch (e) {}
+                angular.element(document.querySelector("body")).scope().setEvent(data);
+            }
+            var eventDetailApp = angular.module("eventDetailApp", []);
+            eventDetailApp.controller("eventDetailCtrl", function ($scope, $http) {
+                $scope.setEvent = function(data) {
+                    $scope.$apply(function() {
+                        $scope.event = data;
+                    })
+                }
+                $scope.close = function() {
+                    window.location = "closeDetailView://";
+                }
+                $scope.baseURL = "http://storage.googleapis.com/nuvents-resources/event-category-icons/";
+            })
+        </script>
+        <style>
+          html, body {
+            height:100%;
+            margin: 0;
+            padding: 0;
+            background: #FCF8E2;
+          }
+          #navBar {
+            height:10%;
+            background: #ED5857;
+            color: white;
+          }
+          #details {
+            height: 90%;
+            background-size: 100% 100%;
+            color: black;
+            font-weight: bold;
+          }
+          button {
+            border: none;
+          }
+        </style>
+    </head>
+  <body ng-controller="eventDetailCtrl">
+        <div id="navBar">
+          <div class="row">
+            <div class="col-xs-1 col-md-1">
+              <button type="button" ng-click="close()"><img src="http://storage.googleapis.com/nuvents-resources/eventDescBack.png" height="40px" width="15px"></button>
+            </div>
+            <div class="col-xs-2 col-md-2">
+              <img ng-src="{{baseURL}}{{event.marker}}.png" height="40px">
+            </div>
+            <div class="col-xs-7 col-md-7" ng-style="{'font-weight':'bold'}">
+              {{event.title}}
+            </div>
+            <div class="col-xs-1 col-md-1">
+              {{event.distance}} met.
+            </div>
+          </div>
+        </div>
+    <div id="details" ng-style="{'background-image':'linear-gradient(rgba(28,60,109,0.1),rgba(28,60,109,0.5)),url(' + event.media + ')'}">
+      <br>
+      <div class="row">
+        <div class="col-xs-5 col-md-5">
+          Price: {{event.price}} <br><br>
+          {{event.address}}
+        </div>
+        <div class="col-xs-7 col-md-7">
+          <img ng-src="http://maps.googleapis.com/maps/api/staticmap?center={{event.latitude}},{{event.longitude}}&zoom=16&size=250x250&sensor=false&markers={{event.latitude}},{{event.longitude}}" width="95%" ng-style="{'opacity':'0.85'}">
+        </div>
+      </div>
+      <br>
+      {{event.description}}
+    </div>
+    </body>
+</html>

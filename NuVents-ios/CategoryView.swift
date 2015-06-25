@@ -17,7 +17,8 @@ class CategoryViewController: UIViewController, UIWebViewDelegate {
         // Do any additional setup after loading the view, typically from a nib
         
         // Init
-        webView.loadRequest(NSURLRequest(URL: NSURL(string: GlobalVariables.sharedVars.categoryView)!))
+        let filePath = NSBundle.mainBundle().pathForResource("categoryView", ofType: "html")
+        webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
     }
     
     // Webview delegate methods

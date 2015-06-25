@@ -1,0 +1,102 @@
+<html ng-app="pickerViewApp">
+    <title>Picker View</title>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+        <script>
+            window.setEventCount = function(data) {
+                // Process data to friendlier json
+                try {
+                    data = String(data)
+                } catch (e) {}
+                angular.element(document.querySelector("body")).scope().setEventCount(data);
+            }
+			window.setImgUrl = function(data) {
+                // Process data to friendlier json
+                try {
+                    data = String(data)
+                } catch (e) {}
+                angular.element(document.querySelector("body")).scope().setImgUrl(data);
+            }
+            var pickerViewApp = angular.module("pickerViewApp", []);
+            pickerViewApp.controller("pickerViewCtrl", function ($scope, $http) {
+                $scope.setEventCount = function(data) {
+                    $scope.$apply(function() {
+                        $scope.eventCount = data;
+                    })
+                }
+				$scope.setImgUrl = function(data) {
+                    $scope.$apply(function() {
+                        $scope.imgUrl = data;
+                    })
+                }
+                $scope.openView = function(view) {
+                    window.location = "open" + view + "View://";
+                }
+            })
+        </script>
+        <style>
+          html, body {
+            margin: 0;
+            body: 0;
+            height: 100%;
+          }
+          #outerDiv {
+            width:100%;
+            height:100%;
+          }
+          #eventCount {
+            width:100%;
+            height:10%;
+            background-color: #F49A8C;
+            color: #1C3C6D;
+            font-size: 150%;
+            text-align: center;
+          }
+          #categoryBtn {
+            width:100%;
+            height:30%;
+            background-color: #1C3C6D;
+            border-style: none;
+            color: #ED5857;
+            font-size: 180%;
+          }
+          #mapBtn {
+            width:100%;
+            height:30%;
+            background-image: url("http://storage.googleapis.com/nuvents-resources/austinSkyline.png");
+            background-size: 100% 100%;
+            margin: 0 auto;
+            text-align: center;
+            color: #ED5857;
+            font-size: 180%;
+          }
+          #mapBtn button {
+            align-content: center;
+            height:50%;
+            background-color: transparent;
+            border-style: none;
+            vertical-align: middle;
+            padding: 0;
+          }
+          #listBtn {
+            width:100%;
+            height:30%;
+            background-color: #1C3C6D;
+            border-style: none;
+            color: #ED5857;
+            font-size: 180%;
+          }
+        </style>  
+    </head>
+    <body ng-controller="pickerViewCtrl">
+      <div id="outerDiv">
+        <div id="eventCount">{{eventCount}} events happening nearby</div>
+        <button id="categoryBtn" ng-click="openView('Category')">Categories</button>
+        <div id="mapBtn">
+          Map <br>
+          <button ng-click="openView('Map')"><img src="http://storage.googleapis.com/nuvents-resources/mapBtn.png" height="100%"></button>
+        </div>
+        <button id="listBtn" ng-click="openView('List')">List View</button>
+      </div>
+    </body>
+</html>
