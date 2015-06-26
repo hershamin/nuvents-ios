@@ -44,7 +44,7 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
             return false
         } else if reqStr!.rangeOfString("sendeventrequest://") != nil { // Send request to add city to backend
             let request = reqStr!.componentsSeparatedByString("//").last
-            WelcomeViewController.sendEventRequest(request)
+            WelcomeViewController.sendEventRequest(request!)
             return false
         } else {
             return true
