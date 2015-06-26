@@ -55,10 +55,29 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         if reqStr!.rangeOfString("closedetailview://") != nil {
             self.dismissViewControllerAnimated(true, completion: nil)
             return false
+        } else if reqStr!.rangeOfString("opendirections://") != nil {
+            let loc = reqStr!.componentsSeparatedByString("//").last
+            let lat = loc?.componentsSeparatedByString(",").first
+            let lng = loc?.componentsSeparatedByString(",").last
+            openMapsApp(lat!, lng: lng!)
+            return false
         } else {
             return true
         }
         
+    }
+    
+    // Open location in maps app
+    func openMapsApp(lat: String, lng: String) {
+        let urlToOpen:String
+        if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "comgooglemaps://")!)) {
+            // Google maps available
+            urlToOpen = "comgooglemaps://?center=\(lat),\(lng)&views=traffic&q=\(lat),\(lng)"
+        } else {
+            // Use apple maps
+            urlToOpen = "http://maps.apple.com/?ll=\(lat),\(lng)&q=\(lat),\(lng)"
+        }
+        UIApplication.sharedApplication().openURL(NSURL(string: urlToOpen)!)
     }
     
     override func didReceiveMemoryWarning() {
