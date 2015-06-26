@@ -159,6 +159,11 @@ class NuVentsBackend {
                                             "respCode":"\(code)"])
     }
     
+    // Send event reequest to add city
+    func sendEventReq(request: String) {
+        self.nSocket.emit("event:request", request)
+    }
+    
     // Get event detail
     func getEventDetail(eventID: NSString, callback:(JSON) -> Void) {
         let eventDict = ["did":self.deviceID as String,

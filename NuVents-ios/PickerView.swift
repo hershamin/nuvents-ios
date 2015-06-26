@@ -42,6 +42,10 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         } else if reqStr!.rangeOfString("opencategoryview://") != nil {
             self.performSegueWithIdentifier("showCategoryView", sender: nil)
             return false
+        } else if reqStr!.rangeOfString("sendeventrequest://") != nil { // Send request to add city to backend
+            let request = reqStr!.componentsSeparatedByString("//").last
+            WelcomeViewController.sendEventRequest(request)
+            return false
         } else {
             return true
         }

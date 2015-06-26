@@ -77,6 +77,11 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         GlobalVariables.sharedVars.api!.sendWebsiteCode(website, code: statusCode)
     }
     
+    // Send event request to add city
+    class func sendEventRequest(request: String) {
+        GlobalVariables.sharedVars.api!.sendEventReq(request)
+    }
+    
     // Get event detail
     class func getEventDetail(eid: String, callback:(JSON) -> Void) {
         GlobalVariables.sharedVars.api!.getEventDetail(eid, callback: { (jsonData: JSON) -> Void in
