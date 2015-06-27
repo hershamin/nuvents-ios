@@ -146,10 +146,11 @@ class NuVentsBackend {
     }
     
     // Get nearby events
-    func getNearbyEvents(location: CLLocationCoordinate2D, radius: Float) {
+    func getNearbyEvents(location: CLLocationCoordinate2D, radius: Float, timestamp: NSTimeInterval) {
         self.nSocket.emit("event:nearby", ["lat":"\(location.latitude)",
                                             "lng":"\(location.longitude)",
                                             "rad":"\(radius)",
+                                            "time":"\(timestamp)",
                                             "did":self.deviceID as String])
     }
     
