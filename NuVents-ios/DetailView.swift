@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import EventKit
 
 class DetailViewController: UIViewController, UIWebViewDelegate {
     
@@ -61,10 +62,42 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
             let lng = loc?.componentsSeparatedByString(",").last
             openMapsApp(lat!, lng: lng!)
             return false
+        } else if reqStr!.rangeOfString("opencalendar://") != nil {
+            let jsonString = reqStr!.componentsSeparatedByString("//").last
+            openCalendarApp(jsonString!)
+            return false
         } else {
             return true
         }
         
+    }
+    
+    // Save event to calendar app
+    func openCalendarApp(var jsonString: String) {
+        jsonString = jsonString.stringByReplacingOccurrencesOfString("'", withString: "\"")
+        let dataFromJsonStr = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let jsonData = JSON(data: dataFromJsonStr!)
+        
+        // save event to calendar app
+        var eventStore:EKEventStore = EKEventStore()
+        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: {
+            (granted, error) in
+            
+            if (granted) && (error == nil) {
+                var event:EKEvent = EKEvent(eventStore: eventStore)
+                
+                event.title = jsonData["title"].stringValue
+                event.startDate = NSDate(timeIntervalSince1970: jsonData["startDate"].doubleValue * 0.001)
+                event.endDate = NSDate(timeIntervalSince1970: jsonData["endDate"].doubleValue * 0.001)
+                event.notes = jsonData["description"].stringValue
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                event.location = jsonData["location"].stringValue
+                
+                eventStore.saveEvent(event, span: EKSpanThisEvent, error: nil)
+                
+            }
+            
+        })
     }
     
     // Open location in maps app
