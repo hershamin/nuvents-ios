@@ -63,8 +63,8 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
     
     //Back button pressed
     func backButtonPressed(sender: UIButton!) {
-            self.dismissViewControllerAnimated(true, completion: nil)
-            }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     // Webview delegate methods
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
