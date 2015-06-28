@@ -46,9 +46,11 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         // Calculate distance between current location and event location
         let eventLoc:CLLocation = CLLocation(latitude: event["latitude"].doubleValue, longitude: event["longitude"].doubleValue)
         let currentLoc:CLLocation = GlobalVariables.sharedVars.currentLoc!
-        let dist = eventLoc.distanceFromLocation(currentLoc) // Distance in meters
+        let dist = eventLoc.distanceFromLocation(currentLoc) * 0.000621371 // Distance in miles
         
-        event["distance"].string = dist.description
+        let distMi = Double(round(10 * dist)/10) //Round the number
+        
+        event["distance"].string = distMi.description
         webView.stringByEvaluatingJavaScriptFromString("setEvent(\(event))") // Insert event data into webview
         
         //Native nav-bar stuff. Add the label of the event to the nav-bar
@@ -58,7 +60,6 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         //Add back button functionality.
        backButton.addTarget(self, action: "backButtonPressed:", forControlEvents: .TouchUpInside)
 
-        
     }
     
     //Back button pressed
