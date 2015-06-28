@@ -12,6 +12,8 @@ import EventKit
 class DetailViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet var webView:UIWebView!
+    @IBOutlet var titleText:UITextView!
+    @IBOutlet var backButton:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +47,24 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         let eventLoc:CLLocation = CLLocation(latitude: event["latitude"].doubleValue, longitude: event["longitude"].doubleValue)
         let currentLoc:CLLocation = GlobalVariables.sharedVars.currentLoc!
         let dist = eventLoc.distanceFromLocation(currentLoc) // Distance in meters
+        
         event["distance"].string = dist.description
         webView.stringByEvaluatingJavaScriptFromString("setEvent(\(event))") // Insert event data into webview
+        
+        //Native nav-bar stuff. Add the label of the event to the nav-bar
+        titleText.text = event["distance"].stringValue
+        
+        
+        //Add back button functionality.
+       backButton.addTarget(self, action: "backButtonPressed:", forControlEvents: .TouchUpInside)
+
+        
     }
+    
+    //Back button pressed
+    func backButtonPressed(sender: UIButton!) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+            }
     
     // Webview delegate methods
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
