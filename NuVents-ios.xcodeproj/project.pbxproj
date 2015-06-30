@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8FB31BA11B3F1FBC00FBC285 /* eventDescBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB31BA01B3F1FBC00FBC285 /* eventDescBack.png */; };
-		8FB31BA71B3F419800FBC285 /* back-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB31BA61B3F419800FBC285 /* back-icon.png */; };
-		8FB31BA91B3F436500FBC285 /* Arrows-Back-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB31BA81B3F436500FBC285 /* Arrows-Back-icon.png */; };
-		8FB31BAD1B3F4B0F00FBC285 /* Location_arrow_32.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FB31BAC1B3F4B0F00FBC285 /* Location_arrow_32.png */; };
 		BA1B733E1AFA82BE00A15B77 /* GMapCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B733D1AFA82BE00A15B77 /* GMapCamera.swift */; };
 		BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1B733F1AFFFADE00A15B77 /* location.gpx */; };
 		BA1B73421B011B9F00A15B77 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1B73411B011B9F00A15B77 /* DetailView.swift */; };
@@ -57,6 +53,8 @@
 		BA90B61E1B1EB29A00C3E3D8 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90B61D1B1EB29A00C3E3D8 /* ListView.swift */; };
 		BA90B6201B1EB2AA00C3E3D8 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA90B61F1B1EB2AA00C3E3D8 /* CategoryView.swift */; };
 		BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */; };
+		BAC2D21A1B423B92001F276E /* Location_arrow_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC2D2191B423B92001F276E /* Location_arrow_32.png */; };
+		BAC2D21C1B423B9D001F276E /* Arrows-Back-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC2D21B1B423B9D001F276E /* Arrows-Back-icon.png */; };
 		BADEE4841B377EBE00AF8231 /* myLoc.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4831B377EBE00AF8231 /* myLoc.png */; };
 		BADEE4861B377EC500AF8231 /* homeBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4851B377EC500AF8231 /* homeBtn.png */; };
 		BADEE4881B37909500AF8231 /* navBar.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4871B37909500AF8231 /* navBar.png */; };
@@ -79,10 +77,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8FB31BA01B3F1FBC00FBC285 /* eventDescBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eventDescBack.png; path = ../../eventDescBack.png; sourceTree = "<group>"; };
-		8FB31BA61B3F419800FBC285 /* back-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-icon.png"; path = "../../back-icon.png"; sourceTree = "<group>"; };
-		8FB31BA81B3F436500FBC285 /* Arrows-Back-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Arrows-Back-icon.png"; path = "../../Arrows-Back-icon.png"; sourceTree = "<group>"; };
-		8FB31BAC1B3F4B0F00FBC285 /* Location_arrow_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Location_arrow_32.png; path = ../../Location_arrow_32.png; sourceTree = "<group>"; };
 		BA1B733D1AFA82BE00A15B77 /* GMapCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMapCamera.swift; sourceTree = "<group>"; };
 		BA1B733F1AFFFADE00A15B77 /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = location.gpx; sourceTree = "<group>"; };
 		BA1B73411B011B9F00A15B77 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
@@ -134,6 +128,8 @@
 		BA90B61D1B1EB29A00C3E3D8 /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		BA90B61F1B1EB2AA00C3E3D8 /* CategoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		BAC2D2191B423B92001F276E /* Location_arrow_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Location_arrow_32.png; sourceTree = "<group>"; };
+		BAC2D21B1B423B9D001F276E /* Arrows-Back-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Arrows-Back-icon.png"; sourceTree = "<group>"; };
 		BADEE4831B377EBE00AF8231 /* myLoc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myLoc.png; sourceTree = "<group>"; };
 		BADEE4851B377EC500AF8231 /* homeBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeBtn.png; sourceTree = "<group>"; };
 		BADEE4871B37909500AF8231 /* navBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBar.png; sourceTree = "<group>"; };
@@ -287,10 +283,8 @@
 		BA8E59601B2A543700D6AB86 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				8FB31BAC1B3F4B0F00FBC285 /* Location_arrow_32.png */,
-				8FB31BA81B3F436500FBC285 /* Arrows-Back-icon.png */,
-				8FB31BA61B3F419800FBC285 /* back-icon.png */,
-				8FB31BA01B3F1FBC00FBC285 /* eventDescBack.png */,
+				BAC2D21B1B423B9D001F276E /* Arrows-Back-icon.png */,
+				BAC2D2191B423B92001F276E /* Location_arrow_32.png */,
 				BADEE48F1B38629E00AF8231 /* forwardBtn.png */,
 				BADEE4911B3862A700AF8231 /* welcome.png */,
 				BADEE4871B37909500AF8231 /* navBar.png */,
@@ -395,15 +389,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
-				8FB31BA91B3F436500FBC285 /* Arrows-Back-icon.png in Resources */,
 				BADEE4921B3862A700AF8231 /* welcome.png in Resources */,
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
-				8FB31BAD1B3F4B0F00FBC285 /* Location_arrow_32.png in Resources */,
 				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
 				BADEE4861B377EC500AF8231 /* homeBtn.png in Resources */,
 				BADEE49B1B3BB95600AF8231 /* pickerView.html in Resources */,
 				BADEE4991B3BB95600AF8231 /* detailView.html in Resources */,
-				8FB31BA11B3F1FBC00FBC285 /* eventDescBack.png in Resources */,
 				BADEE4881B37909500AF8231 /* navBar.png in Resources */,
 				BADEE4841B377EBE00AF8231 /* myLoc.png in Resources */,
 				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
@@ -411,8 +402,9 @@
 				BADEE4981B3BB95600AF8231 /* categoryView.html in Resources */,
 				BADEE4901B38629E00AF8231 /* forwardBtn.png in Resources */,
 				BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */,
-				8FB31BA71B3F419800FBC285 /* back-icon.png in Resources */,
 				BADEE49A1B3BB95600AF8231 /* listView.html in Resources */,
+				BAC2D21C1B423B9D001F276E /* Arrows-Back-icon.png in Resources */,
+				BAC2D21A1B423B92001F276E /* Location_arrow_32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
