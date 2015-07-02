@@ -11,23 +11,30 @@ import Foundation
 class ListViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet var webView:UIWebView!
-    @IBOutlet var searchField:UITextField!
+    var webViewReady = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
         
         // Init
-        searchField.addTarget(self, action: "searchFieldChanged:", forControlEvents: .EditingChanged)
-        searchField.backgroundColor = UIColor.clearColor()
         let filePath = NSBundle.mainBundle().pathForResource("listView", ofType: "html")
         webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
         
     }
     
-    // Dismiss text field on clicks anywhere other than keyboard
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        searchField.resignFirstResponder()
+    @IBAction func eventFilterIndexChanged(sender:UISegmentedControl) {
+        let index = sender.selectedSegmentIndex
+        let title = sender.titleForSegmentAtIndex(index)
+        if (title?.lowercaseString.rangeOfString("distance")) != nil {
+            if (webViewReady) {
+                webView.stringByEvaluatingJavaScriptFromString("sortBy('distance')")
+            }
+        } else if (title?.lowercaseString.rangeOfString("time")) != nil {
+            if (webViewReady) {
+                webView.stringByEvaluatingJavaScriptFromString("sortBy('time.start')")
+            }
+        }
     }
     
     // Webview delegate methods
@@ -65,19 +72,9 @@ class ListViewController: UIViewController, UIWebViewDelegate {
             event["distance"].string = dist.description
             eventsJson[key] = event
         }
+        webViewReady = true
         // Send to webview
         webView.stringByEvaluatingJavaScriptFromString("setEvents(\(eventsJson))")
-    }
-    
-    // Search field changed value
-    func searchFieldChanged(sender: UITextField!) {
-        var searchProcess = GlobalVariables.sharedVars.searchProc
-        if (!searchProcess) { // Search process free
-            searchProcess = true
-            let searchText = searchField.text.lowercaseString
-            webView.stringByEvaluatingJavaScriptFromString("searchByTitle('\(searchText)')")
-            searchProcess = false
-        }
     }
     
     // Restrict to portrait only

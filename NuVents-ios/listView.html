@@ -14,15 +14,24 @@
             window.searchByTitle = function(text) {
                 angular.element(document.querySelector("body")).scope().searchByTitle(text);
             }
+            window.sortBy = function(attr) {
+                angular.element(document.querySelector("body")).scope().sortBy(attr);
+            }
             var eventDetailApp = angular.module("eventListApp", []);
             eventDetailApp.controller("eventListCtrl", function ($scope, $http) {
                                       $scope.setEvents = function(data) {
                                       $scope.$apply(function() {
                                                     $scope.events = []
                                                     for (var i in data) {
+                                                    data[i].distance = parseFloat(data[i].distance)
                                                     $scope.events.push(data[i]);
                                                     }
                                                     })
+                                      }
+                                      $scope.sortBy = function(attr) {
+                                        $scope.$apply(function() {
+                                                      $scope.orderAttr = attr;
+                                        })
                                       }
                                       $scope.searchByTitle = function(text) {
                                       $scope.$apply(function() {
@@ -34,6 +43,7 @@
                                       window.location = "openDetailView://" + eid;
                                       }
                                       $scope.baseURL = "http://storage.googleapis.com/nuvents-resources/event-category-icons/"
+                                      $scope.orderAttr = 'distance'
                                       $scope.getDate = function(epoch) {
                                       var monthNames = new Array("January", "February", "March",
                                                                  "April", "May", "June", "July", "August", "September",
@@ -106,7 +116,7 @@
             </style>  
             </head>
     <body ng-controller="eventListCtrl">
-        <div ng-repeat="event in events | filter:search">
+        <div ng-repeat="event in events | filter:search | orderBy:orderAttr">
             <button ng-click="openEvent(event.eid)" ng-style="{margin:0, border:0}" ng-if="event.title.length > 0">
                 <div class="bgImg" ng-style="{'background-image':'linear-gradient(rgba(238,89,87,0.4),rgba(238,89,87,0.3)),url(' + event.media +')'}">
                     <div class="#container" ng-style="{'position':'relative', 'height':'120px'}">

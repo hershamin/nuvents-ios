@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -320,8 +320,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="navBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="504-xh-Sie">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="504-xh-Sie">
                                 <rect key="frame" x="0.0" y="20" width="600" height="60"/>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.23529411764705882" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="J4o-rr-uF2"/>
                                 </constraints>
@@ -346,20 +347,23 @@
                                     <segue destination="zcB-Jg-gZz" kind="unwind" unwindAction="unwindSegueToPickerView:" id="4tP-kx-HBI"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Co2-hW-9jt">
-                                <rect key="frame" x="65" y="35" width="485" height="30"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LNC-NC-kg5">
+                                <rect key="frame" x="146" y="36" width="308" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="zxD-BF-xiz"/>
+                                    <constraint firstAttribute="width" constant="308" id="Uid-Se-erL"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <segments>
+                                    <segment title="Distance"/>
+                                    <segment title="Time"/>
+                                </segments>
+                                <color key="tintColor" red="0.92941176470588238" green="0.34509803921568627" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="eventFilterIndexChanged:" destination="SvK-dC-Xfv" eventType="valueChanged" id="fzA-B9-UWO"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Co2-hW-9jt" secondAttribute="trailing" constant="50" id="17q-He-dDw"/>
-                            <constraint firstItem="Co2-hW-9jt" firstAttribute="leading" secondItem="psG-YX-0Fv" secondAttribute="leading" constant="65" id="3BH-iF-9wt"/>
                             <constraint firstAttribute="trailing" secondItem="kCK-Ax-U0j" secondAttribute="trailing" id="7D0-iC-ZTp"/>
                             <constraint firstItem="504-xh-Sie" firstAttribute="top" secondItem="psG-YX-0Fv" secondAttribute="top" constant="20" id="Jv3-wm-Tef"/>
                             <constraint firstItem="kCK-Ax-U0j" firstAttribute="leading" secondItem="psG-YX-0Fv" secondAttribute="leading" id="NMm-U9-WCV"/>
@@ -369,11 +373,11 @@
                             <constraint firstItem="504-xh-Sie" firstAttribute="leading" secondItem="psG-YX-0Fv" secondAttribute="leading" id="g6P-WW-Kfg"/>
                             <constraint firstAttribute="trailing" secondItem="504-xh-Sie" secondAttribute="trailing" id="gOU-X1-637"/>
                             <constraint firstItem="7S9-Mr-bYz" firstAttribute="top" secondItem="VET-Iy-zfN" secondAttribute="bottom" constant="25" id="n66-iY-ZmQ"/>
-                            <constraint firstItem="Co2-hW-9jt" firstAttribute="top" secondItem="Wmg-KV-XLY" secondAttribute="bottom" constant="15" id="tsb-Z2-WDE"/>
+                            <constraint firstAttribute="centerX" secondItem="LNC-NC-kg5" secondAttribute="centerX" id="qNT-ph-1TK"/>
+                            <constraint firstItem="LNC-NC-kg5" firstAttribute="top" secondItem="Wmg-KV-XLY" secondAttribute="bottom" constant="16" id="xHa-mw-HeK"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchField" destination="Co2-hW-9jt" id="hMA-eI-rs2"/>
                         <outlet property="webView" destination="kCK-Ax-U0j" id="ube-Ls-xKa"/>
                         <segue destination="spz-19-GYn" kind="show" identifier="showDetailView" id="MhE-kw-39s"/>
                     </connections>
@@ -396,6 +400,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="B2b-Mz-NJT"/>
         <segue reference="fIZ-Wi-HV9"/>
-        <segue reference="hfN-Z2-VKL"/>
+        <segue reference="MhE-kw-39s"/>
     </inferredMetricsTieBreakers>
 </document>
