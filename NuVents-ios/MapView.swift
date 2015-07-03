@@ -11,7 +11,6 @@ import Foundation
 class MapViewController: UIViewController, GMSMapViewDelegate {
     
     @IBOutlet var mapView:GMSMapView!
-    @IBOutlet var searchField:UITextField!
     @IBOutlet var myLocBtn:UIButton!
     
     override func viewDidLoad() {
@@ -20,8 +19,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
         // Init Vars
         myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
-        searchField.addTarget(self, action: "searchFieldChanged:", forControlEvents: .EditingChanged)
-        searchField.backgroundColor = UIColor.clearColor()
         
         // MapView
         let currentLoc = GlobalVariables.sharedVars.currentLoc!
@@ -64,11 +61,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         }
     }
     
-    // Dismiss text field on clicks anywhere other than keyboard
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        searchField.resignFirstResponder()
-    }
-    
     // Restrict to portrait only
     override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.rawValue)
@@ -81,17 +73,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         let camera = GMSCameraPosition.cameraWithLatitude(location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 15)
         mapView.animateToCameraPosition(camera)
     }
-    
-    // Search field changed value
-    func searchFieldChanged(sender: UITextField!) {
-        var searchProcess = GlobalVariables.sharedVars.searchProc
-        if (!searchProcess) { // Search process free
-            searchProcess = true
-            GMapCamera.searchEventsByTitle(sender.text)
-            searchProcess = false
-        }
-    }
-    
+
     // Google Maps Marker Click Event
     func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
         // Get event detail and open detail view controller
