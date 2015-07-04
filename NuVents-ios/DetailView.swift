@@ -54,7 +54,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         webView.stringByEvaluatingJavaScriptFromString("setEvent(\(event))") // Insert event data into webview
         
         //Native nav-bar stuff. Add the label of the event to the nav-bar
-        titleText.text = event["distance"].stringValue
+        titleText.text = event["distance"].stringValue + " Miles Away!"
         
         
         //Add back button functionality.

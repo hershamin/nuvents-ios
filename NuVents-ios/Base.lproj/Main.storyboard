@@ -225,7 +225,7 @@
                                     <outlet property="delegate" destination="spz-19-GYn" id="WuR-gw-nWY"/>
                                 </connections>
                             </webView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="udt-Q1-A4I">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="292" translatesAutoresizingMaskIntoConstraints="NO" id="udt-Q1-A4I">
                                 <rect key="frame" x="0.0" y="20" width="600" height="60"/>
                                 <color key="backgroundColor" red="0.92941176470588238" green="0.34509803921568627" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -244,37 +244,46 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-tf-AOi">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-tf-AOi">
                                 <rect key="frame" x="48" y="24" width="505" height="51"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.34509803919999998" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="DnN-nt-VPP"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="5JD-0P-Ena"/>
                             <constraint firstItem="LJN-wi-ar9" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" constant="14" id="6do-d0-VZQ"/>
-                            <constraint firstItem="udt-Q1-A4I" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leading" id="9GN-8y-zLy"/>
-                            <constraint firstAttribute="trailing" secondItem="udt-Q1-A4I" secondAttribute="trailing" id="GbJ-7q-bb6"/>
+                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="FKb-C8-ksH"/>
+                            <constraint firstItem="udt-Q1-A4I" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leading" id="HM7-Xr-naO"/>
                             <constraint firstAttribute="trailing" secondItem="uOz-2M-LqD" secondAttribute="trailing" id="HwR-WU-mPm"/>
+                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="KuI-4i-a5K"/>
                             <constraint firstItem="AWE-tf-AOi" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" constant="4" id="Ppt-bX-K8M"/>
                             <constraint firstItem="CaP-nb-KD5" firstAttribute="top" secondItem="uOz-2M-LqD" secondAttribute="bottom" id="Rbo-dy-Jzo"/>
                             <constraint firstItem="uOz-2M-LqD" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leading" id="WkT-th-gIJ"/>
-                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="Wte-MD-vQz"/>
                             <constraint firstItem="AWE-tf-AOi" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" constant="4" id="YjS-jg-XnE"/>
                             <constraint firstItem="AWE-tf-AOi" firstAttribute="leading" secondItem="LJN-wi-ar9" secondAttribute="trailing" constant="14" id="ZiG-lU-jwa"/>
                             <constraint firstItem="hRd-QI-8Cc" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" constant="14" id="gm5-8E-QrD"/>
                             <constraint firstItem="LJN-wi-ar9" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leading" id="hQM-UA-Dok"/>
                             <constraint firstItem="hRd-QI-8Cc" firstAttribute="leading" secondItem="AWE-tf-AOi" secondAttribute="trailing" constant="20" id="kSi-Kq-Bjh"/>
                             <constraint firstAttribute="trailing" secondItem="hRd-QI-8Cc" secondAttribute="trailing" constant="8" id="ldF-IL-aSz"/>
+                            <constraint firstAttribute="trailing" secondItem="udt-Q1-A4I" secondAttribute="trailing" id="prG-iW-LOl"/>
                             <constraint firstAttribute="centerX" secondItem="AWE-tf-AOi" secondAttribute="centerX" id="sOb-ck-hKM"/>
-                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="uFB-3k-gHj"/>
-                            <constraint firstItem="uOz-2M-LqD" firstAttribute="top" secondItem="udt-Q1-A4I" secondAttribute="bottom" id="yhu-uX-CiN"/>
+                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="v6k-VF-fx4"/>
+                            <constraint firstItem="uOz-2M-LqD" firstAttribute="top" secondItem="udt-Q1-A4I" secondAttribute="bottom" id="wf8-4N-TYh"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FKb-C8-ksH"/>
+                                <exclude reference="KuI-4i-a5K"/>
+                                <exclude reference="v6k-VF-fx4"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="LJN-wi-ar9" id="Gbv-Cl-hUa"/>
@@ -375,8 +384,8 @@
         <image name="welcome.png" width="1500" height="2665"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hfN-Z2-VKL"/>
-        <segue reference="fIZ-Wi-HV9"/>
         <segue reference="B2b-Mz-NJT"/>
+        <segue reference="fIZ-Wi-HV9"/>
+        <segue reference="hfN-Z2-VKL"/>
     </inferredMetricsTieBreakers>
 </document>
