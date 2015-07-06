@@ -77,16 +77,16 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         
         let lat = event["latitude"].stringValue
         let lng = event["longitude"].stringValue
-        var titl = event["title"].stringValue
-        titl = titl.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        openMapsApp(lat, lng: lng, Title: titl)
+        var addr = event["address"].stringValue
+        addr = addr.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        openMapsApp(lat, lng: lng, Address: addr)
     }
     
     
     // Webview delegate methods
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
-        let reqStr = request.URL?.absoluteString
+    let reqStr = request.URL?.absoluteString
         if reqStr!.rangeOfString("closedetailview://") != nil {
             self.dismissViewControllerAnimated(true, completion: nil)
             return false
@@ -135,11 +135,11 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
     }
     
     // Open location in maps app
-    func openMapsApp(lat: String, lng: String, Title: String) {
+    func openMapsApp(lat: String, lng: String, Address: String) {
         let urlToOpen:String
         if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "comgooglemaps://")!)) {
             // Google maps available
-            urlToOpen = "comgooglemaps://?q=\(Title)&center=\(lat),\(lng)&views=traffic&q=\(lat),\(lng)"
+            urlToOpen = "comgooglemaps://?q=\(Address)&center=\(lat),\(lng)&views=traffic"
         } else {
             // Use apple maps
             urlToOpen = "http://maps.apple.com/?ll=\(lat),\(lng)&q=\(lat),\(lng)"
