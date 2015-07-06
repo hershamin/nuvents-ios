@@ -137,7 +137,10 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
     // Open location in maps app
     func openMapsApp(lat: String, lng: String, Address: String) {
         let urlToOpen:String
-        if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "comgooglemaps://")!)) {
+        if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "comgooglemaps-x-callback://")!)) {
+            // Google maps available with x-callback functionality
+            urlToOpen = "comgooglemaps-x-callback://?q=\(Address)&center=\(lat),\(lng)&views=traffic&x-success=nuvents://&x-source=NuVents"
+        } else if (UIApplication.sharedApplication().canOpenURL(NSURL(string:"comgooglemaps://")!)) {
             // Google maps available
             urlToOpen = "comgooglemaps://?q=\(Address)&center=\(lat),\(lng)&views=traffic"
         } else {
