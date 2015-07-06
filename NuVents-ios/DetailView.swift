@@ -9,11 +9,14 @@
 import Foundation
 import EventKit
 
+
 class DetailViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet var webView:UIWebView!
     @IBOutlet var titleText:UITextView!
     @IBOutlet var backButton:UIButton!
+    @IBOutlet var mapButton:UIButton!
+    var event:JSON = GlobalVariables.sharedVars.tempJson
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,12 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         }
         httpGetTask.resume()
         
+        //Add back button functionality.
+        backButton.addTarget(self, action: "backButtonPressed:", forControlEvents: .TouchUpInside)
+        
+        //Add map button functionality.
+        mapButton.addTarget(self, action: "mapButtonPressed:", forControlEvents: .TouchUpInside)
+     
     }
     
     // Restrict to portrait only
@@ -42,12 +51,10 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
     
     // Webview finished loading
     func webViewDidFinishLoad(webView: UIWebView) {
-        var event:JSON = GlobalVariables.sharedVars.tempJson
         // Calculate distance between current location and event location
         let eventLoc:CLLocation = CLLocation(latitude: event["latitude"].doubleValue, longitude: event["longitude"].doubleValue)
         let currentLoc:CLLocation = GlobalVariables.sharedVars.currentLoc!
         let dist = eventLoc.distanceFromLocation(currentLoc) * 0.000621371 // Distance in miles
-        
         let distMi = Double(round(10 * dist)/10) //Round the number
         
         event["distance"].string = distMi.description
@@ -56,16 +63,25 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         //Native nav-bar stuff. Add the label of the event to the nav-bar
         titleText.text = event["distance"].stringValue + " Miles Away!"
         
-        
-        //Add back button functionality.
-       backButton.addTarget(self, action: "backButtonPressed:", forControlEvents: .TouchUpInside)
 
     }
     
+ 
     //Back button pressed
     func backButtonPressed(sender: UIButton!) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    //Map button pressedp
+    func mapButtonPressed(sender: UIButton!) {
+        
+        let lat = event["latitude"].stringValue
+        let lng = event["longitude"].stringValue
+        var titl = event["title"].stringValue
+        titl = titl.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        openMapsApp(lat, lng: lng, Title: titl)
+    }
+    
     
     // Webview delegate methods
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
@@ -74,13 +90,13 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         if reqStr!.rangeOfString("closedetailview://") != nil {
             self.dismissViewControllerAnimated(true, completion: nil)
             return false
-        } else if reqStr!.rangeOfString("opendirections://") != nil {
+        } /*else if reqStr!.rangeOfString("opendirections://") != nil {
             let loc = reqStr!.componentsSeparatedByString("//").last
             let lat = loc?.componentsSeparatedByString(",").first
             let lng = loc?.componentsSeparatedByString(",").last
             openMapsApp(lat!, lng: lng!)
-            return false
-        } else if reqStr!.rangeOfString("opencalendar://") != nil {
+            return false */
+         else if reqStr!.rangeOfString("opencalendar://") != nil {
             let jsonString = reqStr!.componentsSeparatedByString("//").last
             openCalendarApp(jsonString!)
             return false
@@ -119,11 +135,11 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
     }
     
     // Open location in maps app
-    func openMapsApp(lat: String, lng: String) {
+    func openMapsApp(lat: String, lng: String, Title: String) {
         let urlToOpen:String
         if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "comgooglemaps://")!)) {
             // Google maps available
-            urlToOpen = "comgooglemaps://?center=\(lat),\(lng)&views=traffic&q=\(lat),\(lng)"
+            urlToOpen = "comgooglemaps://?q=\(Title)&center=\(lat),\(lng)&views=traffic&q=\(lat),\(lng)"
         } else {
             // Use apple maps
             urlToOpen = "http://maps.apple.com/?ll=\(lat),\(lng)&q=\(lat),\(lng)"

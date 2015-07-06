@@ -238,12 +238,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRd-QI-8Cc">
-                                <rect key="frame" x="560" y="34" width="32" height="32"/>
-                                <state key="normal" image="Location_arrow_32.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-tf-AOi">
                                 <rect key="frame" x="48" y="24" width="505" height="51"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.34509803919999998" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -254,15 +248,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRd-QI-8Cc">
+                                <rect key="frame" x="561" y="34" width="32" height="32"/>
+                                <state key="normal" image="Location_arrow_32.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="5JD-0P-Ena"/>
+                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="top" id="5JD-0P-Ena"/>
                             <constraint firstItem="LJN-wi-ar9" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" constant="14" id="6do-d0-VZQ"/>
-                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="FKb-C8-ksH"/>
                             <constraint firstItem="udt-Q1-A4I" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leading" id="HM7-Xr-naO"/>
                             <constraint firstAttribute="trailing" secondItem="uOz-2M-LqD" secondAttribute="trailing" id="HwR-WU-mPm"/>
-                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="KuI-4i-a5K"/>
                             <constraint firstItem="AWE-tf-AOi" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" constant="4" id="Ppt-bX-K8M"/>
                             <constraint firstItem="CaP-nb-KD5" firstAttribute="top" secondItem="uOz-2M-LqD" secondAttribute="bottom" id="Rbo-dy-Jzo"/>
                             <constraint firstItem="uOz-2M-LqD" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leading" id="WkT-th-gIJ"/>
@@ -271,22 +269,23 @@
                             <constraint firstItem="hRd-QI-8Cc" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" constant="14" id="gm5-8E-QrD"/>
                             <constraint firstItem="LJN-wi-ar9" firstAttribute="leading" secondItem="0vh-Aa-van" secondAttribute="leading" id="hQM-UA-Dok"/>
                             <constraint firstItem="hRd-QI-8Cc" firstAttribute="leading" secondItem="AWE-tf-AOi" secondAttribute="trailing" constant="20" id="kSi-Kq-Bjh"/>
+                            <constraint firstItem="uOz-2M-LqD" firstAttribute="top" secondItem="AWE-tf-AOi" secondAttribute="bottom" constant="5" id="ksu-Gr-xId"/>
                             <constraint firstAttribute="trailing" secondItem="hRd-QI-8Cc" secondAttribute="trailing" constant="8" id="ldF-IL-aSz"/>
+                            <constraint firstItem="uOz-2M-LqD" firstAttribute="top" secondItem="AWE-tf-AOi" secondAttribute="bottom" constant="5" id="o7a-Fm-KlO"/>
                             <constraint firstAttribute="trailing" secondItem="udt-Q1-A4I" secondAttribute="trailing" id="prG-iW-LOl"/>
                             <constraint firstAttribute="centerX" secondItem="AWE-tf-AOi" secondAttribute="centerX" id="sOb-ck-hKM"/>
-                            <constraint firstItem="udt-Q1-A4I" firstAttribute="top" secondItem="j5D-OK-NxE" secondAttribute="bottom" id="v6k-VF-fx4"/>
                             <constraint firstItem="uOz-2M-LqD" firstAttribute="top" secondItem="udt-Q1-A4I" secondAttribute="bottom" id="wf8-4N-TYh"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="FKb-C8-ksH"/>
-                                <exclude reference="KuI-4i-a5K"/>
-                                <exclude reference="v6k-VF-fx4"/>
+                                <exclude reference="YjS-jg-XnE"/>
+                                <exclude reference="ksu-Gr-xId"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="LJN-wi-ar9" id="Gbv-Cl-hUa"/>
+                        <outlet property="mapButton" destination="hRd-QI-8Cc" id="7bE-XG-kAf"/>
                         <outlet property="titleText" destination="AWE-tf-AOi" id="4pQ-mI-Ygc"/>
                         <outlet property="webView" destination="uOz-2M-LqD" id="ez5-VD-axP"/>
                     </connections>
