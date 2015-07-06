@@ -78,7 +78,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YvB-0p-bTM">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="ykv-DJ-Und" id="kl0-8t-5ls"/>
@@ -87,9 +87,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YvB-0p-bTM" firstAttribute="top" secondItem="qT6-i8-Hf7" secondAttribute="top" constant="20" id="WCb-Pf-Rpg"/>
-                            <constraint firstItem="rbR-7C-vgE" firstAttribute="top" secondItem="YvB-0p-bTM" secondAttribute="bottom" id="a4O-d4-P12"/>
+                            <constraint firstItem="YvB-0p-bTM" firstAttribute="top" secondItem="qT6-i8-Hf7" secondAttribute="top" id="1NM-Ed-cQN"/>
                             <constraint firstAttribute="trailing" secondItem="YvB-0p-bTM" secondAttribute="trailing" id="dma-Tt-MbL"/>
+                            <constraint firstItem="rbR-7C-vgE" firstAttribute="top" secondItem="YvB-0p-bTM" secondAttribute="bottom" id="nOX-AH-iM6"/>
                             <constraint firstItem="YvB-0p-bTM" firstAttribute="leading" secondItem="qT6-i8-Hf7" secondAttribute="leading" id="nzV-og-S2C"/>
                         </constraints>
                     </view>
@@ -398,8 +398,8 @@
         <image name="welcome.png" width="1500" height="2665"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="B2b-Mz-NJT"/>
-        <segue reference="fIZ-Wi-HV9"/>
+        <segue reference="PMB-P7-RUV"/>
+        <segue reference="yOT-Nm-1C1"/>
         <segue reference="hfN-Z2-VKL"/>
     </inferredMetricsTieBreakers>
 </document>
