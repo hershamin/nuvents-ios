@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -17,8 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Mr-h7-89x">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.34901960784313724" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome.png" translatesAutoresizingMaskIntoConstraints="NO" id="g6l-r3-yeo">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXp-4O-b86">
                                 <rect key="frame" x="520" y="520" width="65" height="65"/>
@@ -33,15 +37,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="g6l-r3-yeo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Jrg-ye-s31"/>
+                            <constraint firstItem="g6l-r3-yeo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Klq-iz-Ypa"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="g6l-r3-yeo" secondAttribute="bottom" id="Uui-71-A3S"/>
+                            <constraint firstItem="1Mr-h7-89x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZSB-CH-YUM"/>
+                            <constraint firstAttribute="trailing" secondItem="1Mr-h7-89x" secondAttribute="trailing" id="ZTJ-Uv-bFr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1Mr-h7-89x" secondAttribute="bottom" id="bbB-cp-XsJ"/>
                             <constraint firstAttribute="trailing" secondItem="g6l-r3-yeo" secondAttribute="trailing" id="efs-Uw-2sx"/>
                             <constraint firstAttribute="trailing" secondItem="FXp-4O-b86" secondAttribute="trailing" constant="15" id="gBs-ge-lVA"/>
+                            <constraint firstItem="1Mr-h7-89x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gnm-wk-K1e"/>
                             <constraint firstItem="g6l-r3-yeo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sWL-C0-bic"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="g6l-r3-yeo" secondAttribute="bottom" id="wGw-QS-uc1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FXp-4O-b86" secondAttribute="bottom" constant="15" id="wgP-Yc-5dp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImg" destination="1Mr-h7-89x" id="HPa-Cg-XyC"/>
                         <outlet property="pickerButton" destination="FXp-4O-b86" id="AWb-YN-i5a"/>
                         <segue destination="ykv-DJ-Und" kind="show" identifier="showPickerView" id="VfB-CU-Cnu"/>
                     </connections>

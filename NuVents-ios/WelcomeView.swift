@@ -14,6 +14,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     var serverConn:Bool = false
     var locationManager:CLLocationManager = CLLocationManager()
     @IBOutlet var pickerButton:UIButton!
+    @IBOutlet var backgroundImg:UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +70,17 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     
     // NuVents server resources sync complete
     func nuventsServerDidSyncResources() {
-        //
+        // Set background image
+        var imgDir = NuVentsBackend.getResourcePath("tmp", type: "welcomeViewImgs", override: false)
+        imgDir = imgDir.stringByReplacingOccurrencesOfString("tmp", withString: "")
+        let fileManager:NSFileManager = NSFileManager()
+        let files = fileManager.enumeratorAtPath(imgDir)
+        var imgs: [String] = []
+        while let file: AnyObject = files?.nextObject() {
+            imgs.append(imgDir + (file as! String))
+        }
+        let randomInd = Int(arc4random_uniform(UInt32(imgs.count))) // Pick random img to display
+        backgroundImg.image = UIImage(contentsOfFile: imgs[randomInd]) // Set image
     }
     
     // Send event website response code
