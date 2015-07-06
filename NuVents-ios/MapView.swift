@@ -20,6 +20,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         // Init Vars
         myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
         
+        // Set status bar text to black color
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+        
         // MapView
         let currentLoc = GlobalVariables.sharedVars.currentLoc!
         var camera = GMSCameraPosition.cameraWithLatitude(currentLoc.coordinate.latitude, longitude: currentLoc.coordinate.longitude, zoom: 13)

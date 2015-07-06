@@ -21,6 +21,9 @@ class ListViewController: UIViewController, UIWebViewDelegate {
         let filePath = NSBundle.mainBundle().pathForResource("listView", ofType: "html")
         webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
         
+        // Set status bar text to white color
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        
     }
     
     @IBAction func eventFilterIndexChanged(sender:UISegmentedControl) {

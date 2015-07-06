@@ -26,6 +26,9 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         let filePath = NSBundle.mainBundle().pathForResource("detailView", ofType: "html")
         webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
         
+        // Set status bar text to white color
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        
         // Record hit on event website by issuing a http get request
         let urlString = GlobalVariables.sharedVars.tempJson["website"].stringValue
         let url = NSURL(string:urlString)!

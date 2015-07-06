@@ -19,6 +19,9 @@ class CategoryViewController: UIViewController, UIWebViewDelegate {
         // Init
         let filePath = NSBundle.mainBundle().pathForResource("categoryView", ofType: "html")
         webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
+        
+        // Set status bar text to black color
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
     }
     
     // Webview delegate methods

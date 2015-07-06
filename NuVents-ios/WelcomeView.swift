@@ -24,6 +24,9 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: deviceID)
         GlobalVariables.sharedVars.api = api
         
+        // Set status bar text to white color
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        
         // Picker button
         pickerButton.addTarget(self, action: "pickerButtonPressed:", forControlEvents: .TouchUpInside)
         pickerButton.hidden = true
