@@ -180,7 +180,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QgQ-tj-78M">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="whN-DI-xM0" id="cf8-HN-hhd"/>
@@ -202,11 +202,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QgQ-tj-78M" firstAttribute="top" secondItem="g1W-kg-tW3" secondAttribute="top" constant="20" id="2ha-nI-33t"/>
                             <constraint firstItem="QgQ-tj-78M" firstAttribute="leading" secondItem="g1W-kg-tW3" secondAttribute="leading" id="3aS-hU-G9s"/>
                             <constraint firstAttribute="trailing" secondItem="QgQ-tj-78M" secondAttribute="trailing" id="XCT-iY-kQn"/>
+                            <constraint firstItem="gNP-rI-TDC" firstAttribute="top" secondItem="QgQ-tj-78M" secondAttribute="bottom" id="c6z-0T-ZDd"/>
                             <constraint firstItem="gNP-rI-TDC" firstAttribute="top" secondItem="60P-nH-FOO" secondAttribute="bottom" constant="25" id="dbO-V3-5d7"/>
-                            <constraint firstItem="gNP-rI-TDC" firstAttribute="top" secondItem="QgQ-tj-78M" secondAttribute="bottom" id="f1c-cv-Omk"/>
+                            <constraint firstItem="QgQ-tj-78M" firstAttribute="top" secondItem="g1W-kg-tW3" secondAttribute="top" id="p5e-WK-Uod"/>
                             <constraint firstAttribute="centerX" secondItem="60P-nH-FOO" secondAttribute="centerX" id="wxv-7v-tao"/>
                         </constraints>
                     </view>
@@ -398,8 +398,8 @@
         <image name="welcome.png" width="1500" height="2665"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PMB-P7-RUV"/>
-        <segue reference="yOT-Nm-1C1"/>
+        <segue reference="fIZ-Wi-HV9"/>
+        <segue reference="B2b-Mz-NJT"/>
         <segue reference="hfN-Z2-VKL"/>
     </inferredMetricsTieBreakers>
 </document>
