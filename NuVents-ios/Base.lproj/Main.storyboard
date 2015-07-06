@@ -34,9 +34,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="H1D-oY-R1c">
+                                <rect key="frame" x="282" y="534" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="H1D-oY-R1c" secondAttribute="centerX" id="4eg-21-9YF"/>
                             <constraint firstItem="g6l-r3-yeo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Klq-iz-Ypa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="g6l-r3-yeo" secondAttribute="bottom" id="Uui-71-A3S"/>
                             <constraint firstItem="1Mr-h7-89x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZSB-CH-YUM"/>
@@ -45,11 +49,13 @@
                             <constraint firstAttribute="trailing" secondItem="g6l-r3-yeo" secondAttribute="trailing" id="efs-Uw-2sx"/>
                             <constraint firstAttribute="trailing" secondItem="FXp-4O-b86" secondAttribute="trailing" constant="15" id="gBs-ge-lVA"/>
                             <constraint firstItem="1Mr-h7-89x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gnm-wk-K1e"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="H1D-oY-R1c" secondAttribute="bottom" constant="29" id="nGV-eL-wqr"/>
                             <constraint firstItem="g6l-r3-yeo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="sWL-C0-bic"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FXp-4O-b86" secondAttribute="bottom" constant="15" id="wgP-Yc-5dp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="H1D-oY-R1c" id="F7q-jV-jWm"/>
                         <outlet property="backgroundImg" destination="1Mr-h7-89x" id="HPa-Cg-XyC"/>
                         <outlet property="pickerButton" destination="FXp-4O-b86" id="AWb-YN-i5a"/>
                         <segue destination="ykv-DJ-Und" kind="show" identifier="showPickerView" id="VfB-CU-Cnu"/>

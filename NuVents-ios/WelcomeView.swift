@@ -15,6 +15,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     var locationManager:CLLocationManager = CLLocationManager()
     @IBOutlet var pickerButton:UIButton!
     @IBOutlet var backgroundImg:UIImageView!
+    @IBOutlet var activityIndicator:UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,8 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         }
         locationManager.startUpdatingLocation()
         
+        activityIndicator.startAnimating() // Start activity indicator
+        
     }
     
     // Picker button pressed
@@ -55,6 +58,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
             GlobalVariables.sharedVars.currentLoc = latestLoc // Set current location
             pickerButton.hidden = false
             locationManager.stopUpdatingLocation()
+            activityIndicator.stopAnimating() // Stop activity indicator
         }
     }
     
