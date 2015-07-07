@@ -5,18 +5,25 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <script>
             window.setEventCount = function(data) {
-                // Process data to friendlier json
+                // Parse into string if not already a string
                 try {
                     data = String(data)
                 } catch (e) {}
                 angular.element(document.querySelector("body")).scope().setEventCount(data);
             }
 			window.setImgUrl = function(data) {
-                // Process data to friendlier json
+                // Parse into string if not already a string
                 try {
                     data = String(data)
                 } catch (e) {}
                 angular.element(document.querySelector("body")).scope().setImgUrl(data);
+            }
+            window.setLocation = function(data) {
+                // Parse into string if not already a string
+                try {
+                    data = String(data)
+                } catch (e) {}
+                angular.element(document.querySelector("body")).scope().setLocation(data);
             }
             var pickerViewApp = angular.module("pickerViewApp", []);
             pickerViewApp.controller("pickerViewCtrl", function ($scope, $http) {
@@ -30,12 +37,36 @@
                         $scope.imgUrl = data;
                     })
                 }
+                $scope.setLocation = function(data) {
+                    $scope.$apply(function() {
+                         var response = $http.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + data);
+                         response.success(function(res) {
+                             var components = res.results[0].address_components
+                             var city
+                             var state
+                             for (var i=0; i<components.length; i++) {
+                                  if (components[i].types.indexOf("locality") > -1) {
+                                      city = components[i].long_name
+                                  }
+                                  if (components[i].types.indexOf("administrative_area_level_1") > -1) {
+                                      state = components[i].short_name
+                                  }
+                                  if (components[i].types.indexOf("postal_code") > -1) {
+                                      $scope.zipCode = components[i].long_name
+                                  }
+                              }
+                              $scope.currentCity = city + ", " + state
+                         })
+                         response.error(function(res) {
+                             alert("Failure: " + res)
+                         })
+                    })
+                }
                 $scope.openView = function(view) {
                     window.location = "open" + view + "View://";
-                                    
+                }
                 $scope.email = {
                     text: 'email@example.com'
-                                     }
                 }
                 $scope.submitForm = function(isValid) {
                 //Do stuff here
@@ -109,7 +140,7 @@
       <div id="outerDiv">
           <div ng-if="eventCount == 0">
               <div class="container">
-                  <h2>Uh oh. We haven't added your city yet! Give us your email and and we'll be sure to find you the right events ASAP!</h2>
+                  <h2>Uh oh. We haven't added {{currentCity}} yet! Give us your email and and we'll be sure to find you the right events ASAP!</h2>
                   <form name="emailForm" ng-submit="submitForm(emailForm.$valid)">
                       <div class="form-group">
                           <label for="name">Name:</label>
