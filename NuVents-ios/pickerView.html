@@ -42,20 +42,18 @@
                          var response = $http.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + data);
                          response.success(function(res) {
                              var components = res.results[0].address_components
-                             var city
-                             var state
                              for (var i=0; i<components.length; i++) {
                                   if (components[i].types.indexOf("locality") > -1) {
-                                      city = components[i].long_name
+                                      $scope.city = components[i].long_name
                                   }
                                   if (components[i].types.indexOf("administrative_area_level_1") > -1) {
-                                      state = components[i].short_name
+                                      $scope.state = components[i].short_name
                                   }
                                   if (components[i].types.indexOf("postal_code") > -1) {
                                       $scope.zipCode = components[i].long_name
                                   }
                               }
-                              $scope.currentCity = city + ", " + state
+                              $scope.currentCity = $scope.city + ", " + $scope.state
                          })
                          response.error(function(res) {
                              alert("Failure: " + res)
@@ -65,12 +63,12 @@
                 $scope.openView = function(view) {
                     window.location = "open" + view + "View://";
                 }
-                $scope.email = {
-                    text: 'email@example.com'
+                $scope.user = {
+                    email: '',
+                    name: ''
                 }
                 $scope.submitForm = function(isValid) {
-                //Do stuff here
-                                     
+                    window.location = "sendEventRequest://?name=" + $scope.user.name + "&email=" + $scope.user.email + "&city=" + $scope.city + "&state=" + $scope.state + "&zip=" + $scope.zipCode;
                 }
             })
         </script>
@@ -144,9 +142,9 @@
                   <form name="emailForm" ng-submit="submitForm(emailForm.$valid)">
                       <div class="form-group">
                           <label for="name">Name:</label>
-                          <input type="name" class="form-control" name="input" placeholder="Enter name" required>
+                          <input type="name" class="form-control" name="input" ng-model="user.name" placeholder="Enter name" required>
                               <label for="email">Email:</label>
-                              <input type="email" class="form-control" name="input" ng-model="email.text" placeholder="Enter email">
+                              <input type="email" class="form-control" name="input" ng-model="user.email" placeholder="Enter email">
                               </div>
                       <div role="alert">
                             <span class="error" ng-show="emailForm.input.$error.email"> <strong>Not a valid e-mail address!</strong></span>
