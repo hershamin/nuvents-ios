@@ -21,6 +21,9 @@
                 $scope.close = function() {
                     window.location = "closeDetailView://";
                 }
+                $scope.openCalendar = function() {
+                    window.location = "openCalendar://?title=" + $scope.event.title + "&startDate=" + $scope.event.time.start + "&endDate=" + $scope.event.time.end + "&description=" + $scope.event.description + "&location=" + $scope.event.address;
+                }
                 $scope.baseURL = "http://storage.googleapis.com/nuvents-resources/event-category-icons/";
                 $scope.getDate = function(epoch) {
                     var monthNames = new Array("January", "February", "March",
@@ -131,7 +134,7 @@
                 <h1>{{event.title}}<h1>
                     <div class="banner"> </div>
                     <h2>{{event.address}}</h2>
-                    <p>{{getDate(event.time.start)}}</p>
+                    <p>{{getDate(event.time.start)}}</p><button type="button" ng-click="openCalendar()">Calendar</button>
                     <p> {{event.description}} </p>
                     <p> <strong>Price:</strong> {{event.price}} </p>
                     </div>

@@ -8,9 +8,9 @@
 
 import Foundation
 import EventKit
+import EventKitUI
 
-
-class DetailViewController: UIViewController, UIWebViewDelegate {
+class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditViewDelegate {
     
     @IBOutlet var webView:UIWebView!
     @IBOutlet var titleText:UITextView!
@@ -93,13 +93,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
         if reqStr!.rangeOfString("closedetailview://") != nil {
             self.dismissViewControllerAnimated(true, completion: nil)
             return false
-        } /*else if reqStr!.rangeOfString("opendirections://") != nil {
-            let loc = reqStr!.componentsSeparatedByString("//").last
-            let lat = loc?.componentsSeparatedByString(",").first
-            let lng = loc?.componentsSeparatedByString(",").last
-            openMapsApp(lat!, lng: lng!)
-            return false */
-         else if reqStr!.rangeOfString("opencalendar://") != nil {
+        } else if reqStr!.rangeOfString("opencalendar://") != nil {
             let jsonString = reqStr!.componentsSeparatedByString("//").last
             openCalendarApp(jsonString!)
             return false
@@ -110,31 +104,64 @@ class DetailViewController: UIViewController, UIWebViewDelegate {
     }
     
     // Save event to calendar app
-    func openCalendarApp(var jsonString: String) {
-        jsonString = jsonString.stringByReplacingOccurrencesOfString("'", withString: "\"")
-        let dataFromJsonStr = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        let jsonData = JSON(data: dataFromJsonStr!)
+    func openCalendarApp(var query: String) {
+        // Process query string
+        query = query.stringByReplacingOccurrencesOfString("?", withString: "") // Remove question mark
+        query = query.stringByReplacingOccurrencesOfString("%20", withString: " ") // Remove html space character with space
+        let queryArr = query.componentsSeparatedByString("&")
         
-        // save event to calendar app
+        // Event store (calendar) config
         var eventStore:EKEventStore = EKEventStore()
+        
+        // Add to calendar
         eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: {
             (granted, error) in
-            
             if (granted) && (error == nil) {
                 var event:EKEvent = EKEvent(eventStore: eventStore)
                 
-                event.title = jsonData["title"].stringValue
-                event.startDate = NSDate(timeIntervalSince1970: jsonData["startDate"].doubleValue * 0.001)
-                event.endDate = NSDate(timeIntervalSince1970: jsonData["endDate"].doubleValue * 0.001)
-                event.notes = jsonData["description"].stringValue
                 event.calendar = eventStore.defaultCalendarForNewEvents
-                event.location = jsonData["location"].stringValue
+                // Iterate through array to set event properties
+                for param in queryArr {
+                    let paramSplit = param.componentsSeparatedByString("=")
+                    let key = paramSplit[0]
+                    let value = paramSplit[1]
+                    if (key == "title") {
+                        event.title = value
+                    } else if (key == "startDate") {
+                        event.startDate = NSDate(timeIntervalSince1970: (value as NSString).doubleValue)
+                    } else if (key == "endDate") {
+                        event.endDate = NSDate(timeIntervalSince1970: (value as NSString).doubleValue)
+                    } else if (key == "description") {
+                        event.notes = value
+                    } else if (key == "location") {
+                        event.location = value
+                    }
+                }
                 
-                eventStore.saveEvent(event, span: EKSpanThisEvent, error: nil)
+                // Open eventkit UI so user can save to calendar
+                var eventController:EKEventEditViewController = EKEventEditViewController()
+                eventController.eventStore = eventStore
+                eventController.event = event
+                eventController.editViewDelegate = self
                 
+                self.presentViewController(eventController, animated: true, completion: nil)
             }
-            
         })
+        
+    }
+    
+    // Event kit (Calendar) edit view delegate
+    func eventEditViewController(controller: EKEventEditViewController!, didCompleteWithAction action: EKEventEditViewAction) {
+        
+        if (action.value == EKEventEditViewActionCanceled.value) {
+            // User tapped cancel
+        } else if (action.value == EKEventEditViewActionSaved.value) {
+            // User saved event
+        } else if (action.value == EKEventEditViewActionDeleted.value) {
+            // User tapped delete
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Open location in maps app
