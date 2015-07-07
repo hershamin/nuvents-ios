@@ -37,6 +37,10 @@
                     text: 'email@example.com'
                                      }
                 }
+                $scope.submitForm = function(isValid) {
+                //Do stuff here
+                                     
+                }
             })
         </script>
         <style>
@@ -106,18 +110,19 @@
           <div ng-if="eventCount == 0">
               <div class="container">
                   <h2>Uh oh. We haven't added your city yet! Give us your email and and we'll be sure to find you the right events ASAP!</h2>
-                  <form name="emailForm">
+                  <form name="emailForm" ng-submit="submitForm(emailForm.$valid)">
                       <div class="form-group">
                           <label for="name">Name:</label>
-                          <input type="name" class="form-control" name="input" placeholder="Enter name">
+                          <input type="name" class="form-control" name="input" placeholder="Enter name" required>
                               <label for="email">Email:</label>
                               <input type="email" class="form-control" name="input" ng-model="email.text" placeholder="Enter email">
                               </div>
                       <div role="alert">
                             <span class="error" ng-show="emailForm.input.$error.email"> <strong>Not a valid e-mail address!</strong></span>
                       </div>
+                      <button type="submit" class="btn btn-default" ng-disabled="emailForm.$invalid">Submit</button>
                   </form>
-                  <button type="submit" class="btn btn-default">Submit</button>
+                  
              
               </div>
         </div>
