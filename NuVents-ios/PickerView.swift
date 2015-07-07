@@ -60,10 +60,21 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         let jsonDict = GlobalVariables.sharedVars.eventJSON
         // Send to webview
         webView.stringByEvaluatingJavaScriptFromString("setEventCount(\(jsonDict.count))")
-        // Get image url from resource
-        let imgURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("NuVents_SplashScreen", ofType: "png")!)!
-        // Send to webview
-        webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\"\(imgURL)\")")
+        // Get image url from welcome view backgrounds & send to webview
+        var imgDir = NuVentsBackend.getResourcePath("tmp", type: "welcomeViewImgs", override: false)
+        imgDir = imgDir.stringByReplacingOccurrencesOfString("tmp", withString: "")
+        let fileManager:NSFileManager = NSFileManager()
+        let files = fileManager.enumeratorAtPath(imgDir)
+        var imgs: [String] = []
+        while let file: AnyObject = files?.nextObject() {
+            imgs.append(imgDir + (file as! String))
+        }
+        let randomInd = Int(arc4random_uniform(UInt32(imgs.count))) // Pick random img to display
+        let imgURL = imgs[randomInd]
+        webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\"\(imgURL)\")") // Send to webview
+        // Send current location coordinates to webview
+        let currentLoc = GlobalVariables.sharedVars.currentLoc!
+        webView.stringByEvaluatingJavaScriptFromString("setLocation(\"\(currentLoc.coordinate.latitude),\(currentLoc.coordinate.longitude)\")")
     }
     
     // Update event count
