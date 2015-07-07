@@ -2,15 +2,15 @@
     <title>Event List</title>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
-            <script>
-                window.setEvents = function(data) {
-                    // Process data to friendlier json
-                    try {
-                        data = JSON.parse(data)
-                    } catch (e) {}
-                    angular.element(document.querySelector("body")).scope().setEvents(data);
-                }
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
+        <script>
+            window.setEvents = function(data) {
+                // Process data to friendlier json
+                try {
+                    data = JSON.parse(data)
+                } catch (e) {}
+                angular.element(document.querySelector("body")).scope().setEvents(data);
+            }
             window.searchByTitle = function(text) {
                 angular.element(document.querySelector("body")).scope().searchByTitle(text);
             }
@@ -19,85 +19,85 @@
             }
             var eventDetailApp = angular.module("eventListApp", []);
             eventDetailApp.controller("eventListCtrl", function ($scope, $http) {
-                                      $scope.setEvents = function(data) {
-                                      $scope.$apply(function() {
-                                                    $scope.events = []
-                                                    for (var i in data) {
-                                                    data[i].distance = parseFloat(data[i].distance)
-                                                    $scope.events.push(data[i]);
-                                                    }
-                                                    })
-                                      }
-                                      $scope.sortBy = function(attr) {
-                                        $scope.$apply(function() {
-                                                      $scope.orderAttr = attr;
-                                        })
-                                      }
-                                      $scope.searchByTitle = function(text) {
-                                      $scope.$apply(function() {
-                                                    $scope.search = {}
-                                                    $scope.search.title = text
-                                                    })
-                                      }
-                                      $scope.openEvent = function(eid) {
-                                      window.location = "openDetailView://" + eid;
-                                      }
-                                      $scope.baseURL = "http://storage.googleapis.com/nuvents-resources/event-category-icons/"
-                                      $scope.orderAttr = 'distance'
-                                      $scope.getDate = function(epoch) {
-                                      var monthNames = new Array("January", "February", "March",
-                                                                 "April", "May", "June", "July", "August", "September",
-                                                                 "October", "November", "December");
-                                      var date = new Date(epoch * 1000);
-                                      return monthNames[date.getMonth()] + " " + date.getDate() + getDateOrd(date.getDate()) + " at " + convertTime(date.getHours()+":"+date.getMinutes())
-                                      }
-                                      $scope.getDist = function(dist) {
-                                      return Math.round((parseFloat(dist)*parseFloat("0.000621371192"))*10)/10 + " miles"
-                                      }
-                                      var convertTime = function(time) {
-                                      // Check correct time format and split into components
-                                      var timeS = time.split(":")
-                                      hour = parseFloat(timeS[0])
-                                      min = parseFloat(timeS[1])
-                                      
-                                      if (time.indexOf("12:0") > -1) {
-                                      return "noon"
-                                      } else if (hour < 12 && min == 0) {
-                                      return hour + " AM"
-                                      } else if (hour == 12 && min > 0) {
-                                      return timeS.join(":") + " PM"
-                                      } else if (hour > 12 && min == 0) {
-                                      return (hour - 12) + " PM"
-                                      } else if (hour > 12 && min > 0) {
-                                      return (hour - 12) + ":" + min + " PM"
-                                      } else {
-                                      return timeS.join(":")
-                                      }
-                                      }
-                                      var getDateOrd = function(date) {
-                                      switch(date) {
-                                      case 1:
-                                      case 21:
-                                      case 31:
-                                      return 'st';
-                                      case 2:
-                                      case 22:
-                                      return 'nd';
-                                      case 3:
-                                      case 23:
-                                      return 'rd';
-                                      default:
-                                      return 'th';
-                                      }
-                                      }
-                                      })
-                </script>
-            <style>
-                html, body {
-                    margin: 0;
-                    body: 0;
-                    background: #fcf8e2;
+                $scope.setEvents = function(data) {
+                    $scope.$apply(function() {
+                        $scope.events = []
+                        for (var i in data) {
+                            data[i].distance = parseFloat(data[i].distance)
+                            $scope.events.push(data[i]);
+                        }
+                    })
                 }
+                $scope.sortBy = function(attr) {
+                    $scope.$apply(function() {
+                        $scope.orderAttr = attr;
+                    })
+                }
+                $scope.searchByTitle = function(text) {
+                    $scope.$apply(function() {
+                        $scope.search = {}
+                        $scope.search.title = text
+                    })
+                }
+                $scope.openEvent = function(eid) {
+                    window.location = "openDetailView://" + eid;
+                }
+                $scope.baseURL = "http://storage.googleapis.com/nuvents-resources/event-category-icons/"
+                $scope.orderAttr = 'distance'
+                $scope.getDate = function(epoch) {
+                    var monthNames = new Array("January", "February", "March",
+                                               "April", "May", "June", "July", "August", "September",
+                                               "October", "November", "December");
+                    var date = new Date(epoch * 1000);
+                    return monthNames[date.getMonth()] + " " + date.getDate() + getDateOrd(date.getDate()) + " at " + convertTime(date.getHours()+":"+date.getMinutes())
+                }
+                $scope.getDist = function(dist) {
+                    return Math.round((parseFloat(dist)*parseFloat("0.000621371192"))*10)/10 + " miles"
+                }
+                var convertTime = function(time) {
+                    // Check correct time format and split into components
+                    var timeS = time.split(":")
+                    hour = parseFloat(timeS[0])
+                    min = parseFloat(timeS[1])
+
+                    if (time.indexOf("12:0") > -1) {
+                        return "noon"
+                    } else if (hour < 12 && min == 0) {
+                        return hour + " AM"
+                    } else if (hour == 12 && min > 0) {
+                        return timeS.join(":") + " PM"
+                    } else if (hour > 12 && min == 0) {
+                        return (hour - 12) + " PM"
+                    } else if (hour > 12 && min > 0) {
+                        return (hour - 12) + ":" + min + " PM"
+                    } else {
+                        return timeS.join(":")
+                    }
+                }
+                var getDateOrd = function(date) {
+                    switch(date) {
+                        case 1:
+                        case 21:
+                        case 31:
+                            return 'st';
+                        case 2:
+                        case 22:
+                            return 'nd';
+                        case 3:
+                        case 23:
+                            return 'rd';
+                        default:
+                            return 'th';
+                    }
+                }
+            })
+        </script>
+        <style>
+            html, body {
+                margin: 0;
+                body: 0;
+                background: #fcf8e2;
+            }
             body button {
                 margin: 0;
                 padding: 0;
@@ -113,8 +113,8 @@
                 margin: 0;
                 border: 0;
             }
-            </style>  
-            </head>
+        </style>  
+    </head>
     <body ng-controller="eventListCtrl">
         <div ng-repeat="event in events | filter:search | orderBy:orderAttr">
             <button ng-click="openEvent(event.eid)" ng-style="{margin:0, border:0}" ng-if="event.title.length > 0">
