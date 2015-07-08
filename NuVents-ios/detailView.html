@@ -123,9 +123,6 @@
                 color: black;
                 font-weight: bold;
             }
-            button {
-                border: none;
-            }
         </style>
     </head>
     <body ng-controller="eventDetailCtrl">
@@ -134,7 +131,7 @@
                 <h1>{{event.title}}<h1>
                     <div class="banner"> </div>
                     <h2>{{event.address}}</h2>
-                    <p>{{getDate(event.time.start)}}</p><button type="button" ng-click="openCalendar()">Calendar</button>
+                    <h2>{{getDate(event.time.start)}}<button style="border:0;" type="button" class="calbutton" ng-click="openCalendar()"><img src="Calendar-icon.png"></button></h2>
                     <p> {{event.description}} </p>
                     <p> <strong>Price:</strong> {{event.price}} </p>
                     </div>
