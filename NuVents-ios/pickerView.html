@@ -39,6 +39,7 @@
                 }
                 $scope.setLocation = function(data) {
                     $scope.$apply(function() {
+                        $scope.location = data;
                          var response = $http.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + data);
                          response.success(function(res) {
                              var components = res.results[0].address_components
@@ -68,7 +69,7 @@
                     name: ''
                 }
                 $scope.submitForm = function(isValid) {
-                    window.location = "sendEventRequest://?name=" + $scope.user.name + "&email=" + $scope.user.email + "&city=" + $scope.city + "&state=" + $scope.state + "&zip=" + $scope.zipCode;
+                    window.location = "sendEventRequest://?name=" + $scope.user.name + "&email=" + $scope.user.email + "&city=" + $scope.city + "&state=" + $scope.state + "&zip=" + $scope.zipCode + "&latlng=" + $scope.location;
                 }
             })
         </script>
