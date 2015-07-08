@@ -56,7 +56,7 @@
 		BAC2D21A1B423B92001F276E /* Location_arrow_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC2D2191B423B92001F276E /* Location_arrow_32.png */; };
 		BAC2D21C1B423B9D001F276E /* Arrows-Back-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC2D21B1B423B9D001F276E /* Arrows-Back-icon.png */; };
 		BAC2D21E1B4AFDC4001F276E /* welcome.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC2D21D1B4AFDC4001F276E /* welcome.png */; };
-		BAC2D2221B4CDDFA001F276E /* Calendar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC2D2211B4CDDFA001F276E /* Calendar-icon.png */; };
+		BAC2D2241B4CE494001F276E /* Calendar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BAC2D2231B4CE494001F276E /* Calendar-icon.png */; };
 		BADEE4841B377EBE00AF8231 /* myLoc.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4831B377EBE00AF8231 /* myLoc.png */; };
 		BADEE4861B377EC500AF8231 /* homeBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4851B377EC500AF8231 /* homeBtn.png */; };
 		BADEE4881B37909500AF8231 /* navBar.png in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4871B37909500AF8231 /* navBar.png */; };
@@ -132,7 +132,7 @@
 		BAC2D2191B423B92001F276E /* Location_arrow_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Location_arrow_32.png; sourceTree = "<group>"; };
 		BAC2D21B1B423B9D001F276E /* Arrows-Back-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Arrows-Back-icon.png"; sourceTree = "<group>"; };
 		BAC2D21D1B4AFDC4001F276E /* welcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome.png; sourceTree = "<group>"; };
-		BAC2D2211B4CDDFA001F276E /* Calendar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-icon.png"; sourceTree = "<group>"; };
+		BAC2D2231B4CE494001F276E /* Calendar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Calendar-icon.png"; sourceTree = "<group>"; };
 		BADEE4831B377EBE00AF8231 /* myLoc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myLoc.png; sourceTree = "<group>"; };
 		BADEE4851B377EC500AF8231 /* homeBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeBtn.png; sourceTree = "<group>"; };
 		BADEE4871B37909500AF8231 /* navBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBar.png; sourceTree = "<group>"; };
@@ -285,8 +285,8 @@
 		BA8E59601B2A543700D6AB86 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				BAC2D2211B4CDDFA001F276E /* Calendar-icon.png */,
 				BAC2D21B1B423B9D001F276E /* Arrows-Back-icon.png */,
+				BAC2D2231B4CE494001F276E /* Calendar-icon.png */,
 				BAC2D2191B423B92001F276E /* Location_arrow_32.png */,
 				BADEE48F1B38629E00AF8231 /* forwardBtn.png */,
 				BADEE4871B37909500AF8231 /* navBar.png */,
@@ -395,7 +395,7 @@
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
 				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
 				BADEE4861B377EC500AF8231 /* homeBtn.png in Resources */,
-				BAC2D2221B4CDDFA001F276E /* Calendar-icon.png in Resources */,
+				BAC2D2241B4CE494001F276E /* Calendar-icon.png in Resources */,
 				BADEE49B1B3BB95600AF8231 /* pickerView.html in Resources */,
 				BAC2D21E1B4AFDC4001F276E /* welcome.png in Resources */,
 				BADEE4991B3BB95600AF8231 /* detailView.html in Resources */,

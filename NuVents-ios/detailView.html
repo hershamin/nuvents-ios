@@ -79,8 +79,8 @@
             }
             .card {
                 background:#FFF;
-                opacity:0.7;
-                filter:alpha(opacity=70);
+                opacity:0.8;
+                filter:alpha(opacity=80);
                 border: 1px solid #AAA;
                 border-bottom: 3px solid #BBB;
                 padding:0px;
@@ -132,7 +132,7 @@
                 <h1>{{event.title}}<h1>
                     <div class="banner"> </div>
                     <h2>{{event.address}}</h2>
-                    <h2>{{getDate(event.time.start)}}<button style="border:0;" type="button" ng-click="openCalendar()"><img src="Calendar-icon.png"></button></h2>
+                    <h2>{{getDate(event.time.start)}}<button style="border:0;" type="button" ng-click="openCalendar()"><img src="Calendar-icon.png" height="30px"></button></h2>
                     <p> {{event.description}} </p>
                     <p> <strong>Price:</strong> {{event.price}} </p>
                     </div>
