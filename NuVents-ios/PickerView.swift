@@ -21,8 +21,13 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
         GlobalVariables.sharedVars.pickerWebView = webView
         
-        // Set status bar text to black color
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+        // Set status bar text color based on event count
+        let eventCount = GlobalVariables.sharedVars.eventJSON.count
+        if (eventCount == 0) { // White color
+            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        } else { // Black color
+            UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+        }
         
     }
     
