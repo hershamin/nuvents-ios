@@ -33,7 +33,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         pickerButton.hidden = true
         
         // Set location manager
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.delegate = self
         // Location manager special setup for different iOS versions
         switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
@@ -52,6 +52,45 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     // Picker button pressed
     func pickerButtonPressed(sender: UIButton!) {
         self.performSegueWithIdentifier("showPickerView", sender: nil)
+    }
+    
+    // Device Location authorization status
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        var message:String = ""
+        var title:String = ""
+        var showAlert = false
+        if (status == CLAuthorizationStatus.Denied) {
+            // App is denied permission
+            showAlert = true
+            title = "Location Access Disabled"
+            if objc_getClass("UIAlertController") != nil { // ios 8+
+                message = "In order to show events, Please open this app's settings and set Location access to 'While Using the App'"
+            } else { // ios 7
+                message = "In order to show events, Please open settings, go to Privacy > Location Services > NuVents and Turn on Location Services"
+            }
+        } else if (status == CLAuthorizationStatus.Restricted) {
+            // Could be not available or parental controls
+            showAlert = true
+            title = "Location Access Restricted"
+            message = "Parental Controls might be enabled or Location Services might be disabled on your device, if possible, Please open this app's settings to disable Parental Controls or enable Location Services"
+        }
+        // Show alert view depending on OS
+        if (showAlert) {
+            if objc_getClass("UIAlertController") != nil { // ios 8+
+                var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+                alert.addAction(cancelAction)
+                let openAction = UIAlertAction(title: "Open Settings", style: UIAlertActionStyle.Default) { (action) in
+                    let url = NSURL(string: UIApplicationOpenSettingsURLString)
+                    UIApplication.sharedApplication().openURL(url!)
+                }
+                alert.addAction(openAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+            } else { // ios 7
+                var alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            }
+        }
     }
     
     // Got device location
