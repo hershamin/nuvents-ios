@@ -33,6 +33,7 @@ class GlobalVariables {
     internal var category = "" // To set event category
     internal var api:NuVentsBackend? // NuVents backend API
     internal var pickerWebView:UIWebView? // Picker View Web View
+    internal var udid:String? // Unique device id
     
     // Here is how you would get to it without being a global collision of varables.
     //    , or in other words, it is globally accessible parameter that is specific to the

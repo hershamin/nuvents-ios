@@ -21,6 +21,7 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let deviceID:String = UIDevice.currentDevice().identifierForVendor.UUIDString
+        GlobalVariables.sharedVars.udid = deviceID
         api = NuVentsBackend(delegate: self, server: GlobalVariables.sharedVars.server, device: deviceID)
         GlobalVariables.sharedVars.api = api
         
