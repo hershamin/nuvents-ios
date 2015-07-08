@@ -87,7 +87,7 @@
             height:10%;
             background-color: #F49A8C;
             color: #1C3C6D;
-            font-size: 150%;
+            font-size: 3.5vh;
             text-align: center;
           }
           #categoryBtn {
@@ -156,7 +156,7 @@
               </div>
         </div>
           <div ng-if="eventCount > 0">
-        <div id="eventCount">{{eventCount}} events happening nearby</div>
+        <div id="eventCount"><br><strong>{{eventCount}}</strong> events happening nearby!</div>
         <button id="categoryBtn" ng-click="openView('Category')">Categories</button>
         <div id="mapBtn">
           Map <br>
