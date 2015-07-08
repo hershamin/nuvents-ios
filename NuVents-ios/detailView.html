@@ -29,8 +29,18 @@
                     var monthNames = new Array("January", "February", "March",
                                                "April", "May", "June", "July", "August", "September",
                                                "October", "November", "December");
-                    var date = new Date(epoch * 1000);
-                    return monthNames[date.getMonth()] + " " + date.getDate() + getDateOrd(date.getDate()) + " at " + convertTime(date.getHours()+":"+date.getMinutes())
+                    var today = new Date(); // Today date
+                    var date = new Date(epoch * 1000); // Event date
+                    if (today.getFullYear() == date.getFullYear() && today.getMonth() == date.getMonth() && today.getDate() == date.getDate()) {
+                        // Today's event
+                        return "Today at " + convertTime(date.getHours() + ":" + date.getMinutes())
+                    } else if (today.getFullYear() == date.getFullYear() && today.getMonth() == date.getMonth() && today.getDate() == (date.getDate() - 1)) {
+                        // Tomorrow's event
+                        return "Tomorrow at " + convertTime(date.getHours() + ":" + date.getMinutes())
+                    } else {
+                        // Other day's event
+                        return monthNames[date.getMonth()] + " " + date.getDate() + getDateOrd(date.getDate()) + " at " + convertTime(date.getHours() + ":" + date.getMinutes())
+                    }
                 }
                 var convertTime = function(time) {
                     // Check correct time format and split into components
@@ -40,6 +50,10 @@
 
                     if (time.indexOf("12:0") > -1) {
                         return "noon"
+                    } else if (hour == 0 && min == 0) {
+                        return "12 AM"
+                    } else if (hour == 0 && min > 0) {
+                        return "12:" + min + " AM"
                     } else if (hour < 12 && min == 0) {
                         return hour + " AM"
                     } else if (hour < 12 && min > 0) {
