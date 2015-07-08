@@ -30,7 +30,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
         // Record hit on event website by issuing a http get request
-        let urlString = GlobalVariables.sharedVars.tempJson["website"].stringValue
+        let urlString = event["website"].stringValue
         let url = NSURL(string:urlString)!
         let httpGetTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
             (data, response, error) in
@@ -94,8 +94,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
             self.dismissViewControllerAnimated(true, completion: nil)
             return false
         } else if reqStr!.rangeOfString("opencalendar://") != nil {
-            let jsonString = reqStr!.componentsSeparatedByString("//").last
-            openCalendarApp(jsonString!)
+            openCalendarApp()
             return false
         } else {
             return true
@@ -104,12 +103,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
     }
     
     // Save event to calendar app
-    func openCalendarApp(var query: String) {
-        // Process query string
-        query = query.stringByReplacingOccurrencesOfString("?", withString: "") // Remove question mark
-        query = query.stringByReplacingOccurrencesOfString("%20", withString: " ") // Remove html space character with space
-        let queryArr = query.componentsSeparatedByString("&")
-        
+    func openCalendarApp() {
         // Event store (calendar) config
         var eventStore:EKEventStore = EKEventStore()
         
@@ -119,24 +113,14 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
             if (granted) && (error == nil) {
                 var event:EKEvent = EKEvent(eventStore: eventStore)
                 
+                // Set event attributes
                 event.calendar = eventStore.defaultCalendarForNewEvents
-                // Iterate through array to set event properties
-                for param in queryArr {
-                    let paramSplit = param.componentsSeparatedByString("=")
-                    let key = paramSplit[0]
-                    let value = paramSplit[1]
-                    if (key == "title") {
-                        event.title = value
-                    } else if (key == "startDate") {
-                        event.startDate = NSDate(timeIntervalSince1970: (value as NSString).doubleValue)
-                    } else if (key == "endDate") {
-                        event.endDate = NSDate(timeIntervalSince1970: (value as NSString).doubleValue)
-                    } else if (key == "description") {
-                        event.notes = value
-                    } else if (key == "location") {
-                        event.location = value
-                    }
-                }
+                event.title = self.event["title"].stringValue
+                event.startDate = NSDate(timeIntervalSince1970: self.event["time"]["start"].doubleValue)
+                event.endDate = NSDate(timeIntervalSince1970: self.event["time"]["end"].doubleValue)
+                event.notes = self.event["description"].stringValue
+                event.location = self.event["address"].stringValue
+                event.URL = NSURL(string: self.event["website"].stringValue)
                 
                 // Open eventkit UI so user can save to calendar
                 var eventController:EKEventEditViewController = EKEventEditViewController()

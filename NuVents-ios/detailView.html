@@ -22,7 +22,7 @@
                     window.location = "closeDetailView://";
                 }
                 $scope.openCalendar = function() {
-                    window.location = "openCalendar://?title=" + $scope.event.title + "&startDate=" + $scope.event.time.start + "&endDate=" + $scope.event.time.end + "&description=" + $scope.event.description + "&location=" + $scope.event.address;
+                    window.location = "openCalendar://";
                 }
                 $scope.baseURL = "http://storage.googleapis.com/nuvents-resources/event-category-icons/";
                 $scope.getDate = function(epoch) {
