@@ -71,7 +71,8 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         }
         let randomInd = Int(arc4random_uniform(UInt32(imgs.count))) // Pick random img to display
         let imgURL = imgs[randomInd]
-        webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\"\(imgURL)\")") // Send to webview
+        let imgURLObj = NSURL(fileURLWithPath: imgURL)!
+        webView.stringByEvaluatingJavaScriptFromString("setImgUrl(\"\(imgURLObj)\")") // Send to webview
         // Send current location coordinates to webview
         let currentLoc = GlobalVariables.sharedVars.currentLoc!
         webView.stringByEvaluatingJavaScriptFromString("setLocation(\"\(currentLoc.coordinate.latitude),\(currentLoc.coordinate.longitude)\")")
