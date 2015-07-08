@@ -20,8 +20,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         // Init Vars
         myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: .TouchUpInside)
         
-        // Set status bar text to black color
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
+        // Set status bar text to white color
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
         // MapView
         let currentLoc = GlobalVariables.sharedVars.currentLoc!
@@ -61,6 +61,18 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             marker.map = mapView
             GlobalVariables.sharedVars.eventMarkers.append(marker)
             GMapCamera.clusterMarkers(mapView, position: mapView.camera, specialEID: marker.title)
+        }
+    }
+    
+    @IBAction func eventFilterIndexChanged(sender:UISegmentedControl) {
+        let index = sender.selectedSegmentIndex
+        let title = sender.titleForSegmentAtIndex(index)
+        if (title?.lowercaseString.rangeOfString("all")) != nil {
+            println("All")
+        } else if (title?.lowercaseString.rangeOfString("today")) != nil {
+            println("Today")
+        } else if (title?.lowercaseString.rangeOfString("tomorrow")) != nil {
+            println("Tomorrow")
         }
     }
     

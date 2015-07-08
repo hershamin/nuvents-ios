@@ -117,7 +117,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKJ-tg-SW5" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="80" width="600" height="520"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mq4-uR-DB8">
@@ -143,17 +143,44 @@
                                     <segue destination="yeM-Za-PUd" kind="unwind" unwindAction="unwindSegueToPickerView:" id="JIR-50-cOp"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="erF-Sa-Juq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                <color key="backgroundColor" red="0.10980392156862745" green="0.23529411764705882" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="ak7-L4-DNP"/>
+                                </constraints>
+                            </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="L5L-ey-Pi3">
+                                <rect key="frame" x="146" y="36" width="308" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="308" id="4Ih-PM-MjM"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Today"/>
+                                    <segment title="Tomorrow"/>
+                                </segments>
+                                <color key="tintColor" red="0.92941176470588238" green="0.34509803921568627" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="eventFilterIndexChanged:" destination="Vc7-Xm-PbT" eventType="valueChanged" id="Tb8-Wg-bK1"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="sKJ-tg-SW5" secondAttribute="bottom" id="3H8-Ud-pQc"/>
                             <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="mq4-uR-DB8" secondAttribute="bottom" constant="21" id="4YD-qA-Ywo"/>
+                            <constraint firstItem="L5L-ey-Pi3" firstAttribute="top" secondItem="ldk-cn-frN" secondAttribute="bottom" constant="16" id="6p7-d2-gXb"/>
+                            <constraint firstAttribute="centerX" secondItem="L5L-ey-Pi3" secondAttribute="centerX" id="DMq-Ss-zDa"/>
+                            <constraint firstAttribute="trailing" secondItem="erF-Sa-Juq" secondAttribute="trailing" id="Dwp-yh-W0T"/>
                             <constraint firstAttribute="centerX" secondItem="iRi-kz-Nk1" secondAttribute="centerX" id="E8R-qj-JhK"/>
-                            <constraint firstItem="sKJ-tg-SW5" firstAttribute="top" secondItem="wuh-E7-JSN" secondAttribute="top" id="EXT-MO-S59"/>
-                            <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="sKJ-tg-SW5" secondAttribute="bottom" id="Iyc-u2-Kw5"/>
-                            <constraint firstAttribute="trailing" secondItem="sKJ-tg-SW5" secondAttribute="trailing" id="JAe-6u-IKO"/>
-                            <constraint firstItem="sKJ-tg-SW5" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" id="T4W-Zb-dU8"/>
+                            <constraint firstItem="erF-Sa-Juq" firstAttribute="top" secondItem="wuh-E7-JSN" secondAttribute="top" id="EK0-oV-t0V"/>
+                            <constraint firstAttribute="trailing" secondItem="sKJ-tg-SW5" secondAttribute="trailing" id="Pv3-tO-CHY"/>
                             <constraint firstItem="mq4-uR-DB8" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" constant="20" id="XET-qn-DSY"/>
+                            <constraint firstItem="sKJ-tg-SW5" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" id="fj4-sh-PX4"/>
+                            <constraint firstItem="sKJ-tg-SW5" firstAttribute="top" secondItem="erF-Sa-Juq" secondAttribute="bottom" id="n8U-gO-RiL"/>
                             <constraint firstItem="qT5-tM-lb3" firstAttribute="top" secondItem="iRi-kz-Nk1" secondAttribute="bottom" constant="25" id="tRR-Qh-RQi"/>
+                            <constraint firstItem="erF-Sa-Juq" firstAttribute="leading" secondItem="wuh-E7-JSN" secondAttribute="leading" id="utq-v3-X2O"/>
                         </constraints>
                     </view>
                     <connections>
@@ -400,6 +427,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="fIZ-Wi-HV9"/>
         <segue reference="B2b-Mz-NJT"/>
-        <segue reference="MhE-kw-39s"/>
+        <segue reference="hfN-Z2-VKL"/>
     </inferredMetricsTieBreakers>
 </document>

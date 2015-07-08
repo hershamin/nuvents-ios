@@ -21,15 +21,15 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
         GlobalVariables.sharedVars.pickerWebView = webView
         
-        // Set status bar text to white color
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        // Set status bar text to black color
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
         
     }
     
     @IBAction func unwindSegueToPickerView(segue: UIStoryboardSegue) {
         // Called when category, map, or list view is dismissed to get to picker view
-        // Set status bar text to white color
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        // Set status bar text to black color
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
     }
     
     // Webview delegate methods
