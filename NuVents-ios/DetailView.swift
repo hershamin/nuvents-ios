@@ -129,6 +129,35 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
                 eventController.editViewDelegate = self
                 
                 self.presentViewController(eventController, animated: true, completion: nil)
+            } else {
+                if (!granted) { // Permission not granted
+                    if objc_getClass("UIAlertController") != nil { // ios 8+
+                        let message:String = "In order to show events, Please open this app's settings and turn on Calendars access"
+                        var alert = UIAlertController(title: "Calendar Access Denied", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+                        let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+                        alert.addAction(cancelAction)
+                        let openAction = UIAlertAction(title: "Open Settings", style: UIAlertActionStyle.Default) { (action) in
+                            let url = NSURL(string: UIApplicationOpenSettingsURLString)
+                            UIApplication.sharedApplication().openURL(url!)
+                        }
+                        alert.addAction(openAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    } else { // ios 7
+                        let message:String = "In order to show events, Please open settings, go to Privacy > Calendars > NuVents and Turn on Calendars"
+                        var alert = UIAlertView(title: "Calendar Access Denied", message: message, delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    }
+                } else { // Error
+                    if objc_getClass("UIAlertController") != nil { // ios 8+
+                        var alert = UIAlertController(title: "Error Accessing Calendars", message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
+                        let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+                        alert.addAction(cancelAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    } else { // ios 7
+                        var alert = UIAlertView(title: "Error Accessing Calendars", message: error.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    }
+                }
             }
         })
         
