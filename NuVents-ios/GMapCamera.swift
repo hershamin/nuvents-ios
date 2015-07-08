@@ -28,23 +28,57 @@ class GMapCamera {
         }
     }
     
-    // Search events
-    class func searchEventsByTitle(searchTerm: String!) {
+    // Filter events in mapview based on date
+    class func filterEventsByDate(filterTerm: String!) {
         var mapView = GlobalVariables.sharedVars.mapView
         var events = GlobalVariables.sharedVars.eventJSON
         var markers = GlobalVariables.sharedVars.eventMarkers
-        var searchText = searchTerm.lowercaseString
+        var filterText = filterTerm.lowercaseString
+        
+        // Cluster markers if filter term is all (all events)
+        if (filterTerm == "all") {
+            clusterMarkers(mapView, position: mapView.camera, specialEID: nil)
+        }
         
         // Iterate and filter (mapView)
         for marker: GMSMarker in markers {
+            // Get required info
             let event = events[marker.title]! // Get by EID
-            let title = event["title"].stringValue.lowercaseString
-            if (title.rangeOfString(searchText) != nil) { // Search term found in event title
+            let eventDate = event["time"]["start"].stringValue.lowercaseString
+            let eventDay:NSDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.EraCalendarUnit | NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit, fromDate: NSDate(timeIntervalSince1970: (eventDate as NSString).doubleValue)) // Event day
+            let today:NSDateComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.EraCalendarUnit | NSCalendarUnit.YearCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.DayCalendarUnit, fromDate: NSDate()) // Today's day
+            // No filters
+            if (filterTerm == "all") {
                 if (marker.map == nil) {
                     marker.map = mapView
                 }
-            } else {
-                marker.map = nil
+                continue
+            }
+            // Today filter
+            if (filterTerm == "today") {
+                if (today.era == eventDay.era && today.year == eventDay.year && today.month == eventDay.month && today.day == eventDay.day) {
+                    if (marker.map == nil) {
+                        marker.map = mapView
+                        // Ensure marker icon is not a small dot (cluster icon)
+                        let markerImg:UIImage = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))!
+                        marker.icon = NuVentsBackend.resizeImage(markerImg, width: 32)
+                    }
+                } else {
+                    marker.map = nil
+                }
+            }
+            // Tomorrow filter
+            if (filterTerm == "tomorrow") {
+                if (today.era == eventDay.era && today.year == eventDay.year && today.month == eventDay.month && today.day == (eventDay.day - 1)) {
+                    if (marker.map == nil) {
+                        marker.map = mapView
+                        // Ensure marker icon is not a small dot (cluster icon)
+                        let markerImg:UIImage = UIImage(contentsOfFile: NuVentsBackend.getResourcePath(marker.snippet, type: "marker", override: false))!
+                        marker.icon = NuVentsBackend.resizeImage(markerImg, width: 32)
+                    }
+                } else {
+                    marker.map = nil
+                }
             }
         }
     }

@@ -65,15 +65,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     @IBAction func eventFilterIndexChanged(sender:UISegmentedControl) {
+        // Get title from selected segment & send it to the filter function
         let index = sender.selectedSegmentIndex
         let title = sender.titleForSegmentAtIndex(index)
-        if (title?.lowercaseString.rangeOfString("all")) != nil {
-            println("All")
-        } else if (title?.lowercaseString.rangeOfString("today")) != nil {
-            println("Today")
-        } else if (title?.lowercaseString.rangeOfString("tomorrow")) != nil {
-            println("Tomorrow")
-        }
+        GMapCamera.filterEventsByDate(title?.lowercaseString)
     }
     
     // Restrict to portrait only
