@@ -42,6 +42,8 @@
                         return "noon"
                     } else if (hour < 12 && min == 0) {
                         return hour + " AM"
+                    } else if (hour < 12 && min > 0) {
+                        return timeS.join(":") + " AM"
                     } else if (hour == 12 && min > 0) {
                         return timeS.join(":") + " PM"
                     } else if (hour > 12 && min == 0) {
