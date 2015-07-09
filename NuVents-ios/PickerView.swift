@@ -11,6 +11,7 @@ import Foundation
 class PickerViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet var webView: UIWebView!
+    @IBOutlet var activityIndicator:UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         let filePath = NSBundle.mainBundle().pathForResource("pickerView", ofType: "html")
         webView.loadRequest(NSURLRequest(URL: NSURL(string: filePath!)!))
         GlobalVariables.sharedVars.pickerWebView = webView
+        activityIndicator.startAnimating()
         
         // Set status bar text color based on event count
         let eventCount = GlobalVariables.sharedVars.eventJSON.count
@@ -61,6 +63,7 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         }
     }
     func webViewDidFinishLoad(webView: UIWebView) {
+        activityIndicator.stopAnimating()
         // Convert dict to json
         let jsonDict = GlobalVariables.sharedVars.eventJSON
         // Send to webview

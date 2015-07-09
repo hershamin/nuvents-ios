@@ -84,16 +84,23 @@
                                     <outlet property="delegate" destination="ykv-DJ-Und" id="kl0-8t-5ls"/>
                                 </connections>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="onh-gw-W9b">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" red="0.10980392156862745" green="0.23529411764705882" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YvB-0p-bTM" firstAttribute="top" secondItem="qT6-i8-Hf7" secondAttribute="top" id="1NM-Ed-cQN"/>
+                            <constraint firstAttribute="centerY" secondItem="onh-gw-W9b" secondAttribute="centerY" id="MGg-j8-6Z7"/>
+                            <constraint firstAttribute="centerX" secondItem="onh-gw-W9b" secondAttribute="centerX" id="YNx-lg-5FL"/>
                             <constraint firstAttribute="trailing" secondItem="YvB-0p-bTM" secondAttribute="trailing" id="dma-Tt-MbL"/>
                             <constraint firstItem="rbR-7C-vgE" firstAttribute="top" secondItem="YvB-0p-bTM" secondAttribute="bottom" id="nOX-AH-iM6"/>
                             <constraint firstItem="YvB-0p-bTM" firstAttribute="leading" secondItem="qT6-i8-Hf7" secondAttribute="leading" id="nzV-og-S2C"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="onh-gw-W9b" id="cVE-hd-3oC"/>
                         <outlet property="webView" destination="YvB-0p-bTM" id="Yed-jb-X9h"/>
                         <segue destination="Vc7-Xm-PbT" kind="show" identifier="showMapView" id="PMB-P7-RUV"/>
                         <segue destination="whN-DI-xM0" kind="show" identifier="showCategoryView" id="Ken-Cr-RLV"/>
@@ -425,8 +432,8 @@
         <image name="welcome.png" width="1500" height="2665"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fIZ-Wi-HV9"/>
-        <segue reference="B2b-Mz-NJT"/>
         <segue reference="hfN-Z2-VKL"/>
+        <segue reference="PMB-P7-RUV"/>
+        <segue reference="yOT-Nm-1C1"/>
     </inferredMetricsTieBreakers>
 </document>
