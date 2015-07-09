@@ -68,6 +68,18 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         }
     }
     
+    // Called when picker view is dismissed to get to welcome view, Next steps will be to rescan for events with new location
+    @IBAction func unwindSegueToWelcomeView(segue: UIStoryboardSegue) {
+        // Set status bar text to white color
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        pickerButton.hidden = true // Hide picker button
+        GlobalVariables.sharedVars.eventJSON.removeAll(keepCapacity: false)
+        // Start location manager
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.startUpdatingLocation()
+        activityIndicator.startAnimating() // Start activity indicator
+    }
+    
     // Picker button pressed
     func pickerButtonPressed(sender: UIButton!) {
         self.performSegueWithIdentifier("showPickerView", sender: nil)

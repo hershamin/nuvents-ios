@@ -88,13 +88,28 @@
                                 <rect key="frame" x="282" y="281" width="37" height="37"/>
                                 <color key="color" red="0.10980392156862745" green="0.23529411764705882" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpm-Ao-E9X">
+                                <rect key="frame" x="560" y="22" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="15a-t8-z52"/>
+                                    <constraint firstAttribute="height" constant="25" id="njF-Nb-ywU"/>
+                                </constraints>
+                                <state key="normal" image="refreshIcon.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="O3f-Za-b6n" kind="unwind" unwindAction="unwindSegueToWelcomeView:" id="xog-Jx-bJb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YvB-0p-bTM" firstAttribute="top" secondItem="qT6-i8-Hf7" secondAttribute="top" id="1NM-Ed-cQN"/>
                             <constraint firstAttribute="centerY" secondItem="onh-gw-W9b" secondAttribute="centerY" id="MGg-j8-6Z7"/>
                             <constraint firstAttribute="centerX" secondItem="onh-gw-W9b" secondAttribute="centerX" id="YNx-lg-5FL"/>
+                            <constraint firstAttribute="trailing" secondItem="rpm-Ao-E9X" secondAttribute="trailing" constant="15" id="cu7-Id-Qnt"/>
                             <constraint firstAttribute="trailing" secondItem="YvB-0p-bTM" secondAttribute="trailing" id="dma-Tt-MbL"/>
+                            <constraint firstItem="rpm-Ao-E9X" firstAttribute="top" secondItem="VwB-9g-xJy" secondAttribute="bottom" constant="2" id="lLc-6V-DHv"/>
                             <constraint firstItem="rbR-7C-vgE" firstAttribute="top" secondItem="YvB-0p-bTM" secondAttribute="bottom" id="nOX-AH-iM6"/>
                             <constraint firstItem="YvB-0p-bTM" firstAttribute="leading" secondItem="qT6-i8-Hf7" secondAttribute="leading" id="nzV-og-S2C"/>
                         </constraints>
@@ -108,6 +123,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FaF-gT-UWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="O3f-Za-b6n" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1387" y="309"/>
         </scene>
@@ -429,6 +445,7 @@
         <image name="forwardBtn.png" width="150" height="111"/>
         <image name="homeBtn.png" width="300" height="300"/>
         <image name="myLoc.png" width="250" height="250"/>
+        <image name="refreshIcon.png" width="512" height="512"/>
         <image name="welcome.png" width="1500" height="2665"/>
     </resources>
     <inferredMetricsTieBreakers>

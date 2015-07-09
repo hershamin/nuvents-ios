@@ -65,6 +65,7 @@
 		BADEE4991B3BB95600AF8231 /* detailView.html in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4951B3BB95600AF8231 /* detailView.html */; };
 		BADEE49A1B3BB95600AF8231 /* listView.html in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4961B3BB95600AF8231 /* listView.html */; };
 		BADEE49B1B3BB95600AF8231 /* pickerView.html in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4971B3BB95600AF8231 /* pickerView.html */; };
+		BAEFAD441B4F3524003F0D0B /* refreshIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BAEFAD431B4F3524003F0D0B /* refreshIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		BADEE4951B3BB95600AF8231 /* detailView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = detailView.html; sourceTree = "<group>"; };
 		BADEE4961B3BB95600AF8231 /* listView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = listView.html; sourceTree = "<group>"; };
 		BADEE4971B3BB95600AF8231 /* pickerView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pickerView.html; sourceTree = "<group>"; };
+		BAEFAD431B4F3524003F0D0B /* refreshIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refreshIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 				BAC2D2191B423B92001F276E /* Location_arrow_32.png */,
 				BADEE48F1B38629E00AF8231 /* forwardBtn.png */,
 				BADEE4871B37909500AF8231 /* navBar.png */,
+				BAEFAD431B4F3524003F0D0B /* refreshIcon.png */,
 				BAC2D21D1B4AFDC4001F276E /* welcome.png */,
 				BADEE4831B377EBE00AF8231 /* myLoc.png */,
 				BADEE4851B377EC500AF8231 /* homeBtn.png */,
@@ -393,6 +396,7 @@
 			files = (
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
+				BAEFAD441B4F3524003F0D0B /* refreshIcon.png in Resources */,
 				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
 				BADEE4861B377EC500AF8231 /* homeBtn.png in Resources */,
 				BAC2D2241B4CE494001F276E /* Calendar-icon.png in Resources */,
