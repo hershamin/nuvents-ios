@@ -68,7 +68,9 @@
                     email: '',
                     name: ''
                 }
+                $scope.sentReq = false
                 $scope.submitForm = function(isValid) {
+                    $scope.sentReq = true
                     window.location = "sendEventRequest://?name=" + $scope.user.name + "&email=" + $scope.user.email + "&city=" + $scope.city + "&state=" + $scope.state + "&zip=" + $scope.zipCode + "&latlng=" + $scope.location;
                 }
             })
@@ -149,9 +151,10 @@
                               <input type="email" class="form-control" name="input" ng-model="user.email" placeholder="Enter email">
                               </div>
                       <div role="alert">
-                            <span class="error" ng-show="emailForm.input.$error.email"> <strong>Not a valid e-mail address!</strong></span>
+                            <span class="error" ng-show="emailForm.input.$error.email"><strong>Not a valid e-mail address!</strong></span>
                       </div>
-                      <button type="submit" class="btn btn-default" ng-disabled="emailForm.$invalid">Submit</button>
+                      <button ng-if="!sentReq" type="submit" class="btn btn-default" ng-disabled="emailForm.$invalid">Submit</button>
+                      <h4 ng-if="sentReq"><strong>Request successfuly sent, We'll notify you via email as soon as we find events for your city!!</strong></h4>
                   </form>
                   
              
