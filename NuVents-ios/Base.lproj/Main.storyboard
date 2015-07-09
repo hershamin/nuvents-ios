@@ -258,7 +258,7 @@
         <!--Detail View Controller-->
         <scene sceneID="Fqa-vj-1qf">
             <objects>
-                <viewController id="spz-19-GYn" customClass="DetailViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailViewController" id="spz-19-GYn" customClass="DetailViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="j5D-OK-NxE"/>
                         <viewControllerLayoutGuide type="bottom" id="CaP-nb-KD5"/>

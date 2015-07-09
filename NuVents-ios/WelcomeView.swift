@@ -47,6 +47,25 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         
         activityIndicator.startAnimating() // Start activity indicator
         
+        // Restore detail view controller
+        restoreDetailView() // Will only restore detail view if restore file found
+        
+    }
+    
+    // Restore detail view controller
+    func restoreDetailView() {
+        let filePath = NuVentsBackend.getResourcePath("detailView", type: "tmp", override: false)
+        let fm = NSFileManager.defaultManager()
+        if (fm.fileExistsAtPath(filePath)) { // Detail view controller restore file exists signifying app crashed when user was at detail view last time
+            let fileData = NSData(contentsOfFile: filePath)
+            GlobalVariables.sharedVars.tempJson = JSON(data: fileData!)
+            // Open detail view controller from main storybaord
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let dvc = storyboard.instantiateViewControllerWithIdentifier("detailViewController") as! UIViewController
+            dispatch_async(dispatch_get_main_queue(), {
+                self.presentViewController(dvc, animated: true, completion: nil)
+            })
+        }
     }
     
     // Picker button pressed

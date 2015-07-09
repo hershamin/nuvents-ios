@@ -44,7 +44,25 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
         
         //Add map button functionality.
         mapButton.addTarget(self, action: "mapButtonPressed:", forControlEvents: .TouchUpInside)
+        
+        // Write json to file just in case when app crashes, it is known to crash when privacy settings such as accessing calendars, contacts, are changed while app is open in background
+        let jsonFilePath = NuVentsBackend.getResourcePath("detailView", type: "tmp", override: false)
+        if let currentLoc:CLLocation = GlobalVariables.sharedVars.currentLoc {
+            event["currLat"].string = currentLoc.coordinate.latitude.description // Adding current latitude
+            event["currLng"].string = currentLoc.coordinate.longitude.description // Adding current longitude
+        }
+        let jsonFileData = "\(event)".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        jsonFileData?.writeToFile(jsonFilePath, atomically: true)
      
+    }
+    
+    // Called when view controller disappears from the stack
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(true)
+        // Erase json file written at the start of this view controller, this signifies that app did not crash while on this view
+        let jsonFilePath = NuVentsBackend.getResourcePath("detailView", type: "tmp", override: false)
+        let fm = NSFileManager.defaultManager()
+        fm.removeItemAtPath(jsonFilePath, error: nil)
     }
     
     // Restrict to portrait only
@@ -56,7 +74,13 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
     func webViewDidFinishLoad(webView: UIWebView) {
         // Calculate distance between current location and event location
         let eventLoc:CLLocation = CLLocation(latitude: event["latitude"].doubleValue, longitude: event["longitude"].doubleValue)
-        let currentLoc:CLLocation = GlobalVariables.sharedVars.currentLoc!
+        var currentLoc:CLLocation = CLLocation()
+        if let tempLoc:CLLocation = GlobalVariables.sharedVars.currentLoc {
+            currentLoc = tempLoc
+        } else {
+            // Get from last known when state was restored
+            currentLoc = CLLocation(latitude: event["currLat"].doubleValue, longitude: event["currLng"].doubleValue)
+        }
         let dist = eventLoc.distanceFromLocation(currentLoc) * 0.000621371 // Distance in miles
         let distMi = Double(round(10 * dist)/10) //Round the number
         
