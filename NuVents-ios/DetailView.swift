@@ -181,11 +181,22 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
     // Event kit (Calendar) edit view delegate
     func eventEditViewController(controller: EKEventEditViewController!, didCompleteWithAction action: EKEventEditViewAction) {
         
-        if (action.value == EKEventEditViewActionCanceled.value) {
+        if (Int(action.value) == Int(EKEventEditViewActionCanceled.value)) {
             // User tapped cancel
-        } else if (action.value == EKEventEditViewActionSaved.value) {
+        } else if (Int(action.value) == Int(EKEventEditViewActionSaved.value)) {
             // User saved event
-        } else if (action.value == EKEventEditViewActionDeleted.value) {
+            if objc_getClass("UIAlertController") != nil { // ios 8+
+                dispatch_async(dispatch_get_main_queue(), {
+                    var alert = UIAlertController(title: "Event added to calendar!", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+                    alert.addAction(cancelAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
+            } else { // ios 7
+                var alert = UIAlertView(title: "Event added to calendar!", message: nil, delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            }
+        } else if (Int(action.value) == Int(EKEventEditViewActionDeleted.value)) {
             // User tapped delete
         }
         
