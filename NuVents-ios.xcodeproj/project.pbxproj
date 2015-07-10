@@ -66,6 +66,8 @@
 		BADEE49A1B3BB95600AF8231 /* listView.html in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4961B3BB95600AF8231 /* listView.html */; };
 		BADEE49B1B3BB95600AF8231 /* pickerView.html in Resources */ = {isa = PBXBuildFile; fileRef = BADEE4971B3BB95600AF8231 /* pickerView.html */; };
 		BAEFAD441B4F3524003F0D0B /* refreshIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BAEFAD431B4F3524003F0D0B /* refreshIcon.png */; };
+		BAEFAD4A1B4F4570003F0D0B /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BAEFAD481B4F4570003F0D0B /* Siren.bundle */; };
+		BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEFAD491B4F4570003F0D0B /* Siren.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +145,8 @@
 		BADEE4961B3BB95600AF8231 /* listView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = listView.html; sourceTree = "<group>"; };
 		BADEE4971B3BB95600AF8231 /* pickerView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = pickerView.html; sourceTree = "<group>"; };
 		BAEFAD431B4F3524003F0D0B /* refreshIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refreshIcon.png; sourceTree = "<group>"; };
+		BAEFAD481B4F4570003F0D0B /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
+		BAEFAD491B4F4570003F0D0B /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,7 @@
 				BA90B6151B1D211D00C3E3D8 /* Fabric.framework */,
 				BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */,
 				BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */,
+				BAEFAD471B4F4570003F0D0B /* Siren */,
 				BA5B91081AEDEB9E000B1BD5 /* SocketIOClientSwift */,
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
 				BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */,
@@ -312,6 +317,15 @@
 			name = WebViews;
 			sourceTree = "<group>";
 		};
+		BAEFAD471B4F4570003F0D0B /* Siren */ = {
+			isa = PBXGroup;
+			children = (
+				BAEFAD481B4F4570003F0D0B /* Siren.bundle */,
+				BAEFAD491B4F4570003F0D0B /* Siren.swift */,
+			);
+			path = Siren;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -395,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
+				BAEFAD4A1B4F4570003F0D0B /* Siren.bundle in Resources */,
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
 				BAEFAD441B4F3524003F0D0B /* refreshIcon.png in Resources */,
 				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
@@ -460,6 +475,7 @@
 				BA5B911E1AEDEB9E000B1BD5 /* SocketPacket.swift in Sources */,
 				BA5B911A1AEDEB9E000B1BD5 /* SocketEventHandler.swift in Sources */,
 				BA5B911D1AEDEB9E000B1BD5 /* SocketLogger.swift in Sources */,
+				BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */,
 				BA1B733E1AFA82BE00A15B77 /* GMapCamera.swift in Sources */,
 				BA90B6201B1EB2AA00C3E3D8 /* CategoryView.swift in Sources */,
 				BA2E187C1AEEA178008AA18A /* NuVentsBackend.swift in Sources */,
