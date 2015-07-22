@@ -113,15 +113,22 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
     // Webview delegate methods
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
-    let reqStr = request.URL?.absoluteString
+        let reqStr = request.URL?.absoluteString
+        println(reqStr!)
         if reqStr!.rangeOfString("closedetailview://") != nil {
             self.dismissViewControllerAnimated(true, completion: nil)
             return false
         } else if reqStr!.rangeOfString("opencalendar://") != nil {
             openCalendarApp()
             return false
-        } else {
-            return true
+        } else if reqStr!.rangeOfString("file://") != nil { // File url
+            return true // Do not override
+        } else { // Any other link
+            // Open in safari
+            if let reqUrl = NSURL(string: reqStr!) {
+                UIApplication.sharedApplication().openURL(reqUrl)
+            }
+            return false
         }
         
     }

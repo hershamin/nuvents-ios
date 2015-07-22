@@ -12,10 +12,11 @@
                 angular.element(document.querySelector("body")).scope().setEvent(data);
             }
             var eventDetailApp = angular.module("eventDetailApp", []);
-            eventDetailApp.controller("eventDetailCtrl", function ($scope, $http) {
+            eventDetailApp.controller("eventDetailCtrl", function ($scope, $http, $sce) {
                 $scope.setEvent = function(data) {
                     $scope.$apply(function() {
                         $scope.event = data;
+                        $scope.descriptionHtml = $sce.trustAsHtml($scope.event.description);
                     })
                 }
                 $scope.close = function() {
@@ -149,7 +150,7 @@
                     <div class="banner"> </div>
                     <h2>{{event.address}}</h2>
                     <h2>{{getDate(event.time.start)}}<button style="border:0;" type="button" ng-click="openCalendar()"><img src="Calendar-icon.png" height="30px"></button></h2>
-                    <p> {{event.description}} </p>
+                    <p ng-bind-html="descriptionHtml"></p>
                     <p> <strong>Price:</strong> {{event.price}} </p>
                     </div>
                     </div>
