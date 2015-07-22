@@ -114,7 +114,6 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
         let reqStr = request.URL?.absoluteString
-        println(reqStr!)
         if reqStr!.rangeOfString("closedetailview://") != nil {
             self.dismissViewControllerAnimated(true, completion: nil)
             return false
