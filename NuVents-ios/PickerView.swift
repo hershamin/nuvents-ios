@@ -12,6 +12,7 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet var webView: UIWebView!
     @IBOutlet var activityIndicator:UIActivityIndicatorView!
+    @IBOutlet var refreshBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,12 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         let jsonDict = GlobalVariables.sharedVars.eventJSON
         // Send to webview
         webView.stringByEvaluatingJavaScriptFromString("setEventCount(\(jsonDict.count))")
+        // Hide refresh btn if event count is 0
+        if (jsonDict.count == 0) {
+            refreshBtn.hidden = true
+        } else {
+            refreshBtn.hidden = false
+        }
         // Get image url from welcome view backgrounds & send to webview
         var imgDir = NuVentsBackend.getResourcePath("tmp", type: "welcomeViewImgs", override: false)
         imgDir = imgDir.stringByReplacingOccurrencesOfString("tmp", withString: "")

@@ -116,6 +116,7 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="onh-gw-W9b" id="cVE-hd-3oC"/>
+                        <outlet property="refreshBtn" destination="rpm-Ao-E9X" id="VFZ-gH-dVg"/>
                         <outlet property="webView" destination="YvB-0p-bTM" id="Yed-jb-X9h"/>
                         <segue destination="Vc7-Xm-PbT" kind="show" identifier="showMapView" id="PMB-P7-RUV"/>
                         <segue destination="whN-DI-xM0" kind="show" identifier="showCategoryView" id="Ken-Cr-RLV"/>
