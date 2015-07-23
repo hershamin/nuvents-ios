@@ -47,9 +47,37 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
         
         activityIndicator.startAnimating() // Start activity indicator
         
+        checkServerConn() // Alert user if server is not reachable
+        
         // Restore detail view controller
         restoreDetailView() // Will only restore detail view if restore file found
         
+    }
+    
+    // Check for server connection & alert user if unreachable
+    func checkServerConn() {
+        let urlString = "http://" + GlobalVariables.sharedVars.server + "/"
+        let url = NSURL(string:urlString)!
+        let httpGetTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
+            (data, response, error) in
+            if let resp = response as? NSHTTPURLResponse {
+                // Some kind of response is received, server is reachable
+            } else {
+                // Server unreachable alert user
+                dispatch_async(dispatch_get_main_queue(), {
+                    if objc_getClass("UIAlertController") != nil { // ios 8+
+                        var alert = UIAlertController(title: "Server connection error", message: "Either Airplane mode is on or Internet is not reachable", preferredStyle: UIAlertControllerStyle.Alert)
+                        let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+                        alert.addAction(cancelAction)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                    } else { // ios 7
+                        var alert = UIAlertView(title: "Server connection error", message: "Either Airplane mode is on or Internet is not reachable", delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    }
+                })
+            }
+        }
+        httpGetTask.resume()
     }
     
     // Restore detail view controller
