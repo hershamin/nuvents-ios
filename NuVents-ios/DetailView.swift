@@ -101,7 +101,6 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
     
     //Map button pressedp
     func mapButtonPressed(sender: UIButton!) {
-        
         let lat = event["latitude"].stringValue
         let lng = event["longitude"].stringValue
         var addr = event["address"].stringValue
@@ -244,7 +243,7 @@ class DetailViewController: UIViewController, UIWebViewDelegate, EKEventEditView
             urlToOpen = "comgooglemaps://?q=\(Address)&center=\(lat),\(lng)&views=traffic"
         } else {
             // Use apple maps
-            urlToOpen = "http://maps.apple.com/?ll=\(lat),\(lng)&q=\(lat),\(lng)"
+            urlToOpen = "http://maps.apple.com/?ll=\(lat),\(lng)&q=\(Address)"
         }
         UIApplication.sharedApplication().openURL(NSURL(string: urlToOpen)!)
     }
