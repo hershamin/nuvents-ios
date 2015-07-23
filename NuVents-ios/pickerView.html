@@ -42,19 +42,13 @@
                         $scope.location = data;
                          var response = $http.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + data);
                          response.success(function(res) {
-                             var components = res.results[0].address_components
-                             for (var i=0; i<components.length; i++) {
-                                  if (components[i].types.indexOf("locality") > -1) {
-                                      $scope.city = components[i].long_name
-                                  }
-                                  if (components[i].types.indexOf("administrative_area_level_1") > -1) {
-                                      $scope.state = components[i].short_name
-                                  }
-                                  if (components[i].types.indexOf("postal_code") > -1) {
-                                      $scope.zipCode = components[i].long_name
-                                  }
-                              }
-                              $scope.currentCity = $scope.city + ", " + $scope.state
+                             var address = res.results[0].formatted_address.split(",");
+                             address.pop(); // Remove Country name (USA)
+                             stateRaw = address.pop().trim(); // Get state & zipCode
+                             $scope.state = stateRaw.split(" ")[0];
+                             $scope.zipCode = stateRaw.split(" ")[1];
+                             $scope.city = address.pop().trim(); // Get city
+                             $scope.currentCity = $scope.city + ", " + $scope.state
                          })
                          response.error(function(res) {
                              alert("Failure: " + res)
