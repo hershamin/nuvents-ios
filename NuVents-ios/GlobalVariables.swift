@@ -11,7 +11,7 @@ import Foundation
 class GlobalVariables {
     
     // Global constants
-    internal let server: String = "repo.nuvents.com:1027"
+    internal let server: String = "backend.nuvents.com"
     internal let pickerView     = "http://storage.googleapis.com/nuvents-resources/pickerView.html"
     internal let categoryView   = "http://storage.googleapis.com/nuvents-resources/categoryView.html"
     internal let listView       = "http://storage.googleapis.com/nuvents-resources/listView.html"
