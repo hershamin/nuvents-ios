@@ -184,14 +184,14 @@
                           <h4><strong>Request successfuly sent, We'll notify you via email as soon as we find events for your city!!!</strong></h4>
                         <h4><strong>In the meantime, you can select one of the existing cities!</strong></h4>
                         <div class="row">
-                            <div class="col-md-8 col-xs-8">
+                            <div class="col-md-9 col-xs-9">
                                 <select class="form-control" ng-model="reqCity">
                                     <option value="" disabled selected>Select City...</option>
                                     <option value="{{city}}" ng-repeat="city in cities">{{city}}</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 col-xs-4">
-                                <button ng-if="reqCity" style="font-size:40px; border:0;" type="button" ng-click="openReqCity(reqCity)"><strong>&#8635;</strong></button>
+                            <div class="col-md-3 col-xs-3">
+                                <button ng-if="reqCity" type="button" class="btn btn-success" ng-click="openReqCity(reqCity)">Search</button>
                             </div>
                         </div>
                       </div>
