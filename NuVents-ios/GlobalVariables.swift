@@ -30,6 +30,7 @@ class GlobalVariables {
     internal var searchProc = false // true if search process is busy
     internal var tempJson:JSON = JSON("") // Temp event json to pass to detail view
     internal var currentLoc:CLLocation? // Current location
+    internal var eventReqLoc:String = "" // Location where events are requested
     internal var category = "" // To set event category
     internal var api:NuVentsBackend? // NuVents backend API
     internal var pickerWebView:UIWebView? // Picker View Web View

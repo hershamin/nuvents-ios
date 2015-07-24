@@ -98,7 +98,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="O3f-Za-b6n" kind="unwind" unwindAction="unwindSegueToWelcomeView:" id="xog-Jx-bJb"/>
+                                    <segue destination="O3f-Za-b6n" kind="unwind" identifier="goBackToWelcomeView" unwindAction="unwindSegueToWelcomeView:" id="xog-Jx-bJb"/>
                                 </connections>
                             </button>
                         </subviews>

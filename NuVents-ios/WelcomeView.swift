@@ -156,7 +156,17 @@ class WelcomeViewController: UIViewController, NuVentsBackendDelegate, UIWebView
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if (serverConn) { // Only use when connected to server
             var latestLoc:CLLocation = locations[locations.count - 1] as! CLLocation
-            api?.getNearbyEvents(latestLoc.coordinate, radius: 10000, timestamp: NSDate().timeIntervalSince1970) // Search within 10000 meters
+            let searchRad = Float(10000) // Search within 10000 meters
+            let reqLoc = GlobalVariables.sharedVars.eventReqLoc
+            if (reqLoc.rangeOfString(",") != nil) { // Events requested at location other than current location
+                GlobalVariables.sharedVars.eventReqLoc = "" // Clear request location
+                let latStr = reqLoc.componentsSeparatedByString(",").first!
+                let lngStr = reqLoc.componentsSeparatedByString(",").last!
+                let reqCoord = CLLocationCoordinate2DMake((latStr as NSString).doubleValue, (lngStr as NSString).doubleValue)
+                api?.getNearbyEvents(reqCoord, radius: searchRad, timestamp: NSDate().timeIntervalSince1970)
+            } else { // Search near current location
+                api?.getNearbyEvents(latestLoc.coordinate, radius: searchRad, timestamp: NSDate().timeIntervalSince1970)
+            }
             GlobalVariables.sharedVars.currentLoc = latestLoc // Set current location
             pickerButton.hidden = false
             locationManager.stopUpdatingLocation()
