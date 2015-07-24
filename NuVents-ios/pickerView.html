@@ -187,7 +187,7 @@
                             <div class="col-md-9 col-xs-9">
                                 <select class="form-control" ng-model="reqCity">
                                     <option value="" disabled selected>Select City...</option>
-                                    <option value="{{city}}" ng-repeat="city in cities">{{city}}</option>
+                                    <option value="{{city.location}}" ng-repeat="city in cities">{{city.name}}</option>
                                 </select>
                             </div>
                             <div class="col-md-3 col-xs-3">
