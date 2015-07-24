@@ -78,8 +78,7 @@
                 $scope.openReqCity = function(data) {
                     $scope.currentCity = data;
                 }
-                $scope.submitForm = function(isValid) {
-                    $scope.sentReq = true
+                $scope.getCities = function() {
                     // request existing cities
                     var response = $http.get($scope.server + "cities");
                     response.success(function(res) {
@@ -88,6 +87,10 @@
                     response.error(function(res) {
                         alert("Failure: " + res)
                     })
+                }
+                $scope.submitForm = function(isValid) {
+                    $scope.sentReq = true
+                    $scope.getCities();
                     // Send request to add city to backend
                     window.location = "sendEventRequest://?name=" + $scope.user.name + "&email=" + $scope.user.email + "&city=" + $scope.city + "&state=" + $scope.state + "&zip=" + $scope.zipCode + "&latlng=" + $scope.location;
                 }
@@ -162,16 +165,21 @@
               <div class="container">
                   <h3>Uh oh. We haven't added {{currentCity}} yet! Give us your email and and we'll be sure to find you the right events ASAP!</h3>
                   <form name="emailForm" ng-submit="submitForm(emailForm.$valid)">
-                      <div class="form-group">
+                      <div ng-if="!sentReq">
+                        <div class="form-group">
                           <label for="name">Name:</label>
                           <input type="name" class="form-control" name="input" ng-model="user.name" placeholder="Enter name" required>
-                              <label for="email">Email:</label>
-                              <input type="email" class="form-control" name="input" ng-model="user.email" placeholder="Enter email">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="input" ng-model="user.email" placeholder="Enter email">
                               </div>
-                      <div role="alert">
+                        <div role="alert">
                             <span class="error" ng-show="emailForm.input.$error.email"><strong>Not a valid e-mail address!</strong></span>
+                        </div>
+                        <button type="submit" class="btn btn-default" ng-disabled="emailForm.$invalid">Submit</button><br><br>
+                          <div style="text-align:center;">
+                            <button type="submit" class="btn btn-default" ng-click="getCities(); sentReq = true;">Skip</button>
+                          </div>
                       </div>
-                      <button ng-if="!sentReq" type="submit" class="btn btn-default" ng-disabled="emailForm.$invalid">Submit</button>
                       <div ng-if="sentReq">
                           <h4><strong>Request successfuly sent, We'll notify you via email as soon as we find events for your city!!!</strong></h4>
                         <h4><strong>In the meantime, you can select one of the existing cities!</strong></h4>
