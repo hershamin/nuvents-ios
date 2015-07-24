@@ -11,6 +11,13 @@
                 } catch (e) {}
                 angular.element(document.querySelector("body")).scope().setEventCount(data);
             }
+            window.setServer = function(data) {
+                // Parse into string if not already a string
+                try {
+                    data = String(data)
+                } catch (e) {}
+                angular.element(document.querySelector("body")).scope().setServer(data);
+            }
 			window.setImgUrl = function(data) {
                 // Parse into string if not already a string
                 try {
@@ -30,6 +37,11 @@
                 $scope.setEventCount = function(data) {
                     $scope.$apply(function() {
                         $scope.eventCount = data;
+                    })
+                }
+                $scope.setServer = function(data) {
+                    $scope.$apply(function() {
+                        $scope.server = data;
                     })
                 }
 				$scope.setImgUrl = function(data) {
@@ -63,8 +75,20 @@
                     name: ''
                 }
                 $scope.sentReq = false
+                $scope.openReqCity = function(data) {
+                    $scope.currentCity = data;
+                }
                 $scope.submitForm = function(isValid) {
                     $scope.sentReq = true
+                    // request existing cities
+                    var response = $http.get($scope.server + "cities");
+                    response.success(function(res) {
+                        $scope.cities = res;
+                    })
+                    response.error(function(res) {
+                        alert("Failure: " + res)
+                    })
+                    // Send request to add city to backend
                     window.location = "sendEventRequest://?name=" + $scope.user.name + "&email=" + $scope.user.email + "&city=" + $scope.city + "&state=" + $scope.state + "&zip=" + $scope.zipCode + "&latlng=" + $scope.location;
                 }
             })
@@ -136,7 +160,7 @@
           <div ng-if="eventCount == 0">
               <img ng-src="{{imgUrl}}" style="position:absolute; z-index:-1" width="100%" height="100%">
               <div class="container">
-                  <h2>Uh oh. We haven't added {{currentCity}} yet! Give us your email and and we'll be sure to find you the right events ASAP!</h2>
+                  <h3>Uh oh. We haven't added {{currentCity}} yet! Give us your email and and we'll be sure to find you the right events ASAP!</h3>
                   <form name="emailForm" ng-submit="submitForm(emailForm.$valid)">
                       <div class="form-group">
                           <label for="name">Name:</label>
@@ -148,7 +172,21 @@
                             <span class="error" ng-show="emailForm.input.$error.email"><strong>Not a valid e-mail address!</strong></span>
                       </div>
                       <button ng-if="!sentReq" type="submit" class="btn btn-default" ng-disabled="emailForm.$invalid">Submit</button>
-                      <h4 ng-if="sentReq"><strong>Request successfuly sent, We'll notify you via email as soon as we find events for your city!!</strong></h4>
+                      <div ng-if="sentReq">
+                          <h4><strong>Request successfuly sent, We'll notify you via email as soon as we find events for your city!!!</strong></h4>
+                        <h4><strong>In the meantime, you can select one of the existing cities!</strong></h4>
+                        <div class="row">
+                            <div class="col-md-8 col-xs-8">
+                                <select class="form-control" ng-model="reqCity">
+                                    <option value="" disabled selected>Select City...</option>
+                                    <option value="{{city}}" ng-repeat="city in cities">{{city}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <button ng-if="reqCity" style="font-size:40px; border:0;" type="button" ng-click="openReqCity(reqCity)"><strong>&#8635;</strong></button>
+                            </div>
+                        </div>
+                      </div>
                   </form>
                   
              

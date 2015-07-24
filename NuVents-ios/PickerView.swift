@@ -91,6 +91,8 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
         // Send current location coordinates to webview
         let currentLoc = GlobalVariables.sharedVars.currentLoc!
         webView.stringByEvaluatingJavaScriptFromString("setLocation(\"\(currentLoc.coordinate.latitude),\(currentLoc.coordinate.longitude)\")")
+        // Send server url to webview
+        webView.stringByEvaluatingJavaScriptFromString("setServer(\"http://\(GlobalVariables.sharedVars.server)/\")")
     }
     
     // Update event count
