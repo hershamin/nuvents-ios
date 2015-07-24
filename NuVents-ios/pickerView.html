@@ -76,7 +76,7 @@
                 }
                 $scope.sentReq = false
                 $scope.openReqCity = function(data) {
-                    $scope.currentCity = data;
+                    window.location = "searchAvailableCity://?" + data;
                 }
                 $scope.getCities = function() {
                     // request existing cities
@@ -92,6 +92,7 @@
                     $scope.sentReq = true
                     $scope.getCities();
                     // Send request to add city to backend
+                    if (!$scope.user.name) return;
                     window.location = "sendEventRequest://?name=" + $scope.user.name + "&email=" + $scope.user.email + "&city=" + $scope.city + "&state=" + $scope.state + "&zip=" + $scope.zipCode + "&latlng=" + $scope.location;
                 }
             })

@@ -59,6 +59,10 @@ class PickerViewController: UIViewController, UIWebViewDelegate {
             let request = reqStr!.componentsSeparatedByString("//").last!
             WelcomeViewController.sendEventRequest(request + "&did=" + GlobalVariables.sharedVars.udid!)
             return false
+        } else if reqStr!.rangeOfString("searchavailablecity://") != nil { // Search events in available city
+            let request = reqStr!.componentsSeparatedByString("//").last!.stringByReplacingOccurrencesOfString("?", withString: "")
+            println("SEARCH: \(request)")
+            return false
         } else {
             return true
         }
