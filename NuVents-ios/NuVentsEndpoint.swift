@@ -140,6 +140,7 @@ class NuVentsEndpoint {
             let deviceDict = ["did":NuVentsEndpoint.sharedEndpoint.udid as String,
                 "dm":NuVentsHelper.getDeviceHardware()]
             self.nSocket.emit("device:initial", deviceDict)
+            println("NuVents Endpoint: Connected")
         }
         nSocket.on("disconnect") {data, ack in
             println("NuVents Endpoint: Disconnected")
