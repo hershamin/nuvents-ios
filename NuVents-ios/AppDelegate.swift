@@ -6,6 +6,13 @@
 //  Copyright (c) 2015 NuVents. All rights reserved.
 //
 
+// Compiler flags for debug & release
+#if DEBUG
+    let backend = "repo.nuvents.com:1027"
+#else
+    let backend = "backend.nuvents.com"
+#endif
+
 import UIKit
 import Fabric
 import Crashlytics

@@ -6,19 +6,11 @@
 //  Copyright (c) 2015 NuVents. All rights reserved.
 //
 
-// Compiler flags for debug & release
-#if DEBUG
-    let backend = "repo.nuvents.com:1027"
-#else
-    let backend = "backend.nuvents.com"
-#endif
-
 import Foundation
 
 class GlobalVariables {
     
     // Global constants
-    internal let server: String = backend
     internal let pickerView     = "http://storage.googleapis.com/nuvents-resources/pickerView.html"
     internal let categoryView   = "http://storage.googleapis.com/nuvents-resources/categoryView.html"
     internal let listView       = "http://storage.googleapis.com/nuvents-resources/listView.html"
