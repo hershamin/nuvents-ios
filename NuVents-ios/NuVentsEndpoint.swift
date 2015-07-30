@@ -28,6 +28,9 @@ class NuVentsEndpoint {
     // Internally used variables
     private var nSocket: SocketIOClient = SocketIOClient(socketURL: backend, options: ["log":false])
         // The variable "backend" is Compiled during build, Set in AppDelegate.swift
+    private var connected:Bool = false // To keep track of server connection status
+    private var lastNearbyEventRequest:String = "" // To keep track of last event nearby request
+        // lat,lng,rad
     
     // Connect to Backend
     func connect() {
@@ -54,11 +57,16 @@ class NuVentsEndpoint {
     
     // Get nearby events
     func getNearbyEvents(location: CLLocationCoordinate2D, radius: Float) {
-        self.nSocket.emit("event:nearby", ["lat":"\(location.latitude)",
-            "lng":"\(location.longitude)",
-            "rad":"\(radius)",
-            "time":"\(NSDate().timeIntervalSince1970)",
-            "did":NuVentsEndpoint.sharedEndpoint.udid])
+        if (connected) { // Connected to server
+            self.nSocket.emit("event:nearby", ["lat":"\(location.latitude)",
+                "lng":"\(location.longitude)",
+                "rad":"\(radius)",
+                "time":"\(NSDate().timeIntervalSince1970)",
+                "did":NuVentsEndpoint.sharedEndpoint.udid])
+        } else {
+            // Server not connected yet, store in lastNearbyEventRequest variable
+            lastNearbyEventRequest = "\(location.latitude),\(location.longitude),\(radius)"
+        }
     }
     
     // Get event detail
@@ -140,9 +148,20 @@ class NuVentsEndpoint {
             let deviceDict = ["did":NuVentsEndpoint.sharedEndpoint.udid as String,
                 "dm":NuVentsHelper.getDeviceHardware()]
             self.nSocket.emit("device:initial", deviceDict)
+            self.connected = true
+            // Send last known nearby event request if it exists
+            if (count(self.lastNearbyEventRequest) > 0) {
+                let comps = self.lastNearbyEventRequest.componentsSeparatedByString(",")
+                let lat = (comps[0] as NSString).doubleValue
+                let lng = (comps[1] as NSString).doubleValue
+                let rad = (comps[2] as NSString).floatValue
+                self.getNearbyEvents(CLLocationCoordinate2DMake(lat, lng), radius: rad)
+                self.lastNearbyEventRequest = "" // Reset last nearby event request variable
+            }
             println("NuVents Endpoint: Connected")
         }
         nSocket.on("disconnect") {data, ack in
+            self.connected = false
             println("NuVents Endpoint: Disconnected")
         }
         nSocket.on("error") {data, ack in
