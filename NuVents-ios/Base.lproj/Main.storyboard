@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -17,15 +17,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="NP8-2d-YK2" kind="show" identifier="showRequestView" id="zAa-S4-IEd"/>
+                        <segue destination="9fn-Rw-EM1" kind="show" identifier="showCombinationView" id="8w4-Cw-GSb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="182" y="240"/>
         </scene>
-        <!--View Controller-->
+        <!--Combination View Controller-->
         <scene sceneID="bRG-6M-SSe">
             <objects>
-                <viewController id="9fn-Rw-EM1" sceneMemberID="viewController">
+                <viewController id="9fn-Rw-EM1" customClass="CombinationViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UJ9-fp-CTY"/>
                         <viewControllerLayoutGuide type="bottom" id="MZ4-gr-v0x"/>
@@ -33,17 +37,42 @@
                     <view key="view" contentMode="scaleToFill" id="c5G-y2-wsA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fP-cBg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="Kza-NR-yFU" kind="embed" id="HX0-oa-Dum"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWk-tF-LGP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="9Mx-7d-swa" kind="embed" id="uqQ-oA-onB"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAC-Ws-JbP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="y4g-73-64D" kind="embed" id="RK7-Bj-C1W"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="categoryView" destination="4uN-fP-cBg" id="erA-eh-CJW"/>
+                        <outlet property="listView" destination="gWk-tF-LGP" id="4A0-Xe-Cs1"/>
+                        <outlet property="mapView" destination="GAC-Ws-JbP" id="NOk-dB-3Gx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KN8-1Q-3wK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1112" y="-154"/>
         </scene>
-        <!--View Controller-->
+        <!--Category View Controller-->
         <scene sceneID="Fcs-xn-JzR">
             <objects>
-                <viewController id="Kza-NR-yFU" sceneMemberID="viewController">
+                <viewController id="Kza-NR-yFU" customClass="CategoryViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CB7-yn-1qw"/>
                         <viewControllerLayoutGuide type="bottom" id="n8r-sK-ilG"/>
@@ -58,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="2248" y="-774"/>
         </scene>
-        <!--View Controller-->
+        <!--List View Controller-->
         <scene sceneID="sA7-pu-cdH">
             <objects>
-                <viewController id="9Mx-7d-swa" sceneMemberID="viewController">
+                <viewController id="9Mx-7d-swa" customClass="ListViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zcn-cq-6mW"/>
                         <viewControllerLayoutGuide type="bottom" id="0fB-En-iBb"/>
@@ -71,15 +100,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="0ps-xm-KK4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDg-jL-BUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2240" y="244"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="CmU-h2-e6W">
             <objects>
-                <viewController id="9hX-LZ-EDY" sceneMemberID="viewController">
+                <viewController id="9hX-LZ-EDY" customClass="DetailViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SC1-64-Pg5"/>
                         <viewControllerLayoutGuide type="bottom" id="FbO-ZG-5cB"/>
@@ -94,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="3376" y="264"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="T75-Ba-WXa">
             <objects>
-                <viewController id="y4g-73-64D" sceneMemberID="viewController">
+                <viewController id="y4g-73-64D" customClass="MapViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sAp-gp-Rgx"/>
                         <viewControllerLayoutGuide type="bottom" id="HWV-9j-Jir"/>
@@ -107,15 +139,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="cnt-Af-WMB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14z-Cj-BLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2240" y="1208"/>
         </scene>
-        <!--View Controller-->
+        <!--Request View Controller-->
         <scene sceneID="cch-hM-2X3">
             <objects>
-                <viewController id="NP8-2d-YK2" sceneMemberID="viewController">
+                <viewController id="NP8-2d-YK2" customClass="RequestViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GAG-sA-uCY"/>
                         <viewControllerLayoutGuide type="bottom" id="4eA-w7-TIV"/>
@@ -131,4 +166,7 @@
             <point key="canvasLocation" x="1120" y="746"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cnt-Af-WMB"/>
+    </inferredMetricsTieBreakers>
 </document>
