@@ -37,6 +37,13 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Gotham-Rounded-Light.ttf</string>
+		<string>Gotham-Rounded-Book.ttf</string>
+		<string>Gotham-Rounded-Medium.ttf</string>
+		<string>Gotham-Rounded-Bold.ttf</string>
+	</array>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
