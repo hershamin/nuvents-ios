@@ -15,6 +15,7 @@ class CombinationViewController: UIViewController {
     @IBOutlet var listView:UIView!
     @IBOutlet var mapView:UIView!
     @IBOutlet var segmentedCtrlView:UIView!
+    @IBOutlet var searchBar:UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,9 @@ class CombinationViewController: UIViewController {
         categoryView.hidden = true
         listView.hidden = false
         mapView.hidden = true
+        
+        // Search bar setup
+        searchBar.backgroundImage = UIImage.new() // Clear background image
         
         // Segmented control setup
         let titles:Array = ["CATEGORIES", "EVENT LIST", "MAP"]
