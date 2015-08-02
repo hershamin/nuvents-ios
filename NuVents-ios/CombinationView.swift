@@ -20,9 +20,16 @@ class CombinationViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Show List view
+        categoryView.hidden = true
+        listView.hidden = false
+        mapView.hidden = true
+        
         // Segmented control setup
         let titles:Array = ["CATEGORIES", "EVENT LIST", "MAP"]
         var segmentedCtrl = URBSegmentedControl(items: titles)
+        segmentedCtrl.selectedSegmentIndex = 1 // Select List View Segment
+        segmentedCtrl.addTarget(self, action: "handleSegmentChanged:", forControlEvents: UIControlEvents.ValueChanged)
         segmentedCtrl.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 40)
         segmentedCtrl.baseColor = UIColor(red: 0.91, green: 0.298, blue: 0.4, alpha: 1) // e84c66
         segmentedCtrl.cornerRadius = 0
@@ -37,6 +44,30 @@ class CombinationViewController: UIViewController {
         segmentedCtrl.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         segmentedCtrl.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         segmentedCtrlView.addSubview(segmentedCtrl)
+    }
+    
+    // Segment changed
+    func handleSegmentChanged(sender: URBSegmentedControl!) {
+        let segmentCtrl = sender as URBSegmentedControl
+        let title = segmentCtrl.titleForSegmentAtIndex(segmentCtrl.selectedSegmentIndex)!
+        
+        if (title.lowercaseString.rangeOfString("categories") != nil) {
+            // Show category view
+            categoryView.hidden = false
+            listView.hidden = true
+            mapView.hidden = true
+        } else if (title.lowercaseString.rangeOfString("list") != nil) {
+            // Show Event List
+            categoryView.hidden = true
+            listView.hidden = false
+            mapView.hidden = true
+        } else if (title.lowercaseString.rangeOfString("map") != nil) {
+            // Show Map View
+            categoryView.hidden = true
+            listView.hidden = true
+            mapView.hidden = false
+        }
+        
     }
     
     // Restrict to portrait only
