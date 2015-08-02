@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let appStoreID = "792991234"
         Fabric.with([Crashlytics()])
         GMSServices.provideAPIKey(googleMapsApiKey)
+        // Change status bar color to white throughout app
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Siren Framework for notifying users when new updates are available
         let siren = Siren.sharedInstance
         siren.appID = appStoreID
