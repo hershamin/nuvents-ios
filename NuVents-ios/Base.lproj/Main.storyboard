@@ -82,17 +82,18 @@
                                     <constraint firstAttribute="height" constant="40" id="0Gx-0W-GlP"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6kk-Wk-FMf">
-                                <rect key="frame" x="16" y="35" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <searchBar opaque="NO" contentMode="redraw" placeholder="Search for any event..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbH-40-CQg">
+                                <rect key="frame" x="16" y="25" width="509" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2ck-G7-XJI" secondAttribute="trailing" id="1eF-lZ-VdU"/>
+                            <constraint firstAttribute="trailing" secondItem="SbH-40-CQg" secondAttribute="trailing" constant="75" id="212-bT-g58"/>
                             <constraint firstAttribute="trailing" secondItem="vYX-6R-2hO" secondAttribute="trailing" id="3LO-Ve-fOc"/>
                             <constraint firstItem="2ck-G7-XJI" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="6GI-0G-SBU"/>
+                            <constraint firstItem="SbH-40-CQg" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" constant="16" id="8Ns-oN-XHH"/>
                             <constraint firstItem="MZ4-gr-v0x" firstAttribute="top" secondItem="GAC-Ws-JbP" secondAttribute="bottom" id="A3E-Ix-yc4"/>
                             <constraint firstItem="4uN-fP-cBg" firstAttribute="top" secondItem="2ck-G7-XJI" secondAttribute="bottom" id="BLE-ZU-H0L"/>
                             <constraint firstItem="gWk-tF-LGP" firstAttribute="top" secondItem="2ck-G7-XJI" secondAttribute="bottom" id="BLS-pc-qoo"/>
@@ -108,6 +109,7 @@
                             <constraint firstItem="2ck-G7-XJI" firstAttribute="top" secondItem="vYX-6R-2hO" secondAttribute="bottom" id="Yc0-NX-Bc1"/>
                             <constraint firstItem="gWk-tF-LGP" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="a2u-b1-O5T"/>
                             <constraint firstAttribute="trailing" secondItem="GAC-Ws-JbP" secondAttribute="trailing" id="u6J-Ze-exh"/>
+                            <constraint firstItem="SbH-40-CQg" firstAttribute="top" secondItem="UJ9-fp-CTY" secondAttribute="bottom" constant="5" id="uZV-vW-B9y"/>
                         </constraints>
                     </view>
                     <connections>
