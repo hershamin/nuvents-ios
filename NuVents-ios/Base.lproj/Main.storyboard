@@ -51,20 +51,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fP-cBg">
-                                <rect key="frame" x="0.0" y="197" width="600" height="403"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fP-cBg">
+                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
                                 <connections>
                                     <segue destination="Kza-NR-yFU" kind="embed" id="HX0-oa-Dum"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWk-tF-LGP">
-                                <rect key="frame" x="0.0" y="197" width="600" height="403"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWk-tF-LGP">
+                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
                                 <connections>
                                     <segue destination="9Mx-7d-swa" kind="embed" id="uqQ-oA-onB"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAC-Ws-JbP">
-                                <rect key="frame" x="0.0" y="197" width="600" height="403"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAC-Ws-JbP">
+                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
                                 <connections>
                                     <segue destination="y4g-73-64D" kind="embed" id="RK7-Bj-C1W"/>
                                 </connections>
@@ -93,9 +93,21 @@
                             <constraint firstAttribute="trailing" secondItem="2ck-G7-XJI" secondAttribute="trailing" id="1eF-lZ-VdU"/>
                             <constraint firstAttribute="trailing" secondItem="vYX-6R-2hO" secondAttribute="trailing" id="3LO-Ve-fOc"/>
                             <constraint firstItem="2ck-G7-XJI" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="6GI-0G-SBU"/>
+                            <constraint firstItem="MZ4-gr-v0x" firstAttribute="top" secondItem="GAC-Ws-JbP" secondAttribute="bottom" id="A3E-Ix-yc4"/>
+                            <constraint firstItem="4uN-fP-cBg" firstAttribute="top" secondItem="2ck-G7-XJI" secondAttribute="bottom" id="BLE-ZU-H0L"/>
+                            <constraint firstItem="gWk-tF-LGP" firstAttribute="top" secondItem="2ck-G7-XJI" secondAttribute="bottom" id="BLS-pc-qoo"/>
+                            <constraint firstItem="GAC-Ws-JbP" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="D4X-yU-cCW"/>
                             <constraint firstItem="vYX-6R-2hO" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="Dk7-oK-iXD"/>
+                            <constraint firstItem="GAC-Ws-JbP" firstAttribute="top" secondItem="2ck-G7-XJI" secondAttribute="bottom" id="E1H-yp-sHu"/>
+                            <constraint firstItem="4uN-fP-cBg" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="HnV-ot-mHD"/>
                             <constraint firstItem="vYX-6R-2hO" firstAttribute="top" secondItem="c5G-y2-wsA" secondAttribute="top" id="MN9-I1-8Ti"/>
+                            <constraint firstAttribute="trailing" secondItem="4uN-fP-cBg" secondAttribute="trailing" id="N3n-i0-wJ5"/>
+                            <constraint firstItem="MZ4-gr-v0x" firstAttribute="top" secondItem="gWk-tF-LGP" secondAttribute="bottom" id="Nvd-Y5-jT1"/>
+                            <constraint firstItem="MZ4-gr-v0x" firstAttribute="top" secondItem="4uN-fP-cBg" secondAttribute="bottom" id="Pnt-aW-Dy3"/>
+                            <constraint firstAttribute="trailing" secondItem="gWk-tF-LGP" secondAttribute="trailing" id="SUZ-MN-E0l"/>
                             <constraint firstItem="2ck-G7-XJI" firstAttribute="top" secondItem="vYX-6R-2hO" secondAttribute="bottom" id="Yc0-NX-Bc1"/>
+                            <constraint firstItem="gWk-tF-LGP" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="a2u-b1-O5T"/>
+                            <constraint firstAttribute="trailing" secondItem="GAC-Ws-JbP" secondAttribute="trailing" id="u6J-Ze-exh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -118,7 +130,7 @@
                         <viewControllerLayoutGuide type="bottom" id="n8r-sK-ilG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eNn-mp-KQQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="403"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -136,7 +148,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0fB-En-iBb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KOM-47-L1q">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="403"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -157,7 +169,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FbO-ZG-5cB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UmT-YN-7tY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="403"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -175,7 +187,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HWV-9j-Jir"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zpX-wB-Lay">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="403"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
