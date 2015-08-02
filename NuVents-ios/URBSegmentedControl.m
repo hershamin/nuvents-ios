@@ -173,10 +173,16 @@ static CGSize const kURBDefaultSize = {300.0f, 44.0f};
     // Add side borders, left border on left side of every segment except the first
     if (segment != 0) {
         CALayer *leftBorder = [CALayer layer];
-        leftBorder.frame = CGRectMake(0, 1, 0.3f, 40);
-        leftBorder.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4].CGColor;
+        leftBorder.frame = CGRectMake(0, 1, 0.3f, 39);
+        leftBorder.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2].CGColor;
         [segmentView.layer addSublayer:leftBorder];
     }
+    
+    // Add top borders
+    CALayer *topBorder = [CALayer layer];
+    topBorder.frame = CGRectMake(0, 0, self.bounds.size.width, 0.3f);
+    topBorder.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2].CGColor;
+    [segmentView.layer addSublayer:topBorder];
 	
 	NSUInteger index = MAX(MIN(segment, self.numberOfSegments), 0);
 	if (index < self.items.count) {
@@ -438,8 +444,8 @@ static CGSize const kURBDefaultSize = {300.0f, 44.0f};
 	
 	// shadows
 	UIColor* baseInnerShadow = [UIColor blackColor];
-	CGSize baseInnerShadowOffset = CGSizeMake(0.1, 1.1);
-	CGFloat baseInnerShadowBlurRadius = 1;
+	CGSize baseInnerShadowOffset = CGSizeMake(0.1, 0.1);
+	CGFloat baseInnerShadowBlurRadius = 0;
 	
 	{
 		// base path
