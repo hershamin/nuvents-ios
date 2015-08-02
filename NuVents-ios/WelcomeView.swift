@@ -10,10 +10,17 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    @IBOutlet var combinationViewBtn:UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        combinationViewBtn.addTarget(self, action: "goToCombinationView:", forControlEvents: UIControlEvents.TouchUpInside) // Combination button action
+    }
+    
+    // Func to go to combination view
+    func goToCombinationView(sender:UIButton!) {
+        self.performSegueWithIdentifier("showCombinationView", sender: nil)
     }
     
     // Restrict to portrait only

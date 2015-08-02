@@ -11,6 +11,8 @@
 		BA09BFC11B6D882700138139 /* Gotham-Rounded-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFBD1B6D882700138139 /* Gotham-Rounded-Book.ttf */; };
 		BA09BFC21B6D882700138139 /* Gotham-Rounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFBE1B6D882700138139 /* Gotham-Rounded-Light.ttf */; };
 		BA09BFC31B6D882700138139 /* Gotham-Rounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFBF1B6D882700138139 /* Gotham-Rounded-Medium.ttf */; };
+		BA09BFC51B6D99A100138139 /* combinationViewTabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFC41B6D99A100138139 /* combinationViewTabBar.png */; };
+		BA09BFC81B6D9CE200138139 /* URBSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */; };
 		BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1B733F1AFFFADE00A15B77 /* location.gpx */; };
 		BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */; };
 		BA5B90CC1AED81F3000B1BD5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */; };
@@ -76,6 +78,9 @@
 		BA09BFBD1B6D882700138139 /* Gotham-Rounded-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Book.ttf"; sourceTree = "<group>"; };
 		BA09BFBE1B6D882700138139 /* Gotham-Rounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Light.ttf"; sourceTree = "<group>"; };
 		BA09BFBF1B6D882700138139 /* Gotham-Rounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Medium.ttf"; sourceTree = "<group>"; };
+		BA09BFC41B6D99A100138139 /* combinationViewTabBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = combinationViewTabBar.png; sourceTree = "<group>"; };
+		BA09BFC61B6D9CE200138139 /* URBSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URBSegmentedControl.h; sourceTree = "<group>"; };
+		BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URBSegmentedControl.m; sourceTree = "<group>"; };
 		BA1B733F1AFFFADE00A15B77 /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = location.gpx; sourceTree = "<group>"; };
 		BA5B90C41AED81F3000B1BD5 /* NuVents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NuVents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5B90C81AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -215,6 +220,8 @@
 				BA90B6151B1D211D00C3E3D8 /* Fabric.framework */,
 				BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */,
 				BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */,
+				BA09BFC61B6D9CE200138139 /* URBSegmentedControl.h */,
+				BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */,
 				BADFA9271B69538F00CAF0A5 /* SocketIOClientSwift */,
 				BAEFAD471B4F4570003F0D0B /* Siren */,
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
@@ -265,6 +272,7 @@
 		BA8E59601B2A543700D6AB86 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				BA09BFC41B6D99A100138139 /* combinationViewTabBar.png */,
 				BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */,
 			);
 			name = Graphics;
@@ -391,6 +399,7 @@
 				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
 				BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */,
 				BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */,
+				BA09BFC51B6D99A100138139 /* combinationViewTabBar.png in Resources */,
 				BA09BFC01B6D882700138139 /* Gotham-Rounded-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +437,7 @@
 			files = (
 				BA5B90CC1AED81F3000B1BD5 /* WelcomeView.swift in Sources */,
 				BAEEDE1F1B6D5D9400E10ED5 /* DetailView.swift in Sources */,
+				BA09BFC81B6D9CE200138139 /* URBSegmentedControl.m in Sources */,
 				BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */,
 				BADFA9361B69538F00CAF0A5 /* SocketAnyEvent.swift in Sources */,
 				BADFA9351B69538F00CAF0A5 /* SocketAckManager.swift in Sources */,

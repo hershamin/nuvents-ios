@@ -15,9 +15,22 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECy-mc-6tU">
+                                <rect key="frame" x="253" y="285" width="95" height="30"/>
+                                <state key="normal" title="Combination">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ECy-mc-6tU" secondAttribute="centerY" id="bff-lS-iEy"/>
+                            <constraint firstAttribute="centerX" secondItem="ECy-mc-6tU" secondAttribute="centerX" id="lZZ-3Q-uZf"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="combinationViewBtn" destination="ECy-mc-6tU" id="1WT-hu-JYH"/>
                         <segue destination="NP8-2d-YK2" kind="show" identifier="showRequestView" id="zAa-S4-IEd"/>
                         <segue destination="9fn-Rw-EM1" kind="show" identifier="showCombinationView" id="8w4-Cw-GSb"/>
                     </connections>
@@ -39,35 +52,62 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-fP-cBg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="197" width="600" height="403"/>
                                 <connections>
                                     <segue destination="Kza-NR-yFU" kind="embed" id="HX0-oa-Dum"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gWk-tF-LGP">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="197" width="600" height="403"/>
                                 <connections>
                                     <segue destination="9Mx-7d-swa" kind="embed" id="uqQ-oA-onB"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GAC-Ws-JbP">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="197" width="600" height="403"/>
                                 <connections>
                                     <segue destination="y4g-73-64D" kind="embed" id="RK7-Bj-C1W"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="combinationViewTabBar.png" translatesAutoresizingMaskIntoConstraints="NO" id="vYX-6R-2hO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="dUh-iX-vBK"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ck-G7-XJI" customClass="URBSegmentView">
+                                <rect key="frame" x="0.0" y="80" width="600" height="40"/>
+                                <color key="backgroundColor" red="0.90980392156862744" green="0.33725490196078434" blue="0.42745098039215684" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="0Gx-0W-GlP"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6kk-Wk-FMf">
+                                <rect key="frame" x="16" y="35" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2ck-G7-XJI" secondAttribute="trailing" id="1eF-lZ-VdU"/>
+                            <constraint firstAttribute="trailing" secondItem="vYX-6R-2hO" secondAttribute="trailing" id="3LO-Ve-fOc"/>
+                            <constraint firstItem="2ck-G7-XJI" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="6GI-0G-SBU"/>
+                            <constraint firstItem="vYX-6R-2hO" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="Dk7-oK-iXD"/>
+                            <constraint firstItem="vYX-6R-2hO" firstAttribute="top" secondItem="c5G-y2-wsA" secondAttribute="top" id="MN9-I1-8Ti"/>
+                            <constraint firstItem="2ck-G7-XJI" firstAttribute="top" secondItem="vYX-6R-2hO" secondAttribute="bottom" id="Yc0-NX-Bc1"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="categoryView" destination="4uN-fP-cBg" id="erA-eh-CJW"/>
                         <outlet property="listView" destination="gWk-tF-LGP" id="4A0-Xe-Cs1"/>
                         <outlet property="mapView" destination="GAC-Ws-JbP" id="NOk-dB-3Gx"/>
+                        <outlet property="segmentedCtrlView" destination="2ck-G7-XJI" id="Jqy-f4-0ec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KN8-1Q-3wK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1112" y="-154"/>
+            <point key="canvasLocation" x="1120" y="-187"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="Fcs-xn-JzR">
@@ -78,7 +118,7 @@
                         <viewControllerLayoutGuide type="bottom" id="n8r-sK-ilG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eNn-mp-KQQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="403"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -96,7 +136,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0fB-En-iBb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KOM-47-L1q">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="403"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -117,7 +157,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FbO-ZG-5cB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UmT-YN-7tY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="403"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -135,7 +175,7 @@
                         <viewControllerLayoutGuide type="bottom" id="HWV-9j-Jir"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zpX-wB-Lay">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="403"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -166,6 +206,9 @@
             <point key="canvasLocation" x="1120" y="746"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="combinationViewTabBar.png" width="1500" height="368"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cnt-Af-WMB"/>
     </inferredMetricsTieBreakers>
