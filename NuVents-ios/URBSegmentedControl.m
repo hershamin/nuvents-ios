@@ -169,6 +169,14 @@ static CGSize const kURBDefaultSize = {300.0f, 44.0f};
 	// we just need some size for proper height of the background images that are drawn
 	CGRect segmentRect = CGRectMake(0, 0, MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)), MIN(CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds)));
 	segmentView.frame = CGRectInset(segmentRect, self.segmentEdgeInsets.top, self.segmentEdgeInsets.left);
+    
+    // Add side borders, left border on left side of every segment except the first
+    if (segment != 0) {
+        CALayer *leftBorder = [CALayer layer];
+        leftBorder.frame = CGRectMake(0, 1, 0.3f, 40);
+        leftBorder.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4].CGColor;
+        [segmentView.layer addSublayer:leftBorder];
+    }
 	
 	NSUInteger index = MAX(MIN(segment, self.numberOfSegments), 0);
 	if (index < self.items.count) {
@@ -431,7 +439,7 @@ static CGSize const kURBDefaultSize = {300.0f, 44.0f};
 	// shadows
 	UIColor* baseInnerShadow = [UIColor blackColor];
 	CGSize baseInnerShadowOffset = CGSizeMake(0.1, 1.1);
-	CGFloat baseInnerShadowBlurRadius = 3;
+	CGFloat baseInnerShadowBlurRadius = 1;
 	
 	{
 		// base path
@@ -568,10 +576,10 @@ static CGSize const kURBDefaultSize = {300.0f, 44.0f};
 	URBSegmentView *appearance = [self appearance];
 	
 	[appearance setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	[appearance setTitleShadowColor:[UIColor blackColor] forState:UIControlStateNormal];
+	[appearance setTitleShadowColor:[UIColor clearColor] forState:UIControlStateNormal];
 	
 	[appearance setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-	[appearance setTitleShadowColor:[UIColor blackColor] forState:UIControlStateSelected];
+	[appearance setTitleShadowColor:[UIColor clearColor] forState:UIControlStateSelected];
 	
 	// slightly adjust title colors for the highlight states
 	UIColor *titleColor = [appearance titleColorForState:UIControlStateNormal];
@@ -603,15 +611,15 @@ static CGSize const kURBDefaultSize = {300.0f, 44.0f};
         self.titleLabel.font = [UIFont fontWithName:@"GothamRounded-Medium" size:12.0];
 		
 		self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-		/*self.imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+		self.imageView.layer.shadowColor = [UIColor clearColor].CGColor;
 		self.imageView.layer.shadowOffset = CGSizeMake(0.0, 1.0);
 		self.imageView.layer.shadowRadius = 0;
 		self.imageView.layer.shadowOpacity = 1.0;
 		self.imageView.layer.shouldRasterize = YES;
 		self.imageView.layer.rasterizationScale = self.imageView.image.scale;
-		self.imageView.layer.masksToBounds = NO;*/
+		self.imageView.layer.masksToBounds = NO;
 		
-		self.layer.shadowColor = [UIColor blackColor].CGColor;
+		self.layer.shadowColor = [UIColor clearColor].CGColor;
 		self.layer.shadowOffset = CGSizeMake(0.0, 0.5);
 		self.layer.shadowRadius = 2.0;
 		self.layer.shadowOpacity = 0.0;
@@ -790,8 +798,8 @@ static CGSize const kURBDefaultSize = {300.0f, 44.0f};
 	}
 	
 	// shadows
-	CGSize segmentHighlightOffset = CGSizeMake(0.1, 1.1);
-	CGFloat segmentHighlightBlurRadius = 2;
+	CGSize segmentHighlightOffset = CGSizeMake(0.1, 0.1);
+	CGFloat segmentHighlightBlurRadius = 0;
 	
 	{
 		CGContextSaveGState(context);
