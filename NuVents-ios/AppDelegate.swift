@@ -25,12 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let googleMapsApiKey = "AIzaSyCoxB_xocbfinGPLJdiexNsXfW_o7PqeEg"
         let appStoreID = "792991234"
         Fabric.with([Crashlytics()])
-        GMSServices.provideAPIKey(googleMapsApiKey)
         // Change status bar color to white throughout app
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        // Begin NuVents backend connection
+        NuVentsEndpoint.sharedEndpoint.connect()
         // Siren Framework for notifying users when new updates are available
         let siren = Siren.sharedInstance
         siren.appID = appStoreID
