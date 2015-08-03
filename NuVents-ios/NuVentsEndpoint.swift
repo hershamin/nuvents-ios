@@ -85,6 +85,18 @@ class NuVentsEndpoint {
         }
     }
     
+    // Get resources from server
+    private func getResourcesFromServer() {
+        let deviceDict = ["did":NuVentsEndpoint.sharedEndpoint.udid as String,
+            "dm":NuVentsHelper.getDeviceHardware()]
+        self.nSocket.emitWithAck("resources", deviceDict)(timeoutAfter: 0){data in
+            println("NuVents Endpoint: Resources Received")
+            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let jsonData = JSON(data: dataFromString!)
+            self.syncResources(jsonData)
+        }
+    }
+    
     // Sync resources with server
     private func syncResources(jsonData: JSON) {
         var fm = NSFileManager.defaultManager()
@@ -104,6 +116,7 @@ class NuVentsEndpoint {
                 
             }
         }
+        println("NuVents Endpoint: Resources Sync Complete")
     }
     
     // MARK: socket handling methods
@@ -126,28 +139,9 @@ class NuVentsEndpoint {
             }
         }
         
-        // Resources Status
-        nSocket.on("resources:status") {data, ack in
-            let resp = "\(data?[0])"
-            if resp.rangeOfString("Error") != nil { // error status
-                println("NuVents Endpoint: ERROR: Resources: \(resp)")
-            } else {
-                println("NuVents Endpoint: Resources: Received")
-            }
-        }
-        
-        // Received resources from server
-        nSocket.on("resources") {data, ack in
-            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            let jsonData = JSON(data: dataFromString!)
-            self.syncResources(jsonData)
-        }
-        
         // Connection Status
         nSocket.on("connect") {data, ack in
-            let deviceDict = ["did":NuVentsEndpoint.sharedEndpoint.udid as String,
-                "dm":NuVentsHelper.getDeviceHardware()]
-            self.nSocket.emit("device:initial", deviceDict)
+            self.getResourcesFromServer()
             self.connected = true
             // Send last known nearby event request if it exists
             if (count(self.lastNearbyEventRequest) > 0) {
