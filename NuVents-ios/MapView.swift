@@ -10,10 +10,19 @@ import Foundation
 
 class MapViewController: UIViewController {
     
+    @IBOutlet var myLocBtn:UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.backgroundColor = UIColor.blueColor()
+        
+        // Init my location button
+        myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    // My Location button pressed
+    func myLocBtnPressed(sender:UIButton!) {
+        println("PRESSED")
     }
     
     // Restrict to portrait only
