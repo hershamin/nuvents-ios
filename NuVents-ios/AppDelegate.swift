@@ -9,8 +9,10 @@
 // Compiler flags for debug & release
 #if DEBUG
     let backend = "repo.nuvents.com:1027"
+    let fabricIntegration = false
 #else
     let backend = "backend.nuvents.com"
+    let fabricIntegration = true
 #endif
 
 import UIKit
@@ -26,7 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         let appStoreID = "792991234"
-        Fabric.with([Crashlytics()])
+        // Initiate fabricIO with crashlytics if in release build
+        if (fabricIntegration) { Fabric.with([Crashlytics()]) }
         // Change status bar color to white throughout app
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         // Begin NuVents backend connection
