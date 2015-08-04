@@ -11,6 +11,7 @@ import Foundation
 class MapViewController: UIViewController {
     
     @IBOutlet var myLocBtn:UIButton!
+    var mapView:RMMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,16 @@ class MapViewController: UIViewController {
         
         // Init my location button
         myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        // Init MapBox maps
+        RMConfiguration.sharedInstance().accessToken = NuVentsEndpoint.sharedEndpoint.mapboxToken
+        let tileSource:RMMapboxSource = RMMapboxSource(mapID: NuVentsEndpoint.sharedEndpoint.mapboxMapId)
+        mapView = RMMapView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height - 120), andTilesource: tileSource)
+        mapView.zoom = 10
+        let centerCoord = CLLocationCoordinate2DMake(30.27, -97.74)
+        mapView.centerCoordinate = centerCoord
+        self.view.addSubview(mapView)
+        self.view.sendSubviewToBack(mapView)
     }
     
     // My Location button pressed
