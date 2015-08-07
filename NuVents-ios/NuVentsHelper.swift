@@ -66,7 +66,7 @@ class NuVentsHelper {
     }
     
     // Get resource from internal file system
-    class func getResourcePath(resource: NSString!, type: NSString!, override: Bool) -> String {
+    class func getResourcePath(resource: NSString!, type: NSString!) -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         // Create directories if not present
         var fm = NSFileManager.defaultManager()
@@ -79,10 +79,6 @@ class NuVentsHelper {
         }
         // Return filepath
         var filePath = resDir.stringByAppendingPathComponent(resource as String)
-        // Check if marker icon exists, if not send a default one
-        if !fm.fileExistsAtPath(filePath) && type.isEqualToString("marker") && !override {
-            filePath = resDir.stringByAppendingPathComponent("default")
-        } // Only triggered if override is set to true
         return filePath
     }
     

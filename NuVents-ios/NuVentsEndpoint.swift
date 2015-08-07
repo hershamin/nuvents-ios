@@ -103,7 +103,7 @@ class NuVentsEndpoint {
         // Get resources if not present on the internal file system or different
         for (type : String, typeJson : JSON) in jsonData["resource"] { // Resource types
             for (resource: String, resJson: JSON) in typeJson { // Resources
-                let path = NuVentsHelper.getResourcePath(resource, type: type, override: true)
+                let path = NuVentsHelper.getResourcePath(resource, type: type)
                 if (!fm.fileExistsAtPath(path)) { // File does not exist
                     NuVentsHelper.downloadFile(path, url: resJson.stringValue) // Download from provided url
                 } else {
