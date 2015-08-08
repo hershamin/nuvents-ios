@@ -169,9 +169,26 @@
                     <view key="view" contentMode="scaleToFill" id="KOM-47-L1q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yLD-3I-zZU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9Mx-7d-swa" id="fdE-wp-NnM"/>
+                                    <outlet property="delegate" destination="9Mx-7d-swa" id="aqY-lf-K2m"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yLD-3I-zZU" secondAttribute="trailing" id="3Cn-HI-DUN"/>
+                            <constraint firstItem="yLD-3I-zZU" firstAttribute="leading" secondItem="KOM-47-L1q" secondAttribute="leading" id="7hB-6b-Vvo"/>
+                            <constraint firstItem="yLD-3I-zZU" firstAttribute="top" secondItem="Zcn-cq-6mW" secondAttribute="bottom" id="Fyi-3z-leb"/>
+                            <constraint firstItem="0fB-En-iBb" firstAttribute="top" secondItem="yLD-3I-zZU" secondAttribute="bottom" id="Jxe-Le-8Rs"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="yLD-3I-zZU" id="Ua1-dA-uOD"/>
                         <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="0ps-xm-KK4"/>
                     </connections>
                 </viewController>
@@ -241,6 +258,6 @@
         <image name="combinationViewTabBar.png" width="1500" height="368"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cnt-Af-WMB"/>
+        <segue reference="0ps-xm-KK4"/>
     </inferredMetricsTieBreakers>
 </document>

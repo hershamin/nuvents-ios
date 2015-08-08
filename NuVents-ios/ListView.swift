@@ -8,12 +8,16 @@
 
 import Foundation
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet var tableView: UITableView!
+    
+    var testarray: [String] = ["Hersh", "Humza", "Aaron"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.backgroundColor = UIColor.greenColor()
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     // Restrict to portrait only
@@ -26,5 +30,18 @@ class ListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
         
     }
+    
+    //MARK - Table View Methods
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return testarray.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        
+        cell.textLabel?.text = testarray[indexPath.row]
+        return cell
+    }
+
     
 }
