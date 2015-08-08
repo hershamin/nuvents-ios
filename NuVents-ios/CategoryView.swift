@@ -18,8 +18,7 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = UIColor.redColor()
-        NuVentsHelper.getResourcePath("icon", type: String(), override: false)
-        
+        NuVentsHelper.getResourcePath("resource", type: "categoryIcon", override: false)
     }
     //Setup the collection view.
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
