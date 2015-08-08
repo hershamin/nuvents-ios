@@ -8,12 +8,13 @@
 
 import Foundation
 
-class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class CategoryViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     
     @IBOutlet var myCollectionView:UICollectionView!
     
+    
     let reuseIdentifier = "Cell"
-    var iconList: [String] = ["music", "food","sports","charity","conference","product","games","singles", "tech"]
+    var iconList: [String] = ["music", "food","sports","charity","conference","productLaunch","games","singles", "tech"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
