@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CategoryViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
+class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet var myCollectionView:UICollectionView!
     
@@ -21,8 +21,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource,UICol
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-    //Setup the collection view.
     
+    //Setup the collection view.
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // 1
         return 1
@@ -45,11 +45,11 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource,UICol
         cell.labelCell.text = iconList[indexPath.row].uppercaseString
         
         //Produce a border for the cells and color them.
-        var color: UIColor = UIColor(red: 0.5, green: 0.2, blue: 0.3, alpha: 0.2)
+        var color: UIColor = UIColor(red: 0.84, green: 0.844, blue: 0.852, alpha: 1)
         
         cell.backgroundColor = UIColor.clearColor()
         cell.layer.borderColor = color.CGColor
-        cell.layer.borderWidth = 0.5
+        cell.layer.borderWidth = 2.0
         cell.layer.cornerRadius = 3
         
         return cell
