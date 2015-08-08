@@ -13,7 +13,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet var myCollectionView:UICollectionView!
     
     let reuseIdentifier = "Cell"
-    var iconList: [String] = ["charity,conference"]
+    var iconList: [String] = ["charity", "conference"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +37,15 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         //Configure the cell's with the category icon images.
         let filePath = NuVentsHelper.getResourcePath(iconList[indexPath.row], type: "categoryIcon", override: false)
         println(filePath)
-        
         cell.imageCell.image = UIImage(contentsOfFile: filePath)
+        
+        //Produce a border for the cells
+        var color: UIColor = UIColor(red: 0.5, green: 0.2, blue: 0.3, alpha: 0.2)
+        
+        cell.layer.borderColor = color.CGColor
+        cell.layer.borderWidth = 0.5
+        cell.layer.cornerRadius = 3
+        
         return cell
     }
     
