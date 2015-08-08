@@ -17,6 +17,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     //Setup the collection view.
@@ -40,11 +41,12 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.imageCell.image = UIImage(contentsOfFile: filePath)
         
         //Give the cell a label
-        cell.labelCell.text = iconList[indexPath.row]
+        cell.labelCell.text = iconList[indexPath.row].uppercaseString
         
         //Produce a border for the cells and color them.
         var color: UIColor = UIColor(red: 0.5, green: 0.2, blue: 0.3, alpha: 0.2)
         
+        cell.backgroundColor = UIColor.clearColor()
         cell.layer.borderColor = color.CGColor
         cell.layer.borderWidth = 0.5
         cell.layer.cornerRadius = 3
