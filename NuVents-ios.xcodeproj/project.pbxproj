@@ -59,6 +59,7 @@
 		BAEEDE1D1B6D5D8100E10ED5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEDE1C1B6D5D8100E10ED5 /* MapView.swift */; };
 		BAEEDE1F1B6D5D9400E10ED5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */; };
 		BAEEDE211B6D5DA200E10ED5 /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEDE201B6D5DA200E10ED5 /* RequestView.swift */; };
+		BAEEDE651B75BAF400E10ED5 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEDE641B75BAF400E10ED5 /* CategoryViewCell.swift */; };
 		BAEFAD4A1B4F4570003F0D0B /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BAEFAD481B4F4570003F0D0B /* Siren.bundle */; };
 		BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEFAD491B4F4570003F0D0B /* Siren.swift */; };
 /* End PBXBuildFile section */
@@ -132,6 +133,7 @@
 		BAEEDE1C1B6D5D8100E10ED5 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BAEEDE201B6D5DA200E10ED5 /* RequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
+		BAEEDE641B75BAF400E10ED5 /* CategoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		BAEFAD481B4F4570003F0D0B /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
 		BAEFAD491B4F4570003F0D0B /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -235,6 +237,7 @@
 				BA5B90C71AED81F3000B1BD5 /* Supporting Files */,
 				BA5B91051AED8601000B1BD5 /* NuVents-ios-Bridging-Header.h */,
 				BAEEDE161B6D5D3300E10ED5 /* CombinationView.swift */,
+				BAEEDE641B75BAF400E10ED5 /* CategoryViewCell.swift */,
 				BAEEDE181B6D5D6700E10ED5 /* CategoryView.swift */,
 				BAEEDE1A1B6D5D7500E10ED5 /* ListView.swift */,
 				BAEEDE1C1B6D5D8100E10ED5 /* MapView.swift */,
@@ -451,6 +454,7 @@
 				BADFA93E1B69538F00CAF0A5 /* SocketParser.swift in Sources */,
 				BADFA9391B69538F00CAF0A5 /* SocketEventHandler.swift in Sources */,
 				BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */,
+				BAEEDE651B75BAF400E10ED5 /* CategoryViewCell.swift in Sources */,
 				BADFA9371B69538F00CAF0A5 /* SocketEngine.swift in Sources */,
 				BADFA93D1B69538F00CAF0A5 /* SocketPacket.swift in Sources */,
 				BADFA93B1B69538F00CAF0A5 /* SocketIOClient.swift in Sources */,

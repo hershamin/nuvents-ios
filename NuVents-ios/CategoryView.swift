@@ -36,7 +36,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         //Configure the cell's with the category icon images.
         let filePath = NuVentsHelper.getResourcePath(iconList[indexPath.row], type: "categoryIcon", override: false)
-        println(filePath)
+        
         cell.imageCell.image = UIImage(contentsOfFile: filePath)
         
         //Produce a border for the cells
