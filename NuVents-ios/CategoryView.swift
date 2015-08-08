@@ -8,34 +8,37 @@
 
 import Foundation
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var myCollectionView:UICollectionView!
     
     let reuseIdentifier = "Cell"
+    var iconList: [String] = ["charity,conference"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.backgroundColor = UIColor.redColor()
-        NuVentsHelper.getResourcePath("resource", type: "categoryIcon", override: false)
     }
     //Setup the collection view.
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         // 1
         return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // 5
-        return 5
+        //return count
+        return iconList.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! UICollectionViewCell
+        let cell: CategoryViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CategoryViewCell
         
         //Configure the cell's with the category icon images.
+        let filePath = NuVentsHelper.getResourcePath(iconList[indexPath.row], type: "categoryIcon", override: false)
+        println(filePath)
         
+        cell.imageCell.image = UIImage(contentsOfFile: filePath)
         return cell
     }
     

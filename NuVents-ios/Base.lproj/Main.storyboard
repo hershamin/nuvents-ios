@@ -152,36 +152,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-bC-wyr">
-                                <rect key="frame" x="0.0" y="83" width="600" height="397"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-bC-wyr">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="rZ9-4A-Icm">
-                                    <size key="itemSize" width="62" height="62"/>
+                                    <size key="itemSize" width="72" height="82"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="8" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="IAg-Rn-I8F">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="IAg-Rn-I8F" customClass="CategoryViewCell" customModule="NuVents" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="62" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="72" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3UG-Y8-f2N">
-                                                    <rect key="frame" x="0.0" y="0.0" width="62" height="62"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5T-YJ-AkX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="82"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="0.99682535564444641" green="0.9835298038532897" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="imageCell" destination="Z5T-YJ-AkX" id="Oii-lQ-vJ3"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Kza-NR-yFU" id="8gr-Id-I5W"/>
+                                    <outlet property="delegate" destination="Kza-NR-yFU" id="T2j-83-UEt"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Bcm-bC-wyr" secondAttribute="trailing" id="EzO-XZ-4aC"/>
+                            <constraint firstItem="Bcm-bC-wyr" firstAttribute="leading" secondItem="eNn-mp-KQQ" secondAttribute="leading" id="GXQ-pT-Kuw"/>
+                            <constraint firstItem="n8r-sK-ilG" firstAttribute="top" secondItem="Bcm-bC-wyr" secondAttribute="bottom" id="Q9I-6c-sHg"/>
+                            <constraint firstItem="Bcm-bC-wyr" firstAttribute="top" secondItem="CB7-yn-1qw" secondAttribute="bottom" id="guO-Yi-cuv"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="3UG-Y8-f2N" id="SsB-Av-AJY"/>
+                        <outlet property="myCollectionView" destination="Bcm-bC-wyr" id="mjM-N7-HBx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWQ-XG-hCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
