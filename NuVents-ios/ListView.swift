@@ -14,10 +14,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var testarray: [String] = ["Hersh", "Humza", "Aaron"]
     
+    let reuseIdentifier = "ListCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
     }
     
     // Restrict to portrait only
@@ -37,9 +39,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        var cell: ListViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! ListViewCell
         
-        cell.textLabel?.text = testarray[indexPath.row]
+        cell.LabelView.text = testarray[indexPath.row]
+        
         return cell
     }
 
