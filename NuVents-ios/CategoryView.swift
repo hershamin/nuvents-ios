@@ -13,7 +13,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet var myCollectionView:UICollectionView!
     
     let reuseIdentifier = "Cell"
-    var iconList: [String] = ["charity", "conference"]
+    var iconList: [String] = ["music", "food","sports","charity","conference","product","games","singles", "tech"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,10 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         cell.imageCell.image = UIImage(contentsOfFile: filePath)
         
-        //Produce a border for the cells
+        //Give the cell a label
+        cell.labelCell.text = iconList[indexPath.row]
+        
+        //Produce a border for the cells and color them.
         var color: UIColor = UIColor(red: 0.5, green: 0.2, blue: 0.3, alpha: 0.2)
         
         cell.layer.borderColor = color.CGColor
