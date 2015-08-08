@@ -27,13 +27,19 @@ class MapViewController: UIViewController {
         mapView.zoom = 10
         let centerCoord = CLLocationCoordinate2DMake(30.27, -97.74)
         mapView.centerCoordinate = centerCoord
+        mapView.userTrackingMode = RMUserTrackingModeFollow
         self.view.addSubview(mapView)
         self.view.sendSubviewToBack(mapView)
     }
     
     // My Location button pressed
     func myLocBtnPressed(sender:UIButton!) {
-        println("PRESSED")
+        // Zoom in to go to user location if visible on map
+        if let locationDetected = mapView.userLocation {
+            let location = mapView.userLocation.location
+            mapView.setZoom(14, animated: true)
+            mapView.setCenterCoordinate(location.coordinate, animated: true)
+        }
     }
     
     // Restrict to portrait only
