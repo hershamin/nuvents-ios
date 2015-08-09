@@ -56,7 +56,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Set event category image
         let imgPath = NuVentsHelper.getResourcePath(eventJSON["marker"].stringValue, type: "categoryIcon")
-        cell.imageView?.image = UIImage(contentsOfFile: imgPath)
+        cell.iconView.image = UIImage(contentsOfFile: imgPath)
         
         return cell
     }
