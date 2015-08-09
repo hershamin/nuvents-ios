@@ -21,6 +21,8 @@ class NuVentsEndpoint {
     
     // Global Constants
     internal let udid:String = UIDevice.currentDevice().identifierForVendor.UUIDString // Unique Device ID
+    internal let mapboxToken:String = "sk.eyJ1IjoiaGVyc2hhbWluIiwiYSI6ImUxOGRkZWQ0NGE4YjcyNjZmOGU4MzYxNWI3NTEzMTIzIn0.b5wf8U-tHvq00cPlEGrFhQ"
+    internal let mapboxMapId:String = "hershamin.n2ld8p7j"
     
     // Global Variables
     internal var eventJSON = [String: JSON]()
