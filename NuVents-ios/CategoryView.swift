@@ -37,7 +37,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell: CategoryViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CategoryViewCell
         
         //Configure the cell's with the category icon images.
-        let filePath = NuVentsHelper.getResourcePath(iconList[indexPath.row], type: "categoryIcon", override: false)
+        let filePath = NuVentsHelper.getResourcePath(iconList[indexPath.row], type: "categoryIcon")
         
         cell.imageCell.image = UIImage(contentsOfFile: filePath)
         
