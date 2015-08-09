@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import JavaScriptCore
 
 class NuVentsHelper {
     
@@ -66,7 +67,7 @@ class NuVentsHelper {
     }
     
     // Get resource from internal file system
-    class func getResourcePath(resource: NSString!, type: NSString!, override: Bool) -> String {
+    class func getResourcePath(resource: NSString!, type: NSString!) -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         // Create directories if not present
         var fm = NSFileManager.defaultManager()
@@ -79,11 +80,25 @@ class NuVentsHelper {
         }
         // Return filepath
         var filePath = resDir.stringByAppendingPathComponent(resource as String)
-        // Check if marker icon exists, if not send a default one
-        if !fm.fileExistsAtPath(filePath) && type.isEqualToString("marker") && !override {
-            filePath = resDir.stringByAppendingPathComponent("default")
-        } // Only triggered if override is set to true
         return filePath
+    }
+    
+    // Convert EPOCH timestamp to human readable date
+    class func getHumanReadableDate(epochTimestamp: Float) -> String {
+        // Get javascript string from file
+        let filePath = NSBundle.mainBundle().pathForResource("NuVentsHelperJS", ofType: "js")
+        let fileStr = NSString(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding, error: nil)!
+        
+        // Get javascript engine & evaluate
+        let context = JSContext()
+        context.evaluateScript(fileStr as String)
+        
+        // Call function to convert epoch to human readable date
+        let currentTS = NSDate().timeIntervalSince1970
+        let dateStr:JSValue = context.evaluateScript("getHumanReadableDate(\"\(epochTimestamp)\", \"\(currentTS)\")")
+        
+        // Return human readable date
+        return dateStr.toString();
     }
     
 }

@@ -8,12 +8,51 @@
 
 import Foundation
 
-class CategoryViewController: UIViewController {
+class CategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    @IBOutlet var myCollectionView:UICollectionView!
+    
+    
+    let reuseIdentifier = "Cell"
+    var iconList: [String] = ["music", "food","sports","charity","conference","productLaunch","games","singles", "tech"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.backgroundColor = UIColor.redColor()
+    }
+    
+    //Setup the collection view.
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        // 1
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //return count
+        return iconList.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell: CategoryViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CategoryViewCell
+        
+        //Configure the cell's with the category icon images.
+        let filePath = NuVentsHelper.getResourcePath(iconList[indexPath.row], type: "categoryIcon")
+        
+        cell.imageCell.image = UIImage(contentsOfFile: filePath)
+        
+        //Give the cell a label
+        cell.labelCell.text = iconList[indexPath.row].uppercaseString
+        
+        //Produce a border for the cells and color them.
+        var color: UIColor = UIColor(red: 0.84, green: 0.844, blue: 0.852, alpha: 1)
+        
+        cell.backgroundColor = UIColor.clearColor()
+        cell.layer.borderColor = color.CGColor
+        cell.layer.borderWidth = 2.0
+        cell.layer.cornerRadius = 3
+        
+        return cell
     }
     
     // Restrict to portrait only

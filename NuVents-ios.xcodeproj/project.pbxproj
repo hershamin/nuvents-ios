@@ -13,6 +13,9 @@
 		BA09BFC31B6D882700138139 /* Gotham-Rounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFBF1B6D882700138139 /* Gotham-Rounded-Medium.ttf */; };
 		BA09BFC51B6D99A100138139 /* combinationViewTabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFC41B6D99A100138139 /* combinationViewTabBar.png */; };
 		BA09BFC81B6D9CE200138139 /* URBSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */; };
+		BA09BFCC1B6F294100138139 /* myLocationBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFCB1B6F294100138139 /* myLocationBtn.png */; };
+		BA09D05B1B77233000138139 /* libMapbox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA09D0561B7722F000138139 /* libMapbox.a */; };
+		BA09D0611B78086000138139 /* NuVentsHelperJS.js in Resources */ = {isa = PBXBuildFile; fileRef = BA09D0601B78086000138139 /* NuVentsHelperJS.js */; };
 		BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1B733F1AFFFADE00A15B77 /* location.gpx */; };
 		BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */; };
 		BA5B90CC1AED81F3000B1BD5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */; };
@@ -20,18 +23,8 @@
 		BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90D01AED81F3000B1BD5 /* Images.xcassets */; };
 		BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90D21AED81F3000B1BD5 /* LaunchScreen.xib */; };
 		BA5B90E01AED81F3000B1BD5 /* NuVents_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90DF1AED81F3000B1BD5 /* NuVents_iosTests.swift */; };
-		BA5B90EA1AED8439000B1BD5 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90E91AED8439000B1BD5 /* GoogleMaps.framework */; };
-		BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90EB1AED844B000B1BD5 /* GoogleMaps.bundle */; };
-		BA5B90EE1AED851A000B1BD5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90ED1AED851A000B1BD5 /* AVFoundation.framework */; };
-		BA5B90F01AED8520000B1BD5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90EF1AED8520000B1BD5 /* CoreData.framework */; };
 		BA5B90F21AED8525000B1BD5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F11AED8525000B1BD5 /* CoreLocation.framework */; };
-		BA5B90F41AED852B000B1BD5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F31AED852B000B1BD5 /* CoreText.framework */; };
-		BA5B90F61AED8531000B1BD5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F51AED8531000B1BD5 /* GLKit.framework */; };
-		BA5B90F81AED8536000B1BD5 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F71AED8536000B1BD5 /* ImageIO.framework */; };
-		BA5B90FA1AED854E000B1BD5 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90F91AED854E000B1BD5 /* libc++.dylib */; };
-		BA5B90FC1AED8559000B1BD5 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90FB1AED8559000B1BD5 /* libicucore.dylib */; };
 		BA5B90FE1AED855F000B1BD5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90FD1AED855F000B1BD5 /* libz.dylib */; };
-		BA5B91001AED8567000B1BD5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B90FF1AED8567000B1BD5 /* OpenGLES.framework */; };
 		BA5B91021AED856F000B1BD5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B91011AED856F000B1BD5 /* QuartzCore.framework */; };
 		BA5B91041AED8575000B1BD5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B91031AED8575000B1BD5 /* SystemConfiguration.framework */; };
 		BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */; };
@@ -59,12 +52,35 @@
 		BAEEDE1D1B6D5D8100E10ED5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEDE1C1B6D5D8100E10ED5 /* MapView.swift */; };
 		BAEEDE1F1B6D5D9400E10ED5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */; };
 		BAEEDE211B6D5DA200E10ED5 /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEDE201B6D5DA200E10ED5 /* RequestView.swift */; };
+		BAEEDE611B7048FB00E10ED5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEEDE601B7048FB00E10ED5 /* libsqlite3.dylib */; };
+		BAEEE73E1B77C66600E10ED5 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEE73D1B77C66600E10ED5 /* CategoryViewCell.swift */; };
 		BAEFAD4A1B4F4570003F0D0B /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BAEFAD481B4F4570003F0D0B /* Siren.bundle */; };
 		BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEFAD491B4F4570003F0D0B /* Siren.swift */; };
 		F1D6F6231B7680960022D638 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6F6221B7680960022D638 /* ListViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BA09D0551B7722F000138139 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA09D0501B7722F000138139 /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 17F31EFA1331050A00122B16;
+			remoteInfo = MapView;
+		};
+		BA09D0571B7722F000138139 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA09D0501B7722F000138139 /* MapView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DD6A83751644A20C0097F31F;
+			remoteInfo = Resources;
+		};
+		BA09D0591B77232800138139 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA09D0501B7722F000138139 /* MapView.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B8C974130E8A19B2007D16AD;
+			remoteInfo = MapView;
+		};
 		BA5B90DA1AED81F3000B1BD5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BA5B90BC1AED81F3000B1BD5 /* Project object */;
@@ -82,6 +98,9 @@
 		BA09BFC41B6D99A100138139 /* combinationViewTabBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = combinationViewTabBar.png; sourceTree = "<group>"; };
 		BA09BFC61B6D9CE200138139 /* URBSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URBSegmentedControl.h; sourceTree = "<group>"; };
 		BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URBSegmentedControl.m; sourceTree = "<group>"; };
+		BA09BFCB1B6F294100138139 /* myLocationBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myLocationBtn.png; sourceTree = "<group>"; };
+		BA09D0501B7722F000138139 /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = "Mapbox-iOS-SDK/MapView/MapView.xcodeproj"; sourceTree = "<group>"; };
+		BA09D0601B78086000138139 /* NuVentsHelperJS.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = NuVentsHelperJS.js; sourceTree = "<group>"; };
 		BA1B733F1AFFFADE00A15B77 /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = location.gpx; sourceTree = "<group>"; };
 		BA5B90C41AED81F3000B1BD5 /* NuVents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NuVents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5B90C81AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,18 +112,8 @@
 		BA5B90D91AED81F3000B1BD5 /* NuVents-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NuVents-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5B90DE1AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA5B90DF1AED81F3000B1BD5 /* NuVents_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuVents_iosTests.swift; sourceTree = "<group>"; };
-		BA5B90E91AED8439000B1BD5 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		BA5B90EB1AED844B000B1BD5 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
-		BA5B90ED1AED851A000B1BD5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		BA5B90EF1AED8520000B1BD5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		BA5B90F11AED8525000B1BD5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		BA5B90F31AED852B000B1BD5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		BA5B90F51AED8531000B1BD5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
-		BA5B90F71AED8536000B1BD5 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		BA5B90F91AED854E000B1BD5 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		BA5B90FB1AED8559000B1BD5 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		BA5B90FD1AED855F000B1BD5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		BA5B90FF1AED8567000B1BD5 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BA5B91011AED856F000B1BD5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BA5B91031AED8575000B1BD5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BA5B91051AED8601000B1BD5 /* NuVents-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NuVents-ios-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -133,6 +142,8 @@
 		BAEEDE1C1B6D5D8100E10ED5 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BAEEDE201B6D5DA200E10ED5 /* RequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
+		BAEEDE601B7048FB00E10ED5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		BAEEE73D1B77C66600E10ED5 /* CategoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = SOURCE_ROOT; };
 		BAEFAD481B4F4570003F0D0B /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
 		BAEFAD491B4F4570003F0D0B /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
 		F1D6F6221B7680960022D638 /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
@@ -143,21 +154,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA09D05B1B77233000138139 /* libMapbox.a in Frameworks */,
+				BAEEDE611B7048FB00E10ED5 /* libsqlite3.dylib in Frameworks */,
 				BA5B91041AED8575000B1BD5 /* SystemConfiguration.framework in Frameworks */,
 				BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */,
 				BA5B91021AED856F000B1BD5 /* QuartzCore.framework in Frameworks */,
-				BA5B91001AED8567000B1BD5 /* OpenGLES.framework in Frameworks */,
 				BA5B90FE1AED855F000B1BD5 /* libz.dylib in Frameworks */,
-				BA5B90FC1AED8559000B1BD5 /* libicucore.dylib in Frameworks */,
-				BA5B90FA1AED854E000B1BD5 /* libc++.dylib in Frameworks */,
-				BA5B90F81AED8536000B1BD5 /* ImageIO.framework in Frameworks */,
 				BA90B6171B1D211D00C3E3D8 /* Fabric.framework in Frameworks */,
-				BA5B90F61AED8531000B1BD5 /* GLKit.framework in Frameworks */,
-				BA5B90F41AED852B000B1BD5 /* CoreText.framework in Frameworks */,
 				BA5B90F21AED8525000B1BD5 /* CoreLocation.framework in Frameworks */,
-				BA5B90F01AED8520000B1BD5 /* CoreData.framework in Frameworks */,
-				BA5B90EE1AED851A000B1BD5 /* AVFoundation.framework in Frameworks */,
-				BA5B90EA1AED8439000B1BD5 /* GoogleMaps.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,24 +186,25 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		BA09D0511B7722F000138139 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA09D0561B7722F000138139 /* libMapbox.a */,
+				BA09D0581B7722F000138139 /* Mapbox.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BA5B90BB1AED81F3000B1BD5 = {
 			isa = PBXGroup;
 			children = (
+				BA09D0501B7722F000138139 /* MapView.xcodeproj */,
+				BAEEDE601B7048FB00E10ED5 /* libsqlite3.dylib */,
 				BA1B733F1AFFFADE00A15B77 /* location.gpx */,
 				BA5B91031AED8575000B1BD5 /* SystemConfiguration.framework */,
 				BA5B91011AED856F000B1BD5 /* QuartzCore.framework */,
-				BA5B90FF1AED8567000B1BD5 /* OpenGLES.framework */,
 				BA5B90FD1AED855F000B1BD5 /* libz.dylib */,
-				BA5B90FB1AED8559000B1BD5 /* libicucore.dylib */,
-				BA5B90F91AED854E000B1BD5 /* libc++.dylib */,
-				BA5B90F71AED8536000B1BD5 /* ImageIO.framework */,
-				BA5B90F51AED8531000B1BD5 /* GLKit.framework */,
-				BA5B90F31AED852B000B1BD5 /* CoreText.framework */,
 				BA5B90F11AED8525000B1BD5 /* CoreLocation.framework */,
-				BA5B90EF1AED8520000B1BD5 /* CoreData.framework */,
-				BA5B90ED1AED851A000B1BD5 /* AVFoundation.framework */,
-				BA5B90EB1AED844B000B1BD5 /* GoogleMaps.bundle */,
-				BA5B90E91AED8439000B1BD5 /* GoogleMaps.framework */,
 				BA5B90C61AED81F3000B1BD5 /* NuVents-ios */,
 				BA5B90DC1AED81F3000B1BD5 /* NuVents-iosTests */,
 				BA5B90C51AED81F3000B1BD5 /* Products */,
@@ -229,6 +234,7 @@
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
 				BA09BFBB1B6D87C300138139 /* Fonts */,
 				BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */,
+				BA09D0601B78086000138139 /* NuVentsHelperJS.js */,
 				BADFA9421B69623300CAF0A5 /* NuVentsHelper.swift */,
 				BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */,
 				BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */,
@@ -237,6 +243,7 @@
 				BA5B90C71AED81F3000B1BD5 /* Supporting Files */,
 				BA5B91051AED8601000B1BD5 /* NuVents-ios-Bridging-Header.h */,
 				BAEEDE161B6D5D3300E10ED5 /* CombinationView.swift */,
+				BAEEE73D1B77C66600E10ED5 /* CategoryViewCell.swift */,
 				BAEEDE181B6D5D6700E10ED5 /* CategoryView.swift */,
 				F1D6F6221B7680960022D638 /* ListViewCell.swift */,
 				BAEEDE1A1B6D5D7500E10ED5 /* ListView.swift */,
@@ -275,6 +282,7 @@
 		BA8E59601B2A543700D6AB86 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				BA09BFCB1B6F294100138139 /* myLocationBtn.png */,
 				BA09BFC41B6D99A100138139 /* combinationViewTabBar.png */,
 				BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */,
 			);
@@ -325,6 +333,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BA09D05A1B77232800138139 /* PBXTargetDependency */,
 			);
 			name = "NuVents-ios";
 			productName = "NuVents-ios";
@@ -379,6 +388,12 @@
 			mainGroup = BA5B90BB1AED81F3000B1BD5;
 			productRefGroup = BA5B90C51AED81F3000B1BD5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BA09D0511B7722F000138139 /* Products */;
+					ProjectRef = BA09D0501B7722F000138139 /* MapView.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BA5B90C31AED81F3000B1BD5 /* NuVents-ios */,
@@ -387,21 +402,39 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		BA09D0561B7722F000138139 /* libMapbox.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMapbox.a;
+			remoteRef = BA09D0551B7722F000138139 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BA09D0581B7722F000138139 /* Mapbox.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = Mapbox.bundle;
+			remoteRef = BA09D0571B7722F000138139 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		BA5B90C21AED81F3000B1BD5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA09D0611B78086000138139 /* NuVentsHelperJS.js in Resources */,
 				BA09BFC31B6D882700138139 /* Gotham-Rounded-Medium.ttf in Resources */,
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
 				BA09BFC21B6D882700138139 /* Gotham-Rounded-Light.ttf in Resources */,
+				BA09BFCC1B6F294100138139 /* myLocationBtn.png in Resources */,
 				BAEFAD4A1B4F4570003F0D0B /* Siren.bundle in Resources */,
 				BA5B90D41AED81F3000B1BD5 /* LaunchScreen.xib in Resources */,
 				BA09BFC11B6D882700138139 /* Gotham-Rounded-Book.ttf in Resources */,
 				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
 				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
 				BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */,
-				BA5B90EC1AED844B000B1BD5 /* GoogleMaps.bundle in Resources */,
 				BA09BFC51B6D99A100138139 /* combinationViewTabBar.png in Resources */,
 				BA09BFC01B6D882700138139 /* Gotham-Rounded-Bold.ttf in Resources */,
 			);
@@ -444,6 +477,7 @@
 				BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */,
 				BADFA9361B69538F00CAF0A5 /* SocketAnyEvent.swift in Sources */,
 				BADFA9351B69538F00CAF0A5 /* SocketAckManager.swift in Sources */,
+				BAEEE73E1B77C66600E10ED5 /* CategoryViewCell.swift in Sources */,
 				BADFA9411B69538F00CAF0A5 /* WebSocket.swift in Sources */,
 				F1D6F6231B7680960022D638 /* ListViewCell.swift in Sources */,
 				BADFA93F1B69538F00CAF0A5 /* SocketTypes.swift in Sources */,
@@ -479,6 +513,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BA09D05A1B77232800138139 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MapView;
+			targetProxy = BA09D0591B77232800138139 /* PBXContainerItemProxy */;
+		};
 		BA5B90DB1AED81F3000B1BD5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BA5B90C31AED81F3000B1BD5 /* NuVents-ios */;
@@ -600,9 +639,18 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/NuVents-ios",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/Mapbox-iOS-SDK/**",
+				);
 				INFOPLIST_FILE = "NuVents-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NuVents-ios/Mapbox-iOS-SDK-1.6.1",
+				);
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
 				PRODUCT_NAME = NuVents;
 				PROVISIONING_PROFILE = "";
@@ -625,9 +673,18 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/NuVents-ios",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/Mapbox-iOS-SDK/**",
+				);
 				INFOPLIST_FILE = "NuVents-ios/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/NuVents-ios/Mapbox-iOS-SDK-1.6.1",
+				);
 				OTHER_SWIFT_FLAGS = "-D RELEASE";
 				PRODUCT_NAME = NuVents;
 				PROVISIONING_PROFILE = "";

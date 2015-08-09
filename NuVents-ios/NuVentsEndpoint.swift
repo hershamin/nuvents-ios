@@ -21,6 +21,8 @@ class NuVentsEndpoint {
     
     // Global Constants
     internal let udid:String = UIDevice.currentDevice().identifierForVendor.UUIDString // Unique Device ID
+    internal let mapboxToken:String = "sk.eyJ1IjoiaGVyc2hhbWluIiwiYSI6ImUxOGRkZWQ0NGE4YjcyNjZmOGU4MzYxNWI3NTEzMTIzIn0.b5wf8U-tHvq00cPlEGrFhQ"
+    internal let mapboxMapId:String = "hershamin.n2ld8p7j"
     
     // Global Variables
     internal var eventJSON = [String: JSON]()
@@ -103,7 +105,7 @@ class NuVentsEndpoint {
         // Get resources if not present on the internal file system or different
         for (type : String, typeJson : JSON) in jsonData["resource"] { // Resource types
             for (resource: String, resJson: JSON) in typeJson { // Resources
-                let path = NuVentsHelper.getResourcePath(resource, type: type, override: true)
+                let path = NuVentsHelper.getResourcePath(resource, type: type)
                 if (!fm.fileExistsAtPath(path)) { // File does not exist
                     NuVentsHelper.downloadFile(path, url: resJson.stringValue) // Download from provided url
                 } else {
