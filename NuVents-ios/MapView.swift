@@ -77,6 +77,7 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         var mediaImgView = UIImageView(image: mediaImg!)
         mediaImgView.frame = CGRectMake(0, 0, 50, 50)
         marker.leftCalloutAccessoryView = mediaImgView
+        marker.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
         
         return marker
         
