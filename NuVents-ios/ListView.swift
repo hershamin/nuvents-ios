@@ -12,7 +12,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet var tableView: UITableView!
     
-    var testarray: [String] = ["Hersh", "Humza", "Aaron"]
+    var eventArray: [JSON] = []
     
     let reuseIdentifier = "ListCell"
     
@@ -20,6 +20,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Add events to array from global variable
+        let eventsJson = NuVentsEndpoint.sharedEndpoint.eventJSON
+        for (key, event) in eventsJson {
+            eventArray.append(event)
+        }
     }
     
     // Restrict to portrait only
@@ -35,7 +40,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK - Table View Methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testarray.count
+        return eventArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -44,7 +49,14 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Add right accessory
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
-        //
+        // Set event title & time
+        let eventJSON = eventArray[indexPath.row]
+        cell.titleLabel.text = eventJSON["title"].stringValue
+        cell.infoLabel.text = NuVentsHelper.getHumanReadableDate(eventJSON["time"]["start"].floatValue)
+        
+        // Set event category image
+        let imgPath = NuVentsHelper.getResourcePath(eventJSON["marker"].stringValue, type: "categoryIcon")
+        cell.imageView?.image = UIImage(contentsOfFile: imgPath)
         
         return cell
     }
