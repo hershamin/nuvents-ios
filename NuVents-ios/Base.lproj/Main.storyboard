@@ -4,6 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Gotham-Rounded-Bold.ttf">
+            <string>GothamRounded-Bold</string>
+        </mutableArray>
         <mutableArray key="Gotham-Rounded-Medium.ttf">
             <string>GothamRounded-Medium</string>
         </mutableArray>
@@ -169,9 +172,63 @@
                     <view key="view" contentMode="scaleToFill" id="KOM-47-L1q">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yLD-3I-zZU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListCell" rowHeight="110" id="erL-dI-lVb" customClass="ListViewCell" customModule="NuVents" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="erL-dI-lVb" id="arD-HO-e3c">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRo-oh-aDt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="95"/>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z14-kz-2ad">
+                                                    <rect key="frame" x="165" y="17" width="282" height="21"/>
+                                                    <fontDescription key="fontDescription" name="GothamRounded-Bold" family="Gotham Rounded" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfE-dY-AJ0">
+                                                    <rect key="frame" x="165" y="44" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czN-DF-dPA">
+                                                    <rect key="frame" x="279" y="44" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ImageView" destination="cRo-oh-aDt" id="nGJ-7U-YPV"/>
+                                            <outlet property="LabelView" destination="z14-kz-2ad" id="aSK-xh-XVh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9Mx-7d-swa" id="fdE-wp-NnM"/>
+                                    <outlet property="delegate" destination="9Mx-7d-swa" id="aqY-lf-K2m"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yLD-3I-zZU" secondAttribute="trailing" id="3Cn-HI-DUN"/>
+                            <constraint firstItem="yLD-3I-zZU" firstAttribute="leading" secondItem="KOM-47-L1q" secondAttribute="leading" id="7hB-6b-Vvo"/>
+                            <constraint firstItem="yLD-3I-zZU" firstAttribute="top" secondItem="Zcn-cq-6mW" secondAttribute="bottom" id="Fyi-3z-leb"/>
+                            <constraint firstItem="0fB-En-iBb" firstAttribute="top" secondItem="yLD-3I-zZU" secondAttribute="bottom" id="Jxe-Le-8Rs"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="yLD-3I-zZU" id="Ua1-dA-uOD"/>
                         <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="0ps-xm-KK4"/>
                     </connections>
                 </viewController>
@@ -261,6 +318,6 @@
         <image name="myLocationBtn.png" width="119" height="119"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cnt-Af-WMB"/>
+        <segue reference="0ps-xm-KK4"/>
     </inferredMetricsTieBreakers>
 </document>
