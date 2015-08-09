@@ -133,7 +133,10 @@
     {
         // add SDK info
         //
-        NSString *appName = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleDisplayName"];
+        //NSString *appName = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleDisplayName"];
+        // NuVents Custom Code
+        NSString *appName = @"NuVents";
+        // NuVents Custom Code End
         NSDateFormatter *dateFormatter = [NSDateFormatter new];
         [dateFormatter setDateFormat:@"yyyy"];
         NSString *currentYear = [dateFormatter stringFromDate:[NSDate date]];
