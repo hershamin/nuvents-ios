@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import JavaScriptCore
 
 class NuVentsHelper {
     
@@ -80,6 +81,24 @@ class NuVentsHelper {
         // Return filepath
         var filePath = resDir.stringByAppendingPathComponent(resource as String)
         return filePath
+    }
+    
+    // Convert EPOCH timestamp to human readable date
+    class func getHumanReadableDate(epochTimestamp: Float) -> String {
+        // Get javascript string from file
+        let filePath = NSBundle.mainBundle().pathForResource("NuVentsHelperJS", ofType: "js")
+        let fileStr = NSString(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding, error: nil)!
+        
+        // Get javascript engine & evaluate
+        let context = JSContext()
+        context.evaluateScript(fileStr as String)
+        
+        // Call function to convert epoch to human readable date
+        let currentTS = NSDate().timeIntervalSince1970
+        let dateStr:JSValue = context.evaluateScript("getHumanReadableDate(\"\(epochTimestamp)\", \"\(currentTS)\")")
+        
+        // Return human readable date
+        return dateStr.toString();
     }
     
 }
