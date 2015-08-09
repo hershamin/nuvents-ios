@@ -41,7 +41,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: ListViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! ListViewCell
         
-        cell.LabelView.text = testarray[indexPath.row]
+        // Add right accessory
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        
+        //
         
         return cell
     }
