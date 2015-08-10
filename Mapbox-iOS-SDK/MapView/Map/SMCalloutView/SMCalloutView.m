@@ -15,14 +15,14 @@
 // Callout View.
 //
 
-#define CALLOUT_DEFAULT_HEIGHT 57 // fixed height of system callout; ours can be any height when contentView is set
-#define CALLOUT_DEFAULT_CONTAINER_HEIGHT 44 // height of just the main portion without arrow
+#define CALLOUT_DEFAULT_HEIGHT 77 // fixed height of system callout; ours can be any height when contentView is set
+#define CALLOUT_DEFAULT_CONTAINER_HEIGHT 54 // height of just the main portion without arrow
 #define CALLOUT_MIN_WIDTH 61 // minimum width of system callout
 #define TITLE_HMARGIN 13 // the title/subtitle view's normal horizontal margin from the edges of our callout view or from the accessories
 #define TITLE_TOP 11 // the top of the title view when no subtitle is present
 #define TITLE_SUB_TOP 3 // the top of the title view when a subtitle IS present
-#define TITLE_HEIGHT 21 // title height, fixed
-#define SUBTITLE_TOP 24 // the top of the subtitle, when present
+#define TITLE_HEIGHT 31 // title height, fixed
+#define SUBTITLE_TOP 36 // the top of the subtitle, when present
 #define SUBTITLE_HEIGHT 15 // subtitle height, fixed
 #define BETWEEN_ACCESSORIES_MARGIN 7 // margin between accessories when no title/subtitle is present
 #define CONTENT_VIEW_MARGIN 13 // margin around content view when present
@@ -89,7 +89,9 @@ NSTimeInterval kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
             self.titleLabel.$height = TITLE_HEIGHT;
             self.titleLabel.opaque = NO;
             self.titleLabel.backgroundColor = [UIColor clearColor];
-            self.titleLabel.font = [UIFont systemFontOfSize:17];
+            self.titleLabel.font = [UIFont fontWithName:@"GothamRounded-Medium" size:15];
+            self.titleLabel.numberOfLines = 2;
+            self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
             self.titleLabel.textColor = [UIColor blackColor];
         }
         return self.titleLabel;
@@ -107,7 +109,7 @@ NSTimeInterval kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
             self.subtitleLabel.$height = SUBTITLE_HEIGHT;
             self.subtitleLabel.opaque = NO;
             self.subtitleLabel.backgroundColor = [UIColor clearColor];
-            self.subtitleLabel.font = [UIFont systemFontOfSize:12];
+            self.subtitleLabel.font = [UIFont fontWithName:@"GothamRounded-Book" size:12];
             self.subtitleLabel.textColor = [UIColor blackColor];
         }
         return self.subtitleLabel;

@@ -77,7 +77,7 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         
         // Add callout
         var mediaImgView = UIImageView(image: mediaImg!)
-        mediaImgView.frame = CGRectMake(0, 0, 50, 50)
+        mediaImgView.frame = CGRectMake(0, 0, 55, 55)
         marker.leftCalloutAccessoryView = mediaImgView
         marker.rightCalloutAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
         marker.rightCalloutAccessoryView.tintColor = UIColor(red: 0.91, green: 0.337, blue: 0.427, alpha: 1) // #E8566D
