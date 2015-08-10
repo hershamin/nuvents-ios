@@ -172,15 +172,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="105" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuk-d5-MXH">
-                                                    <rect key="frame" x="0.0" y="80" width="100" height="18"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5T-YJ-AkX">
+                                                    <rect key="frame" x="14" y="8" width="76" height="74"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuk-d5-MXH">
+                                                    <rect key="frame" x="2" y="81" width="100" height="17"/>
                                                     <fontDescription key="fontDescription" name="GothamRounded-Light" family="Gotham Rounded" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5T-YJ-AkX">
-                                                    <rect key="frame" x="14" y="8" width="76" height="74"/>
-                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -207,6 +207,7 @@
                     </view>
                     <connections>
                         <outlet property="myCollectionView" destination="Bcm-bC-wyr" id="mjM-N7-HBx"/>
+                        <segue destination="9fn-Rw-EM1" kind="show" id="yKo-Mq-O92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWQ-XG-hCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -222,7 +223,7 @@
                         <viewControllerLayoutGuide type="bottom" id="0fB-En-iBb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KOM-47-L1q">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -296,6 +297,7 @@
         <image name="combinationViewTabBar.png" width="1500" height="368"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="yKo-Mq-O92"/>
         <segue reference="cnt-Af-WMB"/>
     </inferredMetricsTieBreakers>
 </document>

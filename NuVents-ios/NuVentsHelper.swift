@@ -8,6 +8,8 @@
 
 import Foundation
 
+let myNotificationKey = "com.Nuvents.NotificationKey"
+
 class NuVentsHelper {
     
     // Get MD5SUM of data
