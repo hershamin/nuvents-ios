@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -251,7 +251,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfE-dY-AJ0">
-                                                    <rect key="frame" x="70" y="40" width="426" height="15"/>
+                                                    <rect key="frame" x="55" y="40" width="441" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="WR6-tu-aYg"/>
                                                     </constraints>
@@ -272,7 +272,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="cRo-oh-aDt" secondAttribute="bottom" constant="2" id="ApZ-p7-NkF"/>
                                                 <constraint firstItem="wfE-dY-AJ0" firstAttribute="top" secondItem="z14-kz-2ad" secondAttribute="bottom" constant="5" id="LNy-nD-OYW"/>
                                                 <constraint firstItem="z14-kz-2ad" firstAttribute="top" secondItem="arD-HO-e3c" secondAttribute="top" constant="5" id="Moe-2s-ZQ2"/>
-                                                <constraint firstItem="wfE-dY-AJ0" firstAttribute="leading" secondItem="cRo-oh-aDt" secondAttribute="trailing" constant="15" id="Qg6-hl-CXH"/>
+                                                <constraint firstItem="wfE-dY-AJ0" firstAttribute="leading" secondItem="cRo-oh-aDt" secondAttribute="trailing" id="Qg6-hl-CXH"/>
                                                 <constraint firstItem="cRo-oh-aDt" firstAttribute="leading" secondItem="arD-HO-e3c" secondAttribute="leading" id="Shk-dS-Zqs"/>
                                                 <constraint firstAttribute="trailing" secondItem="wfE-dY-AJ0" secondAttribute="trailing" constant="104" id="q5s-lt-a2O"/>
                                                 <constraint firstItem="z14-kz-2ad" firstAttribute="leading" secondItem="cRo-oh-aDt" secondAttribute="trailing" id="xzP-W7-37C"/>
