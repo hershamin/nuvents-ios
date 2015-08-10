@@ -84,7 +84,7 @@ class NuVentsHelper {
     }
     
     // Convert EPOCH timestamp to human readable date
-    class func getHumanReadableDate(epochTimestamp: Float) -> String {
+    class func getHumanReadableDate(epochTimestamp: String) -> String {
         // Get javascript string from file
         let filePath = NSBundle.mainBundle().pathForResource("NuVentsHelperJS", ofType: "js")
         let fileStr = NSString(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding, error: nil)!
@@ -95,7 +95,7 @@ class NuVentsHelper {
         
         // Call function to convert epoch to human readable date
         let currentTS = NSDate().timeIntervalSince1970
-        let dateStr:JSValue = context.evaluateScript("getHumanReadableDate(\"\(epochTimestamp)\", \"\(currentTS)\")")
+        let dateStr:JSValue = context.evaluateScript("getHumanReadableDate(\(epochTimestamp), \(currentTS))")
         
         // Return human readable date
         return dateStr.toString();

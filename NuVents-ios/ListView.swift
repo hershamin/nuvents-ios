@@ -52,7 +52,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Set event title & time
         let eventJSON = eventArray[indexPath.row]
         cell.titleLabel.text = eventJSON["title"].stringValue
-        cell.infoLabel.text = NuVentsHelper.getHumanReadableDate(eventJSON["time"]["start"].floatValue)
+        cell.infoLabel.text = NuVentsHelper.getHumanReadableDate(eventJSON["time"]["start"].stringValue)
         
         // Set event category image
         let imgPath = NuVentsHelper.getResourcePath(eventJSON["marker"].stringValue, type: "categoryIcon")
