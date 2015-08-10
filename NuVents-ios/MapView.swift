@@ -36,11 +36,13 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         let events = NuVentsEndpoint.sharedEndpoint.eventJSON
         for (key, event) in events {
             let title = event["title"].stringValue
+            let startTS = event["time"]["start"].stringValue
             let markerIcon = event["marker"].stringValue
             let media = event["media"].stringValue
             let lat = (event["latitude"].stringValue as NSString).doubleValue
             let lng = (event["longitude"].stringValue as NSString).doubleValue
             let annotation = RMAnnotation(mapView: mapView, coordinate: CLLocationCoordinate2DMake(lat, lng), andTitle: title)
+            annotation.subtitle = NuVentsHelper.getHumanReadableDate(startTS)
             annotation.userInfo = ["marker" : markerIcon, "eid" : key, "media" : media] // Store marker type & eid in user info
             mapView.addAnnotation(annotation)
         }
