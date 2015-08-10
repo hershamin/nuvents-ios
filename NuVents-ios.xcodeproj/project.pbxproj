@@ -15,6 +15,7 @@
 		BA09BFC81B6D9CE200138139 /* URBSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */; };
 		BA09BFCC1B6F294100138139 /* myLocationBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFCB1B6F294100138139 /* myLocationBtn.png */; };
 		BA09D05B1B77233000138139 /* libMapbox.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA09D0561B7722F000138139 /* libMapbox.a */; };
+		BA09D0611B78086000138139 /* NuVentsHelperJS.js in Resources */ = {isa = PBXBuildFile; fileRef = BA09D0601B78086000138139 /* NuVentsHelperJS.js */; };
 		BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1B733F1AFFFADE00A15B77 /* location.gpx */; };
 		BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */; };
 		BA5B90CC1AED81F3000B1BD5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */; };
@@ -52,8 +53,10 @@
 		BAEEDE1F1B6D5D9400E10ED5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */; };
 		BAEEDE211B6D5DA200E10ED5 /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEDE201B6D5DA200E10ED5 /* RequestView.swift */; };
 		BAEEDE611B7048FB00E10ED5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEEDE601B7048FB00E10ED5 /* libsqlite3.dylib */; };
+		BAEEE73E1B77C66600E10ED5 /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEEE73D1B77C66600E10ED5 /* CategoryViewCell.swift */; };
 		BAEFAD4A1B4F4570003F0D0B /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BAEFAD481B4F4570003F0D0B /* Siren.bundle */; };
 		BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEFAD491B4F4570003F0D0B /* Siren.swift */; };
+		F1D6F6231B7680960022D638 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6F6221B7680960022D638 /* ListViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,7 @@
 		BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URBSegmentedControl.m; sourceTree = "<group>"; };
 		BA09BFCB1B6F294100138139 /* myLocationBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myLocationBtn.png; sourceTree = "<group>"; };
 		BA09D0501B7722F000138139 /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = "Mapbox-iOS-SDK/MapView/MapView.xcodeproj"; sourceTree = "<group>"; };
+		BA09D0601B78086000138139 /* NuVentsHelperJS.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = NuVentsHelperJS.js; sourceTree = "<group>"; };
 		BA1B733F1AFFFADE00A15B77 /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = location.gpx; sourceTree = "<group>"; };
 		BA5B90C41AED81F3000B1BD5 /* NuVents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NuVents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5B90C81AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,8 +143,10 @@
 		BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		BAEEDE201B6D5DA200E10ED5 /* RequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
 		BAEEDE601B7048FB00E10ED5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		BAEEE73D1B77C66600E10ED5 /* CategoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = SOURCE_ROOT; };
 		BAEFAD481B4F4570003F0D0B /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
 		BAEFAD491B4F4570003F0D0B /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
+		F1D6F6221B7680960022D638 /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +234,7 @@
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
 				BA09BFBB1B6D87C300138139 /* Fonts */,
 				BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */,
+				BA09D0601B78086000138139 /* NuVentsHelperJS.js */,
 				BADFA9421B69623300CAF0A5 /* NuVentsHelper.swift */,
 				BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */,
 				BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */,
@@ -236,7 +243,9 @@
 				BA5B90C71AED81F3000B1BD5 /* Supporting Files */,
 				BA5B91051AED8601000B1BD5 /* NuVents-ios-Bridging-Header.h */,
 				BAEEDE161B6D5D3300E10ED5 /* CombinationView.swift */,
+				BAEEE73D1B77C66600E10ED5 /* CategoryViewCell.swift */,
 				BAEEDE181B6D5D6700E10ED5 /* CategoryView.swift */,
+				F1D6F6221B7680960022D638 /* ListViewCell.swift */,
 				BAEEDE1A1B6D5D7500E10ED5 /* ListView.swift */,
 				BAEEDE1C1B6D5D8100E10ED5 /* MapView.swift */,
 				BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */,
@@ -415,6 +424,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA09D0611B78086000138139 /* NuVentsHelperJS.js in Resources */,
 				BA09BFC31B6D882700138139 /* Gotham-Rounded-Medium.ttf in Resources */,
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
 				BA09BFC21B6D882700138139 /* Gotham-Rounded-Light.ttf in Resources */,
@@ -467,7 +477,9 @@
 				BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */,
 				BADFA9361B69538F00CAF0A5 /* SocketAnyEvent.swift in Sources */,
 				BADFA9351B69538F00CAF0A5 /* SocketAckManager.swift in Sources */,
+				BAEEE73E1B77C66600E10ED5 /* CategoryViewCell.swift in Sources */,
 				BADFA9411B69538F00CAF0A5 /* WebSocket.swift in Sources */,
+				F1D6F6231B7680960022D638 /* ListViewCell.swift in Sources */,
 				BADFA93F1B69538F00CAF0A5 /* SocketTypes.swift in Sources */,
 				BADFA9381B69538F00CAF0A5 /* SocketEngineClient.swift in Sources */,
 				BADFA93C1B69538F00CAF0A5 /* SocketLogger.swift in Sources */,
