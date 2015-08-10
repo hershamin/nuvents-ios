@@ -86,6 +86,12 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         
     }
     
+    // Mapview right accessory button clicked
+    func tapOnCalloutAccessoryControl(control: UIControl!, forAnnotation annotation: RMAnnotation!, onMap map: RMMapView!) {
+        println(annotation.title);
+        //
+    }
+    
     // Restrict to portrait only
     override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.rawValue)
