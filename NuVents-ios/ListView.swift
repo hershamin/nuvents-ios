@@ -60,6 +60,14 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
+    
+    // Called when row is selected
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println(eventArray[indexPath.row])
+        
+        // Deselect row
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 
     
 }
