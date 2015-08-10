@@ -63,7 +63,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Called when row is selected
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println(eventArray[indexPath.row])
+        
+        // Go to detail view
+        self.performSegueWithIdentifier("showDetailView", sender: nil)
         
         // Deselect row
         tableView.deselectRowAtIndexPath(indexPath, animated: true)

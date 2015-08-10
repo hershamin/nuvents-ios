@@ -10,11 +10,27 @@ import Foundation
 
 class DetailViewController: UIViewController {
     
+    // TEMP BUTTONS
+    @IBOutlet var goToComb:UIButton!
+    @IBOutlet var goToWelc:UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // TEMP CODE
+        goToComb.addTarget(self, action: "goToCombination:", forControlEvents: UIControlEvents.TouchUpInside)
+        goToWelc.addTarget(self, action: "goToWelcome:", forControlEvents: UIControlEvents.TouchUpInside)
     }
+    
+    // TEMP CODE
+    func goToCombination(sender:UIButton!) {
+        self.performSegueWithIdentifier("unwindCombinationView", sender: nil)
+    }
+    func goToWelcome(sender:UIButton!) {
+        self.performSegueWithIdentifier("unwindWelcomeView", sender: nil)
+    }
+    // TEMP CODE END
     
     // Restrict to portrait only
     override func supportedInterfaceOrientations() -> Int {

@@ -88,8 +88,10 @@ class MapViewController: UIViewController, RMMapViewDelegate {
     
     // Mapview right accessory button clicked
     func tapOnCalloutAccessoryControl(control: UIControl!, forAnnotation annotation: RMAnnotation!, onMap map: RMMapView!) {
-        println(annotation.title);
-        //
+        
+        // Go to detail view
+        self.performSegueWithIdentifier("showDetailView", sender: nil)
+        
     }
     
     // Restrict to portrait only

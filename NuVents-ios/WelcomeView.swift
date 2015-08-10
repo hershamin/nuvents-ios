@@ -11,6 +11,7 @@ import UIKit
 class WelcomeViewController: UIViewController {
     
     @IBOutlet var combinationViewBtn:UIButton!
+    @IBOutlet var detailViewBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,17 @@ class WelcomeViewController: UIViewController {
         NuVentsEndpoint.sharedEndpoint.getNearbyEvents(CLLocationCoordinate2DMake(30.27, -97.74), radius: 10000)
         
         combinationViewBtn.addTarget(self, action: "goToCombinationView:", forControlEvents: UIControlEvents.TouchUpInside) // Combination button action
+        detailViewBtn.addTarget(self, action: "goToDetailView:", forControlEvents: UIControlEvents.TouchUpInside) // Detail button action
+    }
+    
+    // Called when unwinded from detail view controller
+    @IBAction func unwindToWelcomeView(sender: UIStoryboardSegue) {
+        println("WelcomeView From DetailView")
+    }
+    
+    // Func to go to detail view
+    func goToDetailView(sender:UIButton!) {
+        self.performSegueWithIdentifier("showDetailView", sender: nil)
     }
     
     // Func to go to combination view

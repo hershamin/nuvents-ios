@@ -50,6 +50,11 @@ class CombinationViewController: UIViewController {
         segmentedCtrlView.addSubview(segmentedCtrl)
     }
     
+    // Called when unwinded from detail view controller
+    @IBAction func unwindToCombinationView(sender: UIStoryboardSegue) {
+        println("CombinationView From DetailView")
+    }
+    
     // Segment changed
     func handleSegmentChanged(sender: URBSegmentedControl!) {
         let segmentCtrl = sender as URBSegmentedControl

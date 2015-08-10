@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -31,22 +31,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECy-mc-6tU">
-                                <rect key="frame" x="253" y="285" width="95" height="30"/>
+                                <rect key="frame" x="58" y="34" width="95" height="30"/>
                                 <state key="normal" title="Combination">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNX-kQ-gmb">
+                                <rect key="frame" x="58" y="106" width="46" height="30"/>
+                                <state key="normal" title="Detail">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="ECy-mc-6tU" secondAttribute="centerY" id="bff-lS-iEy"/>
-                            <constraint firstAttribute="centerX" secondItem="ECy-mc-6tU" secondAttribute="centerX" id="lZZ-3Q-uZf"/>
+                            <constraint firstItem="ECy-mc-6tU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="58" id="Kxz-f4-3Nk"/>
+                            <constraint firstItem="mNX-kQ-gmb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="58" id="MUL-Nq-zJD"/>
+                            <constraint firstItem="ECy-mc-6tU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="ZqC-lD-lhT"/>
+                            <constraint firstItem="mNX-kQ-gmb" firstAttribute="top" secondItem="ECy-mc-6tU" secondAttribute="bottom" constant="42" id="x9l-pp-1Gh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="combinationViewBtn" destination="ECy-mc-6tU" id="1WT-hu-JYH"/>
+                        <outlet property="detailViewBtn" destination="mNX-kQ-gmb" id="7jN-0L-wiy"/>
                         <segue destination="NP8-2d-YK2" kind="show" identifier="showRequestView" id="zAa-S4-IEd"/>
                         <segue destination="9fn-Rw-EM1" kind="show" identifier="showCombinationView" id="8w4-Cw-GSb"/>
+                        <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="glk-tE-vyg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -307,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDg-jL-BUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2240" y="244"/>
+            <point key="canvasLocation" x="2248" y="-92"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="CmU-h2-e6W">
@@ -318,12 +328,39 @@
                         <viewControllerLayoutGuide type="bottom" id="FbO-ZG-5cB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UmT-YN-7tY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZM-i6-jE2">
+                                <rect key="frame" x="38" y="14" width="95" height="30"/>
+                                <state key="normal" title="Combination">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfR-IV-ZIe">
+                                <rect key="frame" x="38" y="71" width="78" height="30"/>
+                                <state key="normal" title="Welcome">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KfR-IV-ZIe" firstAttribute="top" secondItem="VZM-i6-jE2" secondAttribute="bottom" constant="27" id="IlA-os-vB8"/>
+                            <constraint firstItem="VZM-i6-jE2" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="38" id="KCH-23-8jX"/>
+                            <constraint firstItem="VZM-i6-jE2" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="14" id="fDy-3G-6eU"/>
+                            <constraint firstItem="KfR-IV-ZIe" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="38" id="kQm-Bj-phO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="goToComb" destination="VZM-i6-jE2" id="9CH-7J-2Ar"/>
+                        <outlet property="goToWelc" destination="KfR-IV-ZIe" id="kfl-uG-OdO"/>
+                        <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindCombinationView" unwindAction="unwindToCombinationView:" id="i7z-4M-dHj"/>
+                        <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindWelcomeView" unwindAction="unwindToWelcomeView:" id="dBW-1d-gIV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="50V-mW-YKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8WT-HO-jXT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3376" y="264"/>
         </scene>
@@ -365,7 +402,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14z-Cj-BLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2240" y="1208"/>
+            <point key="canvasLocation" x="2218" y="746"/>
         </scene>
         <!--Request View Controller-->
         <scene sceneID="cch-hM-2X3">
@@ -391,6 +428,6 @@
         <image name="myLocationBtn.png" width="119" height="119"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0ps-xm-KK4"/>
+        <segue reference="glk-tE-vyg"/>
     </inferredMetricsTieBreakers>
 </document>
