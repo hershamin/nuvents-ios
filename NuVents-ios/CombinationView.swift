@@ -59,7 +59,13 @@ class CombinationViewController: UIViewController {
     func filterBtnClicked(sender:UIButton!) {
         // Open/Close filter view using XYorigami framework
         let filterVC = FilterViewController()
+        // Set frame & add left border
         filterVC.view.frame = CGRectMake(0, 0, 150, UIScreen.mainScreen().bounds.height)
+        let leftBorder = CALayer()
+        leftBorder.backgroundColor = UIColor.whiteColor().CGColor
+        leftBorder.frame = CGRectMake(0, 0, 1, UIScreen.mainScreen().bounds.height)
+        filterVC.view.layer.addSublayer(leftBorder)
+        // Open/close filter view
         if (!filterViewOpen) {
             // Filter view is not open, open it
             self.view.showOrigamiTransitionWith(filterVC.view, numberOfFolds: 2, duration: CGFloat(0.5), direction: UInt(XYOrigamiDirectionFromRight), completion: { (finished:Bool) -> Void in
