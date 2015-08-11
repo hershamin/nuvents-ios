@@ -12,7 +12,6 @@ class MapViewController: UIViewController, RMMapViewDelegate {
     
     @IBOutlet var myLocBtn:UIButton!
     var mapView:RMMapView!
-    var loadMarkers:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,31 +32,19 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         self.view.addSubview(mapView)
         self.view.sendSubviewToBack(mapView)
         
-    }
-    
-    // View will appear
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        // Called after view appeared
-        
         // Add map markers based from global variable
-        if (loadMarkers) {
-            loadMarkers = false
-            let events = NuVentsEndpoint.sharedEndpoint.eventJSON
-            for (key, event) in events {
-                let title = event["title"].stringValue
-                let startTS = event["time"]["start"].stringValue
-                let markerIcon = event["marker"].stringValue
-                let media = event["media"].stringValue
-                let lat = (event["latitude"].stringValue as NSString).doubleValue
-                let lng = (event["longitude"].stringValue as NSString).doubleValue
-                let annotation = RMAnnotation(mapView: mapView, coordinate: CLLocationCoordinate2DMake(lat, lng), andTitle: title)
-                annotation.subtitle = NuVentsHelper.getHumanReadableDate(startTS)
-                annotation.userInfo = ["marker" : markerIcon, "eid" : key, "media" : media] // Store marker type & eid in user info
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.mapView.addAnnotation(annotation)
-                }
-            }
+        let events = NuVentsEndpoint.sharedEndpoint.eventJSON
+        for (key, event) in events {
+            let title = event["title"].stringValue
+            let startTS = event["time"]["start"].stringValue
+            let markerIcon = event["marker"].stringValue
+            let media = event["media"].stringValue
+            let lat = (event["latitude"].stringValue as NSString).doubleValue
+            let lng = (event["longitude"].stringValue as NSString).doubleValue
+            let annotation = RMAnnotation(mapView: mapView, coordinate: CLLocationCoordinate2DMake(lat, lng), andTitle: title)
+            annotation.subtitle = NuVentsHelper.getHumanReadableDate(startTS)
+            annotation.userInfo = ["marker" : markerIcon, "eid" : key, "media" : media] // Store marker type & eid in user info
+            mapView.addAnnotation(annotation)
         }
     }
     
