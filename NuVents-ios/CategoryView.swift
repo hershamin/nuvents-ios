@@ -45,7 +45,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         //Set the image in the cell
         let filePathImage = NuVentsHelper.getResourcePath(iconList[indexPath.row]["value"].stringValue, type: "categoryIcon", override: false)
-        println(filePathImage)
         cell.imageCell.image = UIImage(contentsOfFile: filePathImage)
         
         //Give the cell a label
