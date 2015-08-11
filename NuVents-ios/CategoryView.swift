@@ -20,7 +20,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         // Do any additional setup after loading the view, typically from a nib.
         //Get the JSON object.
-        let filePath = NuVentsHelper.getResourcePath("categoryNames", type: "misc", override: false)
+        let filePath = NuVentsHelper.getResourcePath("categoryNames", type: "misc")
         let fm = NSFileManager.defaultManager()
         if (fm.fileExistsAtPath(filePath)) {
             let fileData = NSData(contentsOfFile: filePath)
@@ -43,10 +43,9 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: CategoryViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! CategoryViewCell
         
-        //Configure the cell's with the category icon images.
-        let filePath = NuVentsHelper.getResourcePath(iconList[indexPath.row], type: "categoryIcon")
-        
-        cell.imageCell.image = UIImage(contentsOfFile: filePath)
+        //Set the image in the cell
+        let filePathImage = NuVentsHelper.getResourcePath(iconList[indexPath.row]["value"].stringValue, type: "categoryIcon")
+        cell.imageCell.image = UIImage(contentsOfFile: filePathImage)
         
         //Give the cell a label
         cell.labelCell.text = iconList[indexPath.row]["name"].stringValue
