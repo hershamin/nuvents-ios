@@ -12,14 +12,21 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet var myCollectionView:UICollectionView!
     
-    
     let reuseIdentifier = "Cell"
-    var iconList: [String] = ["music", "food","sports","charity","conference","productLaunch","games","singles", "tech"]
+    var iconList:JSON = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
+        //Get the JSON object.
+        let filePath = NuVentsHelper.getResourcePath("categoryNames", type: "misc", override: false)
+        let fm = NSFileManager.defaultManager()
+        if (fm.fileExistsAtPath(filePath)) {
+            let fileData = NSData(contentsOfFile: filePath)
+            iconList = JSON(data: fileData!)
+        }
+
     }
     
     //Setup the collection view.
@@ -42,7 +49,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         cell.imageCell.image = UIImage(contentsOfFile: filePath)
         
         //Give the cell a label
-        cell.labelCell.text = iconList[indexPath.row].uppercaseString
+        cell.labelCell.text = iconList[indexPath.row]["name"].stringValue
         
         //Produce a border for the cells and color them.
         var color: UIColor = UIColor(red: 0.84, green: 0.844, blue: 0.852, alpha: 1)
@@ -55,6 +62,10 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         return cell
     }
     
+    //Make function for notification
+    @IBAction func changeCombinationView(sender: UICollectionViewCell){
+        
+    }
     // Restrict to portrait only
     override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.rawValue)
