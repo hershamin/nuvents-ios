@@ -16,6 +16,8 @@ class CombinationViewController: UIViewController {
     @IBOutlet var mapView:UIView!
     @IBOutlet var segmentedCtrlView:UIView!
     @IBOutlet var searchBar:UISearchBar!
+    @IBOutlet var filterBtn:UIButton!
+    var filterViewOpen:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,9 @@ class CombinationViewController: UIViewController {
         
         // Search bar setup
         searchBar.backgroundImage = UIImage.new() // Clear background image
+        
+        // Filter button setup
+        filterBtn.addTarget(self, action: "filterBtnClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Segmented control setup
         let titles:Array = ["CATEGORIES", "EVENT LIST", "MAP"]
@@ -48,6 +53,33 @@ class CombinationViewController: UIViewController {
         segmentedCtrl.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         segmentedCtrl.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         segmentedCtrlView.addSubview(segmentedCtrl)
+    }
+    
+    // Filter button clicked
+    func filterBtnClicked(sender:UIButton!) {
+        // Open/Close filter view using XYorigami framework
+        let filterVC = FilterViewController()
+        filterVC.view.frame = CGRectMake(0, 0, 150, UIScreen.mainScreen().bounds.height)
+        if (!filterViewOpen) {
+            // Filter view is not open, open it
+            self.view.showOrigamiTransitionWith(filterVC.view, numberOfFolds: 2, duration: CGFloat(0.5), direction: UInt(XYOrigamiDirectionFromRight), completion: { (finished:Bool) -> Void in
+                self.filterViewOpen = true
+            })
+        } else {
+            // Filter view is open, close it
+            self.view.hideOrigamiTransitionWith(filterVC.view, numberOfFolds: 2, duration: CGFloat(0.3), direction: UInt(XYOrigamiDirectionFromRight), completion: { (finished:Bool) -> Void in
+                self.filterViewOpen = false
+            })
+        }
+    }
+    
+    // View will disappear
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        // Close filter view if open
+        if (filterViewOpen) {
+            filterBtnClicked(nil)
+        }
     }
     
     // Called when unwinded from detail view controller

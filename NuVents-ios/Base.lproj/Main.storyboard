@@ -9,9 +9,7 @@
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Book.ttf">
             <string>GothamRounded-Book</string>
-        </mutableArray>
-        <mutableArray key="Gotham-Rounded-Light.ttf">
-            <string>GothamRounded-Light</string>
+            <string>GothamRounded-Book</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Medium.ttf">
             <string>GothamRounded-Medium</string>
@@ -149,6 +147,7 @@
                     </view>
                     <connections>
                         <outlet property="categoryView" destination="4uN-fP-cBg" id="erA-eh-CJW"/>
+                        <outlet property="filterBtn" destination="3EZ-5a-Yvh" id="Sgm-BJ-6ug"/>
                         <outlet property="listView" destination="gWk-tF-LGP" id="4A0-Xe-Cs1"/>
                         <outlet property="mapView" destination="GAC-Ws-JbP" id="NOk-dB-3Gx"/>
                         <outlet property="searchBar" destination="SbH-40-CQg" id="AZ1-Wl-HUi"/>
@@ -242,7 +241,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yLD-3I-zZU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yLD-3I-zZU">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -377,7 +376,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVl-YK-VS0">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVl-YK-VS0">
                                 <rect key="frame" x="25" y="405" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="EEI-yr-6zc"/>
@@ -429,6 +428,7 @@
         <image name="myLocationBtn.png" width="119" height="119"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="yKo-Mq-O92"/>
         <segue reference="glk-tE-vyg"/>
     </inferredMetricsTieBreakers>
 </document>
