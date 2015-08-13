@@ -52,6 +52,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         var bgColor: UIColor! // Cell background color
         var borderColor: CGColor! // Cell border color
         var textColor: UIColor! // Cell text color
+        var textFont: UIFont! // Cell text font
         cell.layer.cornerRadius = 3
         cell.layer.borderWidth = 2.0
         var imgType: String! // Cell image type (highlighted or normal)
@@ -62,11 +63,13 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
             borderColor = bgColor.CGColor
             imgType = "categoryIconHighlighted"
             textColor = UIColor.whiteColor()
+            textFont = UIFont(name: "GothamRounded-Medium", size: 11)
         } else {
             bgColor = UIColor.clearColor()
             borderColor = UIColor(red: 0.84, green: 0.844, blue: 0.852, alpha: 1).CGColor // Light gray
             imgType = "categoryIcon"
             textColor = UIColor.blackColor()
+            textFont = UIFont(name: "GothamRounded-Book", size: 11)
         }
         
         // Set appearence
@@ -75,6 +78,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         let imgPath = NuVentsHelper.getResourcePath(iconList[indexPath.row]["value"].stringValue, type: imgType)
         cell.imageCell.image = UIImage(contentsOfFile: imgPath)
         cell.labelCell.textColor = textColor
+        cell.labelCell.font = textFont
         cell.labelCell.text = iconList[indexPath.row]["name"].stringValue
         
         return cell
