@@ -25,7 +25,8 @@ class NuVentsEndpoint {
     internal let mapboxMapId:String = "hershamin.n2ld8p7j"
     
     // Global Variables
-    internal var eventJSON = [String: JSON]()
+    internal var eventJSON = [String: JSON]() // To store events
+    internal var categories:Set<String> = Set() // To store selected categories
     
     // Internally used variables
     private var nSocket: SocketIOClient = SocketIOClient(socketURL: backend, options: ["log":false])

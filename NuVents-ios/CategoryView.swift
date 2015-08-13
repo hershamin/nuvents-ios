@@ -88,10 +88,16 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let bgIntent:Bool = iconList[indexPath.row]["bg"].boolValue
         if (bgIntent) {
+            // Remove requested category from global variable
+            NuVentsEndpoint.sharedEndpoint.categories.remove(iconList[indexPath.row]["value"].stringValue)
+            // Setup Cell UI
             iconList[indexPath.row]["bg"] = false
             collectionView.reloadItemsAtIndexPaths([indexPath])
             collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         } else {
+            // Add requested category to global variable
+            NuVentsEndpoint.sharedEndpoint.categories.insert(iconList[indexPath.row]["value"].stringValue)
+            // Setup Cell UI
             iconList[indexPath.row]["bg"] = true
             collectionView.reloadItemsAtIndexPaths([indexPath])
             collectionView.deselectItemAtIndexPath(indexPath, animated: true)
