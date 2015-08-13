@@ -9,7 +9,6 @@
 import Foundation
 import JavaScriptCore
 
-let myNotificationKey = "com.Nuvents.NotificationKey"
 
 class NuVentsHelper {
     
