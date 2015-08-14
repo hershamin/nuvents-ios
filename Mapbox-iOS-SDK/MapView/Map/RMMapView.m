@@ -3881,6 +3881,9 @@
     if (_viewControllerPresentingAttribution && ! _attributionButton)
     {
         _attributionButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        // NuVents Custom Code
+        _attributionButton.tintColor = [UIColor colorWithRed:0.91 green:0.337 blue:0.427 alpha:1]; // #ED8566D
+        // NuVents Custom Code end
         _attributionButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin;
         _attributionButton.translatesAutoresizingMaskIntoConstraints = NO;
         [_attributionButton addTarget:self action:@selector(showAttribution:) forControlEvents:UIControlEventTouchUpInside];
