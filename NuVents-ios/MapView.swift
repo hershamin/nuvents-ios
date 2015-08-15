@@ -12,6 +12,7 @@ class MapViewController: UIViewController, RMMapViewDelegate {
     
     @IBOutlet var myLocBtn:UIButton!
     var mapView:RMMapView!
+    var mapMarkers:[RMAnnotation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         self.view.addSubview(mapView)
         self.view.sendSubviewToBack(mapView)
         
-        // Add map markers based from global variable
+        // Add map markers based from global variable to mapMarkers
         let events = NuVentsEndpoint.sharedEndpoint.eventJSON
         for (key, event) in events {
             let title = event["title"].stringValue
@@ -44,10 +45,12 @@ class MapViewController: UIViewController, RMMapViewDelegate {
             let annotation = RMAnnotation(mapView: mapView, coordinate: CLLocationCoordinate2DMake(lat, lng), andTitle: title)
             annotation.subtitle = NuVentsHelper.getHumanReadableDate(startTS)
             annotation.userInfo = ["marker" : markerIcon, "eid" : key, "media" : media] // Store marker type & eid in user info
-            mapView.addAnnotation(annotation)
+            mapMarkers.append(annotation)
         }
-           //Set up listener for NSNotificationCenter
-           NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
+        mapView.addAnnotations(mapMarkers) // Add annotations to mapView
+        
+        //Set up listener for NSNotificationCenter
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
     }
     
     // Called when view is deallocated from memory
