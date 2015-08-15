@@ -65,7 +65,19 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Function to change list view to search bar text changed
     func changeListViewToSearch() {
-        println("ListViewSearch: " + NuVentsEndpoint.sharedEndpoint.searchText)
+        eventArray.removeAll(keepCapacity: false)
+        let searchText = NuVentsEndpoint.sharedEndpoint.searchText.lowercaseString
+        let eventJsonSearch = NuVentsEndpoint.sharedEndpoint.eventJSON
+        // Iterate & search in title
+        for (key, event) in eventJsonSearch {
+            let title = event["title"].stringValue.lowercaseString
+            if (count(searchText) == 0) {
+                eventArray.append(event)
+            } else if (title.rangeOfString(searchText) != nil) {
+                eventArray.append(event)
+            }
+        }
+        tableView.reloadData()
     }
     
     //MARK - Table View Methods
