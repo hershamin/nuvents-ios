@@ -27,7 +27,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         // Setup listeners for NSNotificationCenter
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToCategory", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
     }
     
@@ -65,11 +65,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Function to change list view to search bar text changed
     func changeListViewToSearch() {
-        eventArray.removeAll(keepCapacity: false)
         let searchText = NuVentsEndpoint.sharedEndpoint.searchText.lowercaseString
-        let eventJsonSearch = NuVentsEndpoint.sharedEndpoint.eventJSON
+        changeListViewToCategory() // Get categorized event array
         // Iterate & search in title
-        for (key, event) in eventJsonSearch {
+        let eventArrayTemp:[JSON] = eventArray
+        eventArray.removeAll(keepCapacity: false)
+        for event in eventArrayTemp {
             let title = event["title"].stringValue.lowercaseString
             if (count(searchText) == 0) {
                 eventArray.append(event)
