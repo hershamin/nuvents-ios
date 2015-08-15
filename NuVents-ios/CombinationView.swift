@@ -9,7 +9,7 @@
 
 import Foundation
 
-class CombinationViewController: UIViewController, UISearchBarDelegate {
+class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
     // Container outlets
     @IBOutlet var categoryView:UIView!
     @IBOutlet var listView:UIView!
@@ -56,7 +56,17 @@ class CombinationViewController: UIViewController, UISearchBarDelegate {
         
         // Tap gesture recognizer to dismiss keyboard
         let tapGestureRecognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissSearchBarKeyboard")
+        tapGestureRecognizer.delegate = self
         self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    // Tap gesture recognizer delegate
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if (touch.view.isDescendantOfView(listView) || touch.view.isDescendantOfView(mapView) || touch.view.isDescendantOfView(categoryView)) {
+            // Don't let list view, category view, or map view tap fire gesture recognizer
+            return false
+        }
+        return true
     }
     
     // Filter button clicked
