@@ -49,6 +49,8 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         }
         mapView.addAnnotations(mapMarkers) // Add annotations to mapView
         
+        zoomToFitAllAnnotationsAnimated(true) // Zoom to fit all markers
+        
         //Set up listeners for NSNotificationCenter
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
@@ -112,6 +114,75 @@ class MapViewController: UIViewController, RMMapViewDelegate {
     // Function to change map view to search bar text changed
     func changeMapViewToSearch() {
         println("MapViewSearch: " + NuVentsEndpoint.sharedEndpoint.searchText)
+    }
+    
+    // Function to zoom mapview according to visible annotations
+    //  Code from: https://github.com/mapbox/mapbox-ios-sdk/issues/33
+    func zoomToFitAllAnnotationsAnimated(animated:Bool) {
+        
+        let rawAnnotations = mapMarkers
+        
+        // Only get visible annotations
+        var annotations:[RMAnnotation] = []
+        if let mapViewAnnotations:[RMAnnotation] = (self.mapView.annotations as? [RMAnnotation]) {
+            for annotation in rawAnnotations {
+                if contains(mapViewAnnotations, annotation) {
+                    annotations.append(annotation)
+                }
+            }
+        }
+        
+        if annotations.count > 0 {
+            
+            let firstCoordinate = annotations[0].coordinate
+            
+            //Find the southwest and northeast point
+            var northEastLatitude = firstCoordinate.latitude
+            var northEastLongitude = firstCoordinate.longitude
+            var southWestLatitude = firstCoordinate.latitude
+            var southWestLongitude = firstCoordinate.longitude
+            
+            for annotation in annotations {
+                let coordinate = annotation.coordinate
+                
+                northEastLatitude = max(northEastLatitude, coordinate.latitude)
+                northEastLongitude = max(northEastLongitude, coordinate.longitude)
+                southWestLatitude = min(southWestLatitude, coordinate.latitude)
+                southWestLongitude = min(southWestLongitude, coordinate.longitude)
+                
+                
+            }
+            let verticalMarginInPixels = 80.0
+            let horizontalMarginInPixels = 40.0
+            
+            let verticalMarginPercentage = verticalMarginInPixels/Double(UIScreen.mainScreen().bounds.height - 120)
+            let horizontalMarginPercentage = horizontalMarginInPixels/Double(UIScreen.mainScreen().bounds.width)
+            
+            let verticalMargin = (northEastLatitude-southWestLatitude)*verticalMarginPercentage
+            let horizontalMargin = (northEastLongitude-southWestLongitude)*horizontalMarginPercentage
+            
+            southWestLatitude -= verticalMargin
+            southWestLongitude -= horizontalMargin
+            
+            northEastLatitude += verticalMargin
+            northEastLongitude += horizontalMargin
+            
+            if (southWestLatitude < -85.0) {
+                southWestLatitude = -85.0
+            }
+            if (southWestLongitude < -180.0) {
+                southWestLongitude = -180.0
+            }
+            if (northEastLatitude > 85) {
+                northEastLatitude = 85.0
+            }
+            if (northEastLongitude > 180.0) {
+                northEastLongitude = 180.0
+            }
+            
+            self.mapView.zoomWithLatitudeLongitudeBoundsSouthWest(CLLocationCoordinate2DMake(southWestLatitude, southWestLongitude), northEast: CLLocationCoordinate2DMake(northEastLatitude, northEastLongitude), animated: animated)
+            
+        }
     }
     
     // Restrict to portrait only
