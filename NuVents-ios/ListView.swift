@@ -25,6 +25,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         for (key, event) in eventsJson {
             eventArray.append(event)
         }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToCategory", name: NuVentsEndpoint.sharedEndpoint.specialNotificationKey, object: nil)
     }
     
     // Restrict to portrait only
@@ -36,6 +37,21 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
+    }
+    //Function to change list view to the appropriate selected category. 
+    func changeListViewToCategory() {
+        eventArray.removeAll(keepCapacity: false)
+        let categorizeList = NuVentsEndpoint.sharedEndpoint.categories
+        let eventsJSONCategories = NuVentsEndpoint.sharedEndpoint.eventJSON
+        //iterate
+        for (key, event) in eventsJSONCategories {
+            if (categorizeList.count == 0) {
+                eventArray.append(event)
+            } else if (categorizeList.contains(event["marker"].stringValue)) {
+                eventArray.append(event)
+            }
+        }
+        tableView.reloadData()
     }
     
     //MARK - Table View Methods
@@ -70,6 +86,5 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Deselect row
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-
     
 }

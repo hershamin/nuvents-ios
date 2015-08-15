@@ -23,10 +23,13 @@ class NuVentsEndpoint {
     internal let udid:String = UIDevice.currentDevice().identifierForVendor.UUIDString // Unique Device ID
     internal let mapboxToken:String = "sk.eyJ1IjoiaGVyc2hhbWluIiwiYSI6ImUxOGRkZWQ0NGE4YjcyNjZmOGU4MzYxNWI3NTEzMTIzIn0.b5wf8U-tHvq00cPlEGrFhQ"
     internal let mapboxMapId:String = "hershamin.n2ld8p7j"
+    internal let specialNotificationKey = "categoryNotificationKey"
+
     
     // Global Variables
     internal var eventJSON = [String: JSON]() // To store events
     internal var categories:Set<String> = Set() // To store selected categories
+    
     
     // Internally used variables
     private var nSocket: SocketIOClient = SocketIOClient(socketURL: backend, options: ["log":false])

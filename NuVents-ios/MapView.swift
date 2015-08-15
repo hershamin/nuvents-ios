@@ -46,6 +46,8 @@ class MapViewController: UIViewController, RMMapViewDelegate {
             annotation.userInfo = ["marker" : markerIcon, "eid" : key, "media" : media] // Store marker type & eid in user info
             mapView.addAnnotation(annotation)
         }
+           //Set up listener for NSNotificationCenter
+           NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: NuVentsEndpoint.sharedEndpoint.specialNotificationKey, object: nil)
     }
     
     // My Location button pressed
@@ -92,6 +94,10 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         // Go to detail view
         self.performSegueWithIdentifier("showDetailView", sender: nil)
         
+    }
+    
+    func actOnSpecialNotification() {
+        println("I heard this notification")
     }
     
     // Restrict to portrait only

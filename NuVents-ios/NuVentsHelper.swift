@@ -9,7 +9,6 @@
 import Foundation
 import JavaScriptCore
 
-
 class NuVentsHelper {
     
     // Get MD5SUM of data

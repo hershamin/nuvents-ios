@@ -17,7 +17,6 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
         //Get the JSON object.
         let filePath = NuVentsHelper.getResourcePath("categoryNames", type: "misc")
@@ -102,12 +101,10 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
             collectionView.reloadItemsAtIndexPaths([indexPath])
             collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         }
+        NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.specialNotificationKey, object: nil)
     }
+
     
-    //Make function for notification
-    @IBAction func changeCombinationView(sender: UICollectionViewCell){
-        
-    }
     // Restrict to portrait only
     override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.rawValue)
