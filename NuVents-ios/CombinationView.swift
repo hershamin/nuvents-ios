@@ -9,7 +9,7 @@
 
 import Foundation
 
-class CombinationViewController: UIViewController {
+class CombinationViewController: UIViewController, UISearchBarDelegate {
     // Container outlets
     @IBOutlet var categoryView:UIView!
     @IBOutlet var listView:UIView!
@@ -53,6 +53,10 @@ class CombinationViewController: UIViewController {
         segmentedCtrl.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         segmentedCtrl.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         segmentedCtrlView.addSubview(segmentedCtrl)
+        
+        // Tap gesture recognizer to dismiss keyboard
+        let tapGestureRecognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissSearchBarKeyboard")
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     // Filter button clicked
@@ -77,6 +81,11 @@ class CombinationViewController: UIViewController {
                 self.filterViewOpen = false
             })
         }
+    }
+    
+    // Dismiss keyboard from search bar
+    func DismissSearchBarKeyboard() {
+        searchBar.resignFirstResponder()
     }
     
     // View will disappear
@@ -116,6 +125,15 @@ class CombinationViewController: UIViewController {
         }
         
     }
+    
+    // Search bar delegate methods
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        DismissSearchBarKeyboard()
+    } // resigning keyboard when search button is pressed
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        println(searchText)
+    } // Search bar text changed
     
     // Restrict to portrait only
     override func supportedInterfaceOrientations() -> Int {

@@ -106,7 +106,10 @@
                             </view>
                             <searchBar opaque="NO" contentMode="redraw" placeholder="Search for any event..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbH-40-CQg">
                                 <rect key="frame" x="16" y="25" width="509" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9fn-Rw-EM1" id="0hd-CL-BVx"/>
+                                </connections>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3EZ-5a-Yvh">
                                 <rect key="frame" x="538" y="38" width="50" height="18"/>
