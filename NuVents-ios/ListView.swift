@@ -38,6 +38,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Dispose of any resources that can be recreated.
         
     }
+    
+    // Called when view is deallocated from memory
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     //Function to change list view to the appropriate selected category. 
     func changeListViewToCategory() {
         eventArray.removeAll(keepCapacity: false)

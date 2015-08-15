@@ -50,6 +50,11 @@ class MapViewController: UIViewController, RMMapViewDelegate {
            NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
     }
     
+    // Called when view is deallocated from memory
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     // My Location button pressed
     func myLocBtnPressed(sender:UIButton!) {
         // Zoom in to go to user location if visible on map
