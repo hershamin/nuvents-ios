@@ -47,7 +47,7 @@ class MapViewController: UIViewController, RMMapViewDelegate {
             mapView.addAnnotation(annotation)
         }
            //Set up listener for NSNotificationCenter
-           NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: NuVentsEndpoint.sharedEndpoint.specialNotificationKey, object: nil)
+           NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
     }
     
     // My Location button pressed

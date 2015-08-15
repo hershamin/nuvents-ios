@@ -101,7 +101,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
             collectionView.reloadItemsAtIndexPaths([indexPath])
             collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         }
-        NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.specialNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
     }
 
     

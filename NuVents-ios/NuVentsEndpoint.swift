@@ -23,7 +23,7 @@ class NuVentsEndpoint {
     internal let udid:String = UIDevice.currentDevice().identifierForVendor.UUIDString // Unique Device ID
     internal let mapboxToken:String = "sk.eyJ1IjoiaGVyc2hhbWluIiwiYSI6ImUxOGRkZWQ0NGE4YjcyNjZmOGU4MzYxNWI3NTEzMTIzIn0.b5wf8U-tHvq00cPlEGrFhQ"
     internal let mapboxMapId:String = "hershamin.n2ld8p7j"
-    internal let specialNotificationKey = "categoryNotificationKey"
+    internal let categoryNotificationKey = "categoryNotificationKey"
 
     
     // Global Variables
