@@ -264,7 +264,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfE-dY-AJ0">
-                                                    <rect key="frame" x="55" y="40" width="441" height="15"/>
+                                                    <rect key="frame" x="55" y="40" width="545" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="WR6-tu-aYg"/>
                                                     </constraints>
@@ -287,7 +287,7 @@
                                                 <constraint firstItem="z14-kz-2ad" firstAttribute="top" secondItem="arD-HO-e3c" secondAttribute="top" constant="5" id="Moe-2s-ZQ2"/>
                                                 <constraint firstItem="wfE-dY-AJ0" firstAttribute="leading" secondItem="cRo-oh-aDt" secondAttribute="trailing" id="Qg6-hl-CXH"/>
                                                 <constraint firstItem="cRo-oh-aDt" firstAttribute="leading" secondItem="arD-HO-e3c" secondAttribute="leading" id="Shk-dS-Zqs"/>
-                                                <constraint firstAttribute="trailing" secondItem="wfE-dY-AJ0" secondAttribute="trailing" constant="104" id="q5s-lt-a2O"/>
+                                                <constraint firstAttribute="trailing" secondItem="wfE-dY-AJ0" secondAttribute="trailing" id="q5s-lt-a2O"/>
                                                 <constraint firstItem="z14-kz-2ad" firstAttribute="leading" secondItem="cRo-oh-aDt" secondAttribute="trailing" id="xzP-W7-37C"/>
                                                 <constraint firstItem="cRo-oh-aDt" firstAttribute="top" secondItem="arD-HO-e3c" secondAttribute="top" constant="2.5" id="zrj-Tp-vq5"/>
                                             </constraints>
@@ -432,6 +432,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yKo-Mq-O92"/>
-        <segue reference="glk-tE-vyg"/>
+        <segue reference="0ps-xm-KK4"/>
     </inferredMetricsTieBreakers>
 </document>

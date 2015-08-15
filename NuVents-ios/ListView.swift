@@ -92,10 +92,20 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Add right accessory
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         
-        // Set event title & time
+        // Set event title, time & dist
         let eventJSON = eventArray[indexPath.row]
+        let currLoc = CLLocation(latitude: NuVentsEndpoint.sharedEndpoint.currLoc.latitude, longitude: NuVentsEndpoint.sharedEndpoint.currLoc.longitude)
+        let eventLoc = CLLocation(latitude: eventJSON["latitude"].doubleValue, longitude: eventJSON["longitude"].doubleValue)
+        let distRaw = eventLoc.distanceFromLocation(currLoc) * 0.000621371 // Distance in miles
+        let dist = Double(round(10 * distRaw)/10) // Round the number
         cell.titleLabel.text = eventJSON["title"].stringValue
-        cell.infoLabel.text = NuVentsHelper.getHumanReadableDate(eventJSON["time"]["start"].stringValue)
+        let timeStr = NuVentsHelper.getHumanReadableDate(eventJSON["time"]["start"].stringValue)
+        let distStr = String(format: "%g", dist)
+        if (dist < 0.1) { // Change distance label based on calculated distance
+            cell.infoLabel.text = "\(timeStr) | < 0.1 mi"
+        } else {
+            cell.infoLabel.text = "\(timeStr) | \(distStr) mi"
+        }
         
         // Set event category image
         let imgPath = NuVentsHelper.getResourcePath(eventJSON["marker"].stringValue, type: "categoryIcon")

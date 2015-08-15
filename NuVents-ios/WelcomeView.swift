@@ -19,6 +19,7 @@ class WelcomeViewController: UIViewController {
         
         // TEMP CODE, find events in austin, tx
         NuVentsEndpoint.sharedEndpoint.getNearbyEvents(CLLocationCoordinate2DMake(30.2766, -97.7324), radius: 10000)
+        NuVentsEndpoint.sharedEndpoint.currLoc = CLLocationCoordinate2DMake(30.2766, -97.7324)
         
         combinationViewBtn.addTarget(self, action: "goToCombinationView:", forControlEvents: UIControlEvents.TouchUpInside) // Combination button action
         detailViewBtn.addTarget(self, action: "goToDetailView:", forControlEvents: UIControlEvents.TouchUpInside) // Detail button action
