@@ -132,7 +132,8 @@ class CombinationViewController: UIViewController, UISearchBarDelegate {
     } // resigning keyboard when search button is pressed
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        println(searchText)
+        NuVentsEndpoint.sharedEndpoint.searchText = searchText
+        NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
     } // Search bar text changed
     
     // Restrict to portrait only

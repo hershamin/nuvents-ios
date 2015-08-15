@@ -49,8 +49,9 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         }
         mapView.addAnnotations(mapMarkers) // Add annotations to mapView
         
-        //Set up listener for NSNotificationCenter
+        //Set up listeners for NSNotificationCenter
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
     }
     
     // Called when view is deallocated from memory
@@ -106,6 +107,11 @@ class MapViewController: UIViewController, RMMapViewDelegate {
     
     func actOnSpecialNotification() {
         println("I heard this notification")
+    }
+    
+    // Function to change map view to search bar text changed
+    func changeMapViewToSearch() {
+        println("MapViewSearch: " + NuVentsEndpoint.sharedEndpoint.searchText)
     }
     
     // Restrict to portrait only

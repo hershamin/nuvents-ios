@@ -25,7 +25,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         for (key, event) in eventsJson {
             eventArray.append(event)
         }
+        
+        // Setup listeners for NSNotificationCenter
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToCategory", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
     }
     
     // Restrict to portrait only
@@ -58,6 +61,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         tableView.reloadData()
+    }
+    
+    // Function to change list view to search bar text changed
+    func changeListViewToSearch() {
+        println("ListViewSearch: " + NuVentsEndpoint.sharedEndpoint.searchText)
     }
     
     //MARK - Table View Methods
