@@ -46,14 +46,31 @@ class MapViewController: UIViewController, RMMapViewDelegate {
             annotation.subtitle = NuVentsHelper.getHumanReadableDate(startTS)
             annotation.userInfo = ["marker" : markerIcon, "eid" : key, "media" : media] // Store marker type & eid in user info
             mapMarkers.append(annotation)
+            
+            
         }
         mapView.addAnnotations(mapMarkers) // Add annotations to mapView
         
         zoomToFitAllAnnotationsAnimated(true) // Zoom to fit all markers
         
         //Set up listeners for NSNotificationCenter
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "actOnSpecialNotification", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToCategory", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
+    }
+    
+    func changeMapViewToCategory() {
+        let categorizeList = NuVentsEndpoint.sharedEndpoint.categories
+        //Iterate through the mapMarkers getting each annotation
+        for annotation in mapMarkers {
+            if let categoryViewAnnotations = annotation.userInfo as? Dictionary<String,String> {
+                if categorizeList.contains(categoryViewAnnotations["marker"]!) {
+                    mapView.addAnnotation(annotation)
+                }
+                else {
+                    mapView.removeAnnotation(annotation)
+                }
+            }
+        }
     }
     
     // Called when view is deallocated from memory
@@ -105,10 +122,6 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         // Go to detail view
         self.performSegueWithIdentifier("showDetailView", sender: nil)
         
-    }
-    
-    func actOnSpecialNotification() {
-        println("I heard this notification")
     }
     
     // Function to change map view to search bar text changed
