@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet var myLocBtn:UIButton!
     @IBOutlet var mapView:MKMapView!
@@ -21,6 +21,11 @@ class MapViewController: UIViewController {
         // Init my location button
         myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        // Init MapBox Overlay
+        MBXMapKit.setAccessToken(NuVentsEndpoint.sharedEndpoint.mapboxToken)
+        var mapboxOverlay = MBXRasterTileOverlay(mapID: NuVentsEndpoint.sharedEndpoint.mapboxMapId)
+        mapView.addOverlay(mapboxOverlay)
+        
         // Init MapView
         let centerCoords = CLLocationCoordinate2DMake(30.27, -97.74)
         let span = MKCoordinateSpanMake(0.05, 0.05)
@@ -31,17 +36,19 @@ class MapViewController: UIViewController {
         // Add map markers based from global variable to mapMarkers
         let events = NuVentsEndpoint.sharedEndpoint.eventJSON
         for (key, event) in events {
+            // Collect info
             let title = event["title"].stringValue
             let startTS = event["time"]["start"].stringValue
             let markerIcon = event["marker"].stringValue
             let media = event["media"].stringValue
             let lat = (event["latitude"].stringValue as NSString).doubleValue
             let lng = (event["longitude"].stringValue as NSString).doubleValue
+            // Add annotation
             let annotation = MKPointAnnotation()
             annotation.title = title
             annotation.subtitle = NuVentsHelper.getHumanReadableDate(startTS)
             annotation.coordinate = CLLocationCoordinate2DMake(lat, lng)
-            mapView.addAnnotation(annotation)
+            self.mapView.addAnnotation(annotation)
         }
         
         //Set up listeners for NSNotificationCenter
@@ -60,7 +67,7 @@ class MapViewController: UIViewController {
         let searchText = NuVentsEndpoint.sharedEndpoint.searchText.lowercaseString
         changeMapViewToCategory() // Get categorized event markers
         // Iterate & search in title
-       //
+        //
     }
     
     // Called when view is deallocated from memory
@@ -71,7 +78,11 @@ class MapViewController: UIViewController {
     // My Location button pressed
     func myLocBtnPressed(sender:UIButton!) {
         // Zoom in to go to user location if visible on map
-        //
+        if let currLoc = mapView.userLocation {
+            let coords = currLoc.coordinate
+            var camera = MKMapCamera(lookingAtCenterCoordinate: coords, fromEyeCoordinate: coords, eyeAltitude: 2500)
+            self.mapView.setCamera(camera, animated: true)
+        }
     }
     
     // Restrict to portrait only
@@ -83,6 +94,19 @@ class MapViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
+    }
+    
+    // MARK: MapView Delegate Methods
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if (overlay.isKindOfClass(MBXRasterTileOverlay)) {
+            let renderer = MBXRasterTileRenderer(overlay: overlay)
+            return renderer
+        }
+        return nil
+    }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        return nil
     }
     
 }

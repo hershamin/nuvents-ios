@@ -7,3 +7,4 @@
 #import "URBSegmentedControl.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIView+Origami.h"
+#import "MBXMapKit.h"

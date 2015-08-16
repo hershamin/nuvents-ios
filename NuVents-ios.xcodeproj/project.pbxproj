@@ -30,6 +30,12 @@
 		BA5B91041AED8575000B1BD5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5B91031AED8575000B1BD5 /* SystemConfiguration.framework */; };
 		BA5D91E61B80FB2C000115BE /* CategoryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D91E51B80FB2C000115BE /* CategoryViewCell.swift */; };
 		BA5D91E81B810090000115BE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5D91E71B810090000115BE /* MapKit.framework */; };
+		BA5D920B1B811F4F000115BE /* MBXMapKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92001B811F4F000115BE /* MBXMapKit.m */; };
+		BA5D920C1B811F4F000115BE /* MBXOfflineMapDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92021B811F4F000115BE /* MBXOfflineMapDatabase.m */; };
+		BA5D920D1B811F4F000115BE /* MBXOfflineMapDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92041B811F4F000115BE /* MBXOfflineMapDownloader.m */; };
+		BA5D920E1B811F4F000115BE /* MBXPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92061B811F4F000115BE /* MBXPointAnnotation.m */; };
+		BA5D920F1B811F4F000115BE /* MBXRasterTileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92081B811F4F000115BE /* MBXRasterTileOverlay.m */; };
+		BA5D92101B811F4F000115BE /* MBXRasterTileRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D920A1B811F4F000115BE /* MBXRasterTileRenderer.m */; };
 		BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */; };
 		BA90B6171B1D211D00C3E3D8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6151B1D211D00C3E3D8 /* Fabric.framework */; };
 		BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */; };
@@ -102,6 +108,19 @@
 		BA5B91051AED8601000B1BD5 /* NuVents-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NuVents-ios-Bridging-Header.h"; sourceTree = "<group>"; };
 		BA5D91E51B80FB2C000115BE /* CategoryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewCell.swift; sourceTree = "<group>"; };
 		BA5D91E71B810090000115BE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BA5D91FE1B811F4F000115BE /* MBXConstantsAndTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXConstantsAndTypes.h; sourceTree = "<group>"; };
+		BA5D91FF1B811F4F000115BE /* MBXMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXMapKit.h; sourceTree = "<group>"; };
+		BA5D92001B811F4F000115BE /* MBXMapKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXMapKit.m; sourceTree = "<group>"; };
+		BA5D92011B811F4F000115BE /* MBXOfflineMapDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXOfflineMapDatabase.h; sourceTree = "<group>"; };
+		BA5D92021B811F4F000115BE /* MBXOfflineMapDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXOfflineMapDatabase.m; sourceTree = "<group>"; };
+		BA5D92031B811F4F000115BE /* MBXOfflineMapDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXOfflineMapDownloader.h; sourceTree = "<group>"; };
+		BA5D92041B811F4F000115BE /* MBXOfflineMapDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXOfflineMapDownloader.m; sourceTree = "<group>"; };
+		BA5D92051B811F4F000115BE /* MBXPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXPointAnnotation.h; sourceTree = "<group>"; };
+		BA5D92061B811F4F000115BE /* MBXPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXPointAnnotation.m; sourceTree = "<group>"; };
+		BA5D92071B811F4F000115BE /* MBXRasterTileOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXRasterTileOverlay.h; sourceTree = "<group>"; };
+		BA5D92081B811F4F000115BE /* MBXRasterTileOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXRasterTileOverlay.m; sourceTree = "<group>"; };
+		BA5D92091B811F4F000115BE /* MBXRasterTileRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXRasterTileRenderer.h; sourceTree = "<group>"; };
+		BA5D920A1B811F4F000115BE /* MBXRasterTileRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXRasterTileRenderer.m; sourceTree = "<group>"; };
 		BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NuVents_SplashScreen.png; sourceTree = "<group>"; };
 		BA90B6151B1D211D00C3E3D8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -211,6 +230,7 @@
 				BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */,
 				BA09BFC61B6D9CE200138139 /* URBSegmentedControl.h */,
 				BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */,
+				BA5D91FD1B811F4F000115BE /* MBXMapKit */,
 				BA4B05D01B79C2BB00A5FCBB /* XYOrigami */,
 				BADFA9271B69538F00CAF0A5 /* SocketIOClientSwift */,
 				BAEFAD471B4F4570003F0D0B /* Siren */,
@@ -262,6 +282,26 @@
 				BA5B90DE1AED81F3000B1BD5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BA5D91FD1B811F4F000115BE /* MBXMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				BA5D91FE1B811F4F000115BE /* MBXConstantsAndTypes.h */,
+				BA5D91FF1B811F4F000115BE /* MBXMapKit.h */,
+				BA5D92001B811F4F000115BE /* MBXMapKit.m */,
+				BA5D92011B811F4F000115BE /* MBXOfflineMapDatabase.h */,
+				BA5D92021B811F4F000115BE /* MBXOfflineMapDatabase.m */,
+				BA5D92031B811F4F000115BE /* MBXOfflineMapDownloader.h */,
+				BA5D92041B811F4F000115BE /* MBXOfflineMapDownloader.m */,
+				BA5D92051B811F4F000115BE /* MBXPointAnnotation.h */,
+				BA5D92061B811F4F000115BE /* MBXPointAnnotation.m */,
+				BA5D92071B811F4F000115BE /* MBXRasterTileOverlay.h */,
+				BA5D92081B811F4F000115BE /* MBXRasterTileOverlay.m */,
+				BA5D92091B811F4F000115BE /* MBXRasterTileRenderer.h */,
+				BA5D920A1B811F4F000115BE /* MBXRasterTileRenderer.m */,
+			);
+			path = MBXMapKit;
 			sourceTree = "<group>";
 		};
 		BA8E59601B2A543700D6AB86 /* Graphics */ = {
@@ -440,6 +480,7 @@
 			files = (
 				BA5B90CC1AED81F3000B1BD5 /* WelcomeView.swift in Sources */,
 				BAEEDE1F1B6D5D9400E10ED5 /* DetailView.swift in Sources */,
+				BA5D920B1B811F4F000115BE /* MBXMapKit.m in Sources */,
 				BA09BFC81B6D9CE200138139 /* URBSegmentedControl.m in Sources */,
 				BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */,
 				BA5D91E61B80FB2C000115BE /* CategoryViewCell.swift in Sources */,
@@ -448,10 +489,13 @@
 				BADFA9411B69538F00CAF0A5 /* WebSocket.swift in Sources */,
 				F1D6F6231B7680960022D638 /* ListViewCell.swift in Sources */,
 				BADFA93F1B69538F00CAF0A5 /* SocketTypes.swift in Sources */,
+				BA5D92101B811F4F000115BE /* MBXRasterTileRenderer.m in Sources */,
 				BADFA9381B69538F00CAF0A5 /* SocketEngineClient.swift in Sources */,
 				BADFA93C1B69538F00CAF0A5 /* SocketLogger.swift in Sources */,
 				BAEEDE1B1B6D5D7500E10ED5 /* ListView.swift in Sources */,
+				BA5D920D1B811F4F000115BE /* MBXOfflineMapDownloader.m in Sources */,
 				BAEEDE1D1B6D5D8100E10ED5 /* MapView.swift in Sources */,
+				BA5D920C1B811F4F000115BE /* MBXOfflineMapDatabase.m in Sources */,
 				BAEEDE191B6D5D6700E10ED5 /* CategoryView.swift in Sources */,
 				BADFA93E1B69538F00CAF0A5 /* SocketParser.swift in Sources */,
 				BADFA9391B69538F00CAF0A5 /* SocketEventHandler.swift in Sources */,
@@ -460,6 +504,7 @@
 				BADFA93D1B69538F00CAF0A5 /* SocketPacket.swift in Sources */,
 				BADFA93B1B69538F00CAF0A5 /* SocketIOClient.swift in Sources */,
 				BA4B05D31B79C2BB00A5FCBB /* UIView+Origami.m in Sources */,
+				BA5D920E1B811F4F000115BE /* MBXPointAnnotation.m in Sources */,
 				BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */,
 				BADFA9401B69538F00CAF0A5 /* SwiftRegex.swift in Sources */,
 				BAEEDE211B6D5DA200E10ED5 /* RequestView.swift in Sources */,
@@ -467,6 +512,7 @@
 				BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */,
 				BAEEDE171B6D5D3300E10ED5 /* CombinationView.swift in Sources */,
 				BA4B05D81B79C43700A5FCBB /* FilterView.swift in Sources */,
+				BA5D920F1B811F4F000115BE /* MBXRasterTileOverlay.m in Sources */,
 				BADFA9431B69623300CAF0A5 /* NuVentsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
