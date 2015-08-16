@@ -63,7 +63,10 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         //Iterate through the mapMarkers getting each annotation
         for annotation in mapMarkers {
             if let categoryViewAnnotations = annotation.userInfo as? Dictionary<String,String> {
-                if categorizeList.contains(categoryViewAnnotations["marker"]!) {
+                if (categorizeList.count == 0) {
+                    mapView.addAnnotation(annotation)
+                }
+                else if (categorizeList.contains(categoryViewAnnotations["marker"]!))  {
                     mapView.addAnnotation(annotation)
                 }
                 else {
