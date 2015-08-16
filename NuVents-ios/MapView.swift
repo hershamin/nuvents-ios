@@ -54,7 +54,7 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         zoomToFitAllAnnotationsAnimated(true) // Zoom to fit all markers
         
         //Set up listeners for NSNotificationCenter
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToCategory", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
     }
     
@@ -72,6 +72,23 @@ class MapViewController: UIViewController, RMMapViewDelegate {
                 else {
                     mapView.removeAnnotation(annotation)
                 }
+            }
+        }
+    }
+    
+    // Function to change map view to search bar text changed
+    func changeMapViewToSearch() {
+        let searchText = NuVentsEndpoint.sharedEndpoint.searchText.lowercaseString
+        changeMapViewToCategory() // Get categorized event markers
+        // Iterate & search in title
+        for annotation in mapMarkers {
+            let title = annotation.title.lowercaseString
+            if (count(searchText) == 0) {
+                mapView.addAnnotation(annotation)
+            } else if (title.rangeOfString(searchText) != nil) {
+                mapView.addAnnotation(annotation)
+            } else {
+                mapView.removeAnnotation(annotation)
             }
         }
     }
@@ -125,11 +142,6 @@ class MapViewController: UIViewController, RMMapViewDelegate {
         // Go to detail view
         self.performSegueWithIdentifier("showDetailView", sender: nil)
         
-    }
-    
-    // Function to change map view to search bar text changed
-    func changeMapViewToSearch() {
-        println("MapViewSearch: " + NuVentsEndpoint.sharedEndpoint.searchText)
     }
     
     // Function to zoom mapview according to visible annotations
