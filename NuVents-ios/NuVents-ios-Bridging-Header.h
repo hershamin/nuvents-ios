@@ -5,5 +5,5 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import "URBSegmentedControl.h"
-#import "Mapbox.h"
+#import <CoreLocation/CoreLocation.h>
 #import "UIView+Origami.h"
