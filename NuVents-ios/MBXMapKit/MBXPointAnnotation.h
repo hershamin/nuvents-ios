@@ -28,8 +28,10 @@
 /** The image to show upon display of the corresponding auto-created `MKAnnotationView`. */
 #if TARGET_OS_IPHONE
 @property (nonatomic) UIImage *image;
+@property (nonatomic) NSString *eventID;
 #else
 @property (nonatomic) NSImage *image;
+@property (nonatomic) NSString *eventID;
 #endif
 
 @end

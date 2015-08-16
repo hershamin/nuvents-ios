@@ -13,6 +13,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet var myLocBtn:UIButton!
     @IBOutlet var mapView:MKMapView!
+    let annotationReuseIdentifier = "MKPointAnnotationIdentifier"
+    var eventsJson : [String:JSON]!
+    var mapMarkers:[MBXPointAnnotation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,20 +37,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.showsUserLocation = true
         
         // Add map markers based from global variable to mapMarkers
-        let events = NuVentsEndpoint.sharedEndpoint.eventJSON
-        for (key, event) in events {
+        eventsJson = NuVentsEndpoint.sharedEndpoint.eventJSON
+        for (key, event) in eventsJson {
             // Collect info
             let title = event["title"].stringValue
             let startTS = event["time"]["start"].stringValue
-            let markerIcon = event["marker"].stringValue
-            let media = event["media"].stringValue
             let lat = (event["latitude"].stringValue as NSString).doubleValue
             let lng = (event["longitude"].stringValue as NSString).doubleValue
             // Add annotation
-            let annotation = MKPointAnnotation()
+            let annotation = MBXPointAnnotation()
+            annotation.eventID = key
             annotation.title = title
             annotation.subtitle = NuVentsHelper.getHumanReadableDate(startTS)
             annotation.coordinate = CLLocationCoordinate2DMake(lat, lng)
+            mapMarkers.append(annotation)
             self.mapView.addAnnotation(annotation)
         }
         
@@ -59,7 +62,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func changeMapViewToCategory() {
         let categorizeList = NuVentsEndpoint.sharedEndpoint.categories
         //Iterate through the mapMarkers getting each annotation
-        //
+        for annotation in mapMarkers {
+            let mbxAnn = annotation as MBXPointAnnotation
+            let eventJson:JSON = eventsJson[mbxAnn.eventID]!
+            if (categorizeList.count == 0) {
+                mapView.addAnnotation(annotation)
+            } else if (categorizeList.contains(eventJson["marker"].stringValue))  {
+                mapView.addAnnotation(annotation)
+            } else {
+                mapView.removeAnnotation(annotation)
+            }
+        }
     }
     
     // Function to change map view to search bar text changed
@@ -67,7 +80,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let searchText = NuVentsEndpoint.sharedEndpoint.searchText.lowercaseString
         changeMapViewToCategory() // Get categorized event markers
         // Iterate & search in title
-        //
+        for annotation in mapMarkers {
+            let title = annotation.title.lowercaseString
+            if (count(searchText) == 0) {
+                mapView.addAnnotation(annotation)
+            } else if (title.rangeOfString(searchText) != nil) {
+                mapView.addAnnotation(annotation)
+            } else {
+                mapView.removeAnnotation(annotation)
+            }
+        }
     }
     
     // Called when view is deallocated from memory
@@ -106,6 +128,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        if (annotation.isKindOfClass(MBXPointAnnotation)) {
+            var annView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationReuseIdentifier)
+            let annotationMBX = annotation as! MBXPointAnnotation
+            if (annView == nil) {
+                annView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseIdentifier)
+                let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
+                if let markerImgRaw = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerLow")) {
+                    let markerImg = NuVentsHelper.resizeImage(markerImgRaw, width: 32)
+                    annView.image = markerImg
+                }
+                annView.canShowCallout = true
+                return annView
+            } else {
+                annView.annotation = annotation
+                return annView
+            }
+        }
         return nil
     }
     
