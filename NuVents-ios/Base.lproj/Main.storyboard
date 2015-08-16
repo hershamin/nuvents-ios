@@ -379,8 +379,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVl-YK-VS0">
-                                <rect key="frame" x="25" y="405" width="50" height="50"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9Hq-pj-yYZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVl-YK-VS0">
+                                <rect key="frame" x="25" y="525" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="EEI-yr-6zc"/>
                                     <constraint firstAttribute="height" constant="50" id="e2Q-nK-VhA"/>
@@ -394,11 +397,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9Hq-pj-yYZ" firstAttribute="top" secondItem="zpX-wB-Lay" secondAttribute="top" id="Zk7-Ib-Mw1"/>
+                            <constraint firstItem="9Hq-pj-yYZ" firstAttribute="leading" secondItem="zpX-wB-Lay" secondAttribute="leading" id="bKm-JO-TtR"/>
+                            <constraint firstItem="HWV-9j-Jir" firstAttribute="top" secondItem="9Hq-pj-yYZ" secondAttribute="bottom" id="deO-cv-OLk"/>
                             <constraint firstItem="hVl-YK-VS0" firstAttribute="leading" secondItem="zpX-wB-Lay" secondAttribute="leading" constant="25" id="iEd-09-oum"/>
+                            <constraint firstAttribute="trailing" secondItem="9Hq-pj-yYZ" secondAttribute="trailing" id="kXm-cU-hbm"/>
                             <constraint firstItem="HWV-9j-Jir" firstAttribute="top" secondItem="hVl-YK-VS0" secondAttribute="bottom" constant="25" id="lY7-dj-g3W"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mapView" destination="9Hq-pj-yYZ" id="wLo-9C-4NW"/>
                         <outlet property="myLocBtn" destination="hVl-YK-VS0" id="gfN-EM-38y"/>
                         <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="cnt-Af-WMB"/>
                     </connections>
@@ -432,6 +440,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="yKo-Mq-O92"/>
-        <segue reference="0ps-xm-KK4"/>
+        <segue reference="cnt-Af-WMB"/>
     </inferredMetricsTieBreakers>
 </document>

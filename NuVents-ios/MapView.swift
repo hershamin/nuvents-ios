@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import MapKit
 
 class MapViewController: UIViewController {
     
     @IBOutlet var myLocBtn:UIButton!
+    @IBOutlet var mapView:MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,11 @@ class MapViewController: UIViewController {
         myLocBtn.addTarget(self, action: "myLocBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Init MapView
-        //
+        let centerCoords = CLLocationCoordinate2DMake(30.27, -97.74)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(centerCoords, span)
+        mapView.setRegion(region, animated: true)
+        mapView.showsUserLocation = true
         
         // Add map markers based from global variable to mapMarkers
         let events = NuVentsEndpoint.sharedEndpoint.eventJSON
@@ -31,7 +37,11 @@ class MapViewController: UIViewController {
             let media = event["media"].stringValue
             let lat = (event["latitude"].stringValue as NSString).doubleValue
             let lng = (event["longitude"].stringValue as NSString).doubleValue
-            //
+            let annotation = MKPointAnnotation()
+            annotation.title = title
+            annotation.subtitle = NuVentsHelper.getHumanReadableDate(startTS)
+            annotation.coordinate = CLLocationCoordinate2DMake(lat, lng)
+            mapView.addAnnotation(annotation)
         }
         
         //Set up listeners for NSNotificationCenter
