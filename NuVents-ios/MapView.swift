@@ -79,7 +79,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Function to open detail view, called when callout if pressed
     func openDetailView(sender:UIButton!) {
-        println(selectedEventID)
+        // Gather event detail
+        
+        // Go to detail view
+        self.performSegueWithIdentifier("showDetailView", sender: nil)
     }
     
     // Function to change map view to category changed

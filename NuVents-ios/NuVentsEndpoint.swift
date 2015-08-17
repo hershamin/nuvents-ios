@@ -32,6 +32,7 @@ class NuVentsEndpoint {
     internal var categories:Set<String> = Set() // To store selected categories
     internal var searchText:String = "" // To store search bar text
     internal var currLoc:CLLocationCoordinate2D! // To store current device location
+    internal var tempJson = JSON("") // To store eventJson when going to detail view
     
     
     // Internally used variables
