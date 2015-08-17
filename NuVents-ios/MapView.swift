@@ -146,12 +146,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 annView = MapViewAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseIdentifier)
                 let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
                 if let markerImgRaw = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerLow")) {
-                    annView.image = markerImgRaw
+                    annView.image = markerImgRaw // Set marker image
                 }
                 annView.canShowCallout = true
                 return annView
             } else {
-                annView.annotation = annotation
+                let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
+                if let markerImgRaw = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerLow")) {
+                    annView.image = markerImgRaw // Set marker image
+                }
+                annView.canShowCallout = true
                 return annView
             }
         }
