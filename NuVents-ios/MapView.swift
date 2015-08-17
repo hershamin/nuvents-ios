@@ -151,19 +151,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Any other map marker
         if (annotation.isKindOfClass(MBXPointAnnotation)) {
             var annView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationReuseIdentifier)
+            
             let annotationMBX = annotation as! MBXPointAnnotation
             if (annView == nil) {
                 annView = MapViewAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseIdentifier)
-                let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
-                annView.image = self.getMarkerImg(eventJson) // Set marker image
-                annView.canShowCallout = true
-                return annView
-            } else {
-                let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
-                annView.image = self.getMarkerImg(eventJson) // Set marker image
-                annView.canShowCallout = true
-                return annView
             }
+            
+            let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
+            annView.image = self.getMarkerImg(eventJson) // Set marker image
+            annView.canShowCallout = true
+            
+            return annView
         }
         
         return nil
