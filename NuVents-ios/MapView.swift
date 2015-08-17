@@ -61,6 +61,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
     }
     
+    // Function to return image for map marker
+    func getMarkerImg(eventJson:JSON!) -> UIImage {
+        if let markerImg = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerLow")) {
+            return markerImg // Marker Image
+        } else {
+            return UIImage.new() // Empty UIImage
+        }
+    }
+    
+    // Function to change map view to category changed
     func changeMapViewToCategory() {
         let categorizeList = NuVentsEndpoint.sharedEndpoint.categories
         //Iterate through the mapMarkers getting each annotation
@@ -145,16 +155,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if (annView == nil) {
                 annView = MapViewAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseIdentifier)
                 let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
-                if let markerImgRaw = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerLow")) {
-                    annView.image = markerImgRaw // Set marker image
-                }
+                annView.image = self.getMarkerImg(eventJson) // Set marker image
                 annView.canShowCallout = true
                 return annView
             } else {
                 let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
-                if let markerImgRaw = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerLow")) {
-                    annView.image = markerImgRaw // Set marker image
-                }
+                annView.image = self.getMarkerImg(eventJson) // Set marker image
                 annView.canShowCallout = true
                 return annView
             }
