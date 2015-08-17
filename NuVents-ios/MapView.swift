@@ -90,6 +90,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Function to change map view to search bar text changed
     func changeMapViewToSearch() {
+        if (calloutView != nil) {
+            calloutView.dismissCalloutAnimated(true)
+        } // Dismiss SMCalloutView if presented
         let searchText = NuVentsEndpoint.sharedEndpoint.searchText.lowercaseString
         changeMapViewToCategory() // Get categorized event markers
         // Iterate & search in title

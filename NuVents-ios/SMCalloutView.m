@@ -15,14 +15,14 @@
 // Callout View.
 //
 
-#define CALLOUT_DEFAULT_CONTAINER_HEIGHT 44 // height of just the main portion without arrow
-#define CALLOUT_SUB_DEFAULT_CONTAINER_HEIGHT 52 // height of just the main portion without arrow (when subtitle is present)
+#define CALLOUT_DEFAULT_CONTAINER_HEIGHT 77 // height of just the main portion without arrow
+#define CALLOUT_SUB_DEFAULT_CONTAINER_HEIGHT 54 // height of just the main portion without arrow (when subtitle is present)
 #define CALLOUT_MIN_WIDTH 61 // minimum width of system callout
-#define TITLE_HMARGIN 12 // the title/subtitle view's normal horizontal margin from the edges of our callout view or from the accessories
+#define TITLE_HMARGIN 13 // the title/subtitle view's normal horizontal margin from the edges of our callout view or from the accessories
 #define TITLE_TOP 11 // the top of the title view when no subtitle is present
-#define TITLE_SUB_TOP 4 // the top of the title view when a subtitle IS present
-#define TITLE_HEIGHT 21 // title height, fixed
-#define SUBTITLE_TOP 28 // the top of the subtitle, when present
+#define TITLE_SUB_TOP 3 // the top of the title view when a subtitle IS present
+#define TITLE_HEIGHT 31 // title height, fixed
+#define SUBTITLE_TOP 36 // the top of the subtitle, when present
 #define SUBTITLE_HEIGHT 15 // subtitle height, fixed
 #define BETWEEN_ACCESSORIES_MARGIN 7 // margin between accessories when no title/subtitle is present
 #define TOP_ANCHOR_MARGIN 13 // all the above measurements assume a bottom anchor! if we're pointing "up" we'll need to add this top margin to everything.
@@ -97,7 +97,9 @@ NSTimeInterval const kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
             self.titleLabel.frameHeight = TITLE_HEIGHT;
             self.titleLabel.opaque = NO;
             self.titleLabel.backgroundColor = [UIColor clearColor];
-            self.titleLabel.font = [UIFont systemFontOfSize:17];
+            self.titleLabel.font = [UIFont fontWithName:@"GothamRounded-Medium" size:15];
+            self.titleLabel.numberOfLines = 2;
+            self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
             self.titleLabel.textColor = [UIColor blackColor];
         }
         return self.titleLabel;
@@ -115,7 +117,7 @@ NSTimeInterval const kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
             self.subtitleLabel.frameHeight = SUBTITLE_HEIGHT;
             self.subtitleLabel.opaque = NO;
             self.subtitleLabel.backgroundColor = [UIColor clearColor];
-            self.subtitleLabel.font = [UIFont systemFontOfSize:12];
+            self.subtitleLabel.font = [UIFont fontWithName:@"GothamRounded-Book" size:12];
             self.subtitleLabel.textColor = [UIColor blackColor];
         }
         return self.subtitleLabel;
