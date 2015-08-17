@@ -168,6 +168,27 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return nil
     }
     
+    // Delegate method to listen to marker deselect to dismiss SMCalloutView
+    func mapView(mapView: MKMapView!, didDeselectAnnotationView view: MKAnnotationView!) {
+        // Return if annotation is current location
+        if (view.annotation.isKindOfClass(MKUserLocation)) {
+            return
+        }
+        
+        // Dismiss SMCalloutView
+        if (calloutView != nil) {
+            calloutView.dismissCalloutAnimated(true)
+        }
+    }
+    
+    // Delegate method to listen for map region changed to dismiss SMCalloutView
+    func mapView(mapView: MKMapView!, regionWillChangeAnimated animated: Bool) {
+        // Dismiss SMCalloutView
+        if (calloutView != nil) {
+            calloutView.dismissCalloutAnimated(true)
+        }
+    }
+    
     // Delegate method to listen to marker click to show SMCalloutView
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
         // Return if annotation is current location
@@ -198,7 +219,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let point = mapView.convertCoordinate(annMBX.coordinate, toPointToView: mapView)
         var calloutRect:CGRect = CGRectZero
         calloutRect.origin = point
+        calloutView.userInteractionEnabled = true
         calloutView.presentCalloutFromRect(calloutRect, inLayer: mapView.layer, constrainedToLayer: mapView.layer, animated: true)
+        calloutView.layer.zPosition = CGFloat(MAXFLOAT)
     }
     
 }
