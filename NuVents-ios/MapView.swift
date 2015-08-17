@@ -18,6 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var mapMarkers:[MBXPointAnnotation] = []
     var calloutView:SMCalloutView!
     var selectedEventID:String!
+    @IBOutlet var attributionBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         MBXMapKit.setAccessToken(NuVentsEndpoint.sharedEndpoint.mapboxToken)
         var mapboxOverlay = MBXRasterTileOverlay(mapID: NuVentsEndpoint.sharedEndpoint.mapboxMapId)
         mapView.addOverlay(mapboxOverlay)
+        
+        // Init Attribution button
+        attributionBtn.tintColor = UIColor(red: 0.91, green: 0.337, blue: 0.427, alpha: 1) // #E8566D
+        attributionBtn.addTarget(self, action: "mapAttrBtnClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Init MapView
         // Change color of user location dot to branding pink color
@@ -237,6 +242,28 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //calloutView.presentCalloutFromRect(calloutRect, inLayer: mapView.layer, constrainedToLayer: mapView.layer, animated: true)
         calloutView.presentCalloutFromRect(calloutRect, inView: mapView, constrainedToView: mapView, animated: true)
         calloutView.layer.zPosition = CGFloat(MAXFLOAT)
+    }
+    
+    // MARK: Attribution Function when map attribution is clicked
+    func mapAttrBtnClicked(sender:UIButton!) {
+        var alertController = UIAlertController(title: "Map Attribution", message: "© Mapbox, © OpenStreetMap", preferredStyle: UIAlertControllerStyle.Alert)
+        // Go to mapbox about page
+        let aboutAction = UIAlertAction(title: "About", style: UIAlertActionStyle.Default) {
+            (action) in
+            UIApplication.sharedApplication().openURL(NSURL(string: "https://www.mapbox.com/about/maps/")!)
+        }
+        alertController.addAction(aboutAction)
+        // Go to mapbox improve this map page
+        let improveAction = UIAlertAction(title: "Improve this map", style: UIAlertActionStyle.Default) {
+            (action) in
+            UIApplication.sharedApplication().openURL(NSURL(string: "https://www.mapbox.com/map-feedback/")!)
+        }
+        alertController.addAction(improveAction)
+        // Cancel alert
+        let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler:nil)
+        alertController.addAction(cancelAction)
+        // Present alert view
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
 }

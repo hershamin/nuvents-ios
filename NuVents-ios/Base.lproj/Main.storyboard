@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -397,11 +397,32 @@
                                 <state key="selected" image="myLocationBtn.png"/>
                                 <state key="highlighted" image="myLocationBtn.png"/>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mapbox_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-1Q-6eh">
+                                <rect key="frame" x="5" y="568" width="81" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="l3q-X7-XgM"/>
+                                    <constraint firstAttribute="height" constant="36" id="pfq-gl-uMe"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbM-UR-Rr5">
+                                <rect key="frame" x="568" y="568" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="igx-xg-gdT"/>
+                                    <constraint firstAttribute="width" constant="22" id="yqf-XO-wWz"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fDz-1Q-6eh" firstAttribute="leading" secondItem="zpX-wB-Lay" secondAttribute="leading" constant="5" id="1HD-xl-m5N"/>
+                            <constraint firstAttribute="bottom" secondItem="fDz-1Q-6eh" secondAttribute="bottom" constant="-4" id="4Rw-fg-FoX"/>
+                            <constraint firstAttribute="trailing" secondItem="gbM-UR-Rr5" secondAttribute="trailing" constant="10" id="JVi-oF-bMe"/>
                             <constraint firstItem="9Hq-pj-yYZ" firstAttribute="top" secondItem="zpX-wB-Lay" secondAttribute="top" id="Zk7-Ib-Mw1"/>
                             <constraint firstItem="9Hq-pj-yYZ" firstAttribute="leading" secondItem="zpX-wB-Lay" secondAttribute="leading" id="bKm-JO-TtR"/>
+                            <constraint firstItem="HWV-9j-Jir" firstAttribute="top" secondItem="gbM-UR-Rr5" secondAttribute="bottom" constant="10" id="dWs-Yd-BnS"/>
                             <constraint firstItem="HWV-9j-Jir" firstAttribute="top" secondItem="9Hq-pj-yYZ" secondAttribute="bottom" id="deO-cv-OLk"/>
                             <constraint firstItem="hVl-YK-VS0" firstAttribute="leading" secondItem="zpX-wB-Lay" secondAttribute="leading" constant="25" id="iEd-09-oum"/>
                             <constraint firstAttribute="trailing" secondItem="9Hq-pj-yYZ" secondAttribute="trailing" id="kXm-cU-hbm"/>
@@ -409,6 +430,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="attributionBtn" destination="gbM-UR-Rr5" id="K15-oT-gEf"/>
                         <outlet property="mapView" destination="9Hq-pj-yYZ" id="wLo-9C-4NW"/>
                         <outlet property="myLocBtn" destination="hVl-YK-VS0" id="gfN-EM-38y"/>
                         <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="cnt-Af-WMB"/>
@@ -438,6 +460,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Mapbox_Logo.png" width="300" height="132"/>
         <image name="combinationViewTabBar.png" width="1500" height="368"/>
         <image name="myLocationBtn.png" width="119" height="119"/>
     </resources>

@@ -42,6 +42,7 @@
 		BA90B6171B1D211D00C3E3D8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6151B1D211D00C3E3D8 /* Fabric.framework */; };
 		BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */; };
 		BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */; };
+		BAAEFAD51B827EE200561664 /* Mapbox_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */; };
 		BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */; };
 		BADFA9351B69538F00CAF0A5 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9281B69538F00CAF0A5 /* SocketAckManager.swift */; };
 		BADFA9361B69538F00CAF0A5 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9291B69538F00CAF0A5 /* SocketAnyEvent.swift */; };
@@ -131,6 +132,7 @@
 		BA90B6151B1D211D00C3E3D8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mapbox_Logo.png; sourceTree = "<group>"; };
 		BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuVentsEndpoint.swift; sourceTree = "<group>"; };
 		BADFA9281B69538F00CAF0A5 /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
 		BADFA9291B69538F00CAF0A5 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			isa = PBXGroup;
 			children = (
 				BA09BFCB1B6F294100138139 /* myLocationBtn.png */,
+				BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */,
 				BA09BFC41B6D99A100138139 /* combinationViewTabBar.png */,
 				BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */,
 			);
@@ -453,6 +456,7 @@
 				BA4B05D91B79C43700A5FCBB /* FilterView.xib in Resources */,
 				BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */,
 				BA09BFC51B6D99A100138139 /* combinationViewTabBar.png in Resources */,
+				BAAEFAD51B827EE200561664 /* Mapbox_Logo.png in Resources */,
 				BA09BFC01B6D882700138139 /* Gotham-Rounded-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
