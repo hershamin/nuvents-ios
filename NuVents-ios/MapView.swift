@@ -17,6 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var eventsJson : [String:JSON]!
     var mapMarkers:[MBXPointAnnotation] = []
     var calloutView:SMCalloutView!
+    var selectedEventID:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +70,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         } else {
             return UIImage.new() // Empty UIImage
         }
+    }
+    
+    // Function to open detail view, called when callout if pressed
+    func openDetailView(sender:UIButton!) {
+        println(selectedEventID)
     }
     
     // Function to change map view to category changed
@@ -216,14 +222,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let mediaImgView:UIImageView = UIImageView(image: UIImage(data: mediaImgData!))
         mediaImgView.frame = CGRectMake(0, 0, 55, 55)
         calloutView.leftAccessoryView = mediaImgView
-        calloutView.rightAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
-        calloutView.rightAccessoryView.tintColor = UIColor(red: 0.91, green: 0.337, blue: 0.427, alpha: 1) // #E8566D
+        // Detail view button
+        var detailViewBtn:UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
+        detailViewBtn.tintColor = UIColor(red: 0.91, green: 0.337, blue: 0.427, alpha: 1) // #E8566D
+        selectedEventID = annMBX.eventID // Set event ID to retrieve when button is pressed
+        detailViewBtn.addTarget(self, action: "openDetailView:", forControlEvents: UIControlEvents.TouchUpInside)
+        detailViewBtn.exclusiveTouch = true
+        calloutView.rightAccessoryView = detailViewBtn
         // Show callout
         let point = mapView.convertCoordinate(annMBX.coordinate, toPointToView: mapView)
         var calloutRect:CGRect = CGRectZero
         calloutRect.origin = point
         calloutView.userInteractionEnabled = true
-        calloutView.presentCalloutFromRect(calloutRect, inLayer: mapView.layer, constrainedToLayer: mapView.layer, animated: true)
+        //calloutView.presentCalloutFromRect(calloutRect, inLayer: mapView.layer, constrainedToLayer: mapView.layer, animated: true)
+        calloutView.presentCalloutFromRect(calloutRect, inView: mapView, constrainedToView: mapView, animated: true)
         calloutView.layer.zPosition = CGFloat(MAXFLOAT)
     }
     
