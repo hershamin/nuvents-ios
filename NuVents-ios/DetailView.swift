@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
     // TEMP BUTTONS
     @IBOutlet var goToComb:UIButton!
     @IBOutlet var goToWelc:UIButton!
+    let eventJson:JSON = NuVentsEndpoint.sharedEndpoint.tempJson
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class DetailViewController: UIViewController {
         // TEMP CODE
         goToComb.addTarget(self, action: "goToCombination:", forControlEvents: UIControlEvents.TouchUpInside)
         goToWelc.addTarget(self, action: "goToWelcome:", forControlEvents: UIControlEvents.TouchUpInside)
+        println(eventJson["title"].stringValue)
     }
     
     // TEMP CODE

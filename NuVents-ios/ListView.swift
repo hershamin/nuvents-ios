@@ -117,8 +117,14 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     // Called when row is selected
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        // Go to detail view
-        self.performSegueWithIdentifier("showDetailView", sender: nil)
+        // Get json from event ID
+        let eventID:String = eventArray[indexPath.row]["eid"].stringValue
+        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID, callback: {(jsonData:JSON) -> Void in
+            // Store json in temp variable
+            NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
+            // Go to detail view
+            self.performSegueWithIdentifier("showDetailView", sender: nil)
+        })
         
         // Deselect row
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
