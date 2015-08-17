@@ -30,11 +30,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.addOverlay(mapboxOverlay)
         
         // Init MapView
+        // Change color of user location dot to branding pink color
+        mapView.tintColor = UIColor(red: 0.91, green: 0.337, blue: 0.427, alpha: 1) // #E8566D
+        // Rest of the setup
         let centerCoords = CLLocationCoordinate2DMake(30.27, -97.74)
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegionMake(centerCoords, span)
         mapView.setRegion(region, animated: true)
-        mapView.showsUserLocation = true
         
         // Add map markers based from global variable to mapMarkers
         eventsJson = NuVentsEndpoint.sharedEndpoint.eventJSON
@@ -129,16 +131,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return nil
     }
     
+    // Delegate method to determine how map markers would look
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        // User location map marker
+        if (annotation.isKindOfClass(MKUserLocation)) {
+            return nil
+        }
+        
+        // Any other map marker
         if (annotation.isKindOfClass(MBXPointAnnotation)) {
             var annView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationReuseIdentifier)
             let annotationMBX = annotation as! MBXPointAnnotation
             if (annView == nil) {
-                annView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseIdentifier)
+                annView = MapViewAnnotationView(annotation: annotation, reuseIdentifier: annotationReuseIdentifier)
                 let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
                 if let markerImgRaw = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerLow")) {
-                    let markerImg = NuVentsHelper.resizeImage(markerImgRaw, width: 32)
-                    annView.image = markerImg
+                    annView.image = markerImgRaw
                 }
                 annView.canShowCallout = true
                 return annView
@@ -147,6 +155,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 return annView
             }
         }
+        
         return nil
     }
     

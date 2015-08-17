@@ -36,6 +36,7 @@
 		BA5D920E1B811F4F000115BE /* MBXPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92061B811F4F000115BE /* MBXPointAnnotation.m */; };
 		BA5D920F1B811F4F000115BE /* MBXRasterTileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92081B811F4F000115BE /* MBXRasterTileOverlay.m */; };
 		BA5D92101B811F4F000115BE /* MBXRasterTileRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D920A1B811F4F000115BE /* MBXRasterTileRenderer.m */; };
+		BA5D92191B81906C000115BE /* MapViewAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92181B81906C000115BE /* MapViewAnnotationView.m */; };
 		BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */; };
 		BA90B6171B1D211D00C3E3D8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6151B1D211D00C3E3D8 /* Fabric.framework */; };
 		BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */; };
@@ -121,6 +122,8 @@
 		BA5D92081B811F4F000115BE /* MBXRasterTileOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXRasterTileOverlay.m; sourceTree = "<group>"; };
 		BA5D92091B811F4F000115BE /* MBXRasterTileRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXRasterTileRenderer.h; sourceTree = "<group>"; };
 		BA5D920A1B811F4F000115BE /* MBXRasterTileRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXRasterTileRenderer.m; sourceTree = "<group>"; };
+		BA5D92171B81906C000115BE /* MapViewAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewAnnotationView.h; sourceTree = "<group>"; };
+		BA5D92181B81906C000115BE /* MapViewAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewAnnotationView.m; sourceTree = "<group>"; };
 		BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NuVents_SplashScreen.png; sourceTree = "<group>"; };
 		BA90B6151B1D211D00C3E3D8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 				F1D6F6221B7680960022D638 /* ListViewCell.swift */,
 				BAEEDE1A1B6D5D7500E10ED5 /* ListView.swift */,
 				BAEEDE1C1B6D5D8100E10ED5 /* MapView.swift */,
+				BA5D92171B81906C000115BE /* MapViewAnnotationView.h */,
+				BA5D92181B81906C000115BE /* MapViewAnnotationView.m */,
 				BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */,
 				BAEEDE201B6D5DA200E10ED5 /* RequestView.swift */,
 				BA4B05D61B79C43700A5FCBB /* FilterView.swift */,
@@ -489,6 +494,7 @@
 				BADFA9411B69538F00CAF0A5 /* WebSocket.swift in Sources */,
 				F1D6F6231B7680960022D638 /* ListViewCell.swift in Sources */,
 				BADFA93F1B69538F00CAF0A5 /* SocketTypes.swift in Sources */,
+				BA5D92191B81906C000115BE /* MapViewAnnotationView.m in Sources */,
 				BA5D92101B811F4F000115BE /* MBXRasterTileRenderer.m in Sources */,
 				BADFA9381B69538F00CAF0A5 /* SocketEngineClient.swift in Sources */,
 				BADFA93C1B69538F00CAF0A5 /* SocketLogger.swift in Sources */,
