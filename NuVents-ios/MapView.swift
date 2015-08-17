@@ -63,7 +63,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // Function to return image for map marker
     func getMarkerImg(eventJson:JSON!) -> UIImage {
-        if let markerImg = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerLow")) {
+        if let markerImg = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerHigh")) {
             return markerImg // Marker Image
         } else {
             return UIImage.new() // Empty UIImage
