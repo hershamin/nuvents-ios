@@ -16,6 +16,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let annotationReuseIdentifier = "MKPointAnnotationIdentifier"
     var eventsJson : [String:JSON]!
     var mapMarkers:[MBXPointAnnotation] = []
+    var calloutView:SMCalloutView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -159,12 +160,45 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
             annView.image = self.getMarkerImg(eventJson) // Set marker image
-            annView.canShowCallout = true
+            annView.canShowCallout = false
             
             return annView
         }
         
         return nil
+    }
+    
+    // Delegate method to listen to marker click to show SMCalloutView
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+        // Return if annotation is current location
+        if (view.annotation.isKindOfClass(MKUserLocation)) {
+            return
+        }
+        
+        // Gather Variables
+        if (calloutView != nil) {
+            calloutView.dismissCalloutAnimated(true)
+        }
+        self.calloutView = SMCalloutView.platformCalloutView()
+        let annMBX = view.annotation as! MBXPointAnnotation
+        let eventJson:JSON = eventsJson[annMBX.eventID]!
+        // Set callout properties
+        calloutView.title = annMBX.title
+        calloutView.subtitle = annMBX.subtitle
+        calloutView.eventID = annMBX.eventID
+        calloutView.permittedArrowDirection = SMCalloutArrowDirection.Down
+        // Set callout assessories
+        let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!)
+        let mediaImgView:UIImageView = UIImageView(image: UIImage(data: mediaImgData!))
+        mediaImgView.frame = CGRectMake(0, 0, 55, 55)
+        calloutView.leftAccessoryView = mediaImgView
+        calloutView.rightAccessoryView = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIView
+        calloutView.rightAccessoryView.tintColor = UIColor(red: 0.91, green: 0.337, blue: 0.427, alpha: 1) // #E8566D
+        // Show callout
+        let point = mapView.convertCoordinate(annMBX.coordinate, toPointToView: mapView)
+        var calloutRect:CGRect = CGRectZero
+        calloutRect.origin = point
+        calloutView.presentCalloutFromRect(calloutRect, inLayer: mapView.layer, constrainedToLayer: mapView.layer, animated: true)
     }
     
 }

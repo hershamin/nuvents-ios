@@ -37,6 +37,7 @@
 		BA5D920F1B811F4F000115BE /* MBXRasterTileOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92081B811F4F000115BE /* MBXRasterTileOverlay.m */; };
 		BA5D92101B811F4F000115BE /* MBXRasterTileRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D920A1B811F4F000115BE /* MBXRasterTileRenderer.m */; };
 		BA5D92191B81906C000115BE /* MapViewAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D92181B81906C000115BE /* MapViewAnnotationView.m */; };
+		BA5D921C1B8254E8000115BE /* SMCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA5D921B1B8254E8000115BE /* SMCalloutView.m */; };
 		BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */; };
 		BA90B6171B1D211D00C3E3D8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6151B1D211D00C3E3D8 /* Fabric.framework */; };
 		BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */; };
@@ -124,6 +125,8 @@
 		BA5D920A1B811F4F000115BE /* MBXRasterTileRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXRasterTileRenderer.m; sourceTree = "<group>"; };
 		BA5D92171B81906C000115BE /* MapViewAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewAnnotationView.h; sourceTree = "<group>"; };
 		BA5D92181B81906C000115BE /* MapViewAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewAnnotationView.m; sourceTree = "<group>"; };
+		BA5D921A1B8254E8000115BE /* SMCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCalloutView.h; sourceTree = "<group>"; };
+		BA5D921B1B8254E8000115BE /* SMCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCalloutView.m; sourceTree = "<group>"; };
 		BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NuVents_SplashScreen.png; sourceTree = "<group>"; };
 		BA90B6151B1D211D00C3E3D8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */,
 				BA09BFC61B6D9CE200138139 /* URBSegmentedControl.h */,
 				BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */,
+				BA5D921A1B8254E8000115BE /* SMCalloutView.h */,
+				BA5D921B1B8254E8000115BE /* SMCalloutView.m */,
 				BA5D91FD1B811F4F000115BE /* MBXMapKit */,
 				BA4B05D01B79C2BB00A5FCBB /* XYOrigami */,
 				BADFA9271B69538F00CAF0A5 /* SocketIOClientSwift */,
@@ -512,6 +517,7 @@
 				BA4B05D31B79C2BB00A5FCBB /* UIView+Origami.m in Sources */,
 				BA5D920E1B811F4F000115BE /* MBXPointAnnotation.m in Sources */,
 				BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */,
+				BA5D921C1B8254E8000115BE /* SMCalloutView.m in Sources */,
 				BADFA9401B69538F00CAF0A5 /* SwiftRegex.swift in Sources */,
 				BAEEDE211B6D5DA200E10ED5 /* RequestView.swift in Sources */,
 				BADFA93A1B69538F00CAF0A5 /* SocketFixUTF8.swift in Sources */,

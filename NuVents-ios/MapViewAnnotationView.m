@@ -20,7 +20,7 @@
         // make sure the x and y of the CGRect are half it's
         // width and height, so the callout shows when user clicks
         // in the middle of the image
-        CGRect  viewRect = CGRectMake(-30, -20, 60, 40);
+        CGRect  viewRect = CGRectMake(-30, -10, 60, 40);
         UIImageView* imageView = [[UIImageView alloc] initWithFrame:viewRect];
         
         // keeps the image dimensions correct
