@@ -334,30 +334,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SAl-1q-ecf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.66666666669999997" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="grH-Mf-OHK"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VZM-i6-jE2">
-                                <rect key="frame" x="38" y="14" width="95" height="30"/>
+                                <rect key="frame" x="38" y="214" width="95" height="30"/>
                                 <state key="normal" title="Combination">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfR-IV-ZIe">
-                                <rect key="frame" x="38" y="71" width="78" height="30"/>
+                                <rect key="frame" x="38" y="271" width="78" height="30"/>
                                 <state key="normal" title="Welcome">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sgY-PT-rNH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.66666666666666663" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="KJa-Eb-FWx"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="SAl-1q-ecf" secondAttribute="trailing" id="0ni-xa-Hfh"/>
                             <constraint firstItem="KfR-IV-ZIe" firstAttribute="top" secondItem="VZM-i6-jE2" secondAttribute="bottom" constant="27" id="IlA-os-vB8"/>
                             <constraint firstItem="VZM-i6-jE2" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="38" id="KCH-23-8jX"/>
-                            <constraint firstItem="VZM-i6-jE2" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="14" id="fDy-3G-6eU"/>
+                            <constraint firstItem="sgY-PT-rNH" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="KOo-sG-YS8"/>
+                            <constraint firstItem="SAl-1q-ecf" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="ZOk-0p-JpB"/>
+                            <constraint firstAttribute="trailing" secondItem="sgY-PT-rNH" secondAttribute="trailing" id="aam-QP-rNi"/>
+                            <constraint firstItem="VZM-i6-jE2" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="214" id="fDy-3G-6eU"/>
+                            <constraint firstItem="sgY-PT-rNH" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="jie-7e-Upb"/>
                             <constraint firstItem="KfR-IV-ZIe" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="38" id="kQm-Bj-phO"/>
+                            <constraint firstItem="SAl-1q-ecf" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="rCU-BS-VpN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="goToComb" destination="VZM-i6-jE2" id="9CH-7J-2Ar"/>
                         <outlet property="goToWelc" destination="KfR-IV-ZIe" id="kfl-uG-OdO"/>
+                        <outlet property="mediaImgView" destination="SAl-1q-ecf" id="dtt-t0-CN7"/>
                         <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindCombinationView" unwindAction="unwindToCombinationView:" id="i7z-4M-dHj"/>
                         <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindWelcomeView" unwindAction="unwindToWelcomeView:" id="dBW-1d-gIV"/>
                     </connections>

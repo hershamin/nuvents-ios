@@ -10,10 +10,12 @@ import Foundation
 
 class DetailViewController: UIViewController {
     
+    let eventJson:JSON = NuVentsEndpoint.sharedEndpoint.tempJson
+    @IBOutlet var mediaImgView:UIImageView!
+    
     // TEMP BUTTONS
     @IBOutlet var goToComb:UIButton!
     @IBOutlet var goToWelc:UIButton!
-    let eventJson:JSON = NuVentsEndpoint.sharedEndpoint.tempJson
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,10 @@ class DetailViewController: UIViewController {
         goToComb.addTarget(self, action: "goToCombination:", forControlEvents: UIControlEvents.TouchUpInside)
         goToWelc.addTarget(self, action: "goToWelcome:", forControlEvents: UIControlEvents.TouchUpInside)
         println(eventJson["title"].stringValue)
+        
+        // Set media image
+        let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!)
+        mediaImgView.image = UIImage(data: mediaImgData!)
     }
     
     // TEMP CODE
