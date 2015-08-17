@@ -80,14 +80,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let searchText = NuVentsEndpoint.sharedEndpoint.searchText.lowercaseString
         changeMapViewToCategory() // Get categorized event markers
         // Iterate & search in title
-        for annotation in mapMarkers {
-            let title = annotation.title.lowercaseString
-            if (count(searchText) == 0) {
-                mapView.addAnnotation(annotation)
-            } else if (title.rangeOfString(searchText) != nil) {
-                mapView.addAnnotation(annotation)
-            } else {
-                mapView.removeAnnotation(annotation)
+        for annotation in self.mapView.annotations {
+            if let mbxAnn = annotation as? MBXPointAnnotation {
+                let title = mbxAnn.title.lowercaseString
+                if (count(searchText) == 0) {
+                    mapView.addAnnotation(mbxAnn)
+                } else if (title.rangeOfString(searchText) != nil) {
+                    mapView.addAnnotation(mbxAnn)
+                } else {
+                    mapView.removeAnnotation(mbxAnn)
+                }
             }
         }
     }
