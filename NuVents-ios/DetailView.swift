@@ -12,33 +12,33 @@ class DetailViewController: UIViewController {
     
     let eventJson:JSON = NuVentsEndpoint.sharedEndpoint.tempJson
     @IBOutlet var mediaImgView:UIImageView!
-    
-    // TEMP BUTTONS
-    @IBOutlet var goToComb:UIButton!
-    @IBOutlet var goToWelc:UIButton!
+    @IBOutlet var backBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // TEMP CODE
-        goToComb.addTarget(self, action: "goToCombination:", forControlEvents: UIControlEvents.TouchUpInside)
-        goToWelc.addTarget(self, action: "goToWelcome:", forControlEvents: UIControlEvents.TouchUpInside)
-        println(eventJson["title"].stringValue)
+        // Init back button
+        backBtn.addTarget(self, action: "backBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Set media image
-        let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!)
-        mediaImgView.image = UIImage(data: mediaImgData!)
+        if let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!) {
+            mediaImgView.image = UIImage(data: mediaImgData)
+        }
     }
     
-    // TEMP CODE
-    func goToCombination(sender:UIButton!) {
-        self.performSegueWithIdentifier("unwindCombinationView", sender: nil)
+    // Back button pressed
+    func backBtnPressed(sender:UIButton!) {
+        // Unwind to welcome view or map/list view
+        if NuVentsEndpoint.sharedEndpoint.detailFromWelcome {
+            // Go to welcome view as this view was loaded from welcome view
+            NuVentsEndpoint.sharedEndpoint.detailFromWelcome = false
+            self.performSegueWithIdentifier("unwindWelcomeView", sender: nil)
+        } else {
+            // Go to combination view
+            self.performSegueWithIdentifier("unwindCombinationView", sender: nil)
+        }
     }
-    func goToWelcome(sender:UIButton!) {
-        self.performSegueWithIdentifier("unwindWelcomeView", sender: nil)
-    }
-    // TEMP CODE END
     
     // Restrict to portrait only
     override func supportedInterfaceOrientations() -> Int {

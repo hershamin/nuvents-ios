@@ -32,6 +32,7 @@ class WelcomeViewController: UIViewController {
     
     // Func to go to detail view
     func goToDetailView(sender:UIButton!) {
+        NuVentsEndpoint.sharedEndpoint.detailFromWelcome = true
         self.performSegueWithIdentifier("showDetailView", sender: nil)
     }
     

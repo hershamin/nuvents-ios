@@ -33,6 +33,7 @@ class NuVentsEndpoint {
     internal var searchText:String = "" // To store search bar text
     internal var currLoc:CLLocationCoordinate2D! // To store current device location
     internal var tempJson = JSON("") // To store eventJson when going to detail view
+    internal var detailFromWelcome:Bool = false // To store whether detail view was loaded from welcome view
     
     
     // Internally used variables
