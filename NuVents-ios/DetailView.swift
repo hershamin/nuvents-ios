@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
     let eventJson:JSON = NuVentsEndpoint.sharedEndpoint.tempJson
     @IBOutlet var mediaImgView:UIImageView!
     @IBOutlet var backBtn:UIButton!
+    @IBOutlet var addToCalBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +22,21 @@ class DetailViewController: UIViewController {
         // Init back button
         backBtn.addTarget(self, action: "backBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        // Init add to calendar button
+        addToCalBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        addToCalBtn.layer.borderWidth = 2
+        addToCalBtn.layer.cornerRadius = addToCalBtn.bounds.size.height/2
+        addToCalBtn.addTarget(self, action: "addToCalBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
         // Set media image
         if let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!) {
             mediaImgView.image = UIImage(data: mediaImgData)
         }
+    }
+    
+    // Add to calendar button pressed
+    func addToCalBtnPressed(sender:UIButton!) {
+        println("Addtocal")
     }
     
     // Back button pressed

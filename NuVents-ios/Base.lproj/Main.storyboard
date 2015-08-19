@@ -13,6 +13,7 @@
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Medium.ttf">
             <string>GothamRounded-Medium</string>
+            <string>GothamRounded-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -341,7 +342,7 @@
                                     <constraint firstAttribute="height" constant="200" id="grH-Mf-OHK"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sgY-PT-rNH">
+                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.79999999999999993" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sgY-PT-rNH">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.66666666666666663" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -359,6 +360,18 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwF-pG-jjc">
+                                <rect key="frame" x="175" y="70" width="250" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="UoX-JT-Obj"/>
+                                    <constraint firstAttribute="height" constant="60" id="jdb-aM-gfj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="18"/>
+                                <state key="normal" title="ADD TO CALENDAR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -367,12 +380,15 @@
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="ZOk-0p-JpB"/>
                             <constraint firstAttribute="trailing" secondItem="sgY-PT-rNH" secondAttribute="trailing" id="aam-QP-rNi"/>
                             <constraint firstItem="OFY-el-3qt" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="10" id="cNZ-gf-hRQ"/>
+                            <constraint firstItem="rwF-pG-jjc" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="50" id="fqe-oO-Dkq"/>
                             <constraint firstItem="sgY-PT-rNH" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="jie-7e-Upb"/>
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="rCU-BS-VpN"/>
                             <constraint firstItem="OFY-el-3qt" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="2" id="rMQ-1r-f51"/>
+                            <constraint firstAttribute="centerX" secondItem="rwF-pG-jjc" secondAttribute="centerX" id="tdP-ay-mD9"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToCalBtn" destination="rwF-pG-jjc" id="hTz-ey-Tlj"/>
                         <outlet property="backBtn" destination="OFY-el-3qt" id="NdJ-nf-Gs7"/>
                         <outlet property="mediaImgView" destination="SAl-1q-ecf" id="dtt-t0-CN7"/>
                         <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindCombinationView" unwindAction="unwindToCombinationView:" id="i7z-4M-dHj"/>
