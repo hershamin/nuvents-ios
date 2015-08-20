@@ -191,11 +191,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="105" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z5T-YJ-AkX">
-                                                    <rect key="frame" x="14" y="8" width="76" height="74"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z5T-YJ-AkX">
+                                                    <rect key="frame" x="14" y="5" width="76" height="74"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuk-d5-MXH">
-                                                    <rect key="frame" x="2" y="78" width="100" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuk-d5-MXH">
+                                                    <rect key="frame" x="2" y="71" width="100" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="1AM-78-4TB"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -204,6 +207,15 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="0.99682535564444641" green="0.9835298038532897" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="xuk-d5-MXH" secondAttribute="bottom" constant="10" id="0s4-fI-3Il"/>
+                                            <constraint firstItem="Z5T-YJ-AkX" firstAttribute="leading" secondItem="IAg-Rn-I8F" secondAttribute="leading" constant="14" id="27L-d7-Dcu"/>
+                                            <constraint firstAttribute="bottom" secondItem="Z5T-YJ-AkX" secondAttribute="bottom" constant="19" id="44t-WK-zNl"/>
+                                            <constraint firstItem="Z5T-YJ-AkX" firstAttribute="top" secondItem="IAg-Rn-I8F" secondAttribute="top" constant="5" id="REd-FP-ukt"/>
+                                            <constraint firstAttribute="trailing" secondItem="xuk-d5-MXH" secondAttribute="trailing" constant="3" id="Xyv-He-3On"/>
+                                            <constraint firstAttribute="trailing" secondItem="Z5T-YJ-AkX" secondAttribute="trailing" constant="15" id="dAs-hv-rAJ"/>
+                                            <constraint firstItem="xuk-d5-MXH" firstAttribute="leading" secondItem="IAg-Rn-I8F" secondAttribute="leading" constant="2" id="vjS-FH-JeZ"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="imageCell" destination="Z5T-YJ-AkX" id="Oii-lQ-vJ3"/>
                                             <outlet property="labelCell" destination="xuk-d5-MXH" id="Aw7-k1-Tpc"/>
