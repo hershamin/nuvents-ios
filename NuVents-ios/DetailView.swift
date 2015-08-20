@@ -32,6 +32,18 @@ class DetailViewController: UIViewController {
         if let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!) {
             mediaImgView.image = UIImage(data: mediaImgData)
         }
+        
+        // Record hit on website by issuing a http get request
+        let urlString = eventJson["website"].stringValue
+        let url = NSURL(string: urlString)!
+        let httpGetTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
+            (data, response, error) in
+            let resp = response as! NSHTTPURLResponse
+            NuVentsEndpoint.sharedEndpoint.sendWebsiteCode(urlString, code: "\(resp.statusCode)")
+            println("WEB: \(urlString)")
+            println("RES: \(resp.statusCode)")
+        }
+        httpGetTask.resume()
     }
     
     // Add to calendar button pressed
