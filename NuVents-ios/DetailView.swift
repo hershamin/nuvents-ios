@@ -44,6 +44,25 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
             NuVentsEndpoint.sharedEndpoint.sendWebsiteCode(urlString, code: "\(resp.statusCode)")
         }
         httpGetTask.resume()
+        
+        // Write json to file just in case when app crashes, it is known to crash when privacy settings such as accessing calendar, contacts, are changed while app is open in background
+        let jsonFilePath = NuVentsHelper.getResourcePath("detailView", type: "tmp")
+        var event:JSON = eventJson
+        if let currentLoc:CLLocationCoordinate2D = NuVentsEndpoint.sharedEndpoint.currLoc {
+            event["currLat"].stringValue = currentLoc.latitude.description  // Adding current latitude
+            event["currLng"].stringValue = currentLoc.longitude.description // Adding current longitude
+        }
+        let jsonFileData = "\(event)".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        jsonFileData?.writeToFile(jsonFilePath, atomically: true)
+    }
+    
+    // Called when controller disappears from the stack
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(true)
+        // Erase json file written at the start of this view controller, this signifies that app did not crash while on this view
+        let jsonFilePath = NuVentsHelper.getResourcePath("detailView", type: "tmp")
+        let fm = NSFileManager.defaultManager()
+        fm.removeItemAtPath(jsonFilePath, error: nil)
     }
     
     // Add to calendar button pressed

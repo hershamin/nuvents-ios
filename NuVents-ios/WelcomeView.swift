@@ -23,6 +23,9 @@ class WelcomeViewController: UIViewController {
         
         combinationViewBtn.addTarget(self, action: "goToCombinationView:", forControlEvents: UIControlEvents.TouchUpInside) // Combination button action
         detailViewBtn.addTarget(self, action: "goToDetailView:", forControlEvents: UIControlEvents.TouchUpInside) // Detail button action
+        
+        // Restore detail view controller
+        restoreDetailView() // Will only restore detail view if restore file found
     }
     
     // Called when unwinded from detail view controller
@@ -39,6 +42,20 @@ class WelcomeViewController: UIViewController {
     // Func to go to combination view
     func goToCombinationView(sender:UIButton!) {
         self.performSegueWithIdentifier("showCombinationView", sender: nil)
+    }
+    
+    // Restore detail view controller
+    func restoreDetailView() {
+        let filePath = NuVentsHelper.getResourcePath("detailView", type: "tmp")
+        let fm = NSFileManager.defaultManager()
+        if (fm.fileExistsAtPath(filePath)) { // Detail view controller restore file exists signifying app crashed when user was at detail view last time
+            let fileData = NSData(contentsOfFile: filePath)
+            NuVentsEndpoint.sharedEndpoint.tempJson = JSON(data: fileData!)
+            // Open detail view controller
+            dispatch_async(dispatch_get_main_queue(), {
+                self.goToDetailView(nil)
+            })
+        }
     }
     
     // Restrict to portrait only
