@@ -119,7 +119,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Get json from event ID
         let eventID:String = eventArray[indexPath.row]["eid"].stringValue
-        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID, callback: {(jsonData:JSON) -> Void in
+        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID, callback: {(var jsonData:JSON) -> Void in
+            // Override start & end time from original
+            let event:JSON = NuVentsEndpoint.sharedEndpoint.eventJSON[eventID]!
+            jsonData["time"] = event["time"]
             // Store json in temp variable
             NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
             // Go to detail view

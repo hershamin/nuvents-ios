@@ -82,7 +82,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // Get json from event ID
         let eventID:String = selectedEventID
-        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID, callback: {(jsonData:JSON) -> Void in
+        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID, callback: {(var jsonData:JSON) -> Void in
+            // Override start & end time from original
+            let event:JSON = self.eventsJson[eventID]!
+            jsonData["time"] = event["time"]
             // Store json in temp variable
             NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
             // Go to detail view
