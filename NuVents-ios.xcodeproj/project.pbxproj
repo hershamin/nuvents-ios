@@ -46,6 +46,8 @@
 		BAAEFAFB1B88304A00561664 /* DetailViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */; };
 		BAAEFAFE1B88309800561664 /* DetailViewUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */; };
 		BAAEFB001B8841E400561664 /* CombinationViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFF1B8841E400561664 /* CombinationViewSegue.swift */; };
+		BAAEFB021B88F1D100561664 /* RequestViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFB011B88F1D100561664 /* RequestViewSegue.swift */; };
+		BAAEFB041B88F1DD00561664 /* RequestViewUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFB031B88F1DD00561664 /* RequestViewUnwindSegue.swift */; };
 		BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */; };
 		BADFA9351B69538F00CAF0A5 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9281B69538F00CAF0A5 /* SocketAckManager.swift */; };
 		BADFA9361B69538F00CAF0A5 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9291B69538F00CAF0A5 /* SocketAnyEvent.swift */; };
@@ -139,6 +141,8 @@
 		BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewSegue.swift; sourceTree = "<group>"; };
 		BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewUnwindSegue.swift; sourceTree = "<group>"; };
 		BAAEFAFF1B8841E400561664 /* CombinationViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinationViewSegue.swift; sourceTree = "<group>"; };
+		BAAEFB011B88F1D100561664 /* RequestViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewSegue.swift; sourceTree = "<group>"; };
+		BAAEFB031B88F1DD00561664 /* RequestViewUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewUnwindSegue.swift; sourceTree = "<group>"; };
 		BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuVentsEndpoint.swift; sourceTree = "<group>"; };
 		BADFA9281B69538F00CAF0A5 /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
 		BADFA9291B69538F00CAF0A5 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
@@ -340,6 +344,8 @@
 				BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */,
 				BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */,
 				BAAEFAFF1B8841E400561664 /* CombinationViewSegue.swift */,
+				BAAEFB011B88F1D100561664 /* RequestViewSegue.swift */,
+				BAAEFB031B88F1DD00561664 /* RequestViewUnwindSegue.swift */,
 			);
 			name = Transitions;
 			sourceTree = "<group>";
@@ -510,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA5B90CC1AED81F3000B1BD5 /* WelcomeView.swift in Sources */,
+				BAAEFB041B88F1DD00561664 /* RequestViewUnwindSegue.swift in Sources */,
 				BAEEDE1F1B6D5D9400E10ED5 /* DetailView.swift in Sources */,
 				BA5D920B1B811F4F000115BE /* MBXMapKit.m in Sources */,
 				BA09BFC81B6D9CE200138139 /* URBSegmentedControl.m in Sources */,
@@ -531,6 +538,7 @@
 				BAEEDE1D1B6D5D8100E10ED5 /* MapView.swift in Sources */,
 				BA5D920C1B811F4F000115BE /* MBXOfflineMapDatabase.m in Sources */,
 				BAEEDE191B6D5D6700E10ED5 /* CategoryView.swift in Sources */,
+				BAAEFB021B88F1D100561664 /* RequestViewSegue.swift in Sources */,
 				BADFA93E1B69538F00CAF0A5 /* SocketParser.swift in Sources */,
 				BADFA9391B69538F00CAF0A5 /* SocketEventHandler.swift in Sources */,
 				BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */,

@@ -62,7 +62,7 @@
                         <outlet property="combinationViewBtn" destination="ECy-mc-6tU" id="1WT-hu-JYH"/>
                         <outlet property="detailViewBtn" destination="mNX-kQ-gmb" id="7jN-0L-wiy"/>
                         <outlet property="requestViewBtn" destination="FzX-3I-dGQ" id="j7r-P4-XiV"/>
-                        <segue destination="NP8-2d-YK2" kind="show" identifier="showRequestView" id="zAa-S4-IEd"/>
+                        <segue destination="NP8-2d-YK2" kind="custom" identifier="showRequestView" customClass="RequestViewSegue" customModule="NuVents" customModuleProvider="target" id="zAa-S4-IEd"/>
                         <segue destination="9fn-Rw-EM1" kind="custom" identifier="showCombinationView" customClass="CombinationViewSegue" customModule="NuVents" customModuleProvider="target" id="8w4-Cw-GSb"/>
                         <segue destination="9hX-LZ-EDY" kind="custom" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="glk-tE-vyg"/>
                     </connections>

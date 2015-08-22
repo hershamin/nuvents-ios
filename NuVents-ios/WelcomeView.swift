@@ -50,6 +50,13 @@ class WelcomeViewController: UIViewController {
                 
                 return unwindSegue
             }
+            if id == "unwindRequestView" {
+                let unwindSegue = RequestViewUnwindSegue(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                    //
+                })
+                
+                return unwindSegue
+            }
         }
         
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
