@@ -45,6 +45,7 @@
 		BAAEFAD51B827EE200561664 /* Mapbox_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */; };
 		BAAEFAFB1B88304A00561664 /* DetailViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */; };
 		BAAEFAFE1B88309800561664 /* DetailViewUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */; };
+		BAAEFB001B8841E400561664 /* CombinationViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFF1B8841E400561664 /* CombinationViewSegue.swift */; };
 		BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */; };
 		BADFA9351B69538F00CAF0A5 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9281B69538F00CAF0A5 /* SocketAckManager.swift */; };
 		BADFA9361B69538F00CAF0A5 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9291B69538F00CAF0A5 /* SocketAnyEvent.swift */; };
@@ -137,6 +138,7 @@
 		BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mapbox_Logo.png; sourceTree = "<group>"; };
 		BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewSegue.swift; sourceTree = "<group>"; };
 		BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewUnwindSegue.swift; sourceTree = "<group>"; };
+		BAAEFAFF1B8841E400561664 /* CombinationViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinationViewSegue.swift; sourceTree = "<group>"; };
 		BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuVentsEndpoint.swift; sourceTree = "<group>"; };
 		BADFA9281B69538F00CAF0A5 /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
 		BADFA9291B69538F00CAF0A5 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			children = (
 				BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */,
 				BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */,
+				BAAEFAFF1B8841E400561664 /* CombinationViewSegue.swift */,
 			);
 			name = Transitions;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				BAEEDE1F1B6D5D9400E10ED5 /* DetailView.swift in Sources */,
 				BA5D920B1B811F4F000115BE /* MBXMapKit.m in Sources */,
 				BA09BFC81B6D9CE200138139 /* URBSegmentedControl.m in Sources */,
+				BAAEFB001B8841E400561664 /* CombinationViewSegue.swift in Sources */,
 				BAAEFAFB1B88304A00561664 /* DetailViewSegue.swift in Sources */,
 				BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */,
 				BA5D91E61B80FB2C000115BE /* CategoryViewCell.swift in Sources */,

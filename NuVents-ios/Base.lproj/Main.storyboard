@@ -54,7 +54,7 @@
                         <outlet property="combinationViewBtn" destination="ECy-mc-6tU" id="1WT-hu-JYH"/>
                         <outlet property="detailViewBtn" destination="mNX-kQ-gmb" id="7jN-0L-wiy"/>
                         <segue destination="NP8-2d-YK2" kind="show" identifier="showRequestView" id="zAa-S4-IEd"/>
-                        <segue destination="9fn-Rw-EM1" kind="show" identifier="showCombinationView" id="8w4-Cw-GSb"/>
+                        <segue destination="9fn-Rw-EM1" kind="custom" identifier="showCombinationView" customClass="CombinationViewSegue" customModule="NuVents" customModuleProvider="target" id="8w4-Cw-GSb"/>
                         <segue destination="9hX-LZ-EDY" kind="custom" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="glk-tE-vyg"/>
                     </connections>
                 </viewController>
@@ -149,6 +149,7 @@
                             <constraint firstItem="SbH-40-CQg" firstAttribute="top" secondItem="UJ9-fp-CTY" secondAttribute="bottom" constant="5" id="uZV-vW-B9y"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="j9l-4M-XXS"/>
                     <connections>
                         <outlet property="categoryView" destination="4uN-fP-cBg" id="erA-eh-CJW"/>
                         <outlet property="filterBtn" destination="3EZ-5a-Yvh" id="Sgm-BJ-6ug"/>
