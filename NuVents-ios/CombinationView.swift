@@ -112,6 +112,21 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
         println("CombinationView From DetailView")
     }
     
+    // Segue transition delegate
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+        if let id = identifier {
+            if id == "unwindCombinationView" {
+                let unwindSegue = DetailViewUnwindSegue(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                    //
+                })
+                
+                return unwindSegue
+            }
+        }
+        
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+    }
+    
     // Segment changed
     func handleSegmentChanged(sender: URBSegmentedControl!) {
         let segmentCtrl = sender as URBSegmentedControl

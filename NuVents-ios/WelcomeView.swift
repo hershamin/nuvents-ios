@@ -33,6 +33,26 @@ class WelcomeViewController: UIViewController {
         println("WelcomeView From DetailView")
     }
     
+    // Called when unwinded from detail view controller
+    @IBAction func unwindToCombinationView(sender: UIStoryboardSegue) {
+        println("CombinationView From DetailView")
+    }
+    
+    // Segue transition delegate
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+        if let id = identifier {
+            if id == "unwindWelcomeView" {
+                let unwindSegue = DetailViewUnwindSegue(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                    //
+                })
+                
+                return unwindSegue
+            }
+        }
+        
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+    }
+    
     // Func to go to detail view
     func goToDetailView(sender:UIButton!) {
         NuVentsEndpoint.sharedEndpoint.detailFromWelcome = true
