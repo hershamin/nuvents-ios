@@ -41,18 +41,27 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzX-3I-dGQ">
+                                <rect key="frame" x="58" y="171" width="59" height="30"/>
+                                <state key="normal" title="Request">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FzX-3I-dGQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="58" id="2Im-8p-3h5"/>
                             <constraint firstItem="ECy-mc-6tU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="58" id="Kxz-f4-3Nk"/>
                             <constraint firstItem="mNX-kQ-gmb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="58" id="MUL-Nq-zJD"/>
                             <constraint firstItem="ECy-mc-6tU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="14" id="ZqC-lD-lhT"/>
+                            <constraint firstItem="FzX-3I-dGQ" firstAttribute="top" secondItem="mNX-kQ-gmb" secondAttribute="bottom" constant="35" id="phQ-dq-vfK"/>
                             <constraint firstItem="mNX-kQ-gmb" firstAttribute="top" secondItem="ECy-mc-6tU" secondAttribute="bottom" constant="42" id="x9l-pp-1Gh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="combinationViewBtn" destination="ECy-mc-6tU" id="1WT-hu-JYH"/>
                         <outlet property="detailViewBtn" destination="mNX-kQ-gmb" id="7jN-0L-wiy"/>
+                        <outlet property="requestViewBtn" destination="FzX-3I-dGQ" id="j7r-P4-XiV"/>
                         <segue destination="NP8-2d-YK2" kind="show" identifier="showRequestView" id="zAa-S4-IEd"/>
                         <segue destination="9fn-Rw-EM1" kind="custom" identifier="showCombinationView" customClass="CombinationViewSegue" customModule="NuVents" customModuleProvider="target" id="8w4-Cw-GSb"/>
                         <segue destination="9hX-LZ-EDY" kind="custom" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="glk-tE-vyg"/>
@@ -497,10 +506,32 @@
                     <view key="view" contentMode="scaleToFill" id="PDV-Zu-gyg">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3R8-Hs-xa2">
+                                <rect key="frame" x="10" y="22" width="50" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="3F0-EU-d7b"/>
+                                    <constraint firstAttribute="width" constant="50" id="VJY-RD-j9M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="←">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3R8-Hs-xa2" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="2" id="97c-6n-2qA"/>
+                            <constraint firstItem="3R8-Hs-xa2" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="10" id="iIb-gh-Wo7"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backBtn" destination="3R8-Hs-xa2" id="Q9w-XT-1ZX"/>
+                        <segue destination="ibA-mJ-Qzm" kind="unwind" identifier="unwindRequestView" unwindAction="unwindToWelcomeFromRequest:" id="fWG-jm-VD9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UYm-L2-lFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ibA-mJ-Qzm" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1120" y="746"/>
         </scene>

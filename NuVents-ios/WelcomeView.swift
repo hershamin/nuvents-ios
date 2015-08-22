@@ -12,6 +12,7 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet var combinationViewBtn:UIButton!
     @IBOutlet var detailViewBtn:UIButton!
+    @IBOutlet var requestViewBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class WelcomeViewController: UIViewController {
         
         combinationViewBtn.addTarget(self, action: "goToCombinationView:", forControlEvents: UIControlEvents.TouchUpInside) // Combination button action
         detailViewBtn.addTarget(self, action: "goToDetailView:", forControlEvents: UIControlEvents.TouchUpInside) // Detail button action
+        requestViewBtn.addTarget(self, action: "goToRequestView:", forControlEvents: UIControlEvents.TouchUpInside) // Request button action
         
         // Restore detail view controller
         restoreDetailView() // Will only restore detail view if restore file found
@@ -33,9 +35,9 @@ class WelcomeViewController: UIViewController {
         println("WelcomeView From DetailView")
     }
     
-    // Called when unwinded from detail view controller
-    @IBAction func unwindToCombinationView(sender: UIStoryboardSegue) {
-        println("CombinationView From DetailView")
+    // Called when unwinded from request view controller
+    @IBAction func unwindToWelcomeFromRequest(sender: UIStoryboardSegue) {
+        println("WelcomeView From RequestView")
     }
     
     // Segue transition delegate
@@ -62,6 +64,11 @@ class WelcomeViewController: UIViewController {
     // Func to go to combination view
     func goToCombinationView(sender:UIButton!) {
         self.performSegueWithIdentifier("showCombinationView", sender: nil)
+    }
+    
+    // Func to go to request view
+    func goToRequestView(sender:UIButton!) {
+        self.performSegueWithIdentifier("showRequestView", sender: nil)
     }
     
     // Restore detail view controller

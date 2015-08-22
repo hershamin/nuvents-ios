@@ -10,10 +10,19 @@ import Foundation
 
 class RequestViewController: UIViewController {
     
+    @IBOutlet var backBtn:UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Back button functionality
+        backBtn.addTarget(self, action: "backBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+    }
+    
+    // Back button action
+    func backBtnPressed(sender:UIButton!) {
+        self.performSegueWithIdentifier("unwindRequestView", sender: nil)
     }
     
     // Restrict to portrait only
