@@ -43,6 +43,8 @@
 		BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */; };
 		BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */; };
 		BAAEFAD51B827EE200561664 /* Mapbox_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */; };
+		BAAEFAFB1B88304A00561664 /* DetailViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */; };
+		BAAEFAFE1B88309800561664 /* DetailViewUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */; };
 		BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */; };
 		BADFA9351B69538F00CAF0A5 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9281B69538F00CAF0A5 /* SocketAckManager.swift */; };
 		BADFA9361B69538F00CAF0A5 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADFA9291B69538F00CAF0A5 /* SocketAnyEvent.swift */; };
@@ -133,6 +135,8 @@
 		BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mapbox_Logo.png; sourceTree = "<group>"; };
+		BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewSegue.swift; sourceTree = "<group>"; };
+		BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewUnwindSegue.swift; sourceTree = "<group>"; };
 		BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NuVentsEndpoint.swift; sourceTree = "<group>"; };
 		BADFA9281B69538F00CAF0A5 /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
 		BADFA9291B69538F00CAF0A5 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
@@ -247,6 +251,7 @@
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
 				BA09BFBB1B6D87C300138139 /* Fonts */,
 				BADFA9251B69488100CAF0A5 /* NuVentsEndpoint.swift */,
+				BAAEFAFC1B88305A00561664 /* Transitions */,
 				BA09D0601B78086000138139 /* NuVentsHelperJS.js */,
 				BADFA9421B69623300CAF0A5 /* NuVentsHelper.swift */,
 				BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */,
@@ -325,6 +330,15 @@
 				BA90B6121B19018400C3E3D8 /* NuVents_SplashScreen.png */,
 			);
 			name = Graphics;
+			sourceTree = "<group>";
+		};
+		BAAEFAFC1B88305A00561664 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */,
+				BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */,
+			);
+			name = Transitions;
 			sourceTree = "<group>";
 		};
 		BADFA9271B69538F00CAF0A5 /* SocketIOClientSwift */ = {
@@ -496,6 +510,7 @@
 				BAEEDE1F1B6D5D9400E10ED5 /* DetailView.swift in Sources */,
 				BA5D920B1B811F4F000115BE /* MBXMapKit.m in Sources */,
 				BA09BFC81B6D9CE200138139 /* URBSegmentedControl.m in Sources */,
+				BAAEFAFB1B88304A00561664 /* DetailViewSegue.swift in Sources */,
 				BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */,
 				BA5D91E61B80FB2C000115BE /* CategoryViewCell.swift in Sources */,
 				BADFA9361B69538F00CAF0A5 /* SocketAnyEvent.swift in Sources */,
@@ -517,6 +532,7 @@
 				BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */,
 				BADFA9371B69538F00CAF0A5 /* SocketEngine.swift in Sources */,
 				BADFA93D1B69538F00CAF0A5 /* SocketPacket.swift in Sources */,
+				BAAEFAFE1B88309800561664 /* DetailViewUnwindSegue.swift in Sources */,
 				BADFA93B1B69538F00CAF0A5 /* SocketIOClient.swift in Sources */,
 				BA4B05D31B79C2BB00A5FCBB /* UIView+Origami.m in Sources */,
 				BA5D920E1B811F4F000115BE /* MBXPointAnnotation.m in Sources */,

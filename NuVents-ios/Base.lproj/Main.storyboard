@@ -55,7 +55,7 @@
                         <outlet property="detailViewBtn" destination="mNX-kQ-gmb" id="7jN-0L-wiy"/>
                         <segue destination="NP8-2d-YK2" kind="show" identifier="showRequestView" id="zAa-S4-IEd"/>
                         <segue destination="9fn-Rw-EM1" kind="show" identifier="showCombinationView" id="8w4-Cw-GSb"/>
-                        <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="glk-tE-vyg"/>
+                        <segue destination="9hX-LZ-EDY" kind="custom" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="glk-tE-vyg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -171,10 +171,10 @@
                         <viewControllerLayoutGuide type="bottom" id="n8r-sK-ilG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eNn-mp-KQQ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-bC-wyr">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-bC-wyr">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="rZ9-4A-Icm">
@@ -254,10 +254,10 @@
                         <viewControllerLayoutGuide type="bottom" id="0fB-En-iBb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KOM-47-L1q">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yLD-3I-zZU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yLD-3I-zZU">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -328,7 +328,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="yLD-3I-zZU" id="Ua1-dA-uOD"/>
-                        <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="0ps-xm-KK4"/>
+                        <segue destination="9hX-LZ-EDY" kind="custom" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="0ps-xm-KK4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDg-jL-BUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -421,17 +421,17 @@
                         <viewControllerLayoutGuide type="bottom" id="HWV-9j-Jir"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zpX-wB-Lay">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Hq-pj-yYZ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="480"/>
                                 <connections>
                                     <outlet property="delegate" destination="y4g-73-64D" id="qSq-tZ-run"/>
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVl-YK-VS0">
-                                <rect key="frame" x="25" y="525" width="50" height="50"/>
+                                <rect key="frame" x="25" y="405" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="EEI-yr-6zc"/>
                                     <constraint firstAttribute="height" constant="50" id="e2Q-nK-VhA"/>
@@ -443,14 +443,14 @@
                                 <state key="highlighted" image="myLocationBtn.png"/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mapbox_Logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-1Q-6eh">
-                                <rect key="frame" x="5" y="568" width="81" height="36"/>
+                                <rect key="frame" x="5" y="448" width="81" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="l3q-X7-XgM"/>
                                     <constraint firstAttribute="height" constant="36" id="pfq-gl-uMe"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbM-UR-Rr5">
-                                <rect key="frame" x="568" y="568" width="22" height="22"/>
+                                <rect key="frame" x="568" y="448" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="igx-xg-gdT"/>
                                     <constraint firstAttribute="width" constant="22" id="yqf-XO-wWz"/>
@@ -478,7 +478,7 @@
                         <outlet property="attributionBtn" destination="gbM-UR-Rr5" id="K15-oT-gEf"/>
                         <outlet property="mapView" destination="9Hq-pj-yYZ" id="wLo-9C-4NW"/>
                         <outlet property="myLocBtn" destination="hVl-YK-VS0" id="gfN-EM-38y"/>
-                        <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" id="cnt-Af-WMB"/>
+                        <segue destination="9hX-LZ-EDY" kind="custom" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="cnt-Af-WMB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14z-Cj-BLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -510,7 +510,7 @@
         <image name="myLocationBtn.png" width="119" height="119"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yKo-Mq-O92"/>
-        <segue reference="cnt-Af-WMB"/>
+        <segue reference="8w4-Cw-GSb"/>
+        <segue reference="glk-tE-vyg"/>
     </inferredMetricsTieBreakers>
 </document>
