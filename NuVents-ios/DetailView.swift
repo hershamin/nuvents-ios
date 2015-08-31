@@ -19,6 +19,8 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
     @IBOutlet var checkInBtn:UIButton!
     @IBOutlet var inviteFriendsBtn:UIButton!
     @IBOutlet var dateTimeLabel:UILabel!
+    @IBOutlet var titleLabel:UILabel!
+    @IBOutlet var addressLabel:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,10 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
         // Init date/time label
         let timeStr:String = NuVentsHelper.getHumanReadableDate(eventJson["time"]["start"].stringValue)
         dateTimeLabel.text = timeStr.stringByReplacingOccurrencesOfString("at", withString: "|")
+        
+        // Init title & address labels
+        titleLabel.text = eventJson["title"].stringValue
+        addressLabel.text = eventJson["address"].stringValue
         
         // Set media image
         if let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!) {

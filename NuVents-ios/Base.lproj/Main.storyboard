@@ -11,8 +11,10 @@
         <mutableArray key="Gotham-Rounded-Book.ttf">
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
+            <string>GothamRounded-Book</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Medium.ttf">
+            <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
@@ -422,43 +424,69 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date | Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqU-Rg-VkB">
-                                <rect key="frame" x="21" y="208" width="558" height="21"/>
+                                <rect key="frame" x="10" y="210" width="580" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="1ON-jY-1BN"/>
+                                    <constraint firstAttribute="height" constant="18" id="1ON-jY-1BN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="13"/>
+                                <color key="textColor" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e92-pM-HK2">
+                                <rect key="frame" x="10" y="228" width="580" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="pAM-r7-iEt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
-                                <color key="textColor" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSE-dO-PXL">
+                                <rect key="frame" x="10" y="266" width="580" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="ECc-HS-AGV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="13"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="SAl-1q-ecf" secondAttribute="trailing" id="0ni-xa-Hfh"/>
+                            <constraint firstItem="rSE-dO-PXL" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="10" id="60X-JG-2cl"/>
+                            <constraint firstAttribute="trailing" secondItem="e92-pM-HK2" secondAttribute="trailing" constant="10" id="Auk-uu-cGA"/>
+                            <constraint firstItem="e92-pM-HK2" firstAttribute="top" secondItem="hqU-Rg-VkB" secondAttribute="bottom" id="Buk-5D-vSK"/>
                             <constraint firstItem="TtS-Vg-hn7" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="21" id="HeP-8R-igu"/>
                             <constraint firstAttribute="trailing" secondItem="IvH-9F-pMH" secondAttribute="trailing" constant="26" id="Ims-En-OpM"/>
                             <constraint firstItem="sgY-PT-rNH" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="KOo-sG-YS8"/>
                             <constraint firstItem="IvH-9F-pMH" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="133" id="Yjn-re-9Oe"/>
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="ZOk-0p-JpB"/>
-                            <constraint firstItem="hqU-Rg-VkB" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="21" id="Zeb-Xn-arj"/>
+                            <constraint firstItem="hqU-Rg-VkB" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="10" id="Zeb-Xn-arj"/>
                             <constraint firstAttribute="trailing" secondItem="sgY-PT-rNH" secondAttribute="trailing" id="aam-QP-rNi"/>
                             <constraint firstItem="OFY-el-3qt" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="10" id="cNZ-gf-hRQ"/>
                             <constraint firstItem="TtS-Vg-hn7" firstAttribute="top" secondItem="OFY-el-3qt" secondAttribute="bottom" constant="103" id="dYW-OR-Cgb"/>
                             <constraint firstItem="rwF-pG-jjc" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="45" id="fqe-oO-Dkq"/>
-                            <constraint firstAttribute="trailing" secondItem="hqU-Rg-VkB" secondAttribute="trailing" constant="21" id="hdh-LS-gFt"/>
+                            <constraint firstAttribute="trailing" secondItem="hqU-Rg-VkB" secondAttribute="trailing" constant="10" id="hdh-LS-gFt"/>
+                            <constraint firstAttribute="trailing" secondItem="rSE-dO-PXL" secondAttribute="trailing" constant="10" id="ip5-Fy-5ms"/>
                             <constraint firstItem="sgY-PT-rNH" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="jie-7e-Upb"/>
-                            <constraint firstItem="hqU-Rg-VkB" firstAttribute="top" secondItem="sgY-PT-rNH" secondAttribute="bottom" constant="8" id="qMQ-cg-KeF"/>
+                            <constraint firstItem="hqU-Rg-VkB" firstAttribute="top" secondItem="sgY-PT-rNH" secondAttribute="bottom" constant="10" id="qMQ-cg-KeF"/>
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="rCU-BS-VpN"/>
                             <constraint firstItem="OFY-el-3qt" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="2" id="rMQ-1r-f51"/>
                             <constraint firstAttribute="centerX" secondItem="rwF-pG-jjc" secondAttribute="centerX" id="tdP-ay-mD9"/>
+                            <constraint firstItem="e92-pM-HK2" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="10" id="u65-zR-bt5"/>
+                            <constraint firstItem="rSE-dO-PXL" firstAttribute="top" secondItem="e92-pM-HK2" secondAttribute="bottom" id="wGd-mq-c8y"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addToCalBtn" destination="rwF-pG-jjc" id="hTz-ey-Tlj"/>
+                        <outlet property="addressLabel" destination="rSE-dO-PXL" id="is9-3H-p5u"/>
                         <outlet property="backBtn" destination="OFY-el-3qt" id="NdJ-nf-Gs7"/>
                         <outlet property="checkInBtn" destination="TtS-Vg-hn7" id="N6H-hR-XU8"/>
-                        <outlet property="dateTimeLabel" destination="hqU-Rg-VkB" id="V97-n0-NsI"/>
+                        <outlet property="dateTimeLabel" destination="hqU-Rg-VkB" id="aFm-N4-gFk"/>
                         <outlet property="inviteFriendsBtn" destination="IvH-9F-pMH" id="PVD-Kh-YFz"/>
                         <outlet property="mediaImgView" destination="SAl-1q-ecf" id="dtt-t0-CN7"/>
+                        <outlet property="titleLabel" destination="e92-pM-HK2" id="5c2-Qa-Y9I"/>
                         <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindCombinationView" unwindAction="unwindToCombinationView:" id="i7z-4M-dHj"/>
                         <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindWelcomeView" unwindAction="unwindToWelcomeView:" id="dBW-1d-gIV"/>
                     </connections>
