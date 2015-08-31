@@ -16,6 +16,7 @@
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
+            <string>GothamRounded-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -420,6 +421,15 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date | Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqU-Rg-VkB">
+                                <rect key="frame" x="21" y="208" width="558" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="1ON-jY-1BN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                                <color key="textColor" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -429,11 +439,14 @@
                             <constraint firstItem="sgY-PT-rNH" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="KOo-sG-YS8"/>
                             <constraint firstItem="IvH-9F-pMH" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="133" id="Yjn-re-9Oe"/>
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="ZOk-0p-JpB"/>
+                            <constraint firstItem="hqU-Rg-VkB" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="21" id="Zeb-Xn-arj"/>
                             <constraint firstAttribute="trailing" secondItem="sgY-PT-rNH" secondAttribute="trailing" id="aam-QP-rNi"/>
                             <constraint firstItem="OFY-el-3qt" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="10" id="cNZ-gf-hRQ"/>
                             <constraint firstItem="TtS-Vg-hn7" firstAttribute="top" secondItem="OFY-el-3qt" secondAttribute="bottom" constant="103" id="dYW-OR-Cgb"/>
                             <constraint firstItem="rwF-pG-jjc" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="45" id="fqe-oO-Dkq"/>
+                            <constraint firstAttribute="trailing" secondItem="hqU-Rg-VkB" secondAttribute="trailing" constant="21" id="hdh-LS-gFt"/>
                             <constraint firstItem="sgY-PT-rNH" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="jie-7e-Upb"/>
+                            <constraint firstItem="hqU-Rg-VkB" firstAttribute="top" secondItem="sgY-PT-rNH" secondAttribute="bottom" constant="8" id="qMQ-cg-KeF"/>
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="rCU-BS-VpN"/>
                             <constraint firstItem="OFY-el-3qt" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="2" id="rMQ-1r-f51"/>
                             <constraint firstAttribute="centerX" secondItem="rwF-pG-jjc" secondAttribute="centerX" id="tdP-ay-mD9"/>
@@ -443,6 +456,7 @@
                         <outlet property="addToCalBtn" destination="rwF-pG-jjc" id="hTz-ey-Tlj"/>
                         <outlet property="backBtn" destination="OFY-el-3qt" id="NdJ-nf-Gs7"/>
                         <outlet property="checkInBtn" destination="TtS-Vg-hn7" id="N6H-hR-XU8"/>
+                        <outlet property="dateTimeLabel" destination="hqU-Rg-VkB" id="V97-n0-NsI"/>
                         <outlet property="inviteFriendsBtn" destination="IvH-9F-pMH" id="PVD-Kh-YFz"/>
                         <outlet property="mediaImgView" destination="SAl-1q-ecf" id="dtt-t0-CN7"/>
                         <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindCombinationView" unwindAction="unwindToCombinationView:" id="i7z-4M-dHj"/>

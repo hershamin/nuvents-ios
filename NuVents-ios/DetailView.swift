@@ -18,6 +18,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
     @IBOutlet var addToCalBtn:UIButton!
     @IBOutlet var checkInBtn:UIButton!
     @IBOutlet var inviteFriendsBtn:UIButton!
+    @IBOutlet var dateTimeLabel:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,10 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
         // Init other buttons
         checkInBtn.addTarget(self, action: "checkInBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         inviteFriendsBtn.addTarget(self, action: "inviteFriendsBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        // Init date/time label
+        let timeStr:String = NuVentsHelper.getHumanReadableDate(eventJson["time"]["start"].stringValue)
+        dateTimeLabel.text = timeStr.stringByReplacingOccurrencesOfString("at", withString: "|")
         
         // Set media image
         if let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!) {
