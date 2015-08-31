@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Gotham-Rounded-Bold.ttf">
+            <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Book.ttf">
@@ -12,6 +13,7 @@
             <string>GothamRounded-Book</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Medium.ttf">
+            <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
         </mutableArray>
@@ -383,13 +385,37 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwF-pG-jjc">
-                                <rect key="frame" x="175" y="70" width="250" height="60"/>
+                                <rect key="frame" x="175" y="65" width="250" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="UoX-JT-Obj"/>
                                     <constraint firstAttribute="height" constant="60" id="jdb-aM-gfj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Bold" family="Gotham Rounded" pointSize="18"/>
                                 <state key="normal" title="ADD TO CALENDAR">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtS-Vg-hn7">
+                                <rect key="frame" x="21" y="153" width="88" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="RJy-3N-X0g"/>
+                                    <constraint firstAttribute="width" constant="88" id="f8X-pk-vaj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                                <state key="normal" title="CHECK-IN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvH-9F-pMH">
+                                <rect key="frame" x="440" y="153" width="134" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="134" id="HlU-8p-IjJ"/>
+                                    <constraint firstAttribute="height" constant="30" id="mFc-rh-BMh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                                <state key="normal" title="INVITE FRIENDS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -398,11 +424,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="SAl-1q-ecf" secondAttribute="trailing" id="0ni-xa-Hfh"/>
+                            <constraint firstItem="TtS-Vg-hn7" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="21" id="HeP-8R-igu"/>
+                            <constraint firstAttribute="trailing" secondItem="IvH-9F-pMH" secondAttribute="trailing" constant="26" id="Ims-En-OpM"/>
                             <constraint firstItem="sgY-PT-rNH" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="KOo-sG-YS8"/>
+                            <constraint firstItem="IvH-9F-pMH" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="133" id="Yjn-re-9Oe"/>
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="ZOk-0p-JpB"/>
                             <constraint firstAttribute="trailing" secondItem="sgY-PT-rNH" secondAttribute="trailing" id="aam-QP-rNi"/>
                             <constraint firstItem="OFY-el-3qt" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="10" id="cNZ-gf-hRQ"/>
-                            <constraint firstItem="rwF-pG-jjc" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="50" id="fqe-oO-Dkq"/>
+                            <constraint firstItem="TtS-Vg-hn7" firstAttribute="top" secondItem="OFY-el-3qt" secondAttribute="bottom" constant="103" id="dYW-OR-Cgb"/>
+                            <constraint firstItem="rwF-pG-jjc" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="45" id="fqe-oO-Dkq"/>
                             <constraint firstItem="sgY-PT-rNH" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="jie-7e-Upb"/>
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="rCU-BS-VpN"/>
                             <constraint firstItem="OFY-el-3qt" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="2" id="rMQ-1r-f51"/>
@@ -412,6 +442,8 @@
                     <connections>
                         <outlet property="addToCalBtn" destination="rwF-pG-jjc" id="hTz-ey-Tlj"/>
                         <outlet property="backBtn" destination="OFY-el-3qt" id="NdJ-nf-Gs7"/>
+                        <outlet property="checkInBtn" destination="TtS-Vg-hn7" id="N6H-hR-XU8"/>
+                        <outlet property="inviteFriendsBtn" destination="IvH-9F-pMH" id="PVD-Kh-YFz"/>
                         <outlet property="mediaImgView" destination="SAl-1q-ecf" id="dtt-t0-CN7"/>
                         <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindCombinationView" unwindAction="unwindToCombinationView:" id="i7z-4M-dHj"/>
                         <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindWelcomeView" unwindAction="unwindToWelcomeView:" id="dBW-1d-gIV"/>

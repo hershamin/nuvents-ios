@@ -16,6 +16,8 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
     @IBOutlet var mediaImgView:UIImageView!
     @IBOutlet var backBtn:UIButton!
     @IBOutlet var addToCalBtn:UIButton!
+    @IBOutlet var checkInBtn:UIButton!
+    @IBOutlet var inviteFriendsBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +28,13 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
         
         // Init add to calendar button
         addToCalBtn.layer.borderColor = UIColor.whiteColor().CGColor
-        addToCalBtn.layer.borderWidth = 2
+        addToCalBtn.layer.borderWidth = 3
         addToCalBtn.layer.cornerRadius = addToCalBtn.bounds.size.height/2
         addToCalBtn.addTarget(self, action: "addToCalBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        // Init other buttons
+        checkInBtn.addTarget(self, action: "checkInBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        inviteFriendsBtn.addTarget(self, action: "inviteFriendsBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Set media image
         if let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!) {
@@ -63,6 +69,16 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
         let jsonFilePath = NuVentsHelper.getResourcePath("detailView", type: "tmp")
         let fm = NSFileManager.defaultManager()
         fm.removeItemAtPath(jsonFilePath, error: nil)
+    }
+    
+    // Check In button pressed
+    func checkInBtnPressed(sender:UIButton!) {
+        println("CHECKIN!")
+    }
+    
+    // Invite Friends button pressed
+    func inviteFriendsBtnPressed(sender:UIButton!) {
+        println("INVITE FREE")
     }
     
     // Add to calendar button pressed
