@@ -89,7 +89,14 @@ class NuVentsEndpoint {
             if (retStr.rangeOfString("Error") == nil) {
                 let dataFromString = retStr.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
                 let jsonData = JSON(data: dataFromString!)
-                callback(jsonData)
+                // Merge event summary & detail
+                let summary:JSON = NuVentsEndpoint.sharedEndpoint.eventJSON[eventID as String]!
+                var processedJsonData = jsonData
+                for (summ:String, subJson:JSON) in summary {
+                    processedJsonData[summ] = subJson
+                }
+                // Respond with merged data
+                callback(processedJsonData)
             } else {
                 // TODO: Handle ERROR
             }

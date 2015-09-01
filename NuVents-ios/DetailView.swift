@@ -16,11 +16,13 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
     @IBOutlet var mediaImgView:UIImageView!
     @IBOutlet var backBtn:UIButton!
     @IBOutlet var addToCalBtn:UIButton!
+    @IBOutlet var viewMapBtn:UIButton!
     @IBOutlet var checkInBtn:UIButton!
     @IBOutlet var inviteFriendsBtn:UIButton!
     @IBOutlet var dateTimeLabel:UILabel!
     @IBOutlet var titleLabel:UILabel!
     @IBOutlet var addressLabel:UILabel!
+    @IBOutlet var distanceLabel:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +40,23 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
         // Init other buttons
         checkInBtn.addTarget(self, action: "checkInBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         inviteFriendsBtn.addTarget(self, action: "inviteFriendsBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        viewMapBtn.addTarget(self, action: "viewMapBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Init date/time label
         let timeStr:String = NuVentsHelper.getHumanReadableDate(eventJson["time"]["start"].stringValue)
         dateTimeLabel.text = timeStr.stringByReplacingOccurrencesOfString("at", withString: "|")
+        
+        // Init distance label
+        let currLoc = CLLocation(latitude: NuVentsEndpoint.sharedEndpoint.currLoc.latitude, longitude: NuVentsEndpoint.sharedEndpoint.currLoc.longitude)
+        let eventLoc = CLLocation(latitude: eventJson["latitude"].doubleValue, longitude: eventJson["longitude"].doubleValue)
+        let distRaw = eventLoc.distanceFromLocation(currLoc) * 0.000621371 // Distance in miles
+        let dist = Double(round(10 * distRaw)/10) // Round the number
+        let distStr = String(format: "%g", dist)
+        if (dist < 0.1) { // Change distance label based on calculated distance
+            distanceLabel.text = "< 0.1 mi"
+        } else {
+            distanceLabel.text = "\(distStr) mi"
+        }
         
         // Init title & address labels
         titleLabel.text = eventJson["title"].stringValue
@@ -90,6 +105,24 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
     // Invite Friends button pressed
     func inviteFriendsBtnPressed(sender:UIButton!) {
         println("INVITE FREE")
+    }
+    
+    // View Map button pressed
+    func viewMapBtnPressed(sender:UIButton!) {
+        let lat = eventJson["latitude"].stringValue
+        let lng = eventJson["longitude"].stringValue
+        var address = eventJson["address"].stringValue
+        address = address.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        let urlToOpen:String
+        if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "comgooglemaps-x-callback://")!)) {
+            // Google maps available with x-callback functionality
+            urlToOpen = "comgooglemaps-x-callback://?q=\(address)&center=\(lat),\(lng)&views=traffic&x-success=nuvents://&x-source=NuVents"
+        } else if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "comgooglemaps://")!)) {
+            urlToOpen = "comgooglemaps://?q=\(address)&center=\(lat),\(lng)&views=traffic"
+        } else {
+            urlToOpen = "http://maps.apple.com/?ll=\(lat),\(lng)&q=\(address)"
+        }
+        UIApplication.sharedApplication().openURL(NSURL(string: urlToOpen)!)
     }
     
     // Add to calendar button pressed
