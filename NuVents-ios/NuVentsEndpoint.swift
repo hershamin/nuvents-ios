@@ -40,6 +40,7 @@ class NuVentsEndpoint {
     private var nSocket: SocketIOClient = SocketIOClient(socketURL: backend, options: ["log":false])
         // The variable "backend" is Compiled during build, Set in AppDelegate.swift
     private var connected:Bool = false // To keep track of server connection status
+    private var retryTimer:NSTimer! // To store NSTimer object for retrying server connection
     private var lastNearbyEventRequest:String = "" // To keep track of last event nearby request
         // lat,lng,rad
     
@@ -47,11 +48,22 @@ class NuVentsEndpoint {
     func connect() {
         addSocketHandlingMethods()
         nSocket.connect()
+        // Initialte reconnection timer
+        self.retryTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "RetryServerConnection:", userInfo: nil, repeats: true) // Check for connection every second
     }
     
     // Disconnect from backend
     func disconnect(fast: Bool) {
         nSocket.disconnect(fast: fast)
+        // Invalidate reconnection timer
+        self.retryTimer.invalidate()
+    }
+    
+    // Server connection retry timer
+    @objc func RetryServerConnection(sender:NSTimer!) {
+        if !connected { // Attempt to connect if disconnected
+            nSocket.reconnect()
+        }
     }
     
     // Send event website response code
@@ -177,6 +189,7 @@ class NuVentsEndpoint {
             self.nSocket.removeAllHandlers()
         }
         nSocket.on("error") {data, ack in
+            self.connected = false
             println("NuVents Endpoint: ERROR: Connection: \(data?[0])")
         }
     }
