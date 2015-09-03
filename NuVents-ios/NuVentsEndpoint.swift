@@ -51,7 +51,6 @@ class NuVentsEndpoint {
     
     // Disconnect from backend
     func disconnect(fast: Bool) {
-        nSocket.removeAllHandlers()
         nSocket.disconnect(fast: fast)
     }
     
@@ -175,6 +174,7 @@ class NuVentsEndpoint {
         nSocket.on("disconnect") {data, ack in
             self.connected = false
             println("NuVents Endpoint: Disconnected")
+            self.nSocket.removeAllHandlers()
         }
         nSocket.on("error") {data, ack in
             println("NuVents Endpoint: ERROR: Connection: \(data?[0])")
