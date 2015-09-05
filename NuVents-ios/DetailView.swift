@@ -10,7 +10,7 @@ import Foundation
 import EventKit
 import EventKitUI
 
-class DetailViewController: UIViewController, EKEventEditViewDelegate, UIWebViewDelegate {
+class DetailViewController: UIViewController, EKEventEditViewDelegate {
     
     let eventJson:JSON = NuVentsEndpoint.sharedEndpoint.tempJson
     @IBOutlet var mediaImgView:UIImageView!
@@ -23,7 +23,6 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UIWebView
     @IBOutlet var titleLabel:UILabel!
     @IBOutlet var addressLabel:UILabel!
     @IBOutlet var distanceLabel:UILabel!
-    @IBOutlet var descriptionView:UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +33,6 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UIWebView
         
         // Init Description WebView
         let descHtmlStr:String = eventJson["description"].stringValue
-        descriptionView.loadHTMLString(descHtmlStr, baseURL: nil)
         
         // Init add to calendar button
         addToCalBtn.layer.borderColor = UIColor.whiteColor().CGColor
@@ -207,19 +205,6 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UIWebView
         eventController.editViewDelegate = self
         
         self.presentViewController(eventController, animated: true, completion: nil)
-    }
-    
-    // WebView (Description) delegate
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        let reqStr = request.URL?.absoluteString
-        if reqStr?.rangeOfString("about:blank") != nil {
-            return true
-        } else {
-            if let reqUrl = NSURL(string: reqStr!) {
-                UIApplication.sharedApplication().openURL(reqUrl)
-            }
-            return false
-        }
     }
     
     // Event kit (calendar) edit view delegate
