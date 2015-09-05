@@ -207,11 +207,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    // Delegate method to listen for map region changed to dismiss SMCalloutView
-    func mapView(mapView: MKMapView!, regionWillChangeAnimated animated: Bool) {
-        // Dismiss SMCalloutView
+    // Delegate method to listen for map region changed to move SMCalloutView with map
+    func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
         if (calloutView != nil) {
-            calloutView.dismissCalloutAnimated(true)
+            // Get appropriate points to move callout location
+            var mapPt:CGPoint = mapView.convertCoordinate(calloutView.eventLocation, toPointToView: mapView)
+            let calloutRect:CGRect = CGRectMake(mapPt.x, mapPt.y, 0, 0)
+            // Update callout frame
+            calloutView.presentCalloutFromRect(calloutRect, inView: mapView, constrainedToView: mapView, animated: false)
+            calloutView.layer.zPosition = CGFloat(MAXFLOAT)
+        }
+    }
+    
+    // Delegate method to listen for map region will change to hide SMCalloutView with map
+    func mapView(mapView: MKMapView!, regionWillChangeAnimated animated: Bool) {
+        if (calloutView != nil) {
+            self.calloutView.dismissCalloutAnimated(false)
         }
     }
     
@@ -233,6 +244,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         calloutView.title = annMBX.title
         calloutView.subtitle = annMBX.subtitle
         calloutView.eventID = annMBX.eventID
+        calloutView.eventLocation = annMBX.coordinate
         calloutView.permittedArrowDirection = SMCalloutArrowDirection.Down
         // Set callout assessories
         let mediaImgData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!)

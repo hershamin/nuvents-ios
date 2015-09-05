@@ -1,5 +1,6 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <MapKit/MapKit.h>
 
 /*
 
@@ -40,6 +41,7 @@ extern NSTimeInterval const kSMCalloutViewRepositionDelayForUIScrollView;
 @property (nonatomic, unsafe_unretained) id<SMCalloutViewDelegate> delegate;
 @property (nonatomic, copy) NSString *title, *subtitle; // title/titleView relationship mimics UINavigationBar.
 @property (nonatomic) NSString *eventID; // To store Event ID
+@property (nonatomic) CLLocationCoordinate2D eventLocation; // To store event coordinates
 @property (nonatomic, retain) UIView *leftAccessoryView, *rightAccessoryView;
 @property (nonatomic, assign) SMCalloutArrowDirection permittedArrowDirection; // default SMCalloutArrowDirectionDown
 @property (nonatomic, readonly) SMCalloutArrowDirection currentArrowDirection;
