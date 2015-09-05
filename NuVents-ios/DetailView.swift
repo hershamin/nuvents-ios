@@ -10,7 +10,14 @@ import Foundation
 import EventKit
 import EventKitUI
 
-class DetailViewController: UIViewController, EKEventEditViewDelegate {
+// String extension to convert html to attributed string
+extension String {
+    var html2AttributedString:NSAttributedString {
+        return NSAttributedString(data: dataUsingEncoding(NSUTF8StringEncoding)!, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil, error: nil)!
+    }
+}
+
+class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextViewDelegate {
     
     let eventJson:JSON = NuVentsEndpoint.sharedEndpoint.tempJson
     @IBOutlet var mediaImgView:UIImageView!
@@ -23,6 +30,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
     @IBOutlet var titleLabel:UILabel!
     @IBOutlet var addressLabel:UILabel!
     @IBOutlet var distanceLabel:UILabel!
+    @IBOutlet var descriptionView:UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +40,8 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
         backBtn.addTarget(self, action: "backBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Init Description WebView
-        let descHtmlStr:String = eventJson["description"].stringValue
+        var descHtmlStr:String = eventJson["description"].stringValue
+        descriptionView.attributedText = descHtmlStr.html2AttributedString
         
         // Init add to calendar button
         addToCalBtn.layer.borderColor = UIColor.whiteColor().CGColor
@@ -227,6 +236,13 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate {
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // UITextView (Description) view delegate, when links are clicked
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        // Open in external browser
+        UIApplication.sharedApplication().openURL(URL)
+        return true
     }
     
     // Restrict to portrait only

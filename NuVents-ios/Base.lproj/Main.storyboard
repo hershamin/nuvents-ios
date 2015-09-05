@@ -8,6 +8,7 @@
         <mutableArray key="Gotham-Rounded-Bold.ttf">
             <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
+            <string>GothamRounded-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Book.ttf">
             <string>GothamRounded-Book</string>
@@ -496,12 +497,23 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description" translatesAutoresizingMaskIntoConstraints="NO" id="YMc-24-d07">
+                                <rect key="frame" x="0.0" y="284" width="600" height="154"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Bold" family="Gotham Rounded" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9hX-LZ-EDY" id="Sbp-Gr-KLT"/>
+                                </connections>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="SAl-1q-ecf" secondAttribute="trailing" id="0ni-xa-Hfh"/>
                             <constraint firstAttribute="trailing" secondItem="YIV-NM-5sF" secondAttribute="trailing" id="17o-cg-pfe"/>
                             <constraint firstItem="RZY-hR-b0r" firstAttribute="top" secondItem="YIV-NM-5sF" secondAttribute="bottom" constant="80" id="1Of-Ca-xN5"/>
+                            <constraint firstItem="YMc-24-d07" firstAttribute="top" secondItem="rSE-dO-PXL" secondAttribute="bottom" id="50u-Mc-Vfd"/>
                             <constraint firstItem="rSE-dO-PXL" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="10" id="60X-JG-2cl"/>
                             <constraint firstItem="W5m-gT-fpL" firstAttribute="top" secondItem="fvW-wS-RZT" secondAttribute="bottom" constant="8" id="6Lq-W5-3UK"/>
                             <constraint firstItem="6re-ER-HB5" firstAttribute="top" secondItem="W5m-gT-fpL" secondAttribute="bottom" constant="5" id="7jg-pD-nMj"/>
@@ -511,10 +523,12 @@
                             <constraint firstItem="e92-pM-HK2" firstAttribute="top" secondItem="hqU-Rg-VkB" secondAttribute="bottom" id="Buk-5D-vSK"/>
                             <constraint firstItem="FbO-ZG-5cB" firstAttribute="top" secondItem="RZY-hR-b0r" secondAttribute="bottom" constant="80" id="F9d-eb-Wqs"/>
                             <constraint firstAttribute="centerX" secondItem="6re-ER-HB5" secondAttribute="centerX" multiplier="2.5" id="G8T-NC-DYr"/>
+                            <constraint firstItem="YIV-NM-5sF" firstAttribute="top" secondItem="YMc-24-d07" secondAttribute="bottom" id="GI2-ij-KJv"/>
                             <constraint firstItem="TtS-Vg-hn7" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="21" id="HeP-8R-igu"/>
                             <constraint firstAttribute="trailing" secondItem="IvH-9F-pMH" secondAttribute="trailing" constant="26" id="Ims-En-OpM"/>
                             <constraint firstAttribute="bottom" secondItem="kBm-gX-KeV" secondAttribute="bottom" constant="10" id="IxB-0b-UZU"/>
                             <constraint firstItem="sgY-PT-rNH" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="KOo-sG-YS8"/>
+                            <constraint firstAttribute="trailing" secondItem="YMc-24-d07" secondAttribute="trailing" id="Sma-HK-vM7"/>
                             <constraint firstItem="IvH-9F-pMH" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="133" id="Yjn-re-9Oe"/>
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="ZOk-0p-JpB"/>
                             <constraint firstItem="hqU-Rg-VkB" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" constant="10" id="Zeb-Xn-arj"/>
@@ -529,6 +543,7 @@
                             <constraint firstItem="sgY-PT-rNH" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="jie-7e-Upb"/>
                             <constraint firstAttribute="centerX" secondItem="W5m-gT-fpL" secondAttribute="centerX" multiplier="2.5" id="naf-3B-pI5"/>
                             <constraint firstAttribute="centerX" secondItem="fvW-wS-RZT" secondAttribute="centerX" multiplier="2.5" id="pw9-eY-hVt"/>
+                            <constraint firstItem="YMc-24-d07" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="qGq-wU-SOM"/>
                             <constraint firstItem="hqU-Rg-VkB" firstAttribute="top" secondItem="sgY-PT-rNH" secondAttribute="bottom" constant="10" id="qMQ-cg-KeF"/>
                             <constraint firstItem="SAl-1q-ecf" firstAttribute="leading" secondItem="UmT-YN-7tY" secondAttribute="leading" id="rCU-BS-VpN"/>
                             <constraint firstItem="OFY-el-3qt" firstAttribute="top" secondItem="SC1-64-Pg5" secondAttribute="bottom" constant="2" id="rMQ-1r-f51"/>
@@ -544,6 +559,7 @@
                         <outlet property="backBtn" destination="OFY-el-3qt" id="NdJ-nf-Gs7"/>
                         <outlet property="checkInBtn" destination="TtS-Vg-hn7" id="N6H-hR-XU8"/>
                         <outlet property="dateTimeLabel" destination="hqU-Rg-VkB" id="aFm-N4-gFk"/>
+                        <outlet property="descriptionView" destination="YMc-24-d07" id="QMr-dS-vXD"/>
                         <outlet property="distanceLabel" destination="W5m-gT-fpL" id="iNs-at-Y0u"/>
                         <outlet property="inviteFriendsBtn" destination="IvH-9F-pMH" id="PVD-Kh-YFz"/>
                         <outlet property="mediaImgView" destination="SAl-1q-ecf" id="dtt-t0-CN7"/>
