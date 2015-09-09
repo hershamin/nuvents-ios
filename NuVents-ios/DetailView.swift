@@ -41,7 +41,15 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         
         // Init Description WebView
         var descHtmlStr:String = eventJson["description"].stringValue
-        descriptionView.attributedText = descHtmlStr.html2AttributedString
+        var descHtmlAttr:NSMutableAttributedString = NSMutableAttributedString(attributedString: descHtmlStr.html2AttributedString)
+        descHtmlAttr.enumerateAttribute(NSFontAttributeName, inRange: NSMakeRange(0, descHtmlAttr.length), options: NSAttributedStringEnumerationOptions.LongestEffectiveRangeNotRequired) {
+            (attribute:AnyObject!, range:NSRange, stop:UnsafeMutablePointer<ObjCBool>) -> Void in
+            if let attrFont = attribute as? UIFont {
+                let scaledFont = UIFont(descriptor: attrFont.fontDescriptor(), size: 13.0)
+                descHtmlAttr.addAttribute(NSFontAttributeName, value: scaledFont, range: range)
+            }
+        }
+        descriptionView.attributedText = descHtmlAttr
         
         // Init add to calendar button
         addToCalBtn.layer.borderColor = UIColor.whiteColor().CGColor
