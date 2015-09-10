@@ -23,8 +23,6 @@
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
-            <string>GothamRounded-Medium</string>
-            <string>GothamRounded-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -379,30 +377,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                         <color key="backgroundColor" red="0.96078431372549022" green="0.66666666666666663" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IvH-9F-pMH">
-                                        <rect key="frame" x="456" y="260" width="134" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="134" id="HlU-8p-IjJ"/>
-                                            <constraint firstAttribute="height" constant="30" id="mFc-rh-BMh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
-                                        <state key="normal" title="INVITE FRIENDS">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TtS-Vg-hn7">
-                                        <rect key="frame" x="10" y="260" width="88" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="RJy-3N-X0g"/>
-                                            <constraint firstAttribute="width" constant="88" id="f8X-pk-vaj"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
-                                        <state key="normal" title="CHECK-IN">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFY-el-3qt">
                                         <rect key="frame" x="10" y="20" width="50" height="28"/>
                                         <constraints>
@@ -432,15 +406,11 @@
                                     <constraint firstAttribute="centerX" secondItem="rwF-pG-jjc" secondAttribute="centerX" id="FLc-Nv-lJz"/>
                                     <constraint firstAttribute="trailing" secondItem="sgY-PT-rNH" secondAttribute="trailing" id="GKd-4q-V0O"/>
                                     <constraint firstItem="SAl-1q-ecf" firstAttribute="leading" secondItem="RYz-hH-3SX" secondAttribute="leading" id="GfR-bK-uvw"/>
-                                    <constraint firstAttribute="trailing" secondItem="IvH-9F-pMH" secondAttribute="trailing" constant="10" id="Jp6-zB-Ipd"/>
-                                    <constraint firstItem="TtS-Vg-hn7" firstAttribute="leading" secondItem="RYz-hH-3SX" secondAttribute="leading" constant="10" id="Khv-mV-7P8"/>
                                     <constraint firstItem="OFY-el-3qt" firstAttribute="leading" secondItem="RYz-hH-3SX" secondAttribute="leading" constant="10" id="MSS-He-1vI"/>
                                     <constraint firstItem="SAl-1q-ecf" firstAttribute="top" secondItem="RYz-hH-3SX" secondAttribute="top" id="P8V-kn-ZsY"/>
                                     <constraint firstAttribute="bottom" secondItem="SAl-1q-ecf" secondAttribute="bottom" id="b35-rW-30n"/>
-                                    <constraint firstAttribute="bottom" secondItem="TtS-Vg-hn7" secondAttribute="bottom" constant="10" id="dWu-de-jOR"/>
                                     <constraint firstItem="sgY-PT-rNH" firstAttribute="leading" secondItem="RYz-hH-3SX" secondAttribute="leading" id="eSc-mO-mOz"/>
                                     <constraint firstAttribute="width" secondItem="RYz-hH-3SX" secondAttribute="height" multiplier="16:8" id="fO1-ae-uAp"/>
-                                    <constraint firstAttribute="bottom" secondItem="IvH-9F-pMH" secondAttribute="bottom" constant="10" id="meA-8y-eka"/>
                                     <constraint firstAttribute="trailing" secondItem="SAl-1q-ecf" secondAttribute="trailing" id="pYu-Bz-ePb"/>
                                     <constraint firstItem="OFY-el-3qt" firstAttribute="top" secondItem="RYz-hH-3SX" secondAttribute="top" constant="20" id="qvf-Gy-9mE"/>
                                     <constraint firstItem="sgY-PT-rNH" firstAttribute="top" secondItem="RYz-hH-3SX" secondAttribute="top" id="uOQ-HY-8kj"/>
@@ -565,11 +535,9 @@
                         <outlet property="addToCalBtn" destination="rwF-pG-jjc" id="hTz-ey-Tlj"/>
                         <outlet property="addressLabel" destination="rSE-dO-PXL" id="is9-3H-p5u"/>
                         <outlet property="backBtn" destination="OFY-el-3qt" id="NdJ-nf-Gs7"/>
-                        <outlet property="checkInBtn" destination="TtS-Vg-hn7" id="N6H-hR-XU8"/>
                         <outlet property="dateTimeLabel" destination="hqU-Rg-VkB" id="aFm-N4-gFk"/>
                         <outlet property="descriptionView" destination="YMc-24-d07" id="QMr-dS-vXD"/>
                         <outlet property="distanceLabel" destination="W5m-gT-fpL" id="iNs-at-Y0u"/>
-                        <outlet property="inviteFriendsBtn" destination="IvH-9F-pMH" id="PVD-Kh-YFz"/>
                         <outlet property="mediaImgView" destination="SAl-1q-ecf" id="dtt-t0-CN7"/>
                         <outlet property="titleLabel" destination="e92-pM-HK2" id="5c2-Qa-Y9I"/>
                         <outlet property="viewMapBtn" destination="6re-ER-HB5" id="iTA-95-jSV"/>

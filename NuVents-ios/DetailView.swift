@@ -24,8 +24,6 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
     @IBOutlet var backBtn:UIButton!
     @IBOutlet var addToCalBtn:UIButton!
     @IBOutlet var viewMapBtn:UIButton!
-    @IBOutlet var checkInBtn:UIButton!
-    @IBOutlet var inviteFriendsBtn:UIButton!
     @IBOutlet var dateTimeLabel:UILabel!
     @IBOutlet var titleLabel:UILabel!
     @IBOutlet var addressLabel:UILabel!
@@ -58,8 +56,6 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         addToCalBtn.addTarget(self, action: "addToCalBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Init other buttons
-        checkInBtn.addTarget(self, action: "checkInBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        inviteFriendsBtn.addTarget(self, action: "inviteFriendsBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         viewMapBtn.addTarget(self, action: "viewMapBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Init date/time label
@@ -115,16 +111,6 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         let jsonFilePath = NuVentsHelper.getResourcePath("detailView", type: "tmp")
         let fm = NSFileManager.defaultManager()
         fm.removeItemAtPath(jsonFilePath, error: nil)
-    }
-    
-    // Check In button pressed
-    func checkInBtnPressed(sender:UIButton!) {
-        println("CHECKIN!")
-    }
-    
-    // Invite Friends button pressed
-    func inviteFriendsBtnPressed(sender:UIButton!) {
-        println("INVITE FREE")
     }
     
     // View Map button pressed
