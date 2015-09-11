@@ -29,6 +29,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Setup listeners for NSNotificationCenter
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "goToDetailView", name: NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
     }
     
     // Restrict to portrait only
@@ -119,18 +120,15 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Get json from event ID
         let eventID:String = eventArray[indexPath.row]["eid"].stringValue
-        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID, callback: {(var jsonData:JSON) -> Void in
-            // Override start & end time from original
-            let event:JSON = NuVentsEndpoint.sharedEndpoint.eventJSON[eventID]!
-            jsonData["time"] = event["time"]
-            // Store json in temp variable
-            NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
-            // Go to detail view
-            self.performSegueWithIdentifier("showDetailView", sender: nil)
-        })
+        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID)
         
         // Deselect row
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    // Go to detail view
+    func goToDetailView() {
+        self.performSegueWithIdentifier("showDetailView", sender: nil)
     }
     
 }

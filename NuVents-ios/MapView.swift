@@ -77,21 +77,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    // Function to open detail view, called when callout if pressed
+    // Function to request event detail
     func openDetailView(sender:UIButton!) {
-        
         // Get json from event ID
         let eventID:String = selectedEventID
-        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID, callback: {(var jsonData:JSON) -> Void in
-            // Override start & end time from original
-            let event:JSON = self.eventsJson[eventID]!
-            jsonData["time"] = event["time"]
-            // Store json in temp variable
-            NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
-            // Go to detail view
-            self.performSegueWithIdentifier("showDetailView", sender: nil)
-        })
-        
+        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID)
+    }
+    
+    // Open detail view upon hearing notification
+    func goToDetailView() {
+        self.performSegueWithIdentifier("showDetailView", sender: nil)
     }
     
     // Function to change map view to category changed

@@ -25,6 +25,7 @@ class NuVentsEndpoint {
     internal let mapboxMapId:String = "hershamin.n2ld8p7j"
     internal let categoryNotificationKey = "categoryNotificationKey"
     internal let searchNotificationKey = "searchNotificationKey"
+    internal let eventDetailNotificationKey = "eventDetailNotificationKey"
 
     
     // Global Variables
@@ -92,26 +93,10 @@ class NuVentsEndpoint {
     }
     
     // Get event detail
-    func getEventDetail(eventID: NSString, callback:(JSON) -> Void) {
+    func getEventDetail(eventID: NSString) {
         let eventDict = ["did":NuVentsEndpoint.sharedEndpoint.udid,
             "eid":eventID as String]
-        self.nSocket.emitWithAck("event:detail", eventDict)(timeoutAfter: 0){data in
-            let retStr = "\(data![0])"
-            if (retStr.rangeOfString("Error") == nil) {
-                let dataFromString = retStr.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-                let jsonData = JSON(data: dataFromString!)
-                // Merge event summary & detail
-                let summary:JSON = NuVentsEndpoint.sharedEndpoint.eventJSON[eventID as String]!
-                var processedJsonData = jsonData
-                for (summ:String, subJson:JSON) in summary {
-                    processedJsonData[summ] = subJson
-                }
-                // Respond with merged data
-                callback(processedJsonData)
-            } else {
-                // TODO: Handle ERROR
-            }
-        }
+        self.nSocket.emit("event:detail", eventDict)
     }
     
     // Get resources from server
@@ -165,6 +150,33 @@ class NuVentsEndpoint {
                 println("NuVents Endpoint: ERROR: Event Nearby: \(resp)")
             } else {
                 println("NuVents Endpoint: Event Nearby Received")
+            }
+        }
+        
+        // Event Detail Received
+        nSocket.on("event:detail") {data, ack in
+            let dataFromString = "\(data?[0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let jsonData = JSON(data: dataFromString!)
+            // Merge & Add to global vars
+            let eventID = jsonData["eid"].stringValue
+            let summary:JSON = NuVentsEndpoint.sharedEndpoint.eventJSON[eventID as String]!
+            var processedJsonData = jsonData
+            for (summ:String, subJson:JSON) in summary {
+                processedJsonData[summ] = subJson
+            }
+            // Set global variable
+            NuVentsEndpoint.sharedEndpoint.tempJson = processedJsonData
+            // Notify Views
+            NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
+        }
+        
+        // Event Detail Error & Status
+        nSocket.on("event:detail:status") {data, ack in
+            let resp = "\(data?[0])"
+            if resp.rangeOfString("Error") != nil { // error status
+                println("NuVents Endpoint: ERROR: Event Detail: \(resp)")
+            } else {
+                println("NuVents Endpoint: Event Detail Received")
             }
         }
         
