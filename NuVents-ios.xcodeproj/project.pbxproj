@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F665B001BA4D2690057FC81 /* RequestIllustration.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F665AFF1BA4D2690057FC81 /* RequestIllustration.png */; };
 		BA09BFC01B6D882700138139 /* Gotham-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFBC1B6D882700138139 /* Gotham-Rounded-Bold.ttf */; };
 		BA09BFC11B6D882700138139 /* Gotham-Rounded-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFBD1B6D882700138139 /* Gotham-Rounded-Book.ttf */; };
 		BA09BFC21B6D882700138139 /* Gotham-Rounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFBE1B6D882700138139 /* Gotham-Rounded-Light.ttf */; };
@@ -86,6 +87,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F665AFF1BA4D2690057FC81 /* RequestIllustration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RequestIllustration.png; sourceTree = "<group>"; };
 		BA09BFBC1B6D882700138139 /* Gotham-Rounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Bold.ttf"; sourceTree = "<group>"; };
 		BA09BFBD1B6D882700138139 /* Gotham-Rounded-Book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Book.ttf"; sourceTree = "<group>"; };
 		BA09BFBE1B6D882700138139 /* Gotham-Rounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gotham-Rounded-Light.ttf"; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 		BA8E59601B2A543700D6AB86 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				8F665AFF1BA4D2690057FC81 /* RequestIllustration.png */,
 				BA09BFCB1B6F294100138139 /* myLocationBtn.png */,
 				BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */,
 				BA09BFC41B6D99A100138139 /* combinationViewTabBar.png */,
@@ -479,6 +482,7 @@
 				BA4B05D91B79C43700A5FCBB /* FilterView.xib in Resources */,
 				BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */,
 				BA09BFC51B6D99A100138139 /* combinationViewTabBar.png in Resources */,
+				8F665B001BA4D2690057FC81 /* RequestIllustration.png in Resources */,
 				BAAEFAD51B827EE200561664 /* Mapbox_Logo.png in Resources */,
 				BA09BFC01B6D882700138139 /* Gotham-Rounded-Bold.ttf in Resources */,
 			);

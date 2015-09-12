@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -656,18 +656,28 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="←">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rEj-Wn-cO0">
+                                <rect key="frame" x="50" y="70" width="500" height="242"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rEj-Wn-cO0" secondAttribute="height" multiplier="1:1" id="5Jt-5K-XOe"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="2" id="97c-6n-2qA"/>
+                            <constraint firstItem="rEj-Wn-cO0" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="70" id="EAw-wM-1UU"/>
+                            <constraint firstItem="rEj-Wn-cO0" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="50" id="Z1f-S9-8fP"/>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="10" id="iIb-gh-Wo7"/>
+                            <constraint firstAttribute="trailing" secondItem="rEj-Wn-cO0" secondAttribute="trailing" constant="50" id="t4Y-Eu-t4F"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="3R8-Hs-xa2" id="Q9w-XT-1ZX"/>
+                        <outlet property="illustrationImage" destination="rEj-Wn-cO0" id="fkR-fE-U40"/>
                         <segue destination="ibA-mJ-Qzm" kind="unwind" identifier="unwindRequestView" unwindAction="unwindToWelcomeFromRequest:" id="fWG-jm-VD9"/>
                     </connections>
                 </viewController>
