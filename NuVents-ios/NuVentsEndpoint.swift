@@ -95,7 +95,8 @@ class NuVentsEndpoint {
     // Get event detail
     func getEventDetail(eventID: NSString) {
         let eventDict = ["did":NuVentsEndpoint.sharedEndpoint.udid,
-            "eid":eventID as String]
+            "eid":eventID as String,
+            "time":"\(NSDate().timeIntervalSince1970)"]
         self.nSocket.emit("event:detail", eventDict)
     }
     
