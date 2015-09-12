@@ -104,12 +104,7 @@ class NuVentsEndpoint {
     private func getResourcesFromServer() {
         let deviceDict = ["did":NuVentsEndpoint.sharedEndpoint.udid as String,
             "dm":NuVentsHelper.getDeviceHardware()]
-        self.nSocket.emitWithAck("resources", deviceDict)(timeoutAfter: 0){data in
-            println("NuVents Endpoint: Resources Received")
-            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            let jsonData = JSON(data: dataFromString!)
-            self.syncResources(jsonData)
-        }
+        self.nSocket.emit("resources", deviceDict) // Request resource sync
     }
     
     // Sync resources with server
@@ -171,6 +166,18 @@ class NuVentsEndpoint {
                 println("NuVents Endpoint: ERROR: Event Detail: \(resp)")
             } else {
                 println("NuVents Endpoint: Event Detail Received")
+            }
+        }
+        
+        // Resources received from server
+        nSocket.on("resources") {data, ack in
+            let resp = "\(data![0])"
+            if resp.rangeOfString("Error") != nil { // error status
+                println("NuVents Endpoint: ERROR: Resources: \(resp)")
+            } else {
+                println("NuVents Endpoint: Resources Received")
+                let jsonData:NSData = resp.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+                self.syncResources(JSON(data: jsonData)) // Sync Resources
             }
         }
         
