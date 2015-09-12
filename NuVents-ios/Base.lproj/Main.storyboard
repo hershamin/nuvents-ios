@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -12,6 +13,9 @@
             <string>GothamRounded-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Book.ttf">
+            <string>GothamRounded-Book</string>
+            <string>GothamRounded-Book</string>
+            <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
@@ -665,19 +669,53 @@
                                     <constraint firstAttribute="width" secondItem="rEj-Wn-cO0" secondAttribute="height" multiplier="1:1" id="5Jt-5K-XOe"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxT-ry-p7I">
+                                <rect key="frame" x="77" y="332" width="447" height="30"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFs-ym-RiY">
+                                <rect key="frame" x="50" y="395" width="60" height="21"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBo-39-nDZ">
+                                <rect key="frame" x="482" y="395" width="54" height="21"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                <color key="textColor" red="0.99682535559999996" green="0.9835298039" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="2" id="97c-6n-2qA"/>
                             <constraint firstItem="rEj-Wn-cO0" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="70" id="EAw-wM-1UU"/>
+                            <constraint firstItem="DBo-39-nDZ" firstAttribute="top" secondItem="uxT-ry-p7I" secondAttribute="bottom" constant="33" id="Ic5-0J-2vj"/>
+                            <constraint firstItem="jFs-ym-RiY" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="50" id="Nf1-iK-jg2"/>
+                            <constraint firstItem="uxT-ry-p7I" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="70" id="OsK-4z-MCz"/>
+                            <constraint firstItem="uxT-ry-p7I" firstAttribute="top" secondItem="rEj-Wn-cO0" secondAttribute="bottom" constant="15" id="UNb-hE-dfr"/>
                             <constraint firstItem="rEj-Wn-cO0" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="50" id="Z1f-S9-8fP"/>
+                            <constraint firstItem="jFs-ym-RiY" firstAttribute="top" secondItem="uxT-ry-p7I" secondAttribute="bottom" constant="33" id="bhB-4l-gZy"/>
+                            <constraint firstAttribute="trailing" secondItem="uxT-ry-p7I" secondAttribute="trailing" constant="202" id="ghI-L2-KY8"/>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="10" id="iIb-gh-Wo7"/>
                             <constraint firstAttribute="trailing" secondItem="rEj-Wn-cO0" secondAttribute="trailing" constant="50" id="t4Y-Eu-t4F"/>
+                            <constraint firstAttribute="trailing" secondItem="DBo-39-nDZ" secondAttribute="trailing" constant="50" id="whM-34-0l7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uxT-ry-p7I" secondAttribute="trailing" constant="70" id="zH9-v0-znX"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ghI-L2-KY8"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="3R8-Hs-xa2" id="Q9w-XT-1ZX"/>
+                        <outlet property="city" destination="DBo-39-nDZ" id="RgU-6p-RjF"/>
                         <outlet property="illustrationImage" destination="rEj-Wn-cO0" id="fkR-fE-U40"/>
+                        <outlet property="name" destination="jFs-ym-RiY" id="stz-JK-6LU"/>
+                        <outlet property="nuventsMessage" destination="uxT-ry-p7I" id="jqE-vV-PLK"/>
                         <segue destination="ibA-mJ-Qzm" kind="unwind" identifier="unwindRequestView" unwindAction="unwindToWelcomeFromRequest:" id="fWG-jm-VD9"/>
                     </connections>
                 </viewController>

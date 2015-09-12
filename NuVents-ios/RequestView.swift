@@ -12,6 +12,9 @@ class RequestViewController: UIViewController {
     
     @IBOutlet var backBtn:UIButton!
     @IBOutlet weak var illustrationImage: UIImageView!
+    @IBOutlet weak var nuventsMessage: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var city: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,17 @@ class RequestViewController: UIViewController {
         
         //Load the image
         illustrationImage.image = UIImage(named: "RequestIllustration")
+        
+        //Add text to the nuvents message
+        self.nuventsMessage.text = "Oh no! Nuvents is not yet available in your city."
+        nuventsMessage.numberOfLines = 0;
+        nuventsMessage.textAlignment = NSTextAlignment.Center
+        
+        //Add name + city
+        self.name.text = "NAME"
+        self.city.text = "CITY"
+        
+        
     }
     
     // Back button action
