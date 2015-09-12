@@ -145,7 +145,7 @@ class NuVentsEndpoint {
         
         // Nearby Event Error & Status
         nSocket.on("event:nearby:status") {data, ack in
-            let resp = "\(data?[0])"
+            let resp = "\(data![0])"
             if resp.rangeOfString("Error") != nil { // error status
                 println("NuVents Endpoint: ERROR: Event Nearby: \(resp)")
             } else {
@@ -155,24 +155,17 @@ class NuVentsEndpoint {
         
         // Event Detail Received
         nSocket.on("event:detail") {data, ack in
-            let dataFromString = "\(data?[0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             let jsonData = JSON(data: dataFromString!)
-            // Merge & Add to global vars
-            let eventID = jsonData["eid"].stringValue
-            let summary:JSON = NuVentsEndpoint.sharedEndpoint.eventJSON[eventID as String]!
-            var processedJsonData = jsonData
-            for (summ:String, subJson:JSON) in summary {
-                processedJsonData[summ] = subJson
-            }
             // Set global variable
-            NuVentsEndpoint.sharedEndpoint.tempJson = processedJsonData
+            NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
             // Notify Views
             NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
         }
         
         // Event Detail Error & Status
         nSocket.on("event:detail:status") {data, ack in
-            let resp = "\(data?[0])"
+            let resp = "\(data![0])"
             if resp.rangeOfString("Error") != nil { // error status
                 println("NuVents Endpoint: ERROR: Event Detail: \(resp)")
             } else {
@@ -202,7 +195,7 @@ class NuVentsEndpoint {
         }
         nSocket.on("error") {data, ack in
             self.connected = false
-            println("NuVents Endpoint: ERROR: Connection: \(data?[0])")
+            println("NuVents Endpoint: ERROR: Connection: \(data![0])")
         }
     }
     
