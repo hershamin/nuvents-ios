@@ -137,6 +137,8 @@ class NuVentsEndpoint {
             let jsonData = JSON(data: dataFromString!)
             // Add to global vars
             NuVentsEndpoint.sharedEndpoint.eventJSON[jsonData["eid"].stringValue] = jsonData
+            // Acknowledge Server
+            ack!("Nearby Event Received")
         }
         
         // Nearby Event Error & Status
@@ -147,6 +149,8 @@ class NuVentsEndpoint {
             } else {
                 println("NuVents Endpoint: Event Nearby Received")
             }
+            // Acknowledge Server
+            ack!("Nearby Event Status Received")
         }
         
         // Event Detail Received
@@ -157,6 +161,8 @@ class NuVentsEndpoint {
             NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
             // Notify Views
             NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
+            // Acknowledge Server
+            ack!("Event Detail Received")
         }
         
         // Event Detail Error & Status
@@ -179,6 +185,8 @@ class NuVentsEndpoint {
                 let jsonData:NSData = resp.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
                 self.syncResources(JSON(data: jsonData)) // Sync Resources
             }
+            // Acknowledge Server
+            ack!("Resources Received")
         }
         
         // Connection Status
