@@ -43,7 +43,7 @@ class NuVentsEndpoint {
     private var connected:Bool = false // To keep track of server connection status
     private var retryTimer:NSTimer! // To store NSTimer object for retrying server connection
     private var socketBuffer:[String] = [] // To store failed to send socket events in buffer to retry on connection
-        // event
+        // event||message
     private var socketDict:[NSDictionary] = [] // To store failed to send socket events in buffer to retry on connection
         // message (dictionary)
     
@@ -89,13 +89,14 @@ class NuVentsEndpoint {
             "did":NuVentsEndpoint.sharedEndpoint.udid]
         // Add to buffer
         let event:String = "event:nearby"
+        let eventMess:String = "\(event)||\(requestDict.description)"
         let message:NSDictionary = requestDict
-        self.socketBuffer.append(event)
+        self.socketBuffer.append(eventMess)
         self.socketDict.append(message)
         // Emit event with acknowledgement
         self.nSocket.emitWithAck(event, requestDict)(timeoutAfter:0) { data in
             // Event received on server side, remove from buffer
-            self.socketBuffer = self.socketBuffer.filter({$0 != event})
+            self.socketBuffer = self.socketBuffer.filter({$0 != eventMess})
             self.socketDict = self.socketDict.filter({$0 != message})
         }
     }
@@ -107,12 +108,13 @@ class NuVentsEndpoint {
             "time":"\(NSDate().timeIntervalSince1970)"]
         // Add to buffer
         let event:String = "event:detail"
+        let eventMess:String = "\(event)||\(eventDict.description)"
         let message:NSDictionary = eventDict
-        self.socketBuffer.append(event)
+        self.socketBuffer.append(eventMess)
         self.socketDict.append(message)
         self.nSocket.emitWithAck(event, eventDict)(timeoutAfter:0) { data in
             // Event received on server side, remove from buffer
-            self.socketBuffer = self.socketBuffer.filter({$0 != event})
+            self.socketBuffer = self.socketBuffer.filter({$0 != eventMess})
             self.socketDict = self.socketDict.filter({$0 != message})
         }
     }
@@ -123,12 +125,13 @@ class NuVentsEndpoint {
             "dm":NuVentsHelper.getDeviceHardware()]
         // Add to buffer
         let event:String = "resources"
+        let eventMess:String = "\(event)||\(deviceDict.description)"
         let message:NSDictionary = deviceDict
         self.socketBuffer.append(event)
         self.socketDict.append(message)
         self.nSocket.emitWithAck(event, deviceDict)(timeoutAfter:0) { data in
             // Event received on server side, remove from buffer
-            self.socketBuffer = self.socketBuffer.filter({$0 != event})
+            self.socketBuffer = self.socketBuffer.filter({$0 != eventMess})
             self.socketDict = self.socketDict.filter({$0 != message})
         }
     }
@@ -167,11 +170,12 @@ class NuVentsEndpoint {
         // Empty Local Buffer of SOcket Messages
         for (var i=0; i<self.socketBuffer.count; i++) {
             // Emit event
-            let event:String = self.socketBuffer[i]
+            let event:String = self.socketBuffer[i].componentsSeparatedByString("||")[0]
+            let eventMess:String = self.socketBuffer[i]
             let message:NSDictionary = self.socketDict[i]
             self.nSocket.emitWithAck(event, message)(timeoutAfter:0) { data in
                 // Event received on server side, remove from buffer
-                self.socketBuffer = self.socketBuffer.filter({$0 != event})
+                self.socketBuffer = self.socketBuffer.filter({$0 != eventMess})
                 self.socketDict = self.socketDict.filter({$0 != message})
             }
         }
