@@ -12,8 +12,10 @@
             <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
+            <string>GothamRounded-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Book.ttf">
+            <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
@@ -684,38 +686,92 @@
                                 <rect key="frame" x="50" y="424" width="267" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="8MO-Mg-Hgx"/>
+                                    <constraint firstAttribute="height" constant="30" id="kA5-vi-0AW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-OV-ZgQ">
+                                <rect key="frame" x="50" y="462" width="42" height="21"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Bold" family="Gotham Rounded" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABD-ki-xZV">
+                                <rect key="frame" x="45" y="491" width="300" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="fhj-aw-sYS"/>
+                                    <constraint firstAttribute="height" constant="30" id="zbC-mx-ZZB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mx2-Yz-HgW">
+                                <rect key="frame" x="232" y="541" width="137" height="30"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                <state key="normal" title="BRING IT HERE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Mx2-Yz-HgW" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="232" id="5kH-GY-s6P"/>
+                            <constraint firstItem="Mx2-Yz-HgW" firstAttribute="top" secondItem="ABD-ki-xZV" secondAttribute="bottom" constant="29" id="6tl-IS-pBC"/>
+                            <constraint firstAttribute="trailing" secondItem="Mx2-Yz-HgW" secondAttribute="trailing" constant="231" id="7pB-r1-bQ1"/>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="2" id="97c-6n-2qA"/>
                             <constraint firstItem="rEj-Wn-cO0" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="70" id="EAw-wM-1UU"/>
+                            <constraint firstAttribute="trailing" secondItem="Mx2-Yz-HgW" secondAttribute="trailing" constant="231" id="N2f-YW-YZo"/>
                             <constraint firstItem="jFs-ym-RiY" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="Nf1-iK-jg2"/>
+                            <constraint firstItem="4eA-w7-TIV" firstAttribute="top" secondItem="Mx2-Yz-HgW" secondAttribute="bottom" constant="20" id="O2C-iH-4E8"/>
                             <constraint firstItem="uxT-ry-p7I" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="70" id="OsK-4z-MCz"/>
+                            <constraint firstItem="ABD-ki-xZV" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="Qxk-Tr-eNc"/>
+                            <constraint firstItem="Mx2-Yz-HgW" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="232" id="Rg7-7E-Kvw"/>
+                            <constraint firstItem="ABD-ki-xZV" firstAttribute="top" secondItem="gKH-OV-ZgQ" secondAttribute="bottom" constant="5" id="TNF-TW-MFo"/>
                             <constraint firstItem="uxT-ry-p7I" firstAttribute="top" secondItem="rEj-Wn-cO0" secondAttribute="bottom" constant="15" id="UNb-hE-dfr"/>
                             <constraint firstItem="rEj-Wn-cO0" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="50" id="Z1f-S9-8fP"/>
-                            <constraint firstItem="jFs-ym-RiY" firstAttribute="top" secondItem="uxT-ry-p7I" secondAttribute="bottom" constant="33" id="bhB-4l-gZy"/>
+                            <constraint firstItem="4eA-w7-TIV" firstAttribute="top" secondItem="gKH-OV-ZgQ" secondAttribute="bottom" constant="117" id="ZxW-ZP-YEj"/>
+                            <constraint firstItem="jFs-ym-RiY" firstAttribute="top" secondItem="uxT-ry-p7I" secondAttribute="bottom" constant="20" id="bhB-4l-gZy"/>
                             <constraint firstItem="0aa-OQ-Sik" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="btj-1K-SNl"/>
-                            <constraint firstAttribute="trailing" secondItem="uxT-ry-p7I" secondAttribute="trailing" constant="202" id="ghI-L2-KY8"/>
+                            <constraint firstItem="Mx2-Yz-HgW" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="90" id="dzD-Sg-8eu"/>
+                            <constraint firstItem="gKH-OV-ZgQ" firstAttribute="top" secondItem="0aa-OQ-Sik" secondAttribute="bottom" constant="8" id="hME-7x-F4n"/>
+                            <constraint firstItem="gKH-OV-ZgQ" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="hUD-vC-eU4"/>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="10" id="iIb-gh-Wo7"/>
-                            <constraint firstItem="0aa-OQ-Sik" firstAttribute="top" secondItem="jFs-ym-RiY" secondAttribute="bottom" constant="8" id="jzW-FS-V4R"/>
+                            <constraint firstItem="0aa-OQ-Sik" firstAttribute="top" secondItem="jFs-ym-RiY" secondAttribute="bottom" constant="5" id="jzW-FS-V4R"/>
+                            <constraint firstItem="4eA-w7-TIV" firstAttribute="top" secondItem="Mx2-Yz-HgW" secondAttribute="bottom" constant="20" id="kZ9-Ct-q0u"/>
+                            <constraint firstItem="Mx2-Yz-HgW" firstAttribute="top" secondItem="ABD-ki-xZV" secondAttribute="bottom" constant="29" id="mC3-SQ-Ywp"/>
+                            <constraint firstItem="Mx2-Yz-HgW" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="232" id="omX-47-vYa"/>
+                            <constraint firstItem="4eA-w7-TIV" firstAttribute="top" secondItem="Mx2-Yz-HgW" secondAttribute="bottom" constant="29" id="rk1-YR-cOV"/>
                             <constraint firstAttribute="trailing" secondItem="rEj-Wn-cO0" secondAttribute="trailing" constant="50" id="t4Y-Eu-t4F"/>
+                            <constraint firstAttribute="trailing" secondItem="Mx2-Yz-HgW" secondAttribute="trailing" constant="90" id="uzs-CA-yPO"/>
+                            <constraint firstAttribute="trailing" secondItem="Mx2-Yz-HgW" secondAttribute="trailing" constant="231" id="w6t-N4-tFb"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uxT-ry-p7I" secondAttribute="trailing" constant="70" id="zH9-v0-znX"/>
+                            <constraint firstItem="Mx2-Yz-HgW" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="232" id="zkY-dr-UFf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="ghI-L2-KY8"/>
+                                <exclude reference="5kH-GY-s6P"/>
+                                <exclude reference="6tl-IS-pBC"/>
+                                <exclude reference="7pB-r1-bQ1"/>
+                                <exclude reference="N2f-YW-YZo"/>
+                                <exclude reference="Rg7-7E-Kvw"/>
+                                <exclude reference="omX-47-vYa"/>
+                                <exclude reference="w6t-N4-tFb"/>
+                                <exclude reference="zkY-dr-UFf"/>
+                                <exclude reference="O2C-iH-4E8"/>
+                                <exclude reference="kZ9-Ct-q0u"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="3R8-Hs-xa2" id="Q9w-XT-1ZX"/>
+                        <outlet property="bringItHere" destination="Mx2-Yz-HgW" id="eO1-uf-ELp"/>
+                        <outlet property="email" destination="gKH-OV-ZgQ" id="PfZ-4w-Cxm"/>
                         <outlet property="illustrationImage" destination="rEj-Wn-cO0" id="fkR-fE-U40"/>
                         <outlet property="name" destination="jFs-ym-RiY" id="stz-JK-6LU"/>
                         <outlet property="nuventsMessage" destination="uxT-ry-p7I" id="jqE-vV-PLK"/>
+                        <outlet property="textForEmail" destination="ABD-ki-xZV" id="Brd-ga-rVT"/>
                         <outlet property="textForName" destination="0aa-OQ-Sik" id="fPl-Vi-Tlv"/>
                         <segue destination="ibA-mJ-Qzm" kind="unwind" identifier="unwindRequestView" unwindAction="unwindToWelcomeFromRequest:" id="fWG-jm-VD9"/>
                     </connections>
