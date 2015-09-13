@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -13,15 +13,15 @@
             <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
+            <string>GothamRounded-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Book.ttf">
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
-            <string>GothamRounded-Book</string>
-            <string>GothamRounded-Book</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Medium.ttf">
+            <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
@@ -671,44 +671,49 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxT-ry-p7I">
-                                <rect key="frame" x="77" y="332" width="447" height="30"/>
-                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="17"/>
+                                <rect key="frame" x="20" y="322" width="544" height="30"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFs-ym-RiY">
-                                <rect key="frame" x="50" y="395" width="60" height="21"/>
+                                <rect key="frame" x="30" y="367" width="60" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="WEL-Ui-DwL"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="GothamRounded-Bold" family="Gotham Rounded" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0aa-OQ-Sik">
-                                <rect key="frame" x="50" y="424" width="267" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0aa-OQ-Sik">
+                                <rect key="frame" x="30" y="393" width="540" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="8MO-Mg-Hgx"/>
                                     <constraint firstAttribute="height" constant="30" id="kA5-vi-0AW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKH-OV-ZgQ">
-                                <rect key="frame" x="50" y="462" width="42" height="21"/>
+                                <rect key="frame" x="30" y="433" width="42" height="21"/>
                                 <fontDescription key="fontDescription" name="GothamRounded-Bold" family="Gotham Rounded" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABD-ki-xZV">
-                                <rect key="frame" x="45" y="491" width="300" height="30"/>
+                                <rect key="frame" x="30" y="459" width="540" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="fhj-aw-sYS"/>
                                     <constraint firstAttribute="height" constant="30" id="zbC-mx-ZZB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mx2-Yz-HgW">
-                                <rect key="frame" x="232" y="541" width="137" height="30"/>
-                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mx2-Yz-HgW">
+                                <rect key="frame" x="228" y="531" width="145" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ZIA-5p-iQi"/>
+                                    <constraint firstAttribute="width" constant="145" id="tbR-lw-2hJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamRounded-Bold" family="Gotham Rounded" pointSize="14"/>
                                 <state key="normal" title="BRING IT HERE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -721,32 +726,31 @@
                             <constraint firstItem="Mx2-Yz-HgW" firstAttribute="top" secondItem="ABD-ki-xZV" secondAttribute="bottom" constant="29" id="6tl-IS-pBC"/>
                             <constraint firstAttribute="trailing" secondItem="Mx2-Yz-HgW" secondAttribute="trailing" constant="231" id="7pB-r1-bQ1"/>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="2" id="97c-6n-2qA"/>
-                            <constraint firstItem="rEj-Wn-cO0" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="70" id="EAw-wM-1UU"/>
+                            <constraint firstItem="rEj-Wn-cO0" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="30" id="EAw-wM-1UU"/>
+                            <constraint firstAttribute="centerX" secondItem="Mx2-Yz-HgW" secondAttribute="centerX" id="HMf-cv-hHu"/>
                             <constraint firstAttribute="trailing" secondItem="Mx2-Yz-HgW" secondAttribute="trailing" constant="231" id="N2f-YW-YZo"/>
-                            <constraint firstItem="jFs-ym-RiY" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="Nf1-iK-jg2"/>
+                            <constraint firstItem="jFs-ym-RiY" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="30" id="Nf1-iK-jg2"/>
                             <constraint firstItem="4eA-w7-TIV" firstAttribute="top" secondItem="Mx2-Yz-HgW" secondAttribute="bottom" constant="20" id="O2C-iH-4E8"/>
-                            <constraint firstItem="uxT-ry-p7I" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="70" id="OsK-4z-MCz"/>
-                            <constraint firstItem="ABD-ki-xZV" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="Qxk-Tr-eNc"/>
+                            <constraint firstItem="uxT-ry-p7I" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="20" id="OsK-4z-MCz"/>
+                            <constraint firstItem="ABD-ki-xZV" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="30" id="Qxk-Tr-eNc"/>
                             <constraint firstItem="Mx2-Yz-HgW" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="232" id="Rg7-7E-Kvw"/>
                             <constraint firstItem="ABD-ki-xZV" firstAttribute="top" secondItem="gKH-OV-ZgQ" secondAttribute="bottom" constant="5" id="TNF-TW-MFo"/>
-                            <constraint firstItem="uxT-ry-p7I" firstAttribute="top" secondItem="rEj-Wn-cO0" secondAttribute="bottom" constant="15" id="UNb-hE-dfr"/>
+                            <constraint firstItem="uxT-ry-p7I" firstAttribute="top" secondItem="rEj-Wn-cO0" secondAttribute="bottom" constant="10" id="UNb-hE-dfr"/>
                             <constraint firstItem="rEj-Wn-cO0" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="50" id="Z1f-S9-8fP"/>
-                            <constraint firstItem="4eA-w7-TIV" firstAttribute="top" secondItem="gKH-OV-ZgQ" secondAttribute="bottom" constant="117" id="ZxW-ZP-YEj"/>
-                            <constraint firstItem="jFs-ym-RiY" firstAttribute="top" secondItem="uxT-ry-p7I" secondAttribute="bottom" constant="20" id="bhB-4l-gZy"/>
-                            <constraint firstItem="0aa-OQ-Sik" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="btj-1K-SNl"/>
-                            <constraint firstItem="Mx2-Yz-HgW" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="90" id="dzD-Sg-8eu"/>
-                            <constraint firstItem="gKH-OV-ZgQ" firstAttribute="top" secondItem="0aa-OQ-Sik" secondAttribute="bottom" constant="8" id="hME-7x-F4n"/>
-                            <constraint firstItem="gKH-OV-ZgQ" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="hUD-vC-eU4"/>
+                            <constraint firstItem="0aa-OQ-Sik" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="30" id="btj-1K-SNl"/>
+                            <constraint firstAttribute="trailing" secondItem="ABD-ki-xZV" secondAttribute="trailing" constant="30" id="cDn-6s-b92"/>
+                            <constraint firstItem="gKH-OV-ZgQ" firstAttribute="top" secondItem="0aa-OQ-Sik" secondAttribute="bottom" constant="10" id="hME-7x-F4n"/>
+                            <constraint firstItem="gKH-OV-ZgQ" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="30" id="hUD-vC-eU4"/>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="10" id="iIb-gh-Wo7"/>
                             <constraint firstItem="0aa-OQ-Sik" firstAttribute="top" secondItem="jFs-ym-RiY" secondAttribute="bottom" constant="5" id="jzW-FS-V4R"/>
                             <constraint firstItem="4eA-w7-TIV" firstAttribute="top" secondItem="Mx2-Yz-HgW" secondAttribute="bottom" constant="20" id="kZ9-Ct-q0u"/>
-                            <constraint firstItem="Mx2-Yz-HgW" firstAttribute="top" secondItem="ABD-ki-xZV" secondAttribute="bottom" constant="29" id="mC3-SQ-Ywp"/>
+                            <constraint firstItem="jFs-ym-RiY" firstAttribute="top" secondItem="uxT-ry-p7I" secondAttribute="bottom" constant="15" id="lDB-hV-2Tk"/>
                             <constraint firstItem="Mx2-Yz-HgW" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="232" id="omX-47-vYa"/>
                             <constraint firstItem="4eA-w7-TIV" firstAttribute="top" secondItem="Mx2-Yz-HgW" secondAttribute="bottom" constant="29" id="rk1-YR-cOV"/>
                             <constraint firstAttribute="trailing" secondItem="rEj-Wn-cO0" secondAttribute="trailing" constant="50" id="t4Y-Eu-t4F"/>
-                            <constraint firstAttribute="trailing" secondItem="Mx2-Yz-HgW" secondAttribute="trailing" constant="90" id="uzs-CA-yPO"/>
                             <constraint firstAttribute="trailing" secondItem="Mx2-Yz-HgW" secondAttribute="trailing" constant="231" id="w6t-N4-tFb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="uxT-ry-p7I" secondAttribute="trailing" constant="70" id="zH9-v0-znX"/>
+                            <constraint firstAttribute="trailing" secondItem="0aa-OQ-Sik" secondAttribute="trailing" constant="30" id="wcz-mS-STU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uxT-ry-p7I" secondAttribute="trailing" constant="20" id="zH9-v0-znX"/>
                             <constraint firstItem="Mx2-Yz-HgW" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="232" id="zkY-dr-UFf"/>
                         </constraints>
                         <variation key="default">

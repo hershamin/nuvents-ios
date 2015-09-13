@@ -8,7 +8,7 @@
 
 import Foundation   
 
-class RequestViewController: UIViewController, CLLocationManagerDelegate {
+class RequestViewController: UIViewController {
     
     @IBOutlet var backBtn:UIButton!
     @IBOutlet weak var illustrationImage: UIImageView!
@@ -18,7 +18,6 @@ class RequestViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var textForEmail: UITextField!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var bringItHere: UIButton!
-    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,24 +46,15 @@ class RequestViewController: UIViewController, CLLocationManagerDelegate {
         
         //Edit the bringItHere button
         bringItHere.layer.borderColor = UIColor.whiteColor().CGColor
-        bringItHere.layer.borderWidth = 1.75
-        bringItHere.layer.cornerRadius = 12
-        bringItHere.addTarget(self, action: "bringItHerePressed", forControlEvents: UIControlEvents.TouchUpInside)
+        bringItHere.layer.borderWidth = 3
+        bringItHere.layer.cornerRadius = bringItHere.frame.height/2
+        bringItHere.addTarget(self, action: "bringItHerePressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        //Test some location stuff
-        //Ask for authorization, I think we do this in welcome view but not coded out?
-        self.locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-            locationManager.startUpdatingLocation()
-        }
-    }
-
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        // Init location stuff
+        let locCoord:CLLocationCoordinate2D = NuVentsEndpoint.sharedEndpoint.currLoc
+        let location:CLLocation = CLLocation(latitude: locCoord.latitude, longitude: locCoord.longitude)
         //Reverse geocode the lat/lng for an address
-        CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemarks, error) -> Void in
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             if error != nil {
                 println(error)
                 return
@@ -73,29 +63,24 @@ class RequestViewController: UIViewController, CLLocationManagerDelegate {
                 let placemark = placemarks[0] as! CLPlacemark
                 self.displayLocationInfo(placemark)
             }
-       })
-    }
-    
-    func displayLocationInfo (placemark: CLPlacemark) {
-            self.locationManager.stopUpdatingLocation()
-            //Add the city to the message text.
-            self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality + "," + placemark.administrativeArea
-    }
-    
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("Error" + error.localizedDescription)
-    }
-    
-    func bringItHerePressed(sender: UIButton!) {
+        })
         
     }
     
+    func displayLocationInfo (placemark: CLPlacemark) {
+        // Add the city to the message text.
+        self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality + "," + placemark.administrativeArea
+    }
     
+    // Bring it Here button pressed
+    func bringItHerePressed(sender: UIButton!) {
+        println("Bring it here")
+    }
+
     // Back button action
     func backBtnPressed(sender:UIButton!) {
         self.performSegueWithIdentifier("unwindRequestView", sender: nil)
     }
-    
     
     // Restrict to portrait only
     override func supportedInterfaceOrientations() -> Int {
