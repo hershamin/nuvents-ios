@@ -14,7 +14,7 @@ class RequestViewController: UIViewController {
     @IBOutlet weak var illustrationImage: UIImageView!
     @IBOutlet weak var nuventsMessage: UILabel!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var city: UILabel!
+    @IBOutlet weak var textForName: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,10 +34,11 @@ class RequestViewController: UIViewController {
         nuventsMessage.numberOfLines = 0;
         nuventsMessage.textAlignment = NSTextAlignment.Center
         
-        //Add name + city
+        //Add name
         self.name.text = "NAME"
-        self.city.text = "CITY"
-        
+        //Change attributes of textfield, and put placeholder text
+        textForName.alpha = 0.8
+       // textForName.attributedPlaceholder = "First Name"
         
     }
     

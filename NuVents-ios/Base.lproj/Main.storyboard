@@ -11,10 +11,9 @@
             <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
+            <string>GothamRounded-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Book.ttf">
-            <string>GothamRounded-Book</string>
-            <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
@@ -677,31 +676,33 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFs-ym-RiY">
                                 <rect key="frame" x="50" y="395" width="60" height="21"/>
-                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="GothamRounded-Bold" family="Gotham Rounded" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBo-39-nDZ">
-                                <rect key="frame" x="482" y="395" width="54" height="21"/>
-                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="14"/>
-                                <color key="textColor" red="0.99682535559999996" green="0.9835298039" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0aa-OQ-Sik">
+                                <rect key="frame" x="50" y="424" width="267" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="8MO-Mg-Hgx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="2" id="97c-6n-2qA"/>
                             <constraint firstItem="rEj-Wn-cO0" firstAttribute="top" secondItem="GAG-sA-uCY" secondAttribute="bottom" constant="70" id="EAw-wM-1UU"/>
-                            <constraint firstItem="DBo-39-nDZ" firstAttribute="top" secondItem="uxT-ry-p7I" secondAttribute="bottom" constant="33" id="Ic5-0J-2vj"/>
-                            <constraint firstItem="jFs-ym-RiY" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="50" id="Nf1-iK-jg2"/>
+                            <constraint firstItem="jFs-ym-RiY" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="Nf1-iK-jg2"/>
                             <constraint firstItem="uxT-ry-p7I" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="70" id="OsK-4z-MCz"/>
                             <constraint firstItem="uxT-ry-p7I" firstAttribute="top" secondItem="rEj-Wn-cO0" secondAttribute="bottom" constant="15" id="UNb-hE-dfr"/>
                             <constraint firstItem="rEj-Wn-cO0" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="50" id="Z1f-S9-8fP"/>
                             <constraint firstItem="jFs-ym-RiY" firstAttribute="top" secondItem="uxT-ry-p7I" secondAttribute="bottom" constant="33" id="bhB-4l-gZy"/>
+                            <constraint firstItem="0aa-OQ-Sik" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="45" id="btj-1K-SNl"/>
                             <constraint firstAttribute="trailing" secondItem="uxT-ry-p7I" secondAttribute="trailing" constant="202" id="ghI-L2-KY8"/>
                             <constraint firstItem="3R8-Hs-xa2" firstAttribute="leading" secondItem="PDV-Zu-gyg" secondAttribute="leading" constant="10" id="iIb-gh-Wo7"/>
+                            <constraint firstItem="0aa-OQ-Sik" firstAttribute="top" secondItem="jFs-ym-RiY" secondAttribute="bottom" constant="8" id="jzW-FS-V4R"/>
                             <constraint firstAttribute="trailing" secondItem="rEj-Wn-cO0" secondAttribute="trailing" constant="50" id="t4Y-Eu-t4F"/>
-                            <constraint firstAttribute="trailing" secondItem="DBo-39-nDZ" secondAttribute="trailing" constant="50" id="whM-34-0l7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uxT-ry-p7I" secondAttribute="trailing" constant="70" id="zH9-v0-znX"/>
                         </constraints>
                         <variation key="default">
@@ -712,10 +713,10 @@
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="3R8-Hs-xa2" id="Q9w-XT-1ZX"/>
-                        <outlet property="city" destination="DBo-39-nDZ" id="RgU-6p-RjF"/>
                         <outlet property="illustrationImage" destination="rEj-Wn-cO0" id="fkR-fE-U40"/>
                         <outlet property="name" destination="jFs-ym-RiY" id="stz-JK-6LU"/>
                         <outlet property="nuventsMessage" destination="uxT-ry-p7I" id="jqE-vV-PLK"/>
+                        <outlet property="textForName" destination="0aa-OQ-Sik" id="fPl-Vi-Tlv"/>
                         <segue destination="ibA-mJ-Qzm" kind="unwind" identifier="unwindRequestView" unwindAction="unwindToWelcomeFromRequest:" id="fWG-jm-VD9"/>
                     </connections>
                 </viewController>
