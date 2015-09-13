@@ -129,6 +129,13 @@ class NuVentsEndpoint {
         println("NuVents Endpoint: Resources Sync Complete")
     }
     
+    // Send request to retrieve missed messages from server
+    private func retrieveMissedMessages() {
+        let deviceDict = ["did":NuVentsEndpoint.sharedEndpoint.udid as String,
+            "dm":NuVentsHelper.getDeviceHardware()]
+        self.nSocket.emit("history", deviceDict)
+    }
+    
     // MARK: socket handling methods
     private func addSocketHandlingMethods() {
         // Nearby Event Received
@@ -191,6 +198,7 @@ class NuVentsEndpoint {
         
         // Connection Status
         nSocket.on("connect") {data, ack in
+            self.retrieveMissedMessages()
             self.getResourcesFromServer()
             self.connected = true
             // Send last known nearby event request if it exists
