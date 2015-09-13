@@ -42,8 +42,10 @@ class NuVentsEndpoint {
         // The variable "backend" is Compiled during build, Set in AppDelegate.swift
     private var connected:Bool = false // To keep track of server connection status
     private var retryTimer:NSTimer! // To store NSTimer object for retrying server connection
-    private var lastNearbyEventRequest:String = "" // To keep track of last event nearby request
-        // lat,lng,rad
+    private var socketBuffer:[String] = [] // To store failed to send socket events in buffer to retry on connection
+        // event
+    private var socketDict:[NSDictionary] = [] // To store failed to send socket events in buffer to retry on connection
+        // message (dictionary)
     
     // Connect to Backend
     func connect() {
@@ -80,15 +82,21 @@ class NuVentsEndpoint {
     
     // Get nearby events
     func getNearbyEvents(location: CLLocationCoordinate2D, radius: Float) {
-        if (connected) { // Connected to server
-            self.nSocket.emit("event:nearby", ["lat":"\(location.latitude)",
-                "lng":"\(location.longitude)",
-                "rad":"\(radius)",
-                "time":"\(NSDate().timeIntervalSince1970)",
-                "did":NuVentsEndpoint.sharedEndpoint.udid])
-        } else {
-            // Server not connected yet, store in lastNearbyEventRequest variable
-            lastNearbyEventRequest = "\(location.latitude),\(location.longitude),\(radius)"
+        let requestDict = ["lat":"\(location.latitude)",
+            "lng":"\(location.longitude)",
+            "rad":"\(radius)",
+            "time":"\(NSDate().timeIntervalSince1970)",
+            "did":NuVentsEndpoint.sharedEndpoint.udid]
+        // Add to buffer
+        let event:String = "event:nearby"
+        let message:NSDictionary = requestDict
+        self.socketBuffer.append(event)
+        self.socketDict.append(message)
+        // Emit event with acknowledgement
+        self.nSocket.emitWithAck(event, requestDict)(timeoutAfter:0) { data in
+            // Event received on server side, remove from buffer
+            self.socketBuffer = self.socketBuffer.filter({$0 != event})
+            self.socketDict = self.socketDict.filter({$0 != message})
         }
     }
     
@@ -97,14 +105,32 @@ class NuVentsEndpoint {
         let eventDict = ["did":NuVentsEndpoint.sharedEndpoint.udid,
             "eid":eventID as String,
             "time":"\(NSDate().timeIntervalSince1970)"]
-        self.nSocket.emit("event:detail", eventDict)
+        // Add to buffer
+        let event:String = "event:detail"
+        let message:NSDictionary = eventDict
+        self.socketBuffer.append(event)
+        self.socketDict.append(message)
+        self.nSocket.emitWithAck(event, eventDict)(timeoutAfter:0) { data in
+            // Event received on server side, remove from buffer
+            self.socketBuffer = self.socketBuffer.filter({$0 != event})
+            self.socketDict = self.socketDict.filter({$0 != message})
+        }
     }
     
     // Get resources from server
     private func getResourcesFromServer() {
         let deviceDict = ["did":NuVentsEndpoint.sharedEndpoint.udid as String,
             "dm":NuVentsHelper.getDeviceHardware()]
-        self.nSocket.emit("resources", deviceDict) // Request resource sync
+        // Add to buffer
+        let event:String = "resources"
+        let message:NSDictionary = deviceDict
+        self.socketBuffer.append(event)
+        self.socketDict.append(message)
+        self.nSocket.emitWithAck(event, deviceDict)(timeoutAfter:0) { data in
+            // Event received on server side, remove from buffer
+            self.socketBuffer = self.socketBuffer.filter({$0 != event})
+            self.socketDict = self.socketDict.filter({$0 != message})
+        }
     }
     
     // Sync resources with server
@@ -129,6 +155,28 @@ class NuVentsEndpoint {
         println("NuVents Endpoint: Resources Sync Complete")
     }
     
+    // Send request to retrieve missed messages from server
+    private func retrieveMissedMessages() {
+        let deviceDict = ["did":NuVentsEndpoint.sharedEndpoint.udid as String,
+            "dm":NuVentsHelper.getDeviceHardware()]
+        self.nSocket.emit("history", deviceDict)
+    }
+    
+    // Empty local buffer of socket message
+    private func emptyLocalBuffer() {
+        // Empty Local Buffer of SOcket Messages
+        for (var i=0; i<self.socketBuffer.count; i++) {
+            // Emit event
+            let event:String = self.socketBuffer[i]
+            let message:NSDictionary = self.socketDict[i]
+            self.nSocket.emitWithAck(event, message)(timeoutAfter:0) { data in
+                // Event received on server side, remove from buffer
+                self.socketBuffer = self.socketBuffer.filter({$0 != event})
+                self.socketDict = self.socketDict.filter({$0 != message})
+            }
+        }
+    }
+    
     // MARK: socket handling methods
     private func addSocketHandlingMethods() {
         // Nearby Event Received
@@ -137,6 +185,8 @@ class NuVentsEndpoint {
             let jsonData = JSON(data: dataFromString!)
             // Add to global vars
             NuVentsEndpoint.sharedEndpoint.eventJSON[jsonData["eid"].stringValue] = jsonData
+            // Acknowledge Server
+            ack!("Nearby Event Received")
         }
         
         // Nearby Event Error & Status
@@ -147,6 +197,8 @@ class NuVentsEndpoint {
             } else {
                 println("NuVents Endpoint: Event Nearby Received")
             }
+            // Acknowledge Server
+            ack!("Nearby Event Status Received")
         }
         
         // Event Detail Received
@@ -157,6 +209,8 @@ class NuVentsEndpoint {
             NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
             // Notify Views
             NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
+            // Acknowledge Server
+            ack!("Event Detail Received")
         }
         
         // Event Detail Error & Status
@@ -179,21 +233,16 @@ class NuVentsEndpoint {
                 let jsonData:NSData = resp.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
                 self.syncResources(JSON(data: jsonData)) // Sync Resources
             }
+            // Acknowledge Server
+            ack!("Resources Received")
         }
         
         // Connection Status
         nSocket.on("connect") {data, ack in
+            self.emptyLocalBuffer()
+            self.retrieveMissedMessages()
             self.getResourcesFromServer()
             self.connected = true
-            // Send last known nearby event request if it exists
-            if (count(self.lastNearbyEventRequest) > 0) {
-                let comps = self.lastNearbyEventRequest.componentsSeparatedByString(",")
-                let lat = (comps[0] as NSString).doubleValue
-                let lng = (comps[1] as NSString).doubleValue
-                let rad = (comps[2] as NSString).floatValue
-                self.getNearbyEvents(CLLocationCoordinate2DMake(lat, lng), radius: rad)
-                self.lastNearbyEventRequest = "" // Reset last nearby event request variable
-            }
             println("NuVents Endpoint: Connected")
         }
         nSocket.on("disconnect") {data, ack in
