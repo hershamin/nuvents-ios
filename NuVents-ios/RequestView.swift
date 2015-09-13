@@ -28,7 +28,7 @@ class RequestViewController: UIViewController, CLLocationManagerDelegate {
         backBtn.addTarget(self, action: "backBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         //Convert the background color
-        self.view.backgroundColor = UIColor(red:0.61, green:0.34, blue:0.65, alpha:1.0) //#9c57a6
+        self.view.backgroundColor = UIColor(red:0.61, green:0.34, blue:0.65, alpha:1.0) //#9C57A6
         
         //Load the image
         illustrationImage.image = UIImage(named: "RequestIllustration")
@@ -48,7 +48,7 @@ class RequestViewController: UIViewController, CLLocationManagerDelegate {
         //Edit the bringItHere button
         bringItHere.layer.borderColor = UIColor.whiteColor().CGColor
         bringItHere.layer.borderWidth = 1.75
-        bringItHere.layer.cornerRadius = bringItHere.bounds.size.height/4
+        bringItHere.layer.cornerRadius = 12
         bringItHere.addTarget(self, action: "bringItHerePressed", forControlEvents: UIControlEvents.TouchUpInside)
         
         //Test some location stuff
@@ -60,7 +60,6 @@ class RequestViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
             locationManager.startUpdatingLocation()
         }
-    
     }
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
