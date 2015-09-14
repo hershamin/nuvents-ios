@@ -67,9 +67,18 @@ class RequestViewController: UIViewController {
         
     }
     
+    // Called when autolayout is finished laying out subviews
+    override func viewDidLayoutSubviews() {
+        // Resize textfields
+        let nameFrame:CGRect = textForName.frame
+        textForName.frame = CGRectMake(nameFrame.origin.x, nameFrame.origin.y, UIScreen.mainScreen().bounds.width-60, nameFrame.size.height)
+        let emailFrame:CGRect = textForEmail.frame
+        textForEmail.frame = CGRectMake(emailFrame.origin.x, emailFrame.origin.y, UIScreen.mainScreen().bounds.width-60, emailFrame.size.height)
+    }
+    
     func displayLocationInfo (placemark: CLPlacemark) {
         // Add the city to the message text.
-        self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality + "," + placemark.administrativeArea
+        self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality + ", " + placemark.administrativeArea
     }
     
     // Bring it Here button pressed
