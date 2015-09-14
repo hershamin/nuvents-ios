@@ -76,8 +76,26 @@ class NuVentsEndpoint {
     }
     
     // Send event request to add city
-    func sendEventReq(request: String) {
-        self.nSocket.emit("event:request", request)
+    func sendEventReq(city: String, state: String, zip: String, name: String, email: String) {
+        let cityDict = ["city" : "\(city)",
+            "state" : "\(state)",
+            "zip" : "\(zip)",
+            "name" : "\(name)",
+            "email" : "\(email)",
+            "latlng" : "\(NuVentsEndpoint.sharedEndpoint.currLoc.latitude),\(NuVentsEndpoint.sharedEndpoint.currLoc.longitude)",
+            "did" : "\(NuVentsEndpoint.sharedEndpoint.udid)"]
+        // Add to buffer
+        let event:String = "event:request"
+        let eventMess:String = "\(event)||\(cityDict.description)"
+        let message:NSDictionary = cityDict
+        self.socketBuffer.append(eventMess)
+        self.socketDict.append(message)
+        // Emit event with acknowledgement
+        self.nSocket.emitWithAck(event, message)(timeoutAfter:0) { data in
+            // Event received on server side, remove from buffer
+            self.socketBuffer = self.socketBuffer.filter({$0 != eventMess})
+            self.socketDict = self.socketDict.filter({$0 != message})
+        }
     }
     
     // Get nearby events

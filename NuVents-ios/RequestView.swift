@@ -18,6 +18,7 @@ class RequestViewController: UIViewController {
     @IBOutlet weak var textForEmail: UITextField!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var bringItHere: UIButton!
+    var locationPlacemark:CLPlacemark!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,8 @@ class RequestViewController: UIViewController {
                 return
             }
             if placemarks.count > 0 {
-                let placemark = placemarks[0] as! CLPlacemark
+                let placemark:CLPlacemark = placemarks[0] as! CLPlacemark
+                self.locationPlacemark = placemark
                 self.displayLocationInfo(placemark)
             }
         })
@@ -64,6 +66,7 @@ class RequestViewController: UIViewController {
         bringItHere.layer.borderWidth = 3
         bringItHere.layer.cornerRadius = bringItHere.frame.height/2
         bringItHere.addTarget(self, action: "bringItHerePressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        bringItHere.hidden = true
         
         // Tap gesture recognizer to dismiss keybaord
         let tapgGestureRecognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -117,6 +120,7 @@ class RequestViewController: UIViewController {
     func displayLocationInfo (placemark: CLPlacemark) {
         // Add the city to the message text.
         self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality + ", " + placemark.administrativeArea
+        bringItHere.hidden = false
     }
     
     // Bring it Here button pressed
@@ -125,8 +129,7 @@ class RequestViewController: UIViewController {
         dismissKeyboard()
         editingEnd()
         // Send request to backend
-        //
-        println("Bring it here")
+        NuVentsEndpoint.sharedEndpoint.sendEventReq(locationPlacemark.locality, state: locationPlacemark.administrativeArea, zip: locationPlacemark.postalCode, name: textForName.text, email: textForEmail.text)
     }
 
     // Back button action
