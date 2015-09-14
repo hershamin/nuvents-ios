@@ -26,6 +26,21 @@ class RequestViewController: UIViewController {
         // Back button functionality
         backBtn.addTarget(self, action: "backBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        // Init location stuff
+        let locCoord:CLLocationCoordinate2D = NuVentsEndpoint.sharedEndpoint.currLoc
+        let location:CLLocation = CLLocation(latitude: locCoord.latitude, longitude: locCoord.longitude)
+        //Reverse geocode the lat/lng for an address
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
+            if error != nil {
+                println(error)
+                return
+            }
+            if placemarks.count > 0 {
+                let placemark = placemarks[0] as! CLPlacemark
+                self.displayLocationInfo(placemark)
+            }
+        })
+        
         //Convert the background color
         self.view.backgroundColor = UIColor(red:0.61, green:0.34, blue:0.65, alpha:1.0) //#9C57A6
         
@@ -50,20 +65,15 @@ class RequestViewController: UIViewController {
         bringItHere.layer.cornerRadius = bringItHere.frame.height/2
         bringItHere.addTarget(self, action: "bringItHerePressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
-        // Init location stuff
-        let locCoord:CLLocationCoordinate2D = NuVentsEndpoint.sharedEndpoint.currLoc
-        let location:CLLocation = CLLocation(latitude: locCoord.latitude, longitude: locCoord.longitude)
-        //Reverse geocode the lat/lng for an address
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-            if error != nil {
-                println(error)
-                return
-            }
-            if placemarks.count > 0 {
-                let placemark = placemarks[0] as! CLPlacemark
-                self.displayLocationInfo(placemark)
-            }
-        })
+        // Tap gesture recognizer to dismiss keybaord
+        let tapgGestureRecognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.view.addGestureRecognizer(tapgGestureRecognizer)
+        
+        // Text field editing begin/end listeners
+        textForName.addTarget(self, action: "editingBegin", forControlEvents: UIControlEvents.EditingDidBegin)
+        textForEmail.addTarget(self, action: "editingBegin", forControlEvents: UIControlEvents.EditingDidBegin)
+        textForName.addTarget(self, action: "editingEnd", forControlEvents: UIControlEvents.EditingDidEnd)
+        textForEmail.addTarget(self, action: "editingEnd", forControlEvents: UIControlEvents.EditingDidEnd)
         
     }
     
@@ -76,6 +86,34 @@ class RequestViewController: UIViewController {
         textForEmail.frame = CGRectMake(emailFrame.origin.x, emailFrame.origin.y, UIScreen.mainScreen().bounds.width-60, emailFrame.size.height)
     }
     
+    // Text field editing began
+    func editingBegin() {
+        // Move screen up
+        let height = UIScreen.mainScreen().bounds.height
+        let width = UIScreen.mainScreen().bounds.width
+        UIView.animateWithDuration(0.25, animations: {
+            self.view.frame = CGRectMake(0, -height/3, width, height)
+            // x, y, width, height
+        })
+    }
+    
+    // Text field editing end
+    func editingEnd() {
+        // Move screen back down
+        let height = UIScreen.mainScreen().bounds.height
+        let width = UIScreen.mainScreen().bounds.width
+        UIView.animateWithDuration(0.25, animations: {
+            self.view.frame = CGRectMake(0, 0, width, height)
+            // x, y, width, height
+        })
+    }
+    
+    // Dismiss keyboard from both textfields
+    func dismissKeyboard() {
+        textForName.resignFirstResponder()
+        textForEmail.resignFirstResponder()
+    }
+    
     func displayLocationInfo (placemark: CLPlacemark) {
         // Add the city to the message text.
         self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality + ", " + placemark.administrativeArea
@@ -83,6 +121,11 @@ class RequestViewController: UIViewController {
     
     // Bring it Here button pressed
     func bringItHerePressed(sender: UIButton!) {
+        // Dismiss keyboard & bring view down if needed
+        dismissKeyboard()
+        editingEnd()
+        // Send request to backend
+        //
         println("Bring it here")
     }
 
