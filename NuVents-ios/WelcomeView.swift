@@ -28,10 +28,6 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         // Alert user if server is not reachable
         checkServerConn()
         
-        // TEMP CODE, find events in austin, tx
-        NuVentsEndpoint.sharedEndpoint.getNearbyEvents(CLLocationCoordinate2DMake(30.2766, -97.7324), radius: 10000)
-        NuVentsEndpoint.sharedEndpoint.currLoc = CLLocationCoordinate2DMake(30.2766, -97.7324)
-        
         combinationViewBtn.addTarget(self, action: "goToCombinationView:", forControlEvents: UIControlEvents.TouchUpInside) // Combination button action
         detailViewBtn.addTarget(self, action: "goToDetailView:", forControlEvents: UIControlEvents.TouchUpInside) // Detail button action
         requestViewBtn.addTarget(self, action: "goToRequestView:", forControlEvents: UIControlEvents.TouchUpInside) // Request button action
@@ -161,6 +157,8 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         var latestLoc:CLLocation = locations[locations.count - 1] as! CLLocation
         NuVentsEndpoint.sharedEndpoint.currLoc = latestLoc.coordinate
         locationManager.stopUpdatingLocation()
+        // Initiate search for nearby events
+        NuVentsEndpoint.sharedEndpoint.getNearbyEvents(latestLoc.coordinate, radius: 5000)
     }
     
     // Restrict to portrait only
