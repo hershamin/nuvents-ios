@@ -155,6 +155,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // MARK: MapView Delegate Methods
+    // Called when mapview updated user location
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        // Set new location in global variables
+        NuVentsEndpoint.sharedEndpoint.currLoc = userLocation.coordinate
+    }
+    
+    // Delegate method to determine how to render map tiles
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         if (overlay.isKindOfClass(MBXRasterTileOverlay)) {
             let renderer = MBXRasterTileRenderer(overlay: overlay)

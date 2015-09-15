@@ -8,15 +8,25 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet var combinationViewBtn:UIButton!
     @IBOutlet var detailViewBtn:UIButton!
     @IBOutlet var requestViewBtn:UIButton!
+    var locationManager:CLLocationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Start getting device location
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        // Alert user if server is not reachable
+        checkServerConn()
         
         // TEMP CODE, find events in austin, tx
         NuVentsEndpoint.sharedEndpoint.getNearbyEvents(CLLocationCoordinate2DMake(30.2766, -97.7324), radius: 10000)
@@ -38,6 +48,27 @@ class WelcomeViewController: UIViewController {
     // Called when unwinded from request view controller
     @IBAction func unwindToWelcomeFromRequest(sender: UIStoryboardSegue) {
         println("WelcomeView From RequestView")
+    }
+    
+    // Check for server connection & alert user if unreachable
+    func checkServerConn() {
+        let urlString = "http://" + backend + "/"
+        let url = NSURL(string: urlString)!
+        let httpGetTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
+            (data, response, error) in
+            if let resp = response as? NSHTTPURLResponse {
+                // Some kind of response is received, server is reachable
+            } else {
+                // Server unreachable alert user
+                dispatch_async(dispatch_get_main_queue(), {
+                    var alert = UIAlertController(title: "Server connection error", message: "Either Airplane mode is turned on or Internet is not reachable", preferredStyle: UIAlertControllerStyle.Alert)
+                    let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+                    alert.addAction(cancelAction)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
+            }
+        }
+        httpGetTask.resume()
     }
     
     // Segue transition delegate
@@ -90,6 +121,46 @@ class WelcomeViewController: UIViewController {
                 self.goToDetailView(nil)
             })
         }
+    }
+    
+    // MARK: Location manager delegate methods
+    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        var message:String = ""
+        var title:String = ""
+        var showAlert = false
+        // Determine negative statuses
+        if (status == CLAuthorizationStatus.Denied) {
+            // App is denied permission
+            showAlert = true
+            title = "Location Access Disabled"
+            message = "In order to show nearby events, Please open this app's settings and set location access to 'While Using the App'"
+        } else if (status == CLAuthorizationStatus.Restricted) {
+            // Could not be available or parental controls
+            showAlert = true
+            title = "Location Access Restricted"
+            message = "Parental Controls might be enabled or Location Services might be disabled on your device, if possible, Please open this app's settings to disable Parental Controls or enable Location Services"
+        }
+        // Show alert
+        if (showAlert) {
+            var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
+            alert.addAction(cancelAction)
+            let openAction = UIAlertAction(title: "Open Settings", style: UIAlertActionStyle.Default) {
+                (action) in
+                let url = NSURL(string: UIApplicationOpenSettingsURLString)
+                UIApplication.sharedApplication().openURL(url!)
+            }
+            alert.addAction(openAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    // Got device location
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        // Set in global variables
+        var latestLoc:CLLocation = locations[locations.count - 1] as! CLLocation
+        NuVentsEndpoint.sharedEndpoint.currLoc = latestLoc.coordinate
+        locationManager.stopUpdatingLocation()
     }
     
     // Restrict to portrait only
