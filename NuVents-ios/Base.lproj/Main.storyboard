@@ -14,6 +14,7 @@
             <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
             <string>GothamRounded-Bold</string>
+            <string>GothamRounded-Bold</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Book.ttf">
             <string>GothamRounded-Book</string>
@@ -44,24 +45,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ECy-mc-6tU">
-                                <rect key="frame" x="25" y="544" width="95" height="30"/>
-                                <state key="normal" title="Combination">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNX-kQ-gmb">
-                                <rect key="frame" x="529" y="544" width="46" height="30"/>
-                                <state key="normal" title="Detail">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzX-3I-dGQ">
-                                <rect key="frame" x="271" y="544" width="59" height="30"/>
-                                <state key="normal" title="Request">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGo-Ye-5g9">
                                 <rect key="frame" x="50" y="50" width="500" height="242"/>
                                 <constraints>
@@ -70,7 +53,6 @@
                             </imageView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="iXf-yN-ST0">
                                 <rect key="frame" x="281" y="300" width="39" height="37"/>
-                                <color key="tintColor" red="0.92941176469999998" green="0.34509803919999998" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="JZg-wA-IRg"/>
                                     <constraint firstAttribute="width" constant="39" id="g1n-RD-ke6"/>
@@ -88,18 +70,26 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Lj-lB-Dt5">
+                                <rect key="frame" x="238" y="531" width="125" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="iFb-qN-dFp"/>
+                                    <constraint firstAttribute="width" constant="125" id="tor-VE-MVp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamRounded-Bold" family="Gotham Rounded" pointSize="14"/>
+                                <state key="normal" title="CONTINUE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mNX-kQ-gmb" secondAttribute="bottom" constant="26" id="0Bm-fd-RGs"/>
+                            <constraint firstAttribute="centerX" secondItem="3Lj-lB-Dt5" secondAttribute="centerX" id="1Tt-hx-whe"/>
                             <constraint firstItem="tBs-hK-uBs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="AzP-3b-CRa"/>
-                            <constraint firstAttribute="trailing" secondItem="mNX-kQ-gmb" secondAttribute="trailing" constant="25" id="BrT-6U-FsU"/>
                             <constraint firstAttribute="centerX" secondItem="iXf-yN-ST0" secondAttribute="centerX" id="Esf-aB-TKO"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ECy-mc-6tU" secondAttribute="bottom" constant="26" id="M5z-eD-i9b"/>
                             <constraint firstItem="pGo-Ye-5g9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="Qv2-Eq-pDw"/>
-                            <constraint firstItem="ECy-mc-6tU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="25" id="U24-r9-Kl8"/>
-                            <constraint firstAttribute="centerX" secondItem="FzX-3I-dGQ" secondAttribute="centerX" id="W9o-ic-glY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FzX-3I-dGQ" secondAttribute="bottom" constant="26" id="YAF-nO-lZo"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Lj-lB-Dt5" secondAttribute="bottom" constant="29" id="XXE-3p-UNi"/>
                             <constraint firstItem="iXf-yN-ST0" firstAttribute="top" secondItem="pGo-Ye-5g9" secondAttribute="bottom" constant="8" id="ZLa-oO-dju"/>
                             <constraint firstItem="pGo-Ye-5g9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="iRX-Zy-2uZ"/>
                             <constraint firstAttribute="trailing" secondItem="pGo-Ye-5g9" secondAttribute="trailing" constant="50" id="xBS-oJ-SgL"/>
@@ -107,11 +97,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="combinationViewBtn" destination="ECy-mc-6tU" id="1WT-hu-JYH"/>
-                        <outlet property="detailViewBtn" destination="mNX-kQ-gmb" id="7jN-0L-wiy"/>
+                        <outlet property="continueBtn" destination="3Lj-lB-Dt5" id="WUI-Wl-hUC"/>
                         <outlet property="illustrationImg" destination="pGo-Ye-5g9" id="QoY-hL-CYx"/>
                         <outlet property="pageIndicator" destination="iXf-yN-ST0" id="P1q-Kq-9xi"/>
-                        <outlet property="requestViewBtn" destination="FzX-3I-dGQ" id="j7r-P4-XiV"/>
                         <outlet property="skipBtn" destination="tBs-hK-uBs" id="3EO-hI-XbH"/>
                         <segue destination="NP8-2d-YK2" kind="custom" identifier="showRequestView" customClass="RequestViewSegue" customModule="NuVents" customModuleProvider="target" id="zAa-S4-IEd"/>
                         <segue destination="9fn-Rw-EM1" kind="custom" identifier="showCombinationView" customClass="CombinationViewSegue" customModule="NuVents" customModuleProvider="target" id="8w4-Cw-GSb"/>

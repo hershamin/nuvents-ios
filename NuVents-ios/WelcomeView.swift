@@ -10,13 +10,11 @@ import UIKit
 
 class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     
-    @IBOutlet var combinationViewBtn:UIButton!
-    @IBOutlet var detailViewBtn:UIButton!
-    @IBOutlet var requestViewBtn:UIButton!
     var locationManager:CLLocationManager = CLLocationManager()
     @IBOutlet var illustrationImg:UIImageView!
     @IBOutlet var skipBtn:UIButton!
     @IBOutlet var pageIndicator:UIPageControl!
+    @IBOutlet var continueBtn:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +29,11 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         // Set background color
         self.view.backgroundColor = UIColor(red: 0.10, green: 0.73, blue: 0.60, alpha: 1.0) // #19B99A
         
+        // Rounded corners to continue btn
+        continueBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        continueBtn.layer.borderWidth = 3
+        continueBtn.layer.cornerRadius = continueBtn.frame.height/2
+        
         // TEMP CODE, Load the Image
         illustrationImg.image = UIImage(named: "RequestIllustration.png")
         
@@ -39,9 +42,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         
         // Init Buttons
         skipBtn.addTarget(self, action: "skipBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        combinationViewBtn.addTarget(self, action: "goToCombinationView:", forControlEvents: UIControlEvents.TouchUpInside) // Combination button action
-        detailViewBtn.addTarget(self, action: "goToDetailView:", forControlEvents: UIControlEvents.TouchUpInside) // Detail button action
-        requestViewBtn.addTarget(self, action: "goToRequestView:", forControlEvents: UIControlEvents.TouchUpInside) // Request button action
+        continueBtn.addTarget(self, action: "continueBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Restore detail view controller
         restoreDetailView() // Will only restore detail view if restore file found
@@ -59,7 +60,18 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     
     // Skip Button Pressed
     func skipBtnPressed(sender:UIButton!) {
-        println("Skip Button Pressed")
+        if NuVentsEndpoint.sharedEndpoint.eventJSON.count > 0 {
+            // Events found, go to combination view
+            self.performSegueWithIdentifier("showCombinationView", sender: nil)
+        } else {
+            // No events found, go to request view
+            self.performSegueWithIdentifier("showRequestView", sender: nil)
+        }
+    }
+    
+    // Continue Button Pressed
+    func continueBtnPressed(sender:UIButton!) {
+        println("Continue Button Pressed")
     }
     
     // Check for server connection & alert user if unreachable
@@ -105,22 +117,6 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
     }
     
-    // Func to go to detail view
-    func goToDetailView(sender:UIButton!) {
-        NuVentsEndpoint.sharedEndpoint.detailFromWelcome = true
-        self.performSegueWithIdentifier("showDetailView", sender: nil)
-    }
-    
-    // Func to go to combination view
-    func goToCombinationView(sender:UIButton!) {
-        self.performSegueWithIdentifier("showCombinationView", sender: nil)
-    }
-    
-    // Func to go to request view
-    func goToRequestView(sender:UIButton!) {
-        self.performSegueWithIdentifier("showRequestView", sender: nil)
-    }
-    
     // Restore detail view controller
     func restoreDetailView() {
         let filePath = NuVentsHelper.getResourcePath("detailView", type: "tmp")
@@ -130,7 +126,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
             NuVentsEndpoint.sharedEndpoint.tempJson = JSON(data: fileData!)
             // Open detail view controller
             dispatch_async(dispatch_get_main_queue(), {
-                self.goToDetailView(nil)
+                self.performSegueWithIdentifier("showDetailView", sender: nil)
             })
         }
     }
