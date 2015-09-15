@@ -145,7 +145,7 @@ class NuVentsEndpoint {
         let event:String = "resources"
         let eventMess:String = "\(event)||\(deviceDict.description)"
         let message:NSDictionary = deviceDict
-        self.socketBuffer.append(event)
+        self.socketBuffer.append(eventMess)
         self.socketDict.append(message)
         self.nSocket.emitWithAck(event, deviceDict)(timeoutAfter:0) { data in
             // Event received on server side, remove from buffer
