@@ -14,6 +14,9 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var detailViewBtn:UIButton!
     @IBOutlet var requestViewBtn:UIButton!
     var locationManager:CLLocationManager = CLLocationManager()
+    @IBOutlet var illustrationImg:UIImageView!
+    @IBOutlet var skipBtn:UIButton!
+    @IBOutlet var pageIndicator:UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +28,17 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        // Set background color
+        self.view.backgroundColor = UIColor(red: 0.10, green: 0.73, blue: 0.60, alpha: 1.0) // #19B99A
+        
+        // TEMP CODE, Load the Image
+        illustrationImg.image = UIImage(named: "RequestIllustration.png")
+        
         // Alert user if server is not reachable
         checkServerConn()
         
+        // Init Buttons
+        skipBtn.addTarget(self, action: "skipBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         combinationViewBtn.addTarget(self, action: "goToCombinationView:", forControlEvents: UIControlEvents.TouchUpInside) // Combination button action
         detailViewBtn.addTarget(self, action: "goToDetailView:", forControlEvents: UIControlEvents.TouchUpInside) // Detail button action
         requestViewBtn.addTarget(self, action: "goToRequestView:", forControlEvents: UIControlEvents.TouchUpInside) // Request button action
@@ -44,6 +55,11 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     // Called when unwinded from request view controller
     @IBAction func unwindToWelcomeFromRequest(sender: UIStoryboardSegue) {
         println("WelcomeView From RequestView")
+    }
+    
+    // Skip Button Pressed
+    func skipBtnPressed(sender:UIButton!) {
+        println("Skip Button Pressed")
     }
     
     // Check for server connection & alert user if unreachable
