@@ -17,6 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var eventsJson : [String:JSON]!
     var mapMarkers:[MBXPointAnnotation] = []
     var calloutView:SMCalloutView!
+    var calloutViewVisible:Bool!
     var selectedEventID:String!
     @IBOutlet var attributionBtn:UIButton!
     
@@ -39,11 +40,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Init MapView
         // Change color of user location dot to branding pink color
         mapView.tintColor = UIColor(red: 0.91, green: 0.337, blue: 0.427, alpha: 1) // #E8566D
-        // Rest of the setup
-        let centerCoords = CLLocationCoordinate2DMake(30.27, -97.74)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(centerCoords, span)
-        mapView.setRegion(region, animated: true)
         
         // Add map markers based from global variable to mapMarkers
         eventsJson = NuVentsEndpoint.sharedEndpoint.eventJSON
@@ -63,9 +59,35 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.mapView.addAnnotation(annotation)
         }
         
+        // Mapview region to fit all annotations
+        containAllAnnotations()
+        
         //Set up listeners for NSNotificationCenter
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
+    }
+    
+    // Function to set map region to contain all annotations
+    func containAllAnnotations() {
+        
+        if self.mapView.annotations.count == 0 {
+            return
+        }
+        
+        var zoomRect:MKMapRect = MKMapRectNull
+        for (var i=0; i<self.mapView.annotations.count; i++) {
+            if let annotation:MBXPointAnnotation = self.mapView.annotations[i] as? MBXPointAnnotation {
+                let annotationPoint:MKMapPoint = MKMapPointForCoordinate(annotation.coordinate)
+                let pointRect:MKMapRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0)
+                if (MKMapRectIsNull(zoomRect)) {
+                    zoomRect = pointRect
+                } else {
+                    zoomRect = MKMapRectUnion(zoomRect, pointRect)
+                }
+            }
+        }
+        
+        self.mapView.setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsetsMake(20, 20, 20, 20), animated: true)
     }
     
     // Function to return image for map marker
@@ -206,12 +228,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Dismiss SMCalloutView
         if (calloutView != nil) {
             calloutView.dismissCalloutAnimated(true)
+            calloutViewVisible = false
         }
     }
     
     // Delegate method to listen for map region changed to move SMCalloutView with map
     func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
-        if (calloutView != nil) {
+        if (calloutView != nil && calloutViewVisible == true) {
             // Get appropriate points to move callout location
             var mapPt:CGPoint = mapView.convertCoordinate(calloutView.eventLocation, toPointToView: mapView)
             let calloutRect:CGRect = CGRectMake(mapPt.x, mapPt.y, 0, 0)
@@ -267,6 +290,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         calloutView.userInteractionEnabled = true
         //calloutView.presentCalloutFromRect(calloutRect, inLayer: mapView.layer, constrainedToLayer: mapView.layer, animated: true)
         calloutView.presentCalloutFromRect(calloutRect, inView: mapView, constrainedToView: mapView, animated: true)
+        calloutViewVisible = true
         calloutView.layer.zPosition = CGFloat(MAXFLOAT)
     }
     
