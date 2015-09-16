@@ -80,15 +80,6 @@ class RequestViewController: UIViewController {
         
     }
     
-    // Called when autolayout is finished laying out subviews
-    override func viewDidLayoutSubviews() {
-        // Resize textfields
-        let nameFrame:CGRect = textForName.frame
-        textForName.frame = CGRectMake(nameFrame.origin.x, nameFrame.origin.y, UIScreen.mainScreen().bounds.width-60, nameFrame.size.height)
-        let emailFrame:CGRect = textForEmail.frame
-        textForEmail.frame = CGRectMake(emailFrame.origin.x, emailFrame.origin.y, UIScreen.mainScreen().bounds.width-60, emailFrame.size.height)
-    }
-    
     // Text field editing began
     func editingBegin() {
         // Move screen up

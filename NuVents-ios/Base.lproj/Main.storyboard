@@ -20,8 +20,10 @@
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
             <string>GothamRounded-Book</string>
+            <string>GothamRounded-Book</string>
         </mutableArray>
         <mutableArray key="Gotham-Rounded-Medium.ttf">
+            <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
@@ -45,13 +47,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGo-Ye-5g9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGo-Ye-5g9">
                                 <rect key="frame" x="50" y="50" width="500" height="242"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pGo-Ye-5g9" secondAttribute="height" multiplier="1:1" id="8Wb-T1-28q"/>
                                 </constraints>
                             </imageView>
-                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="iXf-yN-ST0">
+                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="iXf-yN-ST0">
                                 <rect key="frame" x="281" y="300" width="39" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="JZg-wA-IRg"/>
@@ -82,25 +84,69 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k75-3i-gIA">
+                                <rect key="frame" x="10" y="340" width="580" height="178"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eGv-nO-uOD" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="580" height="178"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vT5-TH-z5L">
+                                                <rect key="frame" x="20" y="10" width="540" height="43"/>
+                                                <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2b-KF-41h">
+                                                <rect key="frame" x="20" y="63" width="540" height="60"/>
+                                                <fontDescription key="fontDescription" name="GothamRounded-Book" family="Gotham Rounded" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="vT5-TH-z5L" firstAttribute="leading" secondItem="eGv-nO-uOD" secondAttribute="leading" constant="20" id="KOo-wa-E5c"/>
+                                            <constraint firstAttribute="trailing" secondItem="O2b-KF-41h" secondAttribute="trailing" constant="20" id="NOl-rb-J0Z"/>
+                                            <constraint firstItem="O2b-KF-41h" firstAttribute="leading" secondItem="eGv-nO-uOD" secondAttribute="leading" constant="20" id="Xxk-lI-nuj"/>
+                                            <constraint firstItem="vT5-TH-z5L" firstAttribute="top" secondItem="eGv-nO-uOD" secondAttribute="top" constant="10" id="b8B-Zz-dTC"/>
+                                            <constraint firstAttribute="trailing" secondItem="vT5-TH-z5L" secondAttribute="trailing" constant="20" id="cYh-yv-Wo7"/>
+                                            <constraint firstAttribute="height" constant="150" id="kzY-E1-afp"/>
+                                            <constraint firstItem="O2b-KF-41h" firstAttribute="top" secondItem="vT5-TH-z5L" secondAttribute="bottom" constant="10" id="sw5-7H-iAy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="eGv-nO-uOD" secondAttribute="bottom" priority="250" id="Cgp-uh-dwX"/>
+                                    <constraint firstAttribute="width" secondItem="eGv-nO-uOD" secondAttribute="width" id="LWU-ga-BQI"/>
+                                    <constraint firstItem="eGv-nO-uOD" firstAttribute="top" secondItem="k75-3i-gIA" secondAttribute="top" id="Xrl-Dw-tPo"/>
+                                    <constraint firstAttribute="trailing" secondItem="eGv-nO-uOD" secondAttribute="trailing" id="bR9-dG-rVz"/>
+                                    <constraint firstItem="eGv-nO-uOD" firstAttribute="leading" secondItem="k75-3i-gIA" secondAttribute="leading" id="fOY-Ls-pqf"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="3Lj-lB-Dt5" secondAttribute="centerX" id="1Tt-hx-whe"/>
                             <constraint firstItem="tBs-hK-uBs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="AzP-3b-CRa"/>
                             <constraint firstAttribute="centerX" secondItem="iXf-yN-ST0" secondAttribute="centerX" id="Esf-aB-TKO"/>
+                            <constraint firstItem="k75-3i-gIA" firstAttribute="top" secondItem="pGo-Ye-5g9" secondAttribute="bottom" constant="48" id="Qeg-Bb-KbA"/>
                             <constraint firstItem="pGo-Ye-5g9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="Qv2-Eq-pDw"/>
+                            <constraint firstItem="k75-3i-gIA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="W0Y-bF-zOs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Lj-lB-Dt5" secondAttribute="bottom" constant="29" id="XXE-3p-UNi"/>
                             <constraint firstItem="iXf-yN-ST0" firstAttribute="top" secondItem="pGo-Ye-5g9" secondAttribute="bottom" constant="8" id="ZLa-oO-dju"/>
                             <constraint firstItem="pGo-Ye-5g9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="iRX-Zy-2uZ"/>
+                            <constraint firstItem="3Lj-lB-Dt5" firstAttribute="top" secondItem="k75-3i-gIA" secondAttribute="bottom" constant="8" id="tVG-Bk-nmq"/>
+                            <constraint firstAttribute="trailing" secondItem="k75-3i-gIA" secondAttribute="trailing" constant="10" id="vP9-vL-Rbo"/>
                             <constraint firstAttribute="trailing" secondItem="pGo-Ye-5g9" secondAttribute="trailing" constant="50" id="xBS-oJ-SgL"/>
                             <constraint firstAttribute="trailing" secondItem="tBs-hK-uBs" secondAttribute="trailing" constant="15" id="zVA-R2-vHW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="continueBtn" destination="3Lj-lB-Dt5" id="WUI-Wl-hUC"/>
+                        <outlet property="descLabel" destination="O2b-KF-41h" id="BTQ-8V-DZU"/>
                         <outlet property="illustrationImg" destination="pGo-Ye-5g9" id="QoY-hL-CYx"/>
                         <outlet property="pageIndicator" destination="iXf-yN-ST0" id="P1q-Kq-9xi"/>
                         <outlet property="skipBtn" destination="tBs-hK-uBs" id="3EO-hI-XbH"/>
+                        <outlet property="titleLabel" destination="vT5-TH-z5L" id="1eP-2e-DEf"/>
                         <segue destination="NP8-2d-YK2" kind="custom" identifier="showRequestView" customClass="RequestViewSegue" customModule="NuVents" customModuleProvider="target" id="zAa-S4-IEd"/>
                         <segue destination="9fn-Rw-EM1" kind="custom" identifier="showCombinationView" customClass="CombinationViewSegue" customModule="NuVents" customModuleProvider="target" id="8w4-Cw-GSb"/>
                         <segue destination="9hX-LZ-EDY" kind="custom" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="glk-tE-vyg"/>
@@ -716,7 +762,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A0f-aX-0eB">
                                 <rect key="frame" x="10" y="360" width="580" height="163"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fl8-jO-XG8" userLabel="ContentView">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fl8-jO-XG8" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="580" height="163"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0aa-OQ-Sik">
@@ -727,7 +773,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABD-ki-xZV">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABD-ki-xZV">
                                                 <rect key="frame" x="20" y="111" width="540" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="zbC-mx-ZZB"/>
@@ -771,6 +817,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="fl8-jO-XG8" firstAttribute="top" secondItem="A0f-aX-0eB" secondAttribute="top" id="BxC-1b-bEe"/>
+                                    <constraint firstAttribute="width" secondItem="fl8-jO-XG8" secondAttribute="width" id="PJE-CR-UbQ"/>
                                     <constraint firstAttribute="trailing" secondItem="fl8-jO-XG8" secondAttribute="trailing" id="fQZ-Pg-pFT"/>
                                     <constraint firstAttribute="bottom" secondItem="fl8-jO-XG8" secondAttribute="bottom" priority="250" id="kCz-yE-6ZZ"/>
                                     <constraint firstItem="fl8-jO-XG8" firstAttribute="leading" secondItem="A0f-aX-0eB" secondAttribute="leading" id="yeC-GT-AwM"/>

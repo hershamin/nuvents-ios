@@ -15,10 +15,20 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var skipBtn:UIButton!
     @IBOutlet var pageIndicator:UIPageControl!
     @IBOutlet var continueBtn:UIButton!
+    @IBOutlet var titleLabel:UILabel!
+    @IBOutlet var descLabel:UILabel!
+    var illustrationImgs:[String] = []
+    var titles:[String] = []
+    var descs:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Load arrays for illustration images, titles, and descriptions
+        illustrationImgs = ["RequestIllustration.png", "RequestIllustration.png", "RequestIllustration.png"]
+        titles = ["Title\n1", "title\n2", "title\n3"]
+        descs = ["DESCRIPTIO\nDESC\nDESW11", "DESCRIPTIO\nDESC\nDESW22", "DESCRIPTIO\nDESC\nDESW33"]
         
         // Start getting device location
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -34,8 +44,10 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         continueBtn.layer.borderWidth = 3
         continueBtn.layer.cornerRadius = continueBtn.frame.height/2
         
-        // TEMP CODE, Load the Image
-        illustrationImg.image = UIImage(named: "RequestIllustration.png")
+        // Load Image, title, & description
+        illustrationImg.image = UIImage(named: illustrationImgs[0])
+        titleLabel.text = titles[0]
+        descLabel.text = descs[0]
         
         // Alert user if server is not reachable
         checkServerConn()
@@ -71,7 +83,24 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     
     // Continue Button Pressed
     func continueBtnPressed(sender:UIButton!) {
-        println("Continue Button Pressed")
+        // Check current page
+        if (pageIndicator.currentPage == 0) {
+            // Load page 1, load from appropriate array indexes
+            illustrationImg.image = UIImage(named: illustrationImgs[1])
+            titleLabel.text = titles[1]
+            descLabel.text = descs[1]
+            pageIndicator.currentPage = 1 // Change page on page indicator
+        } else if (pageIndicator.currentPage == 1) {
+            // Load page 2, load from appropriate array indexes
+            illustrationImg.image = UIImage(named: illustrationImgs[2])
+            titleLabel.text = titles[2]
+            descLabel.text = descs[2]
+            pageIndicator.currentPage = 2 // Change page on page indicator
+            continueBtn.setTitle("GET STARTED", forState: UIControlState.Normal) // Change title of "CONTINUE" button
+        } else if (pageIndicator.currentPage == 2) {
+            // Call Skip button function
+            skipBtnPressed(nil)
+        }
     }
     
     // Check for server connection & alert user if unreachable
