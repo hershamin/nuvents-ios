@@ -26,7 +26,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Load arrays for illustration images, titles, and descriptions
-        illustrationImgs = ["RequestIllustration.png", "RequestIllustration.png", "RequestIllustration.png"]
+        illustrationImgs = ["EventIllustration.png", "EventIllustration.png", "EventIllustration.png"]
         titles = ["Title\n1", "title\n2", "title\n3"]
         descs = ["DESCRIPTIO\nDESC\nDESW11", "DESCRIPTIO\nDESC\nDESW22", "DESCRIPTIO\nDESC\nDESW33"]
         

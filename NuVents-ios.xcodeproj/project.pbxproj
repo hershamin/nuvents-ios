@@ -17,6 +17,7 @@
 		BA09BFCC1B6F294100138139 /* myLocationBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = BA09BFCB1B6F294100138139 /* myLocationBtn.png */; };
 		BA09D0611B78086000138139 /* NuVentsHelperJS.js in Resources */ = {isa = PBXBuildFile; fileRef = BA09D0601B78086000138139 /* NuVentsHelperJS.js */; };
 		BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1B733F1AFFFADE00A15B77 /* location.gpx */; };
+		BA2004401BAA2BB6005DAFF9 /* EventIllustration.png in Resources */ = {isa = PBXBuildFile; fileRef = BA20043F1BAA2BB6005DAFF9 /* EventIllustration.png */; };
 		BA4B05D31B79C2BB00A5FCBB /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4B05D21B79C2BB00A5FCBB /* UIView+Origami.m */; };
 		BA4B05D81B79C43700A5FCBB /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4B05D61B79C43700A5FCBB /* FilterView.swift */; };
 		BA4B05D91B79C43700A5FCBB /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4B05D71B79C43700A5FCBB /* FilterView.xib */; };
@@ -98,6 +99,7 @@
 		BA09BFCB1B6F294100138139 /* myLocationBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myLocationBtn.png; sourceTree = "<group>"; };
 		BA09D0601B78086000138139 /* NuVentsHelperJS.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = NuVentsHelperJS.js; sourceTree = "<group>"; };
 		BA1B733F1AFFFADE00A15B77 /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = location.gpx; sourceTree = "<group>"; };
+		BA20043F1BAA2BB6005DAFF9 /* EventIllustration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventIllustration.png; sourceTree = "<group>"; };
 		BA4B05D11B79C2BB00A5FCBB /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
 		BA4B05D21B79C2BB00A5FCBB /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
 		BA4B05D61B79C43700A5FCBB /* FilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				8F665AFF1BA4D2690057FC81 /* RequestIllustration.png */,
+				BA20043F1BAA2BB6005DAFF9 /* EventIllustration.png */,
 				BA09BFCB1B6F294100138139 /* myLocationBtn.png */,
 				BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */,
 				BA09BFC41B6D99A100138139 /* combinationViewTabBar.png */,
@@ -472,6 +475,7 @@
 				BA09D0611B78086000138139 /* NuVentsHelperJS.js in Resources */,
 				BA09BFC31B6D882700138139 /* Gotham-Rounded-Medium.ttf in Resources */,
 				BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */,
+				BA2004401BAA2BB6005DAFF9 /* EventIllustration.png in Resources */,
 				BA09BFC21B6D882700138139 /* Gotham-Rounded-Light.ttf in Resources */,
 				BA09BFCC1B6F294100138139 /* myLocationBtn.png in Resources */,
 				BAEFAD4A1B4F4570003F0D0B /* Siren.bundle in Resources */,
