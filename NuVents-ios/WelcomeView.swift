@@ -166,11 +166,17 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     // Got device location
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         // Set in global variables
-        var latestLoc:CLLocation = locations[locations.count - 1] as! CLLocation
+        var latestLoc:CLLocation = locations.last as! CLLocation
         NuVentsEndpoint.sharedEndpoint.currLoc = latestLoc.coordinate
-        locationManager.stopUpdatingLocation()
-        // Initiate search for nearby events
-        NuVentsEndpoint.sharedEndpoint.getNearbyEvents(latestLoc.coordinate, radius: 5000)
+        // Check if recent
+        let eventDate:NSDate = latestLoc.timestamp
+        let howRecent:NSTimeInterval = eventDate.timeIntervalSinceNow
+        if (abs(howRecent) < 3.0) {
+            // Only stop if less than 3 seconds old
+            locationManager.stopUpdatingLocation()
+            // Initiate search for nearby events
+            NuVentsEndpoint.sharedEndpoint.getNearbyEvents(latestLoc.coordinate, radius: 5000)
+        }
     }
     
     // Restrict to portrait only
