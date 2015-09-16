@@ -97,6 +97,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
             descLabel.text = descs[2]
             pageIndicator.currentPage = 2 // Change page on page indicator
             continueBtn.setTitle("GET STARTED", forState: UIControlState.Normal) // Change title of "CONTINUE" button
+            skipBtn.hidden = true // Hide Skip button
         } else if (pageIndicator.currentPage == 2) {
             // Call Skip button function
             skipBtnPressed(nil)
