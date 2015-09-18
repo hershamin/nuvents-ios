@@ -30,7 +30,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         // Init MapBox Overlay
         MBXMapKit.setAccessToken(NuVentsEndpoint.sharedEndpoint.mapboxToken)
-        var mapboxOverlay = MBXRasterTileOverlay(mapID: NuVentsEndpoint.sharedEndpoint.mapboxMapId)
+        let mapboxOverlay = MBXRasterTileOverlay(mapID: NuVentsEndpoint.sharedEndpoint.mapboxMapId)
         mapView.addOverlay(mapboxOverlay)
         
         // Init Attribution button
@@ -95,7 +95,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if let markerImg = UIImage(contentsOfFile: NuVentsHelper.getResourcePath(eventJson["marker"].stringValue, type: "mapMarkerHigh")) {
             return markerImg // Marker Image
         } else {
-            return UIImage.new() // Empty UIImage
+            return UIImage() // Empty UIImage
         }
     }
     
@@ -138,8 +138,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Iterate & search in title
         for annotation in self.mapView.annotations {
             if let mbxAnn = annotation as? MBXPointAnnotation {
-                let title = mbxAnn.title.lowercaseString
-                if (count(searchText) == 0) {
+                let title = mbxAnn.title!.lowercaseString
+                if (searchText.characters.count == 0) {
                     mapView.addAnnotation(mbxAnn)
                 } else if (title.rangeOfString(searchText) != nil) {
                     mapView.addAnnotation(mbxAnn)
@@ -158,16 +158,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // My Location button pressed
     func myLocBtnPressed(sender:UIButton!) {
         // Zoom in to go to user location if visible on map
-        if let currLoc = mapView.userLocation {
-            let coords = currLoc.coordinate
-            var camera = MKMapCamera(lookingAtCenterCoordinate: coords, fromEyeCoordinate: coords, eyeAltitude: 2500)
-            self.mapView.setCamera(camera, animated: true)
-        }
+        let currLoc = mapView.userLocation
+        let coords = currLoc.coordinate
+        var camera = MKMapCamera(lookingAtCenterCoordinate: coords, fromEyeCoordinate: coords, eyeAltitude: 2500)
+        self.mapView.setCamera(camera, animated: true)
     }
     
     // Restrict to portrait only
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func didReceiveMemoryWarning() {
@@ -178,13 +177,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: MapView Delegate Methods
     // Called when mapview updated user location
-    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
         // Set new location in global variables
         NuVentsEndpoint.sharedEndpoint.currLoc = userLocation.coordinate
     }
     
     // Delegate method to determine how to render map tiles
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer! {
         if (overlay.isKindOfClass(MBXRasterTileOverlay)) {
             let renderer = MBXRasterTileRenderer(overlay: overlay)
             return renderer
@@ -193,7 +192,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // Delegate method to determine how map markers would look
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView! {
         // User location map marker
         if (annotation.isKindOfClass(MKUserLocation)) {
             return nil
@@ -209,8 +208,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             
             let eventJson:JSON = eventsJson[annotationMBX.eventID]! // Event properties
-            annView.image = self.getMarkerImg(eventJson) // Set marker image
-            annView.canShowCallout = false
+            annView!.image = self.getMarkerImg(eventJson) // Set marker image
+            annView!.canShowCallout = false
             
             return annView
         }
@@ -219,9 +218,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // Delegate method to listen to marker deselect to dismiss SMCalloutView
-    func mapView(mapView: MKMapView!, didDeselectAnnotationView view: MKAnnotationView!) {
+    func mapView(mapView: MKMapView, didDeselectAnnotationView view: MKAnnotationView) {
         // Return if annotation is current location
-        if (view.annotation.isKindOfClass(MKUserLocation)) {
+        if (view.annotation!.isKindOfClass(MKUserLocation)) {
             return
         }
         
@@ -233,10 +232,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // Delegate method to listen for map region changed to move SMCalloutView with map
-    func mapView(mapView: MKMapView!, regionDidChangeAnimated animated: Bool) {
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         if (calloutView != nil && calloutViewVisible == true) {
             // Get appropriate points to move callout location
-            var mapPt:CGPoint = mapView.convertCoordinate(calloutView.eventLocation, toPointToView: mapView)
+            let mapPt:CGPoint = mapView.convertCoordinate(calloutView.eventLocation, toPointToView: mapView)
             let calloutRect:CGRect = CGRectMake(mapPt.x, mapPt.y, 0, 0)
             // Update callout frame
             calloutView.presentCalloutFromRect(calloutRect, inView: mapView, constrainedToView: mapView, animated: false)
@@ -245,16 +244,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // Delegate method to listen for map region will change to hide SMCalloutView with map
-    func mapView(mapView: MKMapView!, regionWillChangeAnimated animated: Bool) {
+    func mapView(mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         if (calloutView != nil) {
             self.calloutView.dismissCalloutAnimated(false)
         }
     }
     
     // Delegate method to listen to marker click to show SMCalloutView
-    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
         // Return if annotation is current location
-        if (view.annotation.isKindOfClass(MKUserLocation)) {
+        if (view.annotation!.isKindOfClass(MKUserLocation)) {
             return
         }
         
@@ -277,7 +276,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mediaImgView.frame = CGRectMake(0, 0, 55, 55)
         calloutView.leftAccessoryView = mediaImgView
         // Detail view button
-        var detailViewBtn:UIButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton
+        let detailViewBtn:UIButton = UIButton(type: UIButtonType.DetailDisclosure)
         detailViewBtn.tintColor = UIColor(red: 0.91, green: 0.337, blue: 0.427, alpha: 1) // #E8566D
         selectedEventID = annMBX.eventID // Set event ID to retrieve when button is pressed
         detailViewBtn.addTarget(self, action: "openDetailView:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -296,7 +295,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: Attribution Function when map attribution is clicked
     func mapAttrBtnClicked(sender:UIButton!) {
-        var alertController = UIAlertController(title: "Map Attribution", message: "© Mapbox, © OpenStreetMap", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "Map Attribution", message: "© Mapbox, © OpenStreetMap", preferredStyle: UIAlertControllerStyle.Alert)
         // Go to mapbox about page
         let aboutAction = UIAlertAction(title: "About", style: UIAlertActionStyle.Default) {
             (action) in

@@ -12,8 +12,8 @@ class CombinationViewSegue: UIStoryboardSegue {
     
     override func perform() {
         // Assign the source and destination views to local variables
-        var sourceVC = self.sourceViewController.view as UIView!
-        var destVC = self.destinationViewController.view as UIView!
+        let sourceVC = self.sourceViewController.view as UIView!
+        let destVC = self.destinationViewController.view as UIView!
         
         // Get the screen width & height
         let screenWidth = UIScreen.mainScreen().bounds.size.width
@@ -32,7 +32,7 @@ class CombinationViewSegue: UIStoryboardSegue {
             destVC.frame = CGRectMake(0, 0, screenWidth, screenHeight)
             
             }) { (Finished) -> Void in
-                self.sourceViewController.presentViewController(self.destinationViewController as! UIViewController, animated: false, completion: nil)
+                self.sourceViewController.presentViewController(self.destinationViewController , animated: false, completion: nil)
         }
     }
 

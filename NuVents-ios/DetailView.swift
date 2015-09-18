@@ -13,7 +13,7 @@ import EventKitUI
 // String extension to convert html to attributed string
 extension String {
     var html2AttributedString:NSAttributedString {
-        return NSAttributedString(data: dataUsingEncoding(NSUTF8StringEncoding)!, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil, error: nil)!
+        return try! NSAttributedString(data: dataUsingEncoding(NSUTF8StringEncoding)!, options:[NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding], documentAttributes: nil)
     }
 }
 
@@ -39,10 +39,10 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         backBtn.addTarget(self, action: "backBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Init Description WebView
-        var descHtmlStr:String = eventJson["description"].stringValue
-        var descHtmlAttr:NSMutableAttributedString = NSMutableAttributedString(attributedString: descHtmlStr.html2AttributedString)
+        let descHtmlStr:String = eventJson["description"].stringValue
+        let descHtmlAttr:NSMutableAttributedString = NSMutableAttributedString(attributedString: descHtmlStr.html2AttributedString)
         descHtmlAttr.enumerateAttribute(NSFontAttributeName, inRange: NSMakeRange(0, descHtmlAttr.length), options: NSAttributedStringEnumerationOptions.LongestEffectiveRangeNotRequired) {
-            (attribute:AnyObject!, range:NSRange, stop:UnsafeMutablePointer<ObjCBool>) -> Void in
+            (attribute:AnyObject?, range:NSRange, stop:UnsafeMutablePointer<ObjCBool>) -> Void in
             if let attrFont = attribute as? UIFont {
                 let scaledFont = UIFont(descriptor: attrFont.fontDescriptor(), size: 13.0)
                 descHtmlAttr.addAttribute(NSFontAttributeName, value: scaledFont, range: range)
@@ -112,7 +112,10 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         // Erase json file written at the start of this view controller, this signifies that app did not crash while on this view
         let jsonFilePath = NuVentsHelper.getResourcePath("detailView", type: "tmp")
         let fm = NSFileManager.defaultManager()
-        fm.removeItemAtPath(jsonFilePath, error: nil)
+        do {
+            try fm.removeItemAtPath(jsonFilePath)
+        } catch _ {
+        }
     }
     
     // View Map button pressed
@@ -136,16 +139,16 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
     // Add to calendar button pressed
     func addToCalBtnPressed(sender:UIButton!) {
         // Event store (calendar) config
-        var eventStore:EKEventStore = EKEventStore()
+        let eventStore:EKEventStore = EKEventStore()
         var calendarAuthStatus = EKAuthorizationStatus.Denied
         
         // Get calendar authorization status & act accordingly
         var showAlert = false
         var title:String = ""
         var message:String = ""
-        calendarAuthStatus = EKEventStore.authorizationStatusForEntityType(EKEntityTypeEvent)
+        calendarAuthStatus = EKEventStore.authorizationStatusForEntityType(EKEntityType.Event)
         if (calendarAuthStatus == EKAuthorizationStatus.NotDetermined) { // Ask for access then add
-            eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: {
+            eventStore.requestAccessToEntityType(EKEntityType.Event, completion: {
                 (granted, error) in
                 if (granted) {
                     dispatch_async(dispatch_get_main_queue(), {self.addEventToCalendar(eventStore)})
@@ -165,7 +168,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         
         // Show alert view
         if (showAlert) {
-            var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
             let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
             alert.addAction(cancelAction)
             let openAction = UIAlertAction(title: "Open Settings", style: UIAlertActionStyle.Default) {
@@ -193,7 +196,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
     
     // Helper function to add event to calendar
     func addEventToCalendar(eventStore: EKEventStore) {
-        var event:EKEvent = EKEvent(eventStore: eventStore)
+        let event:EKEvent = EKEvent(eventStore: eventStore)
         
         // Set event attributes
         event.calendar = eventStore.defaultCalendarForNewEvents
@@ -204,7 +207,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         event.URL = NSURL(string: eventJson["website"].stringValue)
         
         // Open eventkit UI so user can save to calendar
-        var eventController:EKEventEditViewController = EKEventEditViewController()
+        let eventController:EKEventEditViewController = EKEventEditViewController()
         eventController.eventStore = eventStore
         eventController.event = event
         eventController.editViewDelegate = self
@@ -213,10 +216,10 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
     }
     
     // Event kit (calendar) edit view delegate
-    func eventEditViewController(controller: EKEventEditViewController!, didCompleteWithAction action: EKEventEditViewAction) {
-        if (Int(action.value) == Int(EKEventEditViewActionCanceled.value)) {
+    func eventEditViewController(controller: EKEventEditViewController, didCompleteWithAction action: EKEventEditViewAction) {
+        if (action == EKEventEditViewAction.Canceled) {
             // User tapped cancel
-        } else if (Int(action.value) == Int(EKEventEditViewActionSaved.value)) {
+        } else if (action == EKEventEditViewAction.Saved) {
             // User saved event
             let eventTitle = eventJson["title"].stringValue
             let eventTime = NuVentsHelper.getHumanReadableDate(eventJson["time"]["start"].stringValue)
@@ -227,7 +230,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
             dispatch_async(dispatch_get_main_queue(), { // Ensure alert is shown on UI (main) thread
                 self.presentViewController(alert, animated: true, completion: nil)
             })
-        } else if (Int(action.value) == Int(EKEventEditViewActionDeleted.value)) {
+        } else if (action == EKEventEditViewAction.Deleted) {
             // User tapped delete
         }
         
@@ -236,7 +239,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
     
     // Share button pressed
     func shareBtnPressed(sender:UIButton!) {
-        println("Share Button (BranchIO)")
+        print("Share Button (BranchIO)")
     }
     
     // UITextView (Description) view delegate, when links are clicked
@@ -247,8 +250,8 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
     }
     
     // Restrict to portrait only
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func didReceiveMemoryWarning() {

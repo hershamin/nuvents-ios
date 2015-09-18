@@ -66,6 +66,16 @@
 	<string>We use your location to show nearby events</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use your location to show nearby events</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>comgooglemaps-x-callback</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

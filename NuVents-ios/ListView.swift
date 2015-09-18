@@ -33,8 +33,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // Restrict to portrait only
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,7 +73,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         eventArray.removeAll(keepCapacity: false)
         for event in eventArrayTemp {
             let title = event["title"].stringValue.lowercaseString
-            if (count(searchText) == 0) {
+            if (searchText.characters.count == 0) {
                 eventArray.append(event)
             } else if (title.rangeOfString(searchText) != nil) {
                 eventArray.append(event)
@@ -88,7 +88,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: ListViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! ListViewCell
+        let cell: ListViewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! ListViewCell
         
         // Add right accessory
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator

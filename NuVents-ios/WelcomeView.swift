@@ -62,12 +62,12 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     
     // Called when unwinded from detail view controller
     @IBAction func unwindToWelcomeView(sender: UIStoryboardSegue) {
-        println("WelcomeView From DetailView")
+        print("WelcomeView From DetailView")
     }
     
     // Called when unwinded from request view controller
     @IBAction func unwindToWelcomeFromRequest(sender: UIStoryboardSegue) {
-        println("WelcomeView From RequestView")
+        print("WelcomeView From RequestView")
     }
     
     // Skip Button Pressed
@@ -115,7 +115,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
             } else {
                 // Server unreachable alert user
                 dispatch_async(dispatch_get_main_queue(), {
-                    var alert = UIAlertController(title: "Server connection error", message: "Either Airplane mode is turned on or Internet is not reachable", preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "Server connection error", message: "Either Airplane mode is turned on or Internet is not reachable", preferredStyle: UIAlertControllerStyle.Alert)
                     let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
                     alert.addAction(cancelAction)
                     self.presentViewController(alert, animated: true, completion: nil)
@@ -144,7 +144,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
         
-        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)!
     }
     
     // Restore detail view controller
@@ -155,6 +155,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
             let fileData = NSData(contentsOfFile: filePath)
             NuVentsEndpoint.sharedEndpoint.tempJson = JSON(data: fileData!)
             // Open detail view controller
+            NuVentsEndpoint.sharedEndpoint.detailFromWelcome = true
             dispatch_async(dispatch_get_main_queue(), {
                 self.performSegueWithIdentifier("showDetailView", sender: nil)
             })
@@ -162,7 +163,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // MARK: Location manager delegate methods
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         var message:String = ""
         var title:String = ""
         var showAlert = false
@@ -180,7 +181,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         }
         // Show alert
         if (showAlert) {
-            var alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
             let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
             alert.addAction(cancelAction)
             let openAction = UIAlertAction(title: "Open Settings", style: UIAlertActionStyle.Default) {
@@ -194,9 +195,9 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // Got device location
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // Set in global variables
-        var latestLoc:CLLocation = locations.last as! CLLocation
+        let latestLoc:CLLocation = locations.last!
         NuVentsEndpoint.sharedEndpoint.currLoc = latestLoc.coordinate
         // Check if recent
         let eventDate:NSDate = latestLoc.timestamp
@@ -210,8 +211,8 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // Restrict to portrait only
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
 
     override func didReceiveMemoryWarning() {

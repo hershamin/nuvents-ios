@@ -28,7 +28,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         
         // Collection view layout, to dynamically change cell size based on device width
         let cellsPerRow = 3
-        var flowLayout:UICollectionViewFlowLayout = myCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        let flowLayout:UICollectionViewFlowLayout = myCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let availableWidthForCells = UIScreen.mainScreen().bounds.size.width - flowLayout.sectionInset.left - flowLayout.sectionInset.right - flowLayout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1) - 30
         let cellWidth = availableWidthForCells / CGFloat(cellsPerRow)
         flowLayout.itemSize = CGSizeMake(cellWidth, cellWidth) // Square cells
@@ -113,8 +113,8 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
 
     
     // Restrict to portrait only
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func didReceiveMemoryWarning() {

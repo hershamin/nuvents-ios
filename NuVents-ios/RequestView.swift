@@ -33,11 +33,11 @@ class RequestViewController: UIViewController {
         //Reverse geocode the lat/lng for an address
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             if error != nil {
-                println(error)
+                print(error)
                 return
             }
-            if placemarks.count > 0 {
-                let placemark:CLPlacemark = placemarks[0] as! CLPlacemark
+            if placemarks!.count > 0 {
+                let placemark:CLPlacemark = (placemarks?[0])!
                 self.locationPlacemark = placemark
                 self.displayLocationInfo(placemark)
             }
@@ -110,7 +110,7 @@ class RequestViewController: UIViewController {
     
     func displayLocationInfo (placemark: CLPlacemark) {
         // Add the city to the message text.
-        self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality + ", " + placemark.administrativeArea
+        self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality! + ", " + placemark.administrativeArea!
         bringItHere.hidden = false
     }
     
@@ -120,7 +120,7 @@ class RequestViewController: UIViewController {
         dismissKeyboard()
         editingEnd()
         // Send request to backend
-        NuVentsEndpoint.sharedEndpoint.sendEventReq(locationPlacemark.locality, state: locationPlacemark.administrativeArea, zip: locationPlacemark.postalCode, name: textForName.text, email: textForEmail.text)
+        NuVentsEndpoint.sharedEndpoint.sendEventReq(locationPlacemark.locality!, state: locationPlacemark.administrativeArea!, zip: locationPlacemark.postalCode!, name: textForName.text!, email: textForEmail.text!)
     }
 
     // Back button action
@@ -129,8 +129,8 @@ class RequestViewController: UIViewController {
     }
     
     // Restrict to portrait only
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func didReceiveMemoryWarning() {

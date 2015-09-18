@@ -20,7 +20,7 @@ class NuVentsEndpoint {
     }
     
     // Global Constants
-    internal let udid:String = UIDevice.currentDevice().identifierForVendor.UUIDString // Unique Device ID
+    internal let udid:String = UIDevice.currentDevice().identifierForVendor!.UUIDString // Unique Device ID
     internal let mapboxToken:String = "sk.eyJ1IjoiaGVyc2hhbWluIiwiYSI6ImUxOGRkZWQ0NGE4YjcyNjZmOGU4MzYxNWI3NTEzMTIzIn0.b5wf8U-tHvq00cPlEGrFhQ"
     internal let mapboxMapId:String = "hershamin.n2ld8p7j"
     internal let categoryNotificationKey = "categoryNotificationKey"
@@ -38,7 +38,7 @@ class NuVentsEndpoint {
     
     
     // Internally used variables
-    private var nSocket: SocketIOClient = SocketIOClient(socketURL: backend, options: ["log":false])
+    private var nSocket: SocketIOClient = SocketIOClient(socketURL: backend, opts: ["log":false])
         // The variable "backend" is Compiled during build, Set in AppDelegate.swift
     private var connected:Bool = false // To keep track of server connection status
     private var retryTimer:NSTimer! // To store NSTimer object for retrying server connection
@@ -57,7 +57,7 @@ class NuVentsEndpoint {
     
     // Disconnect from backend
     func disconnect(fast: Bool) {
-        nSocket.disconnect(fast: fast)
+        nSocket.disconnect()
         // Invalidate reconnection timer
         self.retryTimer.invalidate()
     }
@@ -158,8 +158,8 @@ class NuVentsEndpoint {
     private func syncResources(jsonData: JSON) {
         var fm = NSFileManager.defaultManager()
         // Get resources if not present on the internal file system or different
-        for (type : String, typeJson : JSON) in jsonData["resource"] { // Resource types
-            for (resource: String, resJson: JSON) in typeJson { // Resources
+        for (type, typeJson): (String, JSON) in jsonData["resource"] { // Resource types
+            for (resource, resJson): (String, JSON) in typeJson { // Resources
                 let path = NuVentsHelper.getResourcePath(resource, type: type)
                 if (!fm.fileExistsAtPath(path)) { // File does not exist
                     NuVentsHelper.downloadFile(path, url: resJson.stringValue) // Download from provided url
@@ -173,7 +173,7 @@ class NuVentsEndpoint {
                 
             }
         }
-        println("NuVents Endpoint: Resources Sync Complete")
+        print("NuVents Endpoint: Resources Sync Complete")
     }
     
     // Send request to retrieve missed messages from server
@@ -203,60 +203,60 @@ class NuVentsEndpoint {
     private func addSocketHandlingMethods() {
         // Nearby Event Received
         nSocket.on("event:nearby") {data, ack in
-            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let dataFromString = "\(data[0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             let jsonData = JSON(data: dataFromString!)
             // Add to global vars
             NuVentsEndpoint.sharedEndpoint.eventJSON[jsonData["eid"].stringValue] = jsonData
             // Acknowledge Server
-            ack!("Nearby Event Received")
+            //
         }
         
         // Nearby Event Error & Status
         nSocket.on("event:nearby:status") {data, ack in
-            let resp = "\(data![0])"
+            let resp = "\(data[0])"
             if resp.rangeOfString("Error") != nil { // error status
-                println("NuVents Endpoint: ERROR: Event Nearby: \(resp)")
+                print("NuVents Endpoint: ERROR: Event Nearby: \(resp)")
             } else {
-                println("NuVents Endpoint: Event Nearby Received")
+                print("NuVents Endpoint: Event Nearby Received")
             }
             // Acknowledge Server
-            ack!("Nearby Event Status Received")
+            ack?.with("Nearby Event Status Received")
         }
         
         // Event Detail Received
         nSocket.on("event:detail") {data, ack in
-            let dataFromString = "\(data![0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let dataFromString = "\(data[0])".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             let jsonData = JSON(data: dataFromString!)
             // Set global variable
             NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
             // Notify Views
             NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
             // Acknowledge Server
-            ack!("Event Detail Received")
+            ack?.with("Event Detail Received")
         }
         
         // Event Detail Error & Status
         nSocket.on("event:detail:status") {data, ack in
-            let resp = "\(data![0])"
+            let resp = "\(data[0])"
             if resp.rangeOfString("Error") != nil { // error status
-                println("NuVents Endpoint: ERROR: Event Detail: \(resp)")
+                print("NuVents Endpoint: ERROR: Event Detail: \(resp)")
             } else {
-                println("NuVents Endpoint: Event Detail Received")
+                print("NuVents Endpoint: Event Detail Received")
             }
         }
         
         // Resources received from server
         nSocket.on("resources") {data, ack in
-            let resp = "\(data![0])"
+            let resp = "\(data[0])"
             if resp.rangeOfString("Error") != nil { // error status
-                println("NuVents Endpoint: ERROR: Resources: \(resp)")
+                print("NuVents Endpoint: ERROR: Resources: \(resp)")
             } else {
-                println("NuVents Endpoint: Resources Received")
+                print("NuVents Endpoint: Resources Received")
                 let jsonData:NSData = resp.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
                 self.syncResources(JSON(data: jsonData)) // Sync Resources
             }
             // Acknowledge Server
-            ack!("Resources Received")
+            ack?.with("Resources Received")
         }
         
         // Connection Status
@@ -265,16 +265,16 @@ class NuVentsEndpoint {
             self.retrieveMissedMessages()
             self.getResourcesFromServer()
             self.connected = true
-            println("NuVents Endpoint: Connected")
+            print("NuVents Endpoint: Connected")
         }
         nSocket.on("disconnect") {data, ack in
             self.connected = false
-            println("NuVents Endpoint: Disconnected")
+            print("NuVents Endpoint: Disconnected")
             self.nSocket.removeAllHandlers()
         }
         nSocket.on("error") {data, ack in
             self.connected = false
-            println("NuVents Endpoint: ERROR: Connection: \(data![0])")
+            print("NuVents Endpoint: ERROR: Connection: \(data[0])")
         }
     }
     

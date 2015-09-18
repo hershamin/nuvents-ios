@@ -19,7 +19,7 @@ class NuVentsHelper {
         let md5Buffer = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLength)
         
         CC_MD5(inputData.bytes, CC_LONG(inputData.length), md5Buffer)
-        var output = NSMutableString(capacity: Int(CC_MD5_DIGEST_LENGTH * 2))
+        let output = NSMutableString(capacity: Int(CC_MD5_DIGEST_LENGTH * 2))
         for i in 0..<digestLength {
             output.appendFormat("%02x", md5Buffer[i])
         }
@@ -40,14 +40,13 @@ class NuVentsHelper {
         uname(&systemInfo)
         
         let machine = systemInfo.machine
-        let mirror = reflect(machine)
+        let mirror = Mirror(reflecting: machine)
         var identifier = ""
         
-        for i in 0..<mirror.count {
-            if let value = mirror[i].1.value as? Int8 where value != 0 {
-                identifier.append(UnicodeScalar(UInt8(value)))
-            }
+        for child in mirror.children where child.value as? Int8 != 0 {
+            identifier.append(UnicodeScalar(UInt8(child.value as! Int8)))
         }
+        
         return identifier
     }
     
@@ -68,18 +67,21 @@ class NuVentsHelper {
     
     // Get resource from internal file system
     class func getResourcePath(resource: NSString!, type: NSString!) -> String {
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
         // Create directories if not present
-        var fm = NSFileManager.defaultManager()
+        let fm = NSFileManager.defaultManager()
         var isDir: ObjCBool = true
-        let resDir = documentsPath.stringByAppendingPathComponent("resources").stringByAppendingPathComponent(type as String)
+        let resDir = "\(documentsPath)/resources/\(type)/"
         if !fm.fileExistsAtPath(resDir, isDirectory: &isDir) {
             if isDir {
-                fm.createDirectoryAtPath(resDir, withIntermediateDirectories: true, attributes: nil, error: nil)
+                do {
+                    try fm.createDirectoryAtPath(resDir, withIntermediateDirectories: true, attributes: nil)
+                } catch _ {
+                }
             }
         }
         // Return filepath
-        var filePath = resDir.stringByAppendingPathComponent(resource as String)
+        let filePath = "\(resDir)/\(resource)"
         return filePath
     }
     
@@ -87,7 +89,7 @@ class NuVentsHelper {
     class func getHumanReadableDate(epochTimestamp: String) -> String {
         // Get javascript string from file
         let filePath = NSBundle.mainBundle().pathForResource("NuVentsHelperJS", ofType: "js")
-        let fileStr = NSString(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding, error: nil)!
+        let fileStr = try! NSString(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
         
         // Get javascript engine & evaluate
         let context = JSContext()

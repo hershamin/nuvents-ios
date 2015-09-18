@@ -29,14 +29,14 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
         mapView.hidden = true
         
         // Search bar setup
-        searchBar.backgroundImage = UIImage.new() // Clear background image
+        searchBar.backgroundImage = UIImage() // Clear background image
         
         // Filter button setup
         filterBtn.addTarget(self, action: "filterBtnClicked:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Segmented control setup
         let titles:Array = ["CATEGORIES", "EVENT LIST", "MAP"]
-        var segmentedCtrl = URBSegmentedControl(items: titles)
+        let segmentedCtrl = URBSegmentedControl(items: titles)
         segmentedCtrl.selectedSegmentIndex = 1 // Select List View Segment
         segmentedCtrl.addTarget(self, action: "handleSegmentChanged:", forControlEvents: UIControlEvents.ValueChanged)
         segmentedCtrl.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 40)
@@ -62,7 +62,7 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
     
     // Tap gesture recognizer delegate
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        if (touch.view.isDescendantOfView(listView) || touch.view.isDescendantOfView(mapView) || touch.view.isDescendantOfView(categoryView)) {
+        if (touch.view!.isDescendantOfView(listView) || touch.view!.isDescendantOfView(mapView) || touch.view!.isDescendantOfView(categoryView)) {
             // Don't let list view, category view, or map view tap fire gesture recognizer
             return false
         }
@@ -109,7 +109,7 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
     
     // Called when unwinded from detail view controller
     @IBAction func unwindToCombinationView(sender: UIStoryboardSegue) {
-        println("CombinationView From DetailView")
+        print("CombinationView From DetailView")
     }
     
     // Segue transition delegate
@@ -124,7 +124,7 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
             }
         }
         
-        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+        return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier!)!
     }
     
     // Segment changed
@@ -162,8 +162,8 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
     } // Search bar text changed
     
     // Restrict to portrait only
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func didReceiveMemoryWarning() {

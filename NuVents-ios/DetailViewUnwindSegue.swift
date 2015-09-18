@@ -12,8 +12,8 @@ class DetailViewUnwindSegue: UIStoryboardSegue {
     
     override func perform() {
         // Assign the source and destination views to local variables
-        var sourceVC = self.sourceViewController.view as UIView!
-        var destVC = self.destinationViewController.view as UIView!
+        let sourceVC = self.sourceViewController.view as UIView!
+        let destVC = self.destinationViewController.view as UIView!
         
         // Get the screen width & height
         let screenWidth = UIScreen.mainScreen().bounds.size.width
