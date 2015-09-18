@@ -24,6 +24,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
     @IBOutlet var backBtn:UIButton!
     @IBOutlet var addToCalBtn:UIButton!
     @IBOutlet var viewMapBtn:UIButton!
+    @IBOutlet var shareBtn:UIButton!
     @IBOutlet var dateTimeLabel:UILabel!
     @IBOutlet var titleLabel:UILabel!
     @IBOutlet var addressLabel:UILabel!
@@ -57,6 +58,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         
         // Init other buttons
         viewMapBtn.addTarget(self, action: "viewMapBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        shareBtn.addTarget(self, action: "shareBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Init date/time label
         let timeStr:String = NuVentsHelper.getHumanReadableDate(eventJson["time"]["start"].stringValue)
@@ -230,6 +232,11 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Share button pressed
+    func shareBtnPressed(sender:UIButton!) {
+        println("Share Button (BranchIO)")
     }
     
     // UITextView (Description) view delegate, when links are clicked

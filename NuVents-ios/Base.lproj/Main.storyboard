@@ -32,6 +32,7 @@
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
+            <string>GothamRounded-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -579,12 +580,32 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsf-VM-R9g">
+                                        <rect key="frame" x="433" y="145" width="55" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="ZHq-GB-RWf"/>
+                                            <constraint firstAttribute="width" constant="55" id="oH7-qg-huD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="13"/>
+                                        <state key="normal" title="SHARE">
+                                            <color key="titleColor" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-53-0Tp">
+                                        <rect key="frame" x="436" y="50" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="h6l-3m-U3m"/>
+                                            <constraint firstAttribute="width" constant="50" id="s5V-yu-1P0"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="fvW-wS-RZT" secondAttribute="centerX" multiplier="2.5" id="1xN-RL-dp5"/>
                                     <constraint firstAttribute="centerY" secondItem="fvW-wS-RZT" secondAttribute="centerY" multiplier="1.5" id="4Zr-zU-4Ik"/>
                                     <constraint firstAttribute="centerX" secondItem="6re-ER-HB5" secondAttribute="centerX" multiplier="2.5" id="6Pj-pY-hdo"/>
                                     <constraint firstAttribute="centerY" secondItem="6re-ER-HB5" secondAttribute="centerY" multiplier="0.6" id="FGp-KP-C3p"/>
+                                    <constraint firstAttribute="centerY" secondItem="Hvc-53-0Tp" secondAttribute="centerY" multiplier="1.25" id="Krv-dH-5U6"/>
                                     <constraint firstAttribute="centerX" secondItem="W5m-gT-fpL" secondAttribute="centerX" multiplier="2.5" id="LTa-Oz-qZ7"/>
                                     <constraint firstAttribute="trailing" secondItem="RZY-hR-b0r" secondAttribute="trailing" id="Lwv-ZW-dls"/>
                                     <constraint firstItem="RZY-hR-b0r" firstAttribute="leading" secondItem="coK-u7-msi" secondAttribute="leading" id="OLC-FP-40b"/>
@@ -592,6 +613,9 @@
                                     <constraint firstItem="RZY-hR-b0r" firstAttribute="top" secondItem="coK-u7-msi" secondAttribute="top" id="Uag-U3-vfN"/>
                                     <constraint firstAttribute="width" secondItem="coK-u7-msi" secondAttribute="height" multiplier="16:5" id="ZhE-qA-AzI"/>
                                     <constraint firstAttribute="bottom" secondItem="kBm-gX-KeV" secondAttribute="bottom" constant="10" id="du8-8s-ftd"/>
+                                    <constraint firstAttribute="centerX" secondItem="Hvc-53-0Tp" secondAttribute="centerX" multiplier="0.65" id="feF-F0-1ne"/>
+                                    <constraint firstAttribute="centerY" secondItem="Xsf-VM-R9g" secondAttribute="centerY" multiplier="0.6" id="jmS-l0-L5N"/>
+                                    <constraint firstAttribute="centerX" secondItem="Xsf-VM-R9g" secondAttribute="centerX" multiplier="0.65" id="s6a-cc-kqU"/>
                                     <constraint firstAttribute="centerY" secondItem="W5m-gT-fpL" secondAttribute="centerY" id="ue7-K6-Lwh"/>
                                     <constraint firstItem="kBm-gX-KeV" firstAttribute="top" secondItem="coK-u7-msi" secondAttribute="top" constant="10" id="yWc-HB-zSs"/>
                                 </constraints>
@@ -628,6 +652,7 @@
                         <outlet property="descriptionView" destination="YMc-24-d07" id="QMr-dS-vXD"/>
                         <outlet property="distanceLabel" destination="W5m-gT-fpL" id="iNs-at-Y0u"/>
                         <outlet property="mediaImgView" destination="SAl-1q-ecf" id="dtt-t0-CN7"/>
+                        <outlet property="shareBtn" destination="Xsf-VM-R9g" id="4Lu-tm-s6E"/>
                         <outlet property="titleLabel" destination="e92-pM-HK2" id="5c2-Qa-Y9I"/>
                         <outlet property="viewMapBtn" destination="6re-ER-HB5" id="iTA-95-jSV"/>
                         <segue destination="8WT-HO-jXT" kind="unwind" identifier="unwindCombinationView" unwindAction="unwindToCombinationView:" id="i7z-4M-dHj"/>
@@ -886,6 +911,7 @@
         <image name="Mapbox_Logo.png" width="300" height="132"/>
         <image name="combinationViewTabBar.png" width="1500" height="368"/>
         <image name="myLocationBtn.png" width="119" height="119"/>
+        <image name="share.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8w4-Cw-GSb"/>
