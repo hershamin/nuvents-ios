@@ -51,22 +51,13 @@ class NuVentsEndpoint {
     func connect() {
         addSocketHandlingMethods()
         nSocket.connect()
-        // Initialte reconnection timer
-        self.retryTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "RetryServerConnection:", userInfo: nil, repeats: true) // Check for connection every second
+        nSocket.reconnectWait = 1
+        nSocket.reconnects = true
     }
     
     // Disconnect from backend
     func disconnect(fast: Bool) {
         nSocket.disconnect()
-        // Invalidate reconnection timer
-        self.retryTimer.invalidate()
-    }
-    
-    // Server connection retry timer
-    @objc func RetryServerConnection(sender:NSTimer!) {
-        if !connected { // Attempt to connect if disconnected
-            nSocket.reconnect()
-        }
     }
     
     // Send event website response code
@@ -208,7 +199,7 @@ class NuVentsEndpoint {
             // Add to global vars
             NuVentsEndpoint.sharedEndpoint.eventJSON[jsonData["eid"].stringValue] = jsonData
             // Acknowledge Server
-            //
+            ack?.with("Nearby Event Received")
         }
         
         // Nearby Event Error & Status
