@@ -28,6 +28,7 @@ class NuVentsEndpoint {
     internal let eventDetailNotificationKey = "eventDetailNotificationKey"
     internal let mapFilterNotificationKey = "mapFilterNotificationKey"
     internal let listFilterNotificationKey = "listFilterNotificationKey"
+    internal let showLoadingNotificationKey = "showLoadingNotificationKey"
 
     
     // Global Variables
@@ -119,6 +120,8 @@ class NuVentsEndpoint {
         let eventDict = ["did":NuVentsEndpoint.sharedEndpoint.udid,
             "eid":eventID as String,
             "time":"\(NSDate().timeIntervalSince1970)"]
+        // Notify views
+        NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.showLoadingNotificationKey, object: nil)
         // Add to buffer
         let event:String = "event:detail"
         let eventMess:String = "\(event)||\(eventDict.description)"

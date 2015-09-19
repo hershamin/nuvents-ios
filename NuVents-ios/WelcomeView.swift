@@ -62,12 +62,12 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     
     // Called when unwinded from detail view controller
     @IBAction func unwindToWelcomeView(sender: UIStoryboardSegue) {
-        print("WelcomeView From DetailView")
+        // Welcome View from Detail View
     }
     
     // Called when unwinded from request view controller
     @IBAction func unwindToWelcomeFromRequest(sender: UIStoryboardSegue) {
-        print("WelcomeView From RequestView")
+        // Welcome View from Request View
     }
     
     // Skip Button Pressed

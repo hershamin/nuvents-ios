@@ -77,6 +77,7 @@
 		BAEEDE611B7048FB00E10ED5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEEDE601B7048FB00E10ED5 /* libsqlite3.dylib */; };
 		BAEFAD4A1B4F4570003F0D0B /* Siren.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BAEFAD481B4F4570003F0D0B /* Siren.bundle */; };
 		BAEFAD4B1B4F4570003F0D0B /* Siren.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEFAD491B4F4570003F0D0B /* Siren.swift */; };
+		BAF8B5031BAE064100AC6E97 /* YRActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = BAF8B5021BAE064100AC6E97 /* YRActivityIndicator.m */; settings = {ASSET_TAGS = (); }; };
 		F1D6F6231B7680960022D638 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D6F6221B7680960022D638 /* ListViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,8 @@
 		BAEEDE601B7048FB00E10ED5 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		BAEFAD481B4F4570003F0D0B /* Siren.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Siren.bundle; sourceTree = "<group>"; };
 		BAEFAD491B4F4570003F0D0B /* Siren.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Siren.swift; sourceTree = "<group>"; };
+		BAF8B5011BAE064100AC6E97 /* YRActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRActivityIndicator.h; sourceTree = "<group>"; };
+		BAF8B5021BAE064100AC6E97 /* YRActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRActivityIndicator.m; sourceTree = "<group>"; };
 		F1D6F6221B7680960022D638 /* ListViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +253,7 @@
 				BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */,
 				BA5D921A1B8254E8000115BE /* SMCalloutView.h */,
 				BA5D921B1B8254E8000115BE /* SMCalloutView.m */,
+				BAF8B5001BAE064100AC6E97 /* YRActivityIndicator */,
 				BA79AD291BAC998B00B64493 /* SocketIOClientSwift */,
 				BA5D91FD1B811F4F000115BE /* MBXMapKit */,
 				BAEFAD471B4F4570003F0D0B /* Siren */,
@@ -382,6 +386,15 @@
 				BAEFAD491B4F4570003F0D0B /* Siren.swift */,
 			);
 			path = Siren;
+			sourceTree = "<group>";
+		};
+		BAF8B5001BAE064100AC6E97 /* YRActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				BAF8B5011BAE064100AC6E97 /* YRActivityIndicator.h */,
+				BAF8B5021BAE064100AC6E97 /* YRActivityIndicator.m */,
+			);
+			path = YRActivityIndicator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -555,6 +568,7 @@
 				BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */,
 				BAAEFAFE1B88309800561664 /* DetailViewUnwindSegue.swift in Sources */,
 				BA5D920E1B811F4F000115BE /* MBXPointAnnotation.m in Sources */,
+				BAF8B5031BAE064100AC6E97 /* YRActivityIndicator.m in Sources */,
 				BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */,
 				BA79AD3D1BAC998B00B64493 /* SocketEngine.swift in Sources */,
 				BA79AD3A1BAC998B00B64493 /* SocketAckEmitter.swift in Sources */,

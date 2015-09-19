@@ -34,6 +34,7 @@
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
+            <string>GothamRounded-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -261,6 +262,45 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjd-hu-nps" customClass="YRActivityIndicator">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgX-73-Jgw">
+                                        <rect key="frame" x="201" y="432" width="199" height="36"/>
+                                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="18"/>
+                                        <color key="textColor" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="xgX-73-Jgw" firstAttribute="centerY" secondItem="hjd-hu-nps" secondAttribute="centerY" multiplier="1.5" id="3Nr-yn-P3U"/>
+                                    <constraint firstItem="xgX-73-Jgw" firstAttribute="centerX" secondItem="hjd-hu-nps" secondAttribute="centerX" id="fIk-lN-MEv"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxItems">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="itemColor">
+                                        <color key="value" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="minItemSize">
+                                        <size key="value" width="10" height="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cycleDuration">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="maxItemSize">
+                                        <size key="value" width="30" height="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxSpeed">
+                                        <real key="value" value="1.3999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -284,18 +324,24 @@
                             <constraint firstItem="MZ4-gr-v0x" firstAttribute="top" secondItem="4uN-fP-cBg" secondAttribute="bottom" id="Pnt-aW-Dy3"/>
                             <constraint firstAttribute="trailing" secondItem="gWk-tF-LGP" secondAttribute="trailing" id="SUZ-MN-E0l"/>
                             <constraint firstItem="3EZ-5a-Yvh" firstAttribute="leading" secondItem="SbH-40-CQg" secondAttribute="trailing" constant="13" id="Wj2-q4-qeh"/>
+                            <constraint firstItem="hjd-hu-nps" firstAttribute="top" secondItem="c5G-y2-wsA" secondAttribute="top" id="YDk-Pf-g36"/>
                             <constraint firstItem="2ck-G7-XJI" firstAttribute="top" secondItem="vYX-6R-2hO" secondAttribute="bottom" id="Yc0-NX-Bc1"/>
                             <constraint firstItem="gWk-tF-LGP" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="a2u-b1-O5T"/>
                             <constraint firstItem="3EZ-5a-Yvh" firstAttribute="top" secondItem="UJ9-fp-CTY" secondAttribute="bottom" constant="18" id="cRJ-br-awo"/>
+                            <constraint firstItem="MZ4-gr-v0x" firstAttribute="top" secondItem="hjd-hu-nps" secondAttribute="bottom" id="gqD-qG-dTg"/>
                             <constraint firstAttribute="trailing" secondItem="GAC-Ws-JbP" secondAttribute="trailing" id="u6J-Ze-exh"/>
                             <constraint firstItem="SbH-40-CQg" firstAttribute="top" secondItem="UJ9-fp-CTY" secondAttribute="bottom" constant="5" id="uZV-vW-B9y"/>
+                            <constraint firstItem="hjd-hu-nps" firstAttribute="leading" secondItem="c5G-y2-wsA" secondAttribute="leading" id="vE7-Rc-DwP"/>
+                            <constraint firstAttribute="trailing" secondItem="hjd-hu-nps" secondAttribute="trailing" id="xdC-Tq-G4u"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="j9l-4M-XXS"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="hjd-hu-nps" id="bJ5-bR-M1o"/>
                         <outlet property="categoryView" destination="4uN-fP-cBg" id="erA-eh-CJW"/>
                         <outlet property="filterBtn" destination="3EZ-5a-Yvh" id="oSb-SK-3jV"/>
                         <outlet property="listView" destination="gWk-tF-LGP" id="4A0-Xe-Cs1"/>
+                        <outlet property="loadingLabel" destination="xgX-73-Jgw" id="YJb-xb-hxO"/>
                         <outlet property="mapView" destination="GAC-Ws-JbP" id="NOk-dB-3Gx"/>
                         <outlet property="searchBar" destination="SbH-40-CQg" id="AZ1-Wl-HUi"/>
                         <outlet property="segmentedCtrlView" destination="2ck-G7-XJI" id="Jqy-f4-0ec"/>
