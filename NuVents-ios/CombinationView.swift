@@ -54,10 +54,18 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
         segmentedCtrl.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         segmentedCtrlView.addSubview(segmentedCtrl)
         
+        // Signup for notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "goToDetailView", name: NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
+        
         // Tap gesture recognizer to dismiss keyboard
         let tapGestureRecognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissSearchBarKeyboard")
         tapGestureRecognizer.delegate = self
         self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    // Go to detail view
+    func goToDetailView() {
+        self.performSegueWithIdentifier("showDetailView", sender: nil)
     }
     
     // Tap gesture recognizer delegate
@@ -91,6 +99,11 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
     // Called when unwinded from detail view controller
     @IBAction func unwindToCombinationView(sender: UIStoryboardSegue) {
         print("CombinationView From DetailView")
+    }
+    
+    // Called when view is deallocated from memory
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // Segue transition delegate

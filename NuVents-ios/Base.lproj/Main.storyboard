@@ -305,6 +305,7 @@
                         <segue destination="sDJ-Xe-Dvn" kind="popoverPresentation" identifier="popoverListFilter" popoverAnchorView="3EZ-5a-Yvh" id="VEA-65-3sm">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                         </segue>
+                        <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="JZT-jy-x5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KN8-1Q-3wK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -477,7 +478,6 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="yLD-3I-zZU" id="Ua1-dA-uOD"/>
-                        <segue destination="9hX-LZ-EDY" kind="custom" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="0ps-xm-KK4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDg-jL-BUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -783,7 +783,6 @@
                         <outlet property="attributionBtn" destination="gbM-UR-Rr5" id="K15-oT-gEf"/>
                         <outlet property="mapView" destination="9Hq-pj-yYZ" id="wLo-9C-4NW"/>
                         <outlet property="myLocBtn" destination="hVl-YK-VS0" id="gfN-EM-38y"/>
-                        <segue destination="9hX-LZ-EDY" kind="custom" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="cnt-Af-WMB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14z-Cj-BLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1014,6 +1013,6 @@
         <image name="share.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="glk-tE-vyg"/>
+        <segue reference="JZT-jy-x5T"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -30,7 +30,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.listFilterNotificationKey, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "goToDetailView", name: NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
     }
     
     // Restrict to portrait only
@@ -137,11 +136,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // Deselect row
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
-    // Go to detail view
-    func goToDetailView() {
-        self.performSegueWithIdentifier("showDetailView", sender: nil)
     }
     
 }

@@ -107,11 +107,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID)
     }
     
-    // Open detail view upon hearing notification
-    func goToDetailView() {
-        self.performSegueWithIdentifier("showDetailView", sender: nil)
-    }
-    
     // Function to change map view to category changed
     func changeMapViewToCategory() {
         let categorizeList = NuVentsEndpoint.sharedEndpoint.categories
