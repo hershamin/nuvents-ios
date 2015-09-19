@@ -103,4 +103,22 @@ class NuVentsHelper {
         return dateStr.toString();
     }
     
+    // Get day difference within a month
+    class func getDayDifferenceWithinAMonth(epochTimestamp: String) -> Int {
+        // Get javascript string from file
+        let filePath = NSBundle.mainBundle().pathForResource("NuVentsHelperJS", ofType: "js")
+        let fileStr = try! NSString(contentsOfFile: filePath!, encoding: NSUTF8StringEncoding)
+        
+        // Get javascript engine & evaluate
+        let context = JSContext()
+        context.evaluateScript(fileStr as String)
+        
+        // Call function to get day difference within a month
+        let currentTS = NSDate().timeIntervalSince1970
+        let diffInt:JSValue = context.evaluateScript("getDayDifferenceWithinAMonth(\(epochTimestamp), \(currentTS))")
+        
+        // Return readable int
+        return Int(diffInt.toInt32())
+    }
+    
 }

@@ -1,3 +1,16 @@
+var getDayDifferenceWithinAMonth = function(epoch, epochToday) {
+    var today = new Date(epochToday * 1000); // Today date
+    var date = new Date(epoch * 1000); // Event date
+    // Check if year & month is same, if not return -1
+    if (today.getFullYear() == date.getFullYear() && today.getMonth() == date.getMonth()) {
+        // Less than month difference
+        return date.getDate() - today.getDate()
+    } else {
+        // More than month difference
+        return -1
+    }
+}
+
 var getHumanReadableDate = function(epoch, epochToday) {
     var monthNames = new Array('January', 'February', 'March',
                             'April', 'May', 'June', 'July', 'August', 'September',

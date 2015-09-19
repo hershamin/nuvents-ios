@@ -65,7 +65,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //Set up listeners for NSNotificationCenter
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.mapFilterNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.mapFilterNotificationKey, object: nil)
     }
     
     // Function to set map region to contain all annotations
@@ -131,7 +131,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             // All
         } else {
             // Today or Tomorrow
-            //
+            for annotation in self.mapView.annotations {
+                if let mbxAnn = annotation as? MBXPointAnnotation {
+                    let eventJson:JSON = eventsJson[mbxAnn.eventID]!
+                    let eventDate:String = eventJson["time"]["start"].stringValue
+                    let dayDiff:Int = NuVentsHelper.getDayDifferenceWithinAMonth(eventDate)
+                    if sortBy == 1 { // Today
+                        if dayDiff != 0 {
+                            mapView.removeAnnotation(annotation)
+                        }
+                    } else if sortBy == 2 { // Tomorrow
+                        if dayDiff != 1 {
+                            mapView.removeAnnotation(annotation)
+                        }
+                    }
+                }
+            }
         }
     }
     
