@@ -19,9 +19,6 @@
 		BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = BA1B733F1AFFFADE00A15B77 /* location.gpx */; };
 		BA2004401BAA2BB6005DAFF9 /* EventIllustration.png in Resources */ = {isa = PBXBuildFile; fileRef = BA20043F1BAA2BB6005DAFF9 /* EventIllustration.png */; };
 		BA20044A1BAB9C01005DAFF9 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BA2004491BAB9C01005DAFF9 /* share.png */; };
-		BA4B05D31B79C2BB00A5FCBB /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4B05D21B79C2BB00A5FCBB /* UIView+Origami.m */; };
-		BA4B05D81B79C43700A5FCBB /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4B05D61B79C43700A5FCBB /* FilterView.swift */; };
-		BA4B05D91B79C43700A5FCBB /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4B05D71B79C43700A5FCBB /* FilterView.xib */; };
 		BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */; };
 		BA5B90CC1AED81F3000B1BD5 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5B90CB1AED81F3000B1BD5 /* WelcomeView.swift */; };
 		BA5B90CF1AED81F3000B1BD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA5B90CD1AED81F3000B1BD5 /* Main.storyboard */; };
@@ -105,10 +102,6 @@
 		BA1B733F1AFFFADE00A15B77 /* location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = location.gpx; sourceTree = "<group>"; };
 		BA20043F1BAA2BB6005DAFF9 /* EventIllustration.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventIllustration.png; sourceTree = "<group>"; };
 		BA2004491BAB9C01005DAFF9 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
-		BA4B05D11B79C2BB00A5FCBB /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
-		BA4B05D21B79C2BB00A5FCBB /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
-		BA4B05D61B79C43700A5FCBB /* FilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
-		BA4B05D71B79C43700A5FCBB /* FilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
 		BA5B90C41AED81F3000B1BD5 /* NuVents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NuVents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA5B90C81AED81F3000B1BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -218,15 +211,6 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		BA4B05D01B79C2BB00A5FCBB /* XYOrigami */ = {
-			isa = PBXGroup;
-			children = (
-				BA4B05D11B79C2BB00A5FCBB /* UIView+Origami.h */,
-				BA4B05D21B79C2BB00A5FCBB /* UIView+Origami.m */,
-			);
-			path = XYOrigami;
-			sourceTree = "<group>";
-		};
 		BA5B90BB1AED81F3000B1BD5 = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +248,6 @@
 				BA5D921B1B8254E8000115BE /* SMCalloutView.m */,
 				BA79AD291BAC998B00B64493 /* SocketIOClientSwift */,
 				BA5D91FD1B811F4F000115BE /* MBXMapKit */,
-				BA4B05D01B79C2BB00A5FCBB /* XYOrigami */,
 				BAEFAD471B4F4570003F0D0B /* Siren */,
 				BA5B90C91AED81F3000B1BD5 /* AppDelegate.swift */,
 				BA09BFBB1B6D87C300138139 /* Fonts */,
@@ -288,8 +271,6 @@
 				BA5D92181B81906C000115BE /* MapViewAnnotationView.m */,
 				BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */,
 				BAEEDE201B6D5DA200E10ED5 /* RequestView.swift */,
-				BA4B05D61B79C43700A5FCBB /* FilterView.swift */,
-				BA4B05D71B79C43700A5FCBB /* FilterView.xib */,
 			);
 			path = "NuVents-ios";
 			sourceTree = "<group>";
@@ -498,7 +479,6 @@
 				BA09BFC11B6D882700138139 /* Gotham-Rounded-Book.ttf in Resources */,
 				BA1B73401AFFFADE00A15B77 /* location.gpx in Resources */,
 				BA5B90D11AED81F3000B1BD5 /* Images.xcassets in Resources */,
-				BA4B05D91B79C43700A5FCBB /* FilterView.xib in Resources */,
 				BA90B6131B19018500C3E3D8 /* NuVents_SplashScreen.png in Resources */,
 				BA09BFC51B6D99A100138139 /* combinationViewTabBar.png in Resources */,
 				8F665B001BA4D2690057FC81 /* RequestIllustration.png in Resources */,
@@ -568,7 +548,6 @@
 				BAAEFB021B88F1D100561664 /* RequestViewSegue.swift in Sources */,
 				BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */,
 				BAAEFAFE1B88309800561664 /* DetailViewUnwindSegue.swift in Sources */,
-				BA4B05D31B79C2BB00A5FCBB /* UIView+Origami.m in Sources */,
 				BA5D920E1B811F4F000115BE /* MBXPointAnnotation.m in Sources */,
 				BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */,
 				BA79AD3D1BAC998B00B64493 /* SocketEngine.swift in Sources */,
@@ -580,7 +559,6 @@
 				BA5B90CA1AED81F3000B1BD5 /* AppDelegate.swift in Sources */,
 				BAEEDE171B6D5D3300E10ED5 /* CombinationView.swift in Sources */,
 				BA79AD421BAC998B00B64493 /* SocketIOClientStatus.swift in Sources */,
-				BA4B05D81B79C43700A5FCBB /* FilterView.swift in Sources */,
 				BA79AD411BAC998B00B64493 /* SocketIOClient.swift in Sources */,
 				BA5D920F1B811F4F000115BE /* MBXRasterTileOverlay.m in Sources */,
 				BADFA9431B69623300CAF0A5 /* NuVentsHelper.swift in Sources */,
