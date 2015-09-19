@@ -65,6 +65,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //Set up listeners for NSNotificationCenter
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeMapViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.mapFilterNotificationKey, object: nil)
     }
     
     // Function to set map region to contain all annotations
@@ -125,6 +126,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             } else {
                 mapView.removeAnnotation(annotation)
             }
+        }
+    }
+    
+    // Function to sort list view array
+    func sortMapView() {
+        let sortBy = NuVentsEndpoint.sharedEndpoint.mapViewFilter
+        if sortBy == 0 {
+            // All
+        } else if sortBy == 1 {
+            // Today
+            //
+        } else if sortBy == 2 {
+            // Tomorrow
+            //
         }
     }
     

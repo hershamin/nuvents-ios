@@ -26,6 +26,8 @@ class NuVentsEndpoint {
     internal let categoryNotificationKey = "categoryNotificationKey"
     internal let searchNotificationKey = "searchNotificationKey"
     internal let eventDetailNotificationKey = "eventDetailNotificationKey"
+    internal let mapFilterNotificationKey = "mapFilterNotificationKey"
+    internal let listFilterNotificationKey = "listFilterNotificationKey"
 
     
     // Global Variables

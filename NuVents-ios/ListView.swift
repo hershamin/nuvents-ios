@@ -29,6 +29,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Setup listeners for NSNotificationCenter
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.listFilterNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "goToDetailView", name: NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
     }
     
@@ -62,6 +63,18 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         tableView.reloadData()
+    }
+    
+    // Function to sort list view array
+    func sortListView() {
+        let sortBy = NuVentsEndpoint.sharedEndpoint.listViewFilter
+        if sortBy == 0 {
+            // Distance
+            //
+        } else if sortBy == 1 {
+            // Time
+            //
+        }
     }
     
     // Function to change list view to search bar text changed
