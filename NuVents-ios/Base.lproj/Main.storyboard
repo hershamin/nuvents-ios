@@ -158,6 +158,36 @@
             </objects>
             <point key="canvasLocation" x="182" y="240"/>
         </scene>
+        <!--List Filter-->
+        <scene sceneID="rCN-3I-fpl">
+            <objects>
+                <viewController id="sDJ-Xe-Dvn" customClass="ListFilter" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rJh-df-L93"/>
+                        <viewControllerLayoutGuide type="bottom" id="x6q-20-rvz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xh4-sr-HmA">
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ag-am-XPQ">
+                                <rect key="frame" x="227" y="20" width="46" height="30"/>
+                                <state key="normal" title="List"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="500" height="70"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="500" height="70"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RaB-o8-dNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1645" y="-1009"/>
+        </scene>
         <!--Combination View Controller-->
         <scene sceneID="bRG-6M-SSe">
             <objects>
@@ -253,11 +283,17 @@
                         <outlet property="mapView" destination="GAC-Ws-JbP" id="NOk-dB-3Gx"/>
                         <outlet property="searchBar" destination="SbH-40-CQg" id="AZ1-Wl-HUi"/>
                         <outlet property="segmentedCtrlView" destination="2ck-G7-XJI" id="Jqy-f4-0ec"/>
+                        <segue destination="AmB-mb-nUp" kind="popoverPresentation" identifier="popoverMapFilter" popoverAnchorView="3EZ-5a-Yvh" id="N2M-l2-Vr9">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                        </segue>
+                        <segue destination="sDJ-Xe-Dvn" kind="popoverPresentation" identifier="popoverListFilter" popoverAnchorView="3EZ-5a-Yvh" id="VEA-65-3sm">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KN8-1Q-3wK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1120" y="-187"/>
+            <point key="canvasLocation" x="930" y="-175"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="Fcs-xn-JzR">
@@ -335,7 +371,6 @@
                     </view>
                     <connections>
                         <outlet property="myCollectionView" destination="Bcm-bC-wyr" id="mjM-N7-HBx"/>
-                        <segue destination="9fn-Rw-EM1" kind="show" id="yKo-Mq-O92"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iWQ-XG-hCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -908,6 +943,36 @@
             </objects>
             <point key="canvasLocation" x="1120" y="746"/>
         </scene>
+        <!--Map Filter-->
+        <scene sceneID="CZM-Mn-Py5">
+            <objects>
+                <viewController id="AmB-mb-nUp" customClass="MapFilter" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="77r-fS-OAA"/>
+                        <viewControllerLayoutGuide type="bottom" id="xar-we-hQZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CGO-ud-PeT">
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbT-FI-qZQ">
+                                <rect key="frame" x="227" y="20" width="46" height="30"/>
+                                <state key="normal" title="Map"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="500" height="70"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="500" height="70"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YZw-9V-9Ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1555" y="-738"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Mapbox_Logo.png" width="300" height="132"/>
@@ -916,7 +981,6 @@
         <image name="share.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8w4-Cw-GSb"/>
         <segue reference="glk-tE-vyg"/>
     </inferredMetricsTieBreakers>
 </document>

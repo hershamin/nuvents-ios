@@ -9,7 +9,7 @@
 
 import Foundation
 
-class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate {
+class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
     // Container outlets
     @IBOutlet var categoryView:UIView!
     @IBOutlet var listView:UIView!
@@ -17,6 +17,7 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
     @IBOutlet var segmentedCtrlView:UIView!
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var filterBtn:UIButton!
+    var segmentedCtrl:URBSegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
         
         // Segmented control setup
         let titles:Array = ["CATEGORIES", "EVENT LIST", "MAP"]
-        let segmentedCtrl = URBSegmentedControl(items: titles)
+        segmentedCtrl = URBSegmentedControl(items: titles)
         segmentedCtrl.selectedSegmentIndex = 1 // Select List View Segment
         segmentedCtrl.addTarget(self, action: "handleSegmentChanged:", forControlEvents: UIControlEvents.ValueChanged)
         segmentedCtrl.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 40)
@@ -70,7 +71,16 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
     
     // Filter Button pressed
     func filterBtnPressed(sender:UIButton!) {
-        print("FILTER BTN")
+        let selectedSegmentInd = segmentedCtrl.selectedSegmentIndex
+        if selectedSegmentInd == 0 {
+            // Category view, no popover
+        } else if selectedSegmentInd == 1 {
+            // List view
+            self.performSegueWithIdentifier("popoverListFilter", sender: nil)
+        } else if selectedSegmentInd == 2 {
+            // Map view
+            self.performSegueWithIdentifier("popoverMapFilter", sender: nil)
+        }
     }
     
     // Dismiss keyboard from search bar
@@ -96,6 +106,22 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
         }
         
         return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier!)!
+    }
+    
+    // Segue transition delegate
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "popoverListFilter" || segue.identifier == "popoverMapFilter" {
+            let popoverVC = segue.destinationViewController
+            popoverVC.modalPresentationStyle = UIModalPresentationStyle.Popover
+            popoverVC.popoverPresentationController?.delegate = self
+        }
+        
+    }
+    
+    // Popover controller delegate, some required stuff
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
     
     // Segment changed

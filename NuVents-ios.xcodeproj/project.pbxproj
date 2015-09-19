@@ -58,6 +58,8 @@
 		BA90B6171B1D211D00C3E3D8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6151B1D211D00C3E3D8 /* Fabric.framework */; };
 		BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */; };
 		BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */; };
+		BAAE257B1BACFD6500813086 /* ListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE257A1BACFD6500813086 /* ListFilter.swift */; settings = {ASSET_TAGS = (); }; };
+		BAAE257D1BACFD7700813086 /* MapFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE257C1BACFD7700813086 /* MapFilter.swift */; settings = {ASSET_TAGS = (); }; };
 		BAAEFAD51B827EE200561664 /* Mapbox_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */; };
 		BAAEFAFB1B88304A00561664 /* DetailViewSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */; };
 		BAAEFAFE1B88309800561664 /* DetailViewUnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */; };
@@ -155,6 +157,8 @@
 		BA90B6151B1D211D00C3E3D8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		BAAE257A1BACFD6500813086 /* ListFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFilter.swift; sourceTree = "<group>"; };
+		BAAE257C1BACFD7700813086 /* MapFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFilter.swift; sourceTree = "<group>"; };
 		BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mapbox_Logo.png; sourceTree = "<group>"; };
 		BAAEFAFA1B88304A00561664 /* DetailViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewSegue.swift; sourceTree = "<group>"; };
 		BAAEFAFD1B88309800561664 /* DetailViewUnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewUnwindSegue.swift; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 				BA5D92181B81906C000115BE /* MapViewAnnotationView.m */,
 				BAEEDE1E1B6D5D9400E10ED5 /* DetailView.swift */,
 				BAEEDE201B6D5DA200E10ED5 /* RequestView.swift */,
+				BAAE257A1BACFD6500813086 /* ListFilter.swift */,
+				BAAE257C1BACFD7700813086 /* MapFilter.swift */,
 			);
 			path = "NuVents-ios";
 			sourceTree = "<group>";
@@ -552,7 +558,9 @@
 				BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */,
 				BA79AD3D1BAC998B00B64493 /* SocketEngine.swift in Sources */,
 				BA79AD3A1BAC998B00B64493 /* SocketAckEmitter.swift in Sources */,
+				BAAE257B1BACFD6500813086 /* ListFilter.swift in Sources */,
 				BA5D921C1B8254E8000115BE /* SMCalloutView.m in Sources */,
+				BAAE257D1BACFD7700813086 /* MapFilter.swift in Sources */,
 				BA79AD3C1BAC998B00B64493 /* SocketAnyEvent.swift in Sources */,
 				BA79AD3E1BAC998B00B64493 /* SocketEngineClient.swift in Sources */,
 				BAEEDE211B6D5DA200E10ED5 /* RequestView.swift in Sources */,
