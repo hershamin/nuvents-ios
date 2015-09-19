@@ -31,6 +31,8 @@ class ListFilter: UIViewController {
     func segmentChanged(sender:UISegmentedControl!) {
         // Set segment in global vars
         NuVentsEndpoint.sharedEndpoint.listViewFilter = sender.selectedSegmentIndex
+        // Notify views
+        NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.listFilterNotificationKey, object: nil)
     }
 
     override func didReceiveMemoryWarning() {

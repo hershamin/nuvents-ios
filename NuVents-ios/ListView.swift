@@ -30,6 +30,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.categoryNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.searchNotificationKey, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeListViewToSearch", name: NuVentsEndpoint.sharedEndpoint.listFilterNotificationKey, object: nil)
+        
+        // Initial sort
+        sortListView()
     }
     
     // Restrict to portrait only
@@ -69,10 +72,32 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let sortBy = NuVentsEndpoint.sharedEndpoint.listViewFilter
         if sortBy == 0 {
             // Distance
-            //
+            eventArray.sortInPlace {
+                // Common var
+                let currLoc = CLLocation(latitude: NuVentsEndpoint.sharedEndpoint.currLoc.latitude, longitude: NuVentsEndpoint.sharedEndpoint.currLoc.longitude)
+                // event 1
+                let e1 = $0
+                let el1 = CLLocation(latitude: e1["latitude"].doubleValue, longitude: e1["longitude"].doubleValue)
+                let d1 = el1.distanceFromLocation(currLoc) * 0.000621371 // Distance in miles
+                // event 2
+                let e2 = $1
+                let el2 = CLLocation(latitude: e2["latitude"].doubleValue, longitude: e2["longitude"].doubleValue)
+                let d2 = el2.distanceFromLocation(currLoc) * 0.000621371 // Distance in miles
+                // Return
+                return d1 < d2
+            }
         } else if sortBy == 1 {
             // Time
-            //
+            eventArray.sortInPlace {
+                // event 1
+                let e1 = $0
+                let t1 = e1["time"]["start"].doubleValue
+                // event 2
+                let e2 = $1
+                let t2 = e2["time"]["start"].doubleValue
+                // Return
+                return t1 < t2
+            }
         }
     }
     
@@ -91,6 +116,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 eventArray.append(event)
             }
         }
+        sortListView() // Sort according to selected filter
         tableView.reloadData()
     }
     

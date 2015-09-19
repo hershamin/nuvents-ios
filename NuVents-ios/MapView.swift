@@ -129,11 +129,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let sortBy = NuVentsEndpoint.sharedEndpoint.mapViewFilter
         if sortBy == 0 {
             // All
-        } else if sortBy == 1 {
-            // Today
-            //
-        } else if sortBy == 2 {
-            // Tomorrow
+        } else {
+            // Today or Tomorrow
             //
         }
     }
@@ -158,6 +155,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 }
             }
         }
+        sortMapView() // Sort according to selected filter
     }
     
     // Called when view is deallocated from memory

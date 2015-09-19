@@ -31,6 +31,8 @@ class MapFilter: UIViewController {
     func segmentChanged(sender:UISegmentedControl!) {
         // Set segment in global vars
         NuVentsEndpoint.sharedEndpoint.mapViewFilter = sender.selectedSegmentIndex
+        // Notify views
+        NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.mapFilterNotificationKey, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
