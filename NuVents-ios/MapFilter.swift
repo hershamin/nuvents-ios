@@ -9,11 +9,28 @@
 import UIKit
 
 class MapFilter: UIViewController {
+    
+    @IBOutlet var segmentedCtrl:UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set border color
+        self.view.layer.borderColor = UIColor(red: 0.91, green: 0.337, blue: 0.427, alpha: 1).CGColor // #E8566D
+        self.view.layer.borderWidth = 1.5
+        self.view.layer.cornerRadius = 10
+        
+        // Init segmented control
+        segmentedCtrl.selectedSegmentIndex = NuVentsEndpoint.sharedEndpoint.mapViewFilter
+        segmentedCtrl.addTarget(self, action: "segmentChanged:", forControlEvents: UIControlEvents.ValueChanged)
 
         // Do any additional setup after loading the view.
+    }
+    
+    // Segment changed
+    func segmentChanged(sender:UISegmentedControl!) {
+        // Set segment in global vars
+        NuVentsEndpoint.sharedEndpoint.mapViewFilter = sender.selectedSegmentIndex
     }
 
     override func didReceiveMemoryWarning() {

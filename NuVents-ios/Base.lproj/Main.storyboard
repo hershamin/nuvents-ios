@@ -167,22 +167,38 @@
                         <viewControllerLayoutGuide type="bottom" id="x6q-20-rvz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xh4-sr-HmA">
-                        <rect key="frame" x="0.0" y="0.0" width="500" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ag-am-XPQ">
-                                <rect key="frame" x="227" y="20" width="46" height="30"/>
-                                <state key="normal" title="List"/>
-                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="735-rt-N2M">
+                                <rect key="frame" x="10" y="11" width="480" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Gtv-LQ-ib8"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Distance"/>
+                                    <segment title="Time"/>
+                                </segments>
+                                <color key="tintColor" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="735-rt-N2M" firstAttribute="centerX" secondItem="xh4-sr-HmA" secondAttribute="centerX" id="0dL-AX-8BJ"/>
+                            <constraint firstItem="735-rt-N2M" firstAttribute="centerY" secondItem="xh4-sr-HmA" secondAttribute="centerY" id="ct0-9S-dut"/>
+                            <constraint firstAttribute="trailing" secondItem="735-rt-N2M" secondAttribute="trailing" constant="10" id="fuC-1g-FCP"/>
+                            <constraint firstItem="735-rt-N2M" firstAttribute="leading" secondItem="xh4-sr-HmA" secondAttribute="leading" constant="10" id="nqN-MH-hF9"/>
+                        </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="500" height="70"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="500" height="50"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="500" height="70"/>
+                    <size key="freeformSize" width="500" height="50"/>
+                    <connections>
+                        <outlet property="segmentedCtrl" destination="735-rt-N2M" id="wvD-9M-jNp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaB-o8-dNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -952,22 +968,39 @@
                         <viewControllerLayoutGuide type="bottom" id="xar-we-hQZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CGO-ud-PeT">
-                        <rect key="frame" x="0.0" y="0.0" width="500" height="70"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RbT-FI-qZQ">
-                                <rect key="frame" x="227" y="20" width="46" height="30"/>
-                                <state key="normal" title="Map"/>
-                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="m0q-AB-bTf">
+                                <rect key="frame" x="10" y="11" width="480" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="TjW-xb-VFC"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Today"/>
+                                    <segment title="Tomorrow"/>
+                                </segments>
+                                <color key="tintColor" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="m0q-AB-bTf" firstAttribute="leading" secondItem="CGO-ud-PeT" secondAttribute="leading" constant="10" id="BOJ-Oa-gID"/>
+                            <constraint firstItem="m0q-AB-bTf" firstAttribute="centerY" secondItem="CGO-ud-PeT" secondAttribute="centerY" id="VjA-1r-1d0"/>
+                            <constraint firstItem="m0q-AB-bTf" firstAttribute="centerX" secondItem="CGO-ud-PeT" secondAttribute="centerX" id="nDk-1t-uXL"/>
+                            <constraint firstAttribute="trailing" secondItem="m0q-AB-bTf" secondAttribute="trailing" constant="10" id="sY8-It-FXK"/>
+                        </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="500" height="70"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="500" height="50"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="500" height="70"/>
+                    <size key="freeformSize" width="500" height="50"/>
+                    <connections>
+                        <outlet property="segmentedCtrl" destination="m0q-AB-bTf" id="dqB-bT-0wh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZw-9V-9Ba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

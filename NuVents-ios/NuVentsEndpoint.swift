@@ -35,6 +35,8 @@ class NuVentsEndpoint {
     internal var currLoc:CLLocationCoordinate2D! // To store current device location
     internal var tempJson = JSON("") // To store eventJson when going to detail view
     internal var detailFromWelcome:Bool = false // To store whether detail view was loaded from welcome view
+    internal var mapViewFilter:Int = 0 // To store selected filter setting for mapview
+    internal var listViewFilter:Int = 0 // To store selected filter setting for listview
     
     
     // Internally used variables
