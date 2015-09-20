@@ -27,8 +27,8 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         
         // Load arrays for illustration images, titles, and descriptions
         illustrationImgs = ["OnboardIllustration1.png", "OnboardIllustration2.png", "OnboardIllustration3.png"]
-        titles = ["Title\n1", "title\n2", "title\n3"]
-        descs = ["DESCRIPTIO\nDESC\nDESW11", "DESCRIPTIO\nDESC\nDESW22", "DESCRIPTIO\nDESC\nDESW33"]
+        titles = ["Organize and discover events in your city all in one app", "Share experiences with old friends and contact with new people", "Build a calendar to keep track of events and never miss out"]
+        descs = ["Create events, discover things to do, and find new friends and new hobbies all around you", "You can talk to new friends, read updates about events, and be alerted about new things to do in your area", "Build your schedule so that you never forget or overlap your events. Share with friends and spread the love"]
         
         // Start getting device location
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
