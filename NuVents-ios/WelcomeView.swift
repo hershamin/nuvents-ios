@@ -20,6 +20,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     var illustrationImgs:[String] = []
     var titles:[String] = []
     var descs:[String] = []
+    var bgColors:[UIColor] = []
     var eventsFound:Bool = false
     var skipPressed:Bool = false
     @IBOutlet var activityIndicator:YRActivityIndicator!
@@ -37,6 +38,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         illustrationImgs = ["OnboardIllustration1.png", "OnboardIllustration2.png", "OnboardIllustration3.png"]
         titles = ["Organize and discover events in your city all in one app", "Share experiences with old friends and contact with new people", "Build a calendar to keep track of events and never miss out"]
         descs = ["Create events, discover things to do, and find new friends and new hobbies all around you", "You can talk to new friends, read updates about events, and be alerted about new things to do in your area", "Build your schedule so that you never forget or overlap your events. Share with friends and spread the love"]
+        bgColors = [UIColor(red: 0.10, green: 0.73, blue: 0.60, alpha: 1.0), UIColor(red: 0.19, green: 0.64, blue: 0.86, alpha: 1.0), UIColor(red: 0.91, green: 0.30, blue: 0.40, alpha: 1.0)] // #19B99A, #31A3DC, #E84C66
         
         // Start getting device location
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -53,7 +55,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         illustrationImg.image = UIImage(named: illustrationImgs[0])
         titleLabel.text = titles[0]
         descLabel.text = descs[0]
-        self.view.backgroundColor = UIColor(red: 0.10, green: 0.73, blue: 0.60, alpha: 1.0) // #19B99A
+        self.view.backgroundColor = bgColors[0]
         
         // Alert user if server is not reachable
         checkServerConn()
@@ -62,6 +64,14 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         skipBtn.addTarget(self, action: "skipBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         continueBtn.addTarget(self, action: "continueBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
+        // Swift Left/Right gesture recognizer
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
+        leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(leftSwipe)
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: "handleSwipe:")
+        rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(rightSwipe)
+
         // Restore detail view controller
         restoreDetailView() // Will only restore detail view if restore file found
         
@@ -74,6 +84,35 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    // Left/Right gesture recognizer to handle swipes
+    func handleSwipe(sender:UISwipeGestureRecognizer) {
+        if sender.direction == UISwipeGestureRecognizerDirection.Right {
+            // Right direction
+            if (pageIndicator.currentPage == 1) {
+                // Load page 1, load from appropriate array indexes
+                setCurrentView(0)
+                skipBtn.hidden = false // Show Skip button
+            } else if (pageIndicator.currentPage == 2) {
+                // Load page 2, load from appropriate array indexes
+                setCurrentView(1)
+                continueBtn.setTitle("CONTINUE", forState: UIControlState.Normal) // Change title of "CONTINUE" button
+                skipBtn.hidden = false // Show Skip button
+            }
+        } else if sender.direction == UISwipeGestureRecognizerDirection.Left {
+            // Left direction
+            if (pageIndicator.currentPage == 0) {
+                // Load page 1, load from appropriate array indexes
+                setCurrentView(1)
+                skipBtn.hidden = false // Show Skip button
+            } else if (pageIndicator.currentPage == 1) {
+                // Load page 2, load from appropriate array indexes
+                setCurrentView(2)
+                continueBtn.setTitle("GET STARTED", forState: UIControlState.Normal) // Change title of "CONTINUE" button
+                skipBtn.hidden = true // Hide Skip button
+            }
+        }
+    }
+    
     // Called when unwinded from detail view controller
     @IBAction func unwindToWelcomeView(sender: UIStoryboardSegue) {
         // Welcome View from Detail View
@@ -82,6 +121,15 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     // Called when unwinded from request view controller
     @IBAction func unwindToWelcomeFromRequest(sender: UIStoryboardSegue) {
         // Welcome View from Request View
+    }
+    
+    // Func called to set view
+    func setCurrentView(index:Int) {
+        illustrationImg.image = UIImage(named: illustrationImgs[index])
+        titleLabel.text = titles[index]
+        descLabel.text = descs[index]
+        self.view.backgroundColor = bgColors[index]
+        pageIndicator.currentPage = index // Change page indicator
     }
     
     // Called when events nearby are loaded
@@ -131,18 +179,10 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         // Check current page
         if (pageIndicator.currentPage == 0) {
             // Load page 1, load from appropriate array indexes
-            illustrationImg.image = UIImage(named: illustrationImgs[1])
-            titleLabel.text = titles[1]
-            descLabel.text = descs[1]
-            self.view.backgroundColor = UIColor(red: 0.19, green: 0.64, blue: 0.86, alpha: 1.0) // #31A3DC
-            pageIndicator.currentPage = 1 // Change page on page indicator
+            setCurrentView(1)
         } else if (pageIndicator.currentPage == 1) {
             // Load page 2, load from appropriate array indexes
-            illustrationImg.image = UIImage(named: illustrationImgs[2])
-            titleLabel.text = titles[2]
-            descLabel.text = descs[2]
-            self.view.backgroundColor = UIColor(red: 0.91, green: 0.30, blue: 0.40, alpha: 1.0) // #E84C66
-            pageIndicator.currentPage = 2 // Change page on page indicator
+            setCurrentView(2)
             continueBtn.setTitle("GET STARTED", forState: UIControlState.Normal) // Change title of "CONTINUE" button
             skipBtn.hidden = true // Hide Skip button
         } else if (pageIndicator.currentPage == 2) {
