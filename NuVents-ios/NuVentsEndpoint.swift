@@ -29,6 +29,7 @@ class NuVentsEndpoint {
     internal let mapFilterNotificationKey = "mapFilterNotificationKey"
     internal let listFilterNotificationKey = "listFilterNotificationKey"
     internal let showLoadingNotificationKey = "showLoadingNotificationKey"
+    internal let showCombinationNotificationKey = "showCombinationNotificationKey"
 
     
     // Global Variables
@@ -219,6 +220,8 @@ class NuVentsEndpoint {
             }
             // Acknowledge Server
             ack?.with("Nearby Event Status Received")
+            // Notify Views
+            NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.showCombinationNotificationKey, object: nil)
         }
         
         // Event Detail Received

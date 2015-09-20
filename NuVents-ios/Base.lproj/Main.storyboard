@@ -35,6 +35,7 @@
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
+            <string>GothamRounded-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -125,18 +126,61 @@
                                     <constraint firstItem="eGv-nO-uOD" firstAttribute="leading" secondItem="k75-3i-gIA" secondAttribute="leading" id="fOY-Ls-pqf"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yfy-Mo-USV" customClass="YRActivityIndicator">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjq-eN-jwW">
+                                        <rect key="frame" x="201" y="432" width="199" height="36"/>
+                                        <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="18"/>
+                                        <color key="textColor" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="cjq-eN-jwW" firstAttribute="centerY" secondItem="Yfy-Mo-USV" secondAttribute="centerY" multiplier="1.5" id="VYr-zY-rKi"/>
+                                    <constraint firstItem="cjq-eN-jwW" firstAttribute="centerX" secondItem="Yfy-Mo-USV" secondAttribute="centerX" id="ZQ7-vJ-VwR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxItems">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="itemColor">
+                                        <color key="value" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="minItemSize">
+                                        <size key="value" width="10" height="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cycleDuration">
+                                        <real key="value" value="1.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="maxItemSize">
+                                        <size key="value" width="30" height="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxSpeed">
+                                        <real key="value" value="1.3999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="3Lj-lB-Dt5" secondAttribute="centerX" id="1Tt-hx-whe"/>
+                            <constraint firstAttribute="trailing" secondItem="Yfy-Mo-USV" secondAttribute="trailing" id="8x9-LM-H93"/>
                             <constraint firstItem="tBs-hK-uBs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="AzP-3b-CRa"/>
                             <constraint firstAttribute="centerX" secondItem="iXf-yN-ST0" secondAttribute="centerX" id="Esf-aB-TKO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Yfy-Mo-USV" secondAttribute="bottom" id="Gqm-ul-xLy"/>
                             <constraint firstItem="k75-3i-gIA" firstAttribute="top" secondItem="pGo-Ye-5g9" secondAttribute="bottom" constant="48" id="Qeg-Bb-KbA"/>
                             <constraint firstItem="pGo-Ye-5g9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="Qv2-Eq-pDw"/>
                             <constraint firstItem="k75-3i-gIA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="W0Y-bF-zOs"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Lj-lB-Dt5" secondAttribute="bottom" constant="29" id="XXE-3p-UNi"/>
                             <constraint firstItem="iXf-yN-ST0" firstAttribute="top" secondItem="pGo-Ye-5g9" secondAttribute="bottom" constant="8" id="ZLa-oO-dju"/>
+                            <constraint firstItem="Yfy-Mo-USV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="frl-5h-ZKg"/>
                             <constraint firstItem="pGo-Ye-5g9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="iRX-Zy-2uZ"/>
+                            <constraint firstItem="Yfy-Mo-USV" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="lrN-Qp-Zfo"/>
                             <constraint firstItem="3Lj-lB-Dt5" firstAttribute="top" secondItem="k75-3i-gIA" secondAttribute="bottom" constant="8" id="tVG-Bk-nmq"/>
                             <constraint firstAttribute="trailing" secondItem="k75-3i-gIA" secondAttribute="trailing" constant="10" id="vP9-vL-Rbo"/>
                             <constraint firstAttribute="trailing" secondItem="pGo-Ye-5g9" secondAttribute="trailing" constant="50" id="xBS-oJ-SgL"/>
@@ -144,9 +188,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Yfy-Mo-USV" id="7GP-a4-1O1"/>
                         <outlet property="continueBtn" destination="3Lj-lB-Dt5" id="WUI-Wl-hUC"/>
                         <outlet property="descLabel" destination="O2b-KF-41h" id="BTQ-8V-DZU"/>
                         <outlet property="illustrationImg" destination="pGo-Ye-5g9" id="QoY-hL-CYx"/>
+                        <outlet property="loadingLabel" destination="cjq-eN-jwW" id="kfW-0g-cjA"/>
                         <outlet property="pageIndicator" destination="iXf-yN-ST0" id="P1q-Kq-9xi"/>
                         <outlet property="skipBtn" destination="tBs-hK-uBs" id="3EO-hI-XbH"/>
                         <outlet property="titleLabel" destination="vT5-TH-z5L" id="1eP-2e-DEf"/>
@@ -1059,6 +1105,6 @@
         <image name="share.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JZT-jy-x5T"/>
+        <segue reference="glk-tE-vyg"/>
     </inferredMetricsTieBreakers>
 </document>

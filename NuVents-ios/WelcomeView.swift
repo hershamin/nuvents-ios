@@ -20,10 +20,18 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     var illustrationImgs:[String] = []
     var titles:[String] = []
     var descs:[String] = []
+    var eventsFound:Bool = false
+    var skipPressed:Bool = false
+    @IBOutlet var activityIndicator:YRActivityIndicator!
+    @IBOutlet var loadingLabel:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // Activity Indicator setup
+        activityIndicator.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.9)
+        hideLoadingView()
         
         // Load arrays for illustration images, titles, and descriptions
         illustrationImgs = ["OnboardIllustration1.png", "OnboardIllustration2.png", "OnboardIllustration3.png"]
@@ -56,6 +64,14 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         
         // Restore detail view controller
         restoreDetailView() // Will only restore detail view if restore file found
+        
+        // Sign up for notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNearbyEvents", name: NuVentsEndpoint.sharedEndpoint.showCombinationNotificationKey, object: nil)
+    }
+    
+    // Called when view is deallocated from memory
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     // Called when unwinded from detail view controller
@@ -68,14 +84,46 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         // Welcome View from Request View
     }
     
+    // Called when events nearby are loaded
+    func receivedNearbyEvents() {
+        eventsFound = true
+        hideLoadingView()
+        if skipPressed {
+            skipBtnPressed(nil) // Call skip button action
+        }
+    }
+    
+    // Method to show loading view
+    func showLoadingViewWithText(status:String!) {
+        activityIndicator.startAnimating()
+        loadingLabel.text = "\(status)..."
+        activityIndicator.hidden = false
+        loadingLabel.hidden = false
+    }
+    
+    // Method to hide loading view
+    func hideLoadingView() {
+        activityIndicator.stopAnimating()
+        loadingLabel.text = ""
+        activityIndicator.hidden = true
+        loadingLabel.hidden = true
+    }
+    
     // Skip Button Pressed
     func skipBtnPressed(sender:UIButton!) {
-        if NuVentsEndpoint.sharedEndpoint.eventJSON.count > 0 {
-            // Events found, go to combination view
-            self.performSegueWithIdentifier("showCombinationView", sender: nil)
+        if eventsFound { // Only execute if event response from server
+            eventsFound = false
+            skipPressed = false
+            if NuVentsEndpoint.sharedEndpoint.eventJSON.count > 0 {
+                // Events found, go to combination view
+                self.performSegueWithIdentifier("showCombinationView", sender: nil)
+            } else {
+                // No events found, go to request view
+                self.performSegueWithIdentifier("showRequestView", sender: nil)
+            }
         } else {
-            // No events found, go to request view
-            self.performSegueWithIdentifier("showRequestView", sender: nil)
+            showLoadingViewWithText("Gathering Nearby Events...")
+            skipPressed = true
         }
     }
     
@@ -207,6 +255,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             // Initiate search for nearby events
             NuVentsEndpoint.sharedEndpoint.getNearbyEvents(latestLoc.coordinate, radius: 5000)
+            eventsFound = false
         }
     }
     
