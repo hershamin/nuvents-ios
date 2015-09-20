@@ -112,7 +112,6 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     // Skip Button Pressed
     func skipBtnPressed(sender:UIButton!) {
         if eventsFound { // Only execute if event response from server
-            eventsFound = false
             skipPressed = false
             if NuVentsEndpoint.sharedEndpoint.eventJSON.count > 0 {
                 // Events found, go to combination view
