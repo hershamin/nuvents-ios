@@ -26,7 +26,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Load arrays for illustration images, titles, and descriptions
-        illustrationImgs = ["EventIllustration.png", "EventIllustration.png", "EventIllustration.png"]
+        illustrationImgs = ["OnboardIllustration1.png", "OnboardIllustration2.png", "OnboardIllustration3.png"]
         titles = ["Title\n1", "title\n2", "title\n3"]
         descs = ["DESCRIPTIO\nDESC\nDESW11", "DESCRIPTIO\nDESC\nDESW22", "DESCRIPTIO\nDESC\nDESW33"]
         
@@ -36,18 +36,16 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        // Set background color
-        self.view.backgroundColor = UIColor(red: 0.10, green: 0.73, blue: 0.60, alpha: 1.0) // #19B99A
-        
         // Rounded corners to continue btn
         continueBtn.layer.borderColor = UIColor.whiteColor().CGColor
         continueBtn.layer.borderWidth = 3
         continueBtn.layer.cornerRadius = continueBtn.frame.height/2
         
-        // Load Image, title, & description
+        // Load Image, title, description, & background color
         illustrationImg.image = UIImage(named: illustrationImgs[0])
         titleLabel.text = titles[0]
         descLabel.text = descs[0]
+        self.view.backgroundColor = UIColor(red: 0.10, green: 0.73, blue: 0.60, alpha: 1.0) // #19B99A
         
         // Alert user if server is not reachable
         checkServerConn()
@@ -89,12 +87,14 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
             illustrationImg.image = UIImage(named: illustrationImgs[1])
             titleLabel.text = titles[1]
             descLabel.text = descs[1]
+            self.view.backgroundColor = UIColor(red: 0.19, green: 0.64, blue: 0.86, alpha: 1.0) // #31A3DC
             pageIndicator.currentPage = 1 // Change page on page indicator
         } else if (pageIndicator.currentPage == 1) {
             // Load page 2, load from appropriate array indexes
             illustrationImg.image = UIImage(named: illustrationImgs[2])
             titleLabel.text = titles[2]
             descLabel.text = descs[2]
+            self.view.backgroundColor = UIColor(red: 0.91, green: 0.30, blue: 0.40, alpha: 1.0) // #E84C66
             pageIndicator.currentPage = 2 // Change page on page indicator
             continueBtn.setTitle("GET STARTED", forState: UIControlState.Normal) // Change title of "CONTINUE" button
             skipBtn.hidden = true // Hide Skip button

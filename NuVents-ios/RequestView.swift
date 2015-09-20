@@ -47,7 +47,7 @@ class RequestViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.61, green:0.34, blue:0.65, alpha:1.0) //#9C57A6
         
         //Load the image
-        illustrationImage.image = UIImage(named: "RequestIllustration")
+        illustrationImage.image = UIImage(named: "RequestIllustration1.png")
         
         //Add text to the nuvents message
         nuventsMessage.numberOfLines = 0;
