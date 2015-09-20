@@ -86,7 +86,7 @@ class RequestViewController: UIViewController {
         let height = UIScreen.mainScreen().bounds.height
         let width = UIScreen.mainScreen().bounds.width
         UIView.animateWithDuration(0.25, animations: {
-            self.view.frame = CGRectMake(0, -height/3, width, height)
+            self.view.window?.frame = CGRectMake(0, -height/3, width, height)
             // x, y, width, height
         })
     }
@@ -97,7 +97,7 @@ class RequestViewController: UIViewController {
         let height = UIScreen.mainScreen().bounds.height
         let width = UIScreen.mainScreen().bounds.width
         UIView.animateWithDuration(0.25, animations: {
-            self.view.frame = CGRectMake(0, 0, width, height)
+            self.view.window?.frame = CGRectMake(0, 0, width, height)
             // x, y, width, height
         })
     }
