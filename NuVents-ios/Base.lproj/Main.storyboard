@@ -36,6 +36,7 @@
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
             <string>GothamRounded-Medium</string>
+            <string>GothamRounded-Medium</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -469,13 +470,26 @@
                                     <outlet property="delegate" destination="Kza-NR-yFU" id="T2j-83-UEt"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to view events from the selected categories, Please go to List View or Map View" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NdF-gA-Wx8">
+                                <rect key="frame" x="30" y="390" width="540" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="rm9-6w-H2E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GothamRounded-Medium" family="Gotham Rounded" pointSize="15"/>
+                                <color key="textColor" red="0.90980392160000001" green="0.33725490200000002" blue="0.42745098040000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NdF-gA-Wx8" firstAttribute="leading" secondItem="eNn-mp-KQQ" secondAttribute="leading" constant="30" id="1UP-so-ff6"/>
                             <constraint firstAttribute="trailing" secondItem="Bcm-bC-wyr" secondAttribute="trailing" id="EzO-XZ-4aC"/>
                             <constraint firstItem="Bcm-bC-wyr" firstAttribute="leading" secondItem="eNn-mp-KQQ" secondAttribute="leading" id="GXQ-pT-Kuw"/>
                             <constraint firstItem="n8r-sK-ilG" firstAttribute="top" secondItem="Bcm-bC-wyr" secondAttribute="bottom" id="Q9I-6c-sHg"/>
+                            <constraint firstItem="NdF-gA-Wx8" firstAttribute="centerX" secondItem="eNn-mp-KQQ" secondAttribute="centerX" id="gRh-uX-NOB"/>
                             <constraint firstItem="Bcm-bC-wyr" firstAttribute="top" secondItem="CB7-yn-1qw" secondAttribute="bottom" id="guO-Yi-cuv"/>
+                            <constraint firstAttribute="trailing" secondItem="NdF-gA-Wx8" secondAttribute="trailing" constant="30" id="lI1-ib-Cx5"/>
+                            <constraint firstItem="n8r-sK-ilG" firstAttribute="top" secondItem="NdF-gA-Wx8" secondAttribute="bottom" constant="30" id="vF0-dh-Zva"/>
                         </constraints>
                     </view>
                     <connections>
