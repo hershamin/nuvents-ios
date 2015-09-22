@@ -41,6 +41,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         siren.patchUpdateAlertType = SirenAlertType.Force   // 1.1.x
         siren.checkVersion(SirenVersionCheckType.Immediately) // Check for new app version at app start
         
+        // Initiate branchIO instance, test or live depending on build
+        var branchIO:Branch!
+        if (fabricIntegration) {
+            // Get live
+            branchIO = Branch.getInstance()
+        } else {
+            // Get test
+            branchIO = Branch.getTestInstance()
+        }
+        branchIO.initSessionWithLaunchOptions(launchOptions, andRegisterDeepLinkHandler: { params, error in
+            // route the user based on what's in params
+        })
+        
+        return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if (fabricIntegration) {
+            // Live
+            Branch.getInstance().handleDeepLink(url)
+        } else {
+            // Test
+            Branch.getTestInstance().handleDeepLink(url)
+        }
+        
         return true
     }
 
