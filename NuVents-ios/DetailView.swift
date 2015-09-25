@@ -239,7 +239,31 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
     
     // Share button pressed
     func shareBtnPressed(sender:UIButton!) {
-        print("Share Button (BranchIO)")
+        // Items
+        var items:Array = [AnyObject]()
+        // Adding text
+        let shareString = "Share this event with friends!"
+        items.append(shareString)
+        // Adding an image
+        let shareImgData:NSData = NSData(contentsOfURL: NSURL(string: eventJson["media"].stringValue)!)!
+        let shareImg:UIImage = UIImage(data: shareImgData)!
+        items.append(shareImg)
+        // Custom data
+        let eventID = eventJson["eid"].stringValue
+        var params = ["eventID":"\(eventID)"]
+        params["product_name"] = "NuVents"
+        params["$og_title"] = eventJson["title"].stringValue
+        params["$og_description"] = eventJson["description"].stringValue
+        params["$og_image_url"] = eventJson["media"].stringValue
+        let feature = "share"
+        let stage = "discovered"
+        // Adding a link - Branch UIActivityItemProvider
+        let itemProvider = Branch.getBranchActivityItemWithParams(params, andFeature: feature, andStage: stage)
+        items.append(itemProvider)
+        // Pass into uiactivity view controller
+        let shareVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        // Present share sheet
+        self.presentViewController(shareVC, animated: true, completion: nil)
     }
     
     // UITextView (Description) view delegate, when links are clicked
