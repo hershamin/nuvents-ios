@@ -244,6 +244,8 @@ class NuVentsEndpoint {
             } else {
                 print("NuVents Endpoint: Event Detail Received")
             }
+            // Acknowledge Server
+            ack?.with("Event Detail Status Received")
         }
         
         // Resources received from server
