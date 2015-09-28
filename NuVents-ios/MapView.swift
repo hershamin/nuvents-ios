@@ -104,7 +104,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func openDetailView(sender:UIButton!) {
         // Get json from event ID
         let eventID:String = selectedEventID
-        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID)
+        NuVentsEndpoint.sharedEndpoint.selectedEID = eventID
+        // Show detail view
+        self.performSegueWithIdentifier("showDetailView", sender: nil)
     }
     
     // Function to change map view to category changed

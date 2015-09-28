@@ -13,7 +13,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var tableView: UITableView!
     
     var eventArray: [JSON] = []
-    
     let reuseIdentifier = "ListCell"
     
     override func viewDidLoad() {
@@ -155,11 +154,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Called when row is selected
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         // Get json from event ID
         let eventID:String = eventArray[indexPath.row]["eid"].stringValue
-        NuVentsEndpoint.sharedEndpoint.getEventDetail(eventID)
-        
+        NuVentsEndpoint.sharedEndpoint.selectedEID = eventID
+        // Show detail view
+        self.performSegueWithIdentifier("showDetailView", sender: nil)
         // Deselect row
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

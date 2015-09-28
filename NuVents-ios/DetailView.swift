@@ -19,7 +19,7 @@ extension String {
 
 class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextViewDelegate {
     
-    let eventJson:JSON = NuVentsEndpoint.sharedEndpoint.tempJson
+    var eventJson:JSON!
     @IBOutlet var mediaImgView:UIImageView!
     @IBOutlet var backBtn:UIButton!
     @IBOutlet var addToCalBtn:UIButton!
@@ -30,6 +30,8 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
     @IBOutlet var addressLabel:UILabel!
     @IBOutlet var distanceLabel:UILabel!
     @IBOutlet var descriptionView:UITextView!
+    @IBOutlet var activityIndicator:YRActivityIndicator!
+    @IBOutlet var loadingLabel:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,42 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         
         // Init back button
         backBtn.addTarget(self, action: "backBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        // Activity Indicator setup
+        activityIndicator.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.9)
+        showLoadingViewWithText("Loading Event Detail...")
+        
+        // Request event details
+        NuVentsEndpoint.sharedEndpoint.getEventDetail(NuVentsEndpoint.sharedEndpoint.selectedEID)
+        
+        // Init add to calendar button
+        addToCalBtn.layer.borderColor = UIColor.whiteColor().CGColor
+        addToCalBtn.layer.borderWidth = 3
+        addToCalBtn.layer.cornerRadius = addToCalBtn.bounds.size.height/2
+        addToCalBtn.addTarget(self, action: "addToCalBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        // Init other buttons
+        viewMapBtn.addTarget(self, action: "viewMapBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        shareBtn.addTarget(self, action: "shareBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        // Signup for notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "detailViewJsonReceived", name: NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    // Detail View Json received
+    func detailViewJsonReceived() {
+        // Populate data
+        eventJson = NuVentsEndpoint.sharedEndpoint.tempJson
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        
+        // Return if data not found
+        if !(eventJson != nil) {
+            return
+        }
         
         // Init Description WebView
         let descHtmlStr:String = eventJson["description"].stringValue
@@ -50,30 +88,24 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         }
         descriptionView.attributedText = descHtmlAttr
         
-        // Init add to calendar button
-        addToCalBtn.layer.borderColor = UIColor.whiteColor().CGColor
-        addToCalBtn.layer.borderWidth = 3
-        addToCalBtn.layer.cornerRadius = addToCalBtn.bounds.size.height/2
-        addToCalBtn.addTarget(self, action: "addToCalBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        // Init other buttons
-        viewMapBtn.addTarget(self, action: "viewMapBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        shareBtn.addTarget(self, action: "shareBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        
         // Init date/time label
         let timeStr:String = NuVentsHelper.getHumanReadableDate(eventJson["time"]["start"].stringValue)
         dateTimeLabel.text = timeStr.stringByReplacingOccurrencesOfString("at", withString: "|")
         
         // Init distance label
-        let currLoc = CLLocation(latitude: NuVentsEndpoint.sharedEndpoint.currLoc.latitude, longitude: NuVentsEndpoint.sharedEndpoint.currLoc.longitude)
-        let eventLoc = CLLocation(latitude: eventJson["latitude"].doubleValue, longitude: eventJson["longitude"].doubleValue)
-        let distRaw = eventLoc.distanceFromLocation(currLoc) * 0.000621371 // Distance in miles
-        let dist = Double(round(10 * distRaw)/10) // Round the number
-        let distStr = String(format: "%g", dist)
-        if (dist < 0.1) { // Change distance label based on calculated distance
-            distanceLabel.text = "< 0.1 mi"
+        if let currLocCoord = NuVentsEndpoint.sharedEndpoint.currLoc {
+            let currLoc = CLLocation(latitude: currLocCoord.latitude, longitude: currLocCoord.longitude)
+            let eventLoc = CLLocation(latitude: eventJson["latitude"].doubleValue, longitude: eventJson["longitude"].doubleValue)
+            let distRaw = eventLoc.distanceFromLocation(currLoc) * 0.000621371 // Distance in miles
+            let dist = Double(round(10 * distRaw)/10) // Round the number
+            let distStr = String(format: "%g", dist)
+            if (dist < 0.1) { // Change distance label based on calculated distance
+                distanceLabel.text = "< 0.1 mi"
+            } else {
+                distanceLabel.text = "\(distStr) mi"
+            }
         } else {
-            distanceLabel.text = "\(distStr) mi"
+            distanceLabel.text = "n/a"
         }
         
         // Init title & address labels
@@ -104,6 +136,8 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         }
         let jsonFileData = "\(event)".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         jsonFileData?.writeToFile(jsonFilePath, atomically: true)
+        
+        hideLoadingView() // Hide loading view
     }
     
     // Called when controller disappears from the stack
@@ -116,6 +150,24 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
             try fm.removeItemAtPath(jsonFilePath)
         } catch _ {
         }
+        // Remove temp event
+        NuVentsEndpoint.sharedEndpoint.tempJson = nil
+    }
+    
+    // Method to show loading view
+    func showLoadingViewWithText(status:String!) {
+        activityIndicator.startAnimating()
+        loadingLabel.text = "\(status)..."
+        activityIndicator.hidden = false
+        loadingLabel.hidden = false
+    }
+    
+    // Method to hide loading view
+    func hideLoadingView() {
+        activityIndicator.stopAnimating()
+        loadingLabel.text = ""
+        activityIndicator.hidden = true
+        loadingLabel.hidden = true
     }
     
     // View Map button pressed

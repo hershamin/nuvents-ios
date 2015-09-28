@@ -28,7 +28,6 @@ class NuVentsEndpoint {
     internal let eventDetailNotificationKey = "eventDetailNotificationKey"
     internal let mapFilterNotificationKey = "mapFilterNotificationKey"
     internal let listFilterNotificationKey = "listFilterNotificationKey"
-    internal let showLoadingNotificationKey = "showLoadingNotificationKey"
     internal let showCombinationNotificationKey = "showCombinationNotificationKey"
 
     
@@ -37,7 +36,8 @@ class NuVentsEndpoint {
     internal var categories:Set<String> = Set() // To store selected categories
     internal var searchText:String = "" // To store search bar text
     internal var currLoc:CLLocationCoordinate2D! // To store current device location
-    internal var tempJson = JSON("") // To store eventJson when going to detail view
+    internal var tempJson:JSON! // To store eventJson when going to detail view
+    internal var selectedEID:String = "" // To store selected Event ID when going to detail view
     internal var detailFromWelcome:Bool = false // To store whether detail view was loaded from welcome view
     internal var mapViewFilter:Int = 0 // To store selected filter setting for mapview
     internal var listViewFilter:Int = 0 // To store selected filter setting for listview
@@ -121,8 +121,8 @@ class NuVentsEndpoint {
         let eventDict = ["did":NuVentsEndpoint.sharedEndpoint.udid,
             "eid":eventID as String,
             "time":"\(NSDate().timeIntervalSince1970)"]
-        // Notify views
-        NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.showLoadingNotificationKey, object: nil)
+        // Clear previous event detail entry
+        NuVentsEndpoint.sharedEndpoint.tempJson = nil
         // Add to buffer
         let event:String = "event:detail"
         let eventMess:String = "\(event)||\(eventDict.description)"
@@ -155,7 +155,7 @@ class NuVentsEndpoint {
     
     // Sync resources with server
     private func syncResources(jsonData: JSON) {
-        var fm = NSFileManager.defaultManager()
+        let fm = NSFileManager.defaultManager()
         // Get resources if not present on the internal file system or different
         for (type, typeJson): (String, JSON) in jsonData["resource"] { // Resource types
             for (resource, resJson): (String, JSON) in typeJson { // Resources
@@ -230,8 +230,6 @@ class NuVentsEndpoint {
             let jsonData = JSON(data: dataFromString!)
             // Set global variable
             NuVentsEndpoint.sharedEndpoint.tempJson = jsonData
-            // Notify Views
-            NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
             // Acknowledge Server
             ack?.with("Event Detail Received")
         }
@@ -244,6 +242,8 @@ class NuVentsEndpoint {
             } else {
                 print("NuVents Endpoint: Event Detail Received")
             }
+            // Notify Views
+            NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
             // Acknowledge Server
             ack?.with("Event Detail Status Received")
         }

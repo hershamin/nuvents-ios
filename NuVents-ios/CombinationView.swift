@@ -18,7 +18,6 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var filterBtn:UIButton!
     var segmentedCtrl:URBSegmentedControl!
-    @IBOutlet var activityIndicator:YRActivityIndicator!
     @IBOutlet var loadingLabel:UILabel!
     
     override func viewDidLoad() {
@@ -35,10 +34,6 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
         
         // Init filter button
         filterBtn.addTarget(self, action: "filterBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        // Activity Indicator setup
-        activityIndicator.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.9)
-        hideLoadingView()
         
         // Segmented control setup
         let titles:Array = ["CATEGORIES", "EVENT LIST", "MAP"]
@@ -60,30 +55,10 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
         segmentedCtrl.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         segmentedCtrlView.addSubview(segmentedCtrl)
         
-        // Signup for notifications
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "goToDetailView", name: NuVentsEndpoint.sharedEndpoint.eventDetailNotificationKey, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showLoadingDetailView", name: NuVentsEndpoint.sharedEndpoint.showLoadingNotificationKey, object: nil)
-        
         // Tap gesture recognizer to dismiss keyboard
         let tapGestureRecognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissSearchBarKeyboard")
         tapGestureRecognizer.delegate = self
         self.view.addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    // Called when view did disappear
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        hideLoadingView() // Hide activity indicator
-    }
-    
-    // Go to detail view
-    func goToDetailView() {
-        self.performSegueWithIdentifier("showDetailView", sender: nil)
-    }
-    
-    // Show activity indicator while searching for event detail
-    func showLoadingDetailView() {
-        showLoadingViewWithText("Loading Event Detail...")
     }
     
     // Tap gesture recognizer delegate
@@ -93,22 +68,6 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
             return false
         }
         return true
-    }
-    
-    // Method to show loading view
-    func showLoadingViewWithText(status:String!) {
-        activityIndicator.startAnimating()
-        loadingLabel.text = "\(status)..."
-        activityIndicator.hidden = false
-        loadingLabel.hidden = false
-    }
-    
-    // Method to hide loading view
-    func hideLoadingView() {
-        activityIndicator.stopAnimating()
-        loadingLabel.text = ""
-        activityIndicator.hidden = true
-        loadingLabel.hidden = true
     }
     
     // Filter Button pressed
