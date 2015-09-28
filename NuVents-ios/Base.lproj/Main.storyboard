@@ -548,7 +548,7 @@
         <!--Detail View Controller-->
         <scene sceneID="CmU-h2-e6W">
             <objects>
-                <viewController id="9hX-LZ-EDY" customClass="DetailViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailView" id="9hX-LZ-EDY" customClass="DetailViewController" customModule="NuVents" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SC1-64-Pg5"/>
                         <viewControllerLayoutGuide type="bottom" id="FbO-ZG-5cB"/>

@@ -240,6 +240,10 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
             // Go to welcome view as this view was loaded from welcome view
             NuVentsEndpoint.sharedEndpoint.detailFromWelcome = false
             self.performSegueWithIdentifier("unwindWelcomeView", sender: nil)
+        } else if NuVentsEndpoint.sharedEndpoint.detailFromDelegate  {
+            // Dismiss view as this view was loaded from app delegate
+            NuVentsEndpoint.sharedEndpoint.detailFromDelegate = false
+            self.dismissViewControllerAnimated(true, completion: nil)
         } else {
             // Go to combination view
             self.performSegueWithIdentifier("unwindCombinationView", sender: nil)
@@ -276,7 +280,7 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
             let eventTitle = eventJson["title"].stringValue
             let eventTime = NuVentsHelper.getHumanReadableDate(eventJson["time"]["start"].stringValue)
             let message:String = "\(eventTitle)\n\(eventTime)"
-            var alert = UIAlertController(title: "Event added to calendar!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Event added to calendar!", message: message, preferredStyle: UIAlertControllerStyle.Alert)
             let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil)
             alert.addAction(cancelAction)
             dispatch_async(dispatch_get_main_queue(), { // Ensure alert is shown on UI (main) thread

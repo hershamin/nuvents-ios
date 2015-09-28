@@ -39,6 +39,7 @@ class NuVentsEndpoint {
     internal var tempJson:JSON! // To store eventJson when going to detail view
     internal var selectedEID:String = "" // To store selected Event ID when going to detail view
     internal var detailFromWelcome:Bool = false // To store whether detail view was loaded from welcome view
+    internal var detailFromDelegate:Bool = false // To store whether detail view was loaded from app delegate
     internal var mapViewFilter:Int = 0 // To store selected filter setting for mapview
     internal var listViewFilter:Int = 0 // To store selected filter setting for listview
     
