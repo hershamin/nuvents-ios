@@ -51,16 +51,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             branchIO = Branch.getTestInstance()
         }
         branchIO.initSessionWithLaunchOptions(launchOptions, andRegisterDeepLinkHandler: { params, error in
-            // Set event ID
-            let eid:String = (params["eventID"] as? String)!
-            NuVentsEndpoint.sharedEndpoint.selectedEID = eid
-            NuVentsEndpoint.sharedEndpoint.detailFromDelegate = true
-            // Present controller
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let dvc = storyboard.instantiateViewControllerWithIdentifier("DetailView") 
-            dispatch_async(dispatch_get_main_queue(), {
-                self.window?.rootViewController?.presentViewController(dvc, animated: true, completion: nil)
-            })
+            // Check if eventID is present, if present, call detail view
+            if let eid = params["eventID"] as? String {
+                NuVentsEndpoint.sharedEndpoint.selectedEID = eid
+                NuVentsEndpoint.sharedEndpoint.detailFromDelegate = true
+                // Present controller
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let dvc = storyboard.instantiateViewControllerWithIdentifier("DetailView")
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.window?.rootViewController?.presentViewController(dvc, animated: true, completion: nil)
+                })
+            }
         })
         
         return true
