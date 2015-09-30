@@ -122,8 +122,11 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         let url = NSURL(string: urlString)!
         let httpGetTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
             (data, response, error) in
-            let resp = response as! NSHTTPURLResponse
-            NuVentsEndpoint.sharedEndpoint.sendWebsiteCode(urlString, code: "\(resp.statusCode)")
+            if let resp = response as? NSHTTPURLResponse { // Got some response
+                NuVentsEndpoint.sharedEndpoint.sendWebsiteCode(urlString, code: "\(resp.statusCode)")
+            } else { // No response
+                NuVentsEndpoint.sharedEndpoint.sendWebsiteCode(urlString, code: "500")
+            }
         }
         httpGetTask.resume()
         

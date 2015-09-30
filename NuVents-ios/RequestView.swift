@@ -13,6 +13,7 @@ class RequestViewController: UIViewController {
     @IBOutlet var backBtn:UIButton!
     @IBOutlet weak var illustrationImage: UIImageView!
     @IBOutlet weak var nuventsMessage: UILabel!
+    @IBOutlet weak var zipCodeLabel:UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var textForName: UITextField!
     @IBOutlet weak var textForEmail: UITextField!
@@ -111,6 +112,7 @@ class RequestViewController: UIViewController {
     func displayLocationInfo (placemark: CLPlacemark) {
         // Add the city to the message text.
         self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality! + ", " + placemark.administrativeArea!
+        self.zipCodeLabel.text = locationPlacemark.postalCode!
         bringItHere.hidden = false
     }
     
