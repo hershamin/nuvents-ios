@@ -19,6 +19,7 @@ class RequestViewController: UIViewController {
     @IBOutlet weak var textForEmail: UITextField!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var bringItHere: UIButton!
+    @IBOutlet weak var skipBtn:UIButton!
     var locationPlacemark:CLPlacemark!
     
     override func viewDidLoad() {
@@ -27,6 +28,9 @@ class RequestViewController: UIViewController {
         
         // Back button functionality
         backBtn.addTarget(self, action: "backBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+        // Skip button functionality
+        skipBtn.addTarget(self, action: "skipBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Init location stuff
         let locCoord:CLLocationCoordinate2D = NuVentsEndpoint.sharedEndpoint.currLoc
@@ -114,6 +118,11 @@ class RequestViewController: UIViewController {
         self.nuventsMessage.text = "Oh no! Nuvents is not yet available in " + placemark.locality! + ", " + placemark.administrativeArea!
         self.zipCodeLabel.text = locationPlacemark.postalCode!
         bringItHere.hidden = false
+    }
+    
+    // Skip button pressed
+    func skipBtnPressed(sender:UIButton!) {
+        print("Skip Button Pressed")
     }
     
     // Bring it Here button pressed

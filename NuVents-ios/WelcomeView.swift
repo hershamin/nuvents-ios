@@ -293,7 +293,7 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
             // Only stop if less than 3 seconds old
             locationManager.stopUpdatingLocation()
             // Initiate search for nearby events
-            NuVentsEndpoint.sharedEndpoint.getNearbyEvents(latestLoc.coordinate, radius: 5000)
+            NuVentsEndpoint.sharedEndpoint.getNearbyEvents(latestLoc.coordinate, radius: 5)
             eventsFound = false
         }
     }

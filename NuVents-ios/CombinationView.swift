@@ -17,8 +17,8 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
     @IBOutlet var segmentedCtrlView:UIView!
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var filterBtn:UIButton!
+    @IBOutlet var refreshBtn:UIButton!
     var segmentedCtrl:URBSegmentedControl!
-    @IBOutlet var loadingLabel:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,9 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
         // Search bar setup
         searchBar.backgroundImage = UIImage() // Clear background image
         
-        // Init filter button
+        // Init buttons
         filterBtn.addTarget(self, action: "filterBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        refreshBtn.addTarget(self, action: "refreshBtnPressed:", forControlEvents: UIControlEvents.TouchUpInside)
         
         // Segmented control setup
         let titles:Array = ["CATEGORIES", "EVENT LIST", "MAP"]
@@ -68,6 +69,11 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
             return false
         }
         return true
+    }
+    
+    // Refresh Button pressed
+    func refreshBtnPressed(sender:UIButton!) {
+        print("Refresh clicked")
     }
     
     // Filter Button pressed
