@@ -61,6 +61,7 @@
 		BA90B6181B1D211D00C3E3D8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */; };
 		BA9D112E1AF0148900C07FD3 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */; };
 		BAA63BBA1BBB97E6003CC769 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = BAA63BB91BBB97E6003CC769 /* refresh.png */; settings = {ASSET_TAGS = (); }; };
+		BAA63BBD1BBBB890003CC769 /* CZPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BAA63BBC1BBBB890003CC769 /* CZPickerView.m */; settings = {ASSET_TAGS = (); }; };
 		BAAE257B1BACFD6500813086 /* ListFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE257A1BACFD6500813086 /* ListFilter.swift */; settings = {ASSET_TAGS = (); }; };
 		BAAE257D1BACFD7700813086 /* MapFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAE257C1BACFD7700813086 /* MapFilter.swift */; settings = {ASSET_TAGS = (); }; };
 		BAAEFAD51B827EE200561664 /* Mapbox_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */; };
@@ -200,6 +201,8 @@
 		BA90B6161B1D211D00C3E3D8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		BAA63BB91BBB97E6003CC769 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		BAA63BBB1BBBB88F003CC769 /* CZPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZPickerView.h; sourceTree = "<group>"; };
+		BAA63BBC1BBBB890003CC769 /* CZPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZPickerView.m; sourceTree = "<group>"; };
 		BAAE257A1BACFD6500813086 /* ListFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListFilter.swift; sourceTree = "<group>"; };
 		BAAE257C1BACFD7700813086 /* MapFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapFilter.swift; sourceTree = "<group>"; };
 		BAAEFAD41B827EE200561664 /* Mapbox_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mapbox_Logo.png; sourceTree = "<group>"; };
@@ -368,6 +371,8 @@
 				BA9D112D1AF0148900C07FD3 /* SwiftyJSON.swift */,
 				BA09BFC61B6D9CE200138139 /* URBSegmentedControl.h */,
 				BA09BFC71B6D9CE200138139 /* URBSegmentedControl.m */,
+				BAA63BBB1BBBB88F003CC769 /* CZPickerView.h */,
+				BAA63BBC1BBBB890003CC769 /* CZPickerView.m */,
 				BA5D921A1B8254E8000115BE /* SMCalloutView.h */,
 				BA5D921B1B8254E8000115BE /* SMCalloutView.m */,
 				BAD9CFF21BB1E067001133E6 /* Branch-SDK */,
@@ -810,6 +815,7 @@
 				BAAEFB021B88F1D100561664 /* RequestViewSegue.swift in Sources */,
 				BADFA9261B69488100CAF0A5 /* NuVentsEndpoint.swift in Sources */,
 				BAAEFAFE1B88309800561664 /* DetailViewUnwindSegue.swift in Sources */,
+				BAA63BBD1BBBB890003CC769 /* CZPickerView.m in Sources */,
 				BA5D920E1B811F4F000115BE /* MBXPointAnnotation.m in Sources */,
 				BAD9D05D1BB1E067001133E6 /* BranchRedeemRewardsRequest.m in Sources */,
 				BAF8B5031BAE064100AC6E97 /* YRActivityIndicator.m in Sources */,
