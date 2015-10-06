@@ -369,6 +369,7 @@
                         <segue destination="sDJ-Xe-Dvn" kind="popoverPresentation" identifier="popoverListFilter" popoverAnchorView="3EZ-5a-Yvh" id="VEA-65-3sm">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                         </segue>
+                        <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="MSG-Yn-sF8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KN8-1Q-3wK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -658,11 +659,11 @@
                                     <outlet property="delegate" destination="9hX-LZ-EDY" id="Sbp-Gr-KLT"/>
                                 </connections>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coK-u7-msi">
-                                <rect key="frame" x="0.0" y="413" width="600" height="187"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="coK-u7-msi">
+                                <rect key="frame" x="0.0" y="460" width="64" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5m-gT-fpL">
-                                        <rect key="frame" x="81" y="85" width="79" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5m-gT-fpL">
+                                        <rect key="frame" x="-27" y="2" width="79" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="79" id="MYb-bB-LdB"/>
                                             <constraint firstAttribute="height" constant="17" id="WUX-84-9in"/>
@@ -671,8 +672,8 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOCATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvW-wS-RZT">
-                                        <rect key="frame" x="77" y="56" width="86" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LOCATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvW-wS-RZT">
+                                        <rect key="frame" x="-30" y="0.0" width="86" height="12"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="12" id="6wP-uT-H1Z"/>
                                             <constraint firstAttribute="width" constant="86" id="DAK-7R-us6"/>
@@ -681,22 +682,22 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kBm-gX-KeV">
-                                        <rect key="frame" x="299" y="10" width="1" height="167"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kBm-gX-KeV">
+                                        <rect key="frame" x="31" y="10" width="1" height="0.0"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="1" id="1XH-Af-EjN"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZY-hR-b0r">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RZY-hR-b0r">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="1"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="27T-sC-Xhd"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6re-ER-HB5">
-                                        <rect key="frame" x="81" y="145" width="75" height="22"/>
+                                        <rect key="frame" x="81" y="6" width="75" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="lgE-yJ-UW7"/>
                                             <constraint firstAttribute="width" constant="75" id="tRh-ck-RPc"/>
@@ -707,8 +708,8 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsf-VM-R9g">
-                                        <rect key="frame" x="433" y="145" width="55" height="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xsf-VM-R9g">
+                                        <rect key="frame" x="21" y="6" width="55" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="ZHq-GB-RWf"/>
                                             <constraint firstAttribute="width" constant="55" id="oH7-qg-huD"/>
@@ -719,8 +720,8 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-53-0Tp">
-                                        <rect key="frame" x="436" y="50" width="50" height="50"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="share.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hvc-53-0Tp">
+                                        <rect key="frame" x="24" y="-17" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="h6l-3m-U3m"/>
                                             <constraint firstAttribute="width" constant="50" id="s5V-yu-1P0"/>
@@ -814,6 +815,7 @@
                             <constraint firstItem="RYz-hH-3SX" firstAttribute="top" secondItem="UmT-YN-7tY" secondAttribute="top" id="zha-JS-vtT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="9Yq-tB-UGf"/>
                     <connections>
                         <outlet property="activityIndicator" destination="PRI-Ce-GGy" id="iW6-Yr-o6x"/>
                         <outlet property="addToCalBtn" destination="rwF-pG-jjc" id="hTz-ey-Tlj"/>
@@ -1157,6 +1159,6 @@
         <image name="share.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="glk-tE-vyg"/>
+        <segue reference="MSG-Yn-sF8"/>
     </inferredMetricsTieBreakers>
 </document>

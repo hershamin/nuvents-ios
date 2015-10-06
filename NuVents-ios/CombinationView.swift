@@ -60,6 +60,19 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
         let tapGestureRecognizer:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissSearchBarKeyboard")
         tapGestureRecognizer.delegate = self
         self.view.addGestureRecognizer(tapGestureRecognizer)
+        
+        // Signup for notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "openDeepLinkCtrl", name: NuVentsEndpoint.sharedEndpoint.deepLinkOpenNotificationKey, object: nil)
+    }
+    
+    // Open deep links
+    func openDeepLinkCtrl() {
+        let detailViewOpen = NuVentsEndpoint.sharedEndpoint.deepLinkFromWelcome
+        if (detailViewOpen && self.isViewLoaded() && self.view.window != nil) {
+            // Open Detail view controller
+            NuVentsEndpoint.sharedEndpoint.deepLinkFromWelcome = false
+            self.performSegueWithIdentifier("showDetailView", sender: nil)
+        }
     }
     
     // Tap gesture recognizer delegate

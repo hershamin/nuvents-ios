@@ -45,7 +45,14 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
         showLoadingViewWithText("Loading Event Detail...")
         
         // Request event details
-        NuVentsEndpoint.sharedEndpoint.getEventDetail(NuVentsEndpoint.sharedEndpoint.selectedEID)
+        let eventID:String = NuVentsEndpoint.sharedEndpoint.selectedEID
+        if (eventID != "") {
+            // Only request if not empty
+            NuVentsEndpoint.sharedEndpoint.getEventDetail(NuVentsEndpoint.sharedEndpoint.selectedEID)
+        } else {
+            hideLoadingView()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
         
         // Init add to calendar button
         addToCalBtn.layer.borderColor = UIColor.whiteColor().CGColor
@@ -243,10 +250,6 @@ class DetailViewController: UIViewController, EKEventEditViewDelegate, UITextVie
             // Go to welcome view as this view was loaded from welcome view
             NuVentsEndpoint.sharedEndpoint.detailFromWelcome = false
             self.performSegueWithIdentifier("unwindWelcomeView", sender: nil)
-        } else if NuVentsEndpoint.sharedEndpoint.detailFromDelegate  {
-            // Dismiss view as this view was loaded from app delegate
-            NuVentsEndpoint.sharedEndpoint.detailFromDelegate = false
-            self.dismissViewControllerAnimated(true, completion: nil)
         } else {
             // Go to combination view
             self.performSegueWithIdentifier("unwindCombinationView", sender: nil)

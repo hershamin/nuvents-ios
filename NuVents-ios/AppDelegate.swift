@@ -53,14 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         branchIO.initSessionWithLaunchOptions(launchOptions, andRegisterDeepLinkHandler: { params, error in
             // Check if eventID is present, if present, call detail view
             if let eid = params["eventID"] as? String {
+                // Set parameters so welcome view presents detail view using selected event ID
                 NuVentsEndpoint.sharedEndpoint.selectedEID = eid
-                NuVentsEndpoint.sharedEndpoint.detailFromDelegate = true
-                // Present controller
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let dvc = storyboard.instantiateViewControllerWithIdentifier("DetailView")
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.window?.rootViewController?.presentViewController(dvc, animated: true, completion: nil)
-                })
+                NuVentsEndpoint.sharedEndpoint.deepLinkFromWelcome = true
+                // Alert views
+                NSNotificationCenter.defaultCenter().postNotificationName(NuVentsEndpoint.sharedEndpoint.deepLinkOpenNotificationKey, object: nil)
             }
         })
         

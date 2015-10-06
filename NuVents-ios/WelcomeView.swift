@@ -77,11 +77,22 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
         
         // Sign up for notifications
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedNearbyEvents", name: NuVentsEndpoint.sharedEndpoint.showCombinationNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "openDeepLinkCtrl", name: NuVentsEndpoint.sharedEndpoint.deepLinkOpenNotificationKey, object: nil)
     }
     
     // Called when view is deallocated from memory
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func openDeepLinkCtrl() {
+        let detailViewOpen = NuVentsEndpoint.sharedEndpoint.deepLinkFromWelcome
+        if (detailViewOpen && self.isViewLoaded() && self.view.window != nil) {
+            // Open Detail view controller
+            NuVentsEndpoint.sharedEndpoint.deepLinkFromWelcome = false
+            NuVentsEndpoint.sharedEndpoint.detailFromWelcome = true
+            self.performSegueWithIdentifier("showDetailView", sender: nil)
+        }
     }
     
     // Left/Right gesture recognizer to handle swipes
