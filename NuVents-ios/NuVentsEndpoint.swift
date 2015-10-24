@@ -43,7 +43,7 @@ class NuVentsEndpoint {
     internal var deepLinkFromWelcome:Bool = false // To store whether detail view should be loaded based on deep link click
     internal var mapViewFilter:Int = 0 // To store selected filter setting for mapview
     internal var listViewFilter:Int = 0 // To store selected filter setting for listview
-    
+    internal var requestedEventLoc:CLLocationCoordinate2D! // To store coordinates to request events from specific location
     
     // Internally used variables
     private var nSocket: SocketIOClient = SocketIOClient(socketURL: backend, opts: ["log":false])

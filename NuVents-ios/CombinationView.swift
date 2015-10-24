@@ -86,7 +86,7 @@ class CombinationViewController: UIViewController, UISearchBarDelegate, UIGestur
     
     // Refresh Button pressed
     func refreshBtnPressed(sender:UIButton!) {
-        print("Refresh clicked")
+        self.performSegueWithIdentifier("unwindCombinationView", sender: nil)
     }
     
     // Filter Button pressed

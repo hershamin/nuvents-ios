@@ -132,6 +132,24 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
     // Called when unwinded from request view controller
     @IBAction func unwindToWelcomeFromRequest(sender: UIStoryboardSegue) {
         // Welcome View from Request View
+        // Refresh events if refresh location set
+        if NuVentsEndpoint.sharedEndpoint.requestedEventLoc != nil {
+            NuVentsEndpoint.sharedEndpoint.getNearbyEvents(NuVentsEndpoint.sharedEndpoint.requestedEventLoc, radius: 5000)
+            NuVentsEndpoint.sharedEndpoint.requestedEventLoc = nil
+            NuVentsEndpoint.sharedEndpoint.eventJSON.removeAll()
+            eventsFound = false
+            skipBtnPressed(nil)
+        }
+    }
+    
+    // Called when unwinded from combination view controller
+    @IBAction func unwindToWelcomeFromCombination(sender:UIStoryboardSegue) {
+        // Welcome View from Combination View
+        // Refresh Events
+        NuVentsEndpoint.sharedEndpoint.getNearbyEvents(NuVentsEndpoint.sharedEndpoint.currLoc, radius: 5000)
+        NuVentsEndpoint.sharedEndpoint.eventJSON.removeAll()
+        eventsFound = false
+        skipBtnPressed(nil)
     }
     
     // Func called to set view
@@ -235,6 +253,13 @@ class WelcomeViewController: UIViewController, CLLocationManagerDelegate {
             }
             if id == "unwindRequestView" {
                 let unwindSegue = RequestViewUnwindSegue(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
+                    //
+                })
+                
+                return unwindSegue
+            }
+            if id == "unwindCombinationView" {
+                let unwindSegue = CombinationViewUnwindSegue(identifier: id, source: fromViewController, destination: toViewController, performHandler: { () -> Void in
                     //
                 })
                 

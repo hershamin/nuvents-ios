@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 NuVents. All rights reserved.
 //
 
-import Foundation   
-
-class RequestViewController: UIViewController {
+import Foundation
+ 
+class RequestViewController: UIViewController, CZPickerViewDataSource, CZPickerViewDelegate {
     
     @IBOutlet var backBtn:UIButton!
     @IBOutlet weak var illustrationImage: UIImageView!
@@ -21,6 +21,7 @@ class RequestViewController: UIViewController {
     @IBOutlet weak var bringItHere: UIButton!
     @IBOutlet weak var skipBtn:UIButton!
     var locationPlacemark:CLPlacemark!
+    var currentCities:[JSON] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +123,26 @@ class RequestViewController: UIViewController {
     
     // Skip button pressed
     func skipBtnPressed(sender:UIButton!) {
-        print("Skip Button Pressed")
+        // Open picker view
+        let picker:CZPickerView = CZPickerView(headerTitle: "Existing Cities", cancelButtonTitle: "Cancel", confirmButtonTitle: "OK")
+        picker.headerBackgroundColor = UIColor(red: 0.91, green: 0.298, blue: 0.4, alpha: 1) // e84c66
+        picker.delegate = self
+        picker.dataSource = self
+        // Fetch data before showing picker
+        let urlString = "http://\(backend)/cities"
+        let url = NSURL(string: urlString)!
+        let httpGetTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
+            (data, response, error) in
+            let json:JSON = JSON(data: data!)
+            self.currentCities.removeAll()
+            for (key,subJson):(String, JSON) in json {
+                self.currentCities.append(subJson)
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                picker.show()
+            })
+        }
+        httpGetTask.resume()
     }
     
     // Bring it Here button pressed
@@ -130,12 +150,33 @@ class RequestViewController: UIViewController {
         // Dismiss keyboard & bring view down if needed
         dismissKeyboard()
         editingEnd()
-        // Send request to backend
-        NuVentsEndpoint.sharedEndpoint.sendEventReq(locationPlacemark.locality!, state: locationPlacemark.administrativeArea!, zip: locationPlacemark.postalCode!, name: textForName.text!, email: textForEmail.text!)
+        // Send request to backend, if not blank
+        if !textForName.text!.isEmpty && !textForEmail.text!.isEmpty {
+            NuVentsEndpoint.sharedEndpoint.sendEventReq(locationPlacemark.locality!, state: locationPlacemark.administrativeArea!, zip: locationPlacemark.postalCode!, name: textForName.text!, email: textForEmail.text!)
+            skipBtnPressed(nil)
+        }
     }
 
     // Back button action
     func backBtnPressed(sender:UIButton!) {
+        self.performSegueWithIdentifier("unwindRequestView", sender: nil)
+    }
+    
+    // MARK: Picker View delegate/datasource methods
+    func numberOfRowsInPickerView(pickerView: CZPickerView!) -> Int {
+        return currentCities.count
+    }
+    
+    func czpickerView(pickerView: CZPickerView!, titleForRow row: Int) -> String! {
+        let json:JSON = self.currentCities[row]
+        return json["name"].stringValue
+    }
+    
+    func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int) {
+        let json:JSON = self.currentCities[row]
+        let coordString:String = json["location"].stringValue
+        let coordStrArr = coordString.componentsSeparatedByString(",")
+        NuVentsEndpoint.sharedEndpoint.requestedEventLoc = CLLocationCoordinate2DMake((coordStrArr[0] as NSString).doubleValue, (coordStrArr[1] as NSString).doubleValue)
         self.performSegueWithIdentifier("unwindRequestView", sender: nil)
     }
     

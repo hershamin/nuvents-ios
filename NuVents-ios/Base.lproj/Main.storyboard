@@ -370,9 +370,11 @@
                             <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                         </segue>
                         <segue destination="9hX-LZ-EDY" kind="show" identifier="showDetailView" customClass="DetailViewSegue" customModule="NuVents" customModuleProvider="target" id="MSG-Yn-sF8"/>
+                        <segue destination="c0h-Tn-ISM" kind="unwind" identifier="unwindCombinationView" unwindAction="unwindToWelcomeFromCombination:" id="yqN-6V-Qnt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KN8-1Q-3wK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="c0h-Tn-ISM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="930" y="-175"/>
         </scene>
